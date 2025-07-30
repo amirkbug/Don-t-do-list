@@ -6,7 +6,7 @@ All designs are based on the minimal, user-focused concept tailored specifically
 ---
 
 ## 📂 Contents
-- **Previews/**: Final page previews (Home, About-us , Login/Signup , Tropy , Tropy-details) watermarked with NoneToast branding.
+- **Previews/**: Final page previews (Home, About-us , ...) watermarked with NoneToast branding.
 - **Logo/**: Official logo versions (SVG, PNG).
 - **Figma Link**: View-only access to the full design file.
 
