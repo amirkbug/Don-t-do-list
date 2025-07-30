@@ -1,19 +1,20 @@
 # 🎨 Don’t Do List – Design Assets
 
 This folder contains the official design previews, logos, and visual assets for the **Don’t Do List** project.  
-All designs are based on the minimal, user-focused concept tailored specifically for the application.
+All designs follow a minimal, user-focused concept tailored specifically for the application.
 
 ---
 
 ## 📂 Contents
-- **Previews/**: Final page previews (Home, About-us , Login/Signup , Tropy , Tropy-details) watermarked with NoneToast branding.
-- **Logo/**: Official logo versions (SVG, PNG).
+- **Previews/**: Contains *Home* and *Trophy* page previews (watermarked with NoneToast branding).  
+  For the complete design, please check the Figma file.  
+- **Logo/**: Official logo versions (SVG, PNG) with watermark.
 - **Figma Link**: View-only access to the full design file.
 
 ---
 
 ## 🔗 Figma Link (View Only)
-[View on Figma](https://www.figma.com/design/6OZbxWlah9WcdXA4eV9IlW/Dont-do-list?node-id=91-31&t=N9xRkaYXwwskC1xj-1)  
+[View Full Design on Figma](https://www.figma.com/design/6OZbxWlah9WcdXA4eV9IlW/Dont-do-list?node-id=91-31&t=N9xRkaYXwwskC1xj-1)  
 *(Access is strictly View Only – Any modification or usage without explicit permission is prohibited.)*
 
 ---
