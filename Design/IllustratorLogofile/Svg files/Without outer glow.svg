@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2048 2048">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <clipPath id="clippath">
+      <circle cx="1463.772" cy="520.88" r="380.566" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <circle cx="1463.772" cy="520.88" r="380.566" style="fill: none; stroke: #231f20; stroke-miterlimit: 10;"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="1721.759" y1="257.058" x2="1720.75" y2="533.953" gradientUnits="userSpaceOnUse">
+      <stop offset=".556" stop-color="#5e65ae"/>
+      <stop offset=".829" stop-color="#875ca6"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="1138.888" y1="577.921" x2="1138.11" y2="791.519" xlink:href="#linear-gradient"/>
+    <clipPath id="clippath-2">
+      <circle cx="487.183" cy="546.165" r="378.452" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <circle cx="487.183" cy="546.165" r="378.452" style="fill: none; stroke: #fff; stroke-miterlimit: 10;"/>
+    </clipPath>
+    <linearGradient id="linear-gradient2" x1="742.813" y1="282.475" x2="741.804" y2="559.369" gradientUnits="userSpaceOnUse">
+      <stop offset=".556" stop-color="#cad2eb"/>
+      <stop offset=".829" stop-color="#e4d3e8"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient3" x1="179.608" y1="607.416" x2="178.861" y2="812.255" xlink:href="#linear-gradient2"/>
+    <clipPath id="clippath-4">
+      <circle cx="474.249" cy="1546.672" r="360.61" style="fill: none; stroke: #999; stroke-miterlimit: 10;"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <circle cx="1499.177" cy="1547.081" r="360.61" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10;"/>
+    </clipPath>
+  </defs>
+  <g id="Light-withProper-Text">
+    <g id="Background">
+      <circle cx="1463.772" cy="520.88" r="380.566" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: .25px;"/>
+      <g style="opacity: .56;">
+        <g style="clip-path: url(#clippath-1);">
+          <path d="M1880.05,553.668c-97.45,185.426-237.225,163.77-342.259,151.526-133.1-15.515-207.051-56.314-307.407,21.232-43.127,33.324-47.403,98.555-43.551,140.29" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1929.561,693.731c-97.45,185.426-237.225,163.77-342.259,151.526-133.1-15.515-207.051-56.314-307.407,21.232-43.127,33.324-47.403,98.555-43.551,140.29" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1949.333,758.248c-97.45,185.426-237.225,163.77-342.259,151.526-133.1-15.515-207.051-56.314-307.407,21.232-43.127,33.324-47.403,98.555-43.551,140.29" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1718.464,131.363c-97.45,185.426-237.225,163.77-342.259,151.526-133.1-15.515-207.051-56.314-307.407,21.232-43.127,33.324-47.403,98.555-43.551,140.29" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1664.667.908c-97.45,185.426-237.225,163.77-342.259,151.526-133.1-15.515-207.051-56.314-307.407,21.232-43.127,33.324-47.403,98.555-43.551,140.29" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1757.685,281.722c-92.168,183.089-228.112,159.737-330.214,146.196-129.385-17.159-201.691-58.685-298.085,17.106-41.424,32.571-44.725,97.37-40.443,138.914" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        </g>
+        <circle cx="1463.772" cy="520.88" r="380.566" style="fill: none; stroke: #231f20; stroke-miterlimit: 10;"/>
+      </g>
+      <path d="M1435.238,142.054c13.223,61.906,325.712,105.554,295.737,329.578-40.269,300.963-443.328-125.335-529.844,153.009-66.685,214.541,235.504,249.297,247.897,275.928" style="fill: none; opacity: .56; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    </g>
+    <path d="M1582.79,399.997c96.414,0,138.448-53.778,138.448-183.548,0,129.77,41.741,183.548,138.448,183.548-96.708,0-138.448,55.338-138.448,183.548,0-128.211-42.034-183.548-138.448-183.548Z" style="fill: url(#linear-gradient);"/>
+    <path d="M1031.687,688.185c74.374,0,106.8-41.485,106.8-141.59,0,100.105,32.199,141.59,106.8,141.59-74.601,0-106.8,42.688-106.8,141.59,0-98.902-32.425-141.59-106.8-141.59Z" style="fill: url(#linear-gradient1);"/>
+    <g id="Texts">
+      <g>
+        <text transform="translate(1165.364 464.775)" style="font-family: Satisfy-Regular, Satisfy; font-size: 202.753px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+        <text transform="translate(1165.364 464.775)" style="fill: #5e64ae; font-family: Satisfy-Regular, Satisfy; font-size: 202.753px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+      </g>
+      <g>
+        <text transform="translate(1261.488 742.082)" style="font-family: Satisfy-Regular, Satisfy; font-size: 181.03px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+        <text transform="translate(1261.488 742.082)" style="fill: #865ba6; font-family: Satisfy-Regular, Satisfy; font-size: 181.03px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g id="Dark-withProperText">
+    <g id="Background1" data-name="Background">
+      <circle cx="487.183" cy="546.165" r="378.452" style="fill: none; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+      <g style="opacity: .11;">
+        <g style="clip-path: url(#clippath-3);">
+          <path d="M901.147,578.771c-96.908,184.396-235.907,162.86-340.357,150.684-132.36-15.429-205.9-56.001-305.699,21.114-42.888,33.139-47.14,98.007-43.309,139.51" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M950.383,718.056c-96.908,184.396-235.907,162.86-340.357,150.684-132.36-15.429-205.9-56.001-305.699,21.114-42.888,33.139-47.14,98.007-43.309,139.51" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M970.045,782.214c-96.908,184.396-235.907,162.86-340.357,150.684-132.36-15.429-205.9-56.001-305.699,21.114-42.888,33.139-47.14,98.007-43.309,139.51" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M740.459,158.813c-96.908,184.396-235.907,162.86-340.357,150.684-132.36-15.429-205.9-56.001-305.699,21.114-42.888,33.139-47.14,98.007-43.309,139.51" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M686.961,29.083c-96.908,184.396-235.907,162.86-340.357,150.684-132.36-15.429-205.9-56.001-305.699,21.114C-1.983,234.02-6.235,298.888-2.404,340.391" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M779.462,308.336c-91.655,182.071-226.845,158.849-328.379,145.384-128.666-17.063-200.571-58.359-296.428,17.011-41.194,32.39-44.476,96.829-40.218,138.143" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        </g>
+        <circle cx="487.183" cy="546.165" r="378.452" style="fill: none; stroke: #fff; stroke-miterlimit: 10;"/>
+      </g>
+      <path d="M458.807,169.444c13.15,61.562,323.902,104.968,294.094,327.747-40.045,299.291-440.865-124.639-526.9,152.159-66.314,213.349,234.196,247.912,246.52,274.395" style="fill: none; opacity: .13; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    </g>
+    <path id="Star" d="M603.844,425.414c96.414,0,138.448-53.778,138.448-183.548,0,129.77,41.741,183.548,138.448,183.548-96.708,0-138.448,55.338-138.448,183.548,0-128.211-42.034-183.548-138.448-183.548Z" style="fill: url(#linear-gradient2);"/>
+    <path id="Star1" data-name="Star" d="M76.802,713.158c71.325,0,102.42-39.784,102.42-135.784,0,96,30.879,135.784,102.42,135.784-71.542,0-102.42,40.937-102.42,135.784,0-94.847-31.096-135.784-102.42-135.784Z" style="fill: url(#linear-gradient3);"/>
+    <g id="Texts1" data-name="Texts">
+      <g>
+        <text transform="translate(190.433 490.372)" style="font-family: Satisfy-Regular, Satisfy; font-size: 201.627px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+        <text transform="translate(190.433 490.372)" style="fill: #c9d1ea; font-family: Satisfy-Regular, Satisfy; font-size: 201.627px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+      </g>
+      <g>
+        <text transform="translate(286.022 766.139)" style="font-family: Satisfy-Regular, Satisfy; font-size: 180.024px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+        <text transform="translate(286.022 766.139)" style="fill: #e4d3e8; font-family: Satisfy-Regular, Satisfy; font-size: 180.024px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g id="Black-and-White">
+    <g id="Background2" data-name="Background">
+      <circle cx="474.249" cy="1546.672" r="360.61" style="stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+      <g style="opacity: .42;">
+        <g style="clip-path: url(#clippath-4);">
+          <path d="M868.697,1577.74c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M915.613,1710.459c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M934.347,1771.593c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M715.585,1177.581c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M664.609,1053.967c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M752.749,1320.056c-87.334,173.488-216.15,151.361-312.898,138.53-122.6-16.259-191.115-55.608-282.453,16.209-39.252,30.863-42.38,92.264-38.322,131.63" style="fill: none; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        </g>
+        <circle cx="474.249" cy="1546.672" r="360.61" style="fill: none; stroke: #999; stroke-miterlimit: 10;"/>
+      </g>
+      <path d="M447.211,1187.712c12.53,58.66,308.632,100.019,280.229,312.295-38.157,285.181-420.08-118.763-502.06,144.986-63.188,203.291,223.155,236.224,234.898,261.459" style="fill: none; opacity: .42; stroke: #999; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    </g>
+    <path id="Star2" data-name="Star" d="M583.05,1433.711c96.414,0,138.448-53.778,138.448-183.548,0,129.77,41.741,183.548,138.448,183.548-96.708,0-138.448,55.338-138.448,183.548,0-128.211-42.034-183.548-138.448-183.548Z" style="fill: #fff;"/>
+    <path id="Star3" data-name="Star" d="M76.802,1699.567c71.325,0,102.42-39.784,102.42-135.784,0,96,30.879,135.784,102.42,135.784-71.542,0-102.42,40.937-102.42,135.784,0-94.847-31.096-135.784-102.42-135.784Z" style="fill: #fff;"/>
+    <g id="Texts2" data-name="Texts">
+      <g>
+        <text transform="translate(191.479 1500.016)" style="font-family: Satisfy-Regular, Satisfy; font-size: 192.121px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+        <text transform="translate(191.479 1500.016)" style="fill: #f5f5f5; font-family: Satisfy-Regular, Satisfy; font-size: 192.121px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+      </g>
+      <g>
+        <text transform="translate(282.572 1756.275)" style="font-family: Satisfy-Regular, Satisfy; font-size: 171.537px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+        <text transform="translate(282.572 1756.275)" style="fill: #f5f5f5; font-family: Satisfy-Regular, Satisfy; font-size: 171.537px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g id="White-And-Black">
+    <g id="Bg">
+      <g style="opacity: .44;">
+        <circle cx="1499.177" cy="1547.081" r="360.61" style="fill: #fff; stroke: #231f20; stroke-miterlimit: 10; stroke-width: 2px;"/>
+      </g>
+      <g style="opacity: .74;">
+        <g style="clip-path: url(#clippath-5);">
+          <path d="M1893.625,1578.15c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1940.54,1710.869c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1959.275,1772.002c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1740.513,1177.991c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1689.537,1054.376c-92.339,175.702-224.786,155.182-324.311,143.58-126.12-14.701-196.193-53.361-291.287,20.118-40.866,31.577-44.917,93.387-41.267,132.933" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+          <path d="M1777.676,1320.465c-87.334,173.488-216.15,151.361-312.898,138.53-122.6-16.259-191.115-55.608-282.453,16.209-39.252,30.863-42.38,92.264-38.322,131.63" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+        </g>
+        <circle cx="1499.177" cy="1547.081" r="360.61" style="fill: none; stroke: #a6a5a5; stroke-miterlimit: 10;"/>
+      </g>
+      <path d="M1472.139,1188.121c12.53,58.66,308.632,100.019,280.229,312.295-38.157,285.181-420.08-118.763-502.06,144.986-63.188,203.291,223.155,236.224,234.898,261.459" style="fill: none; opacity: .74; stroke: #a6a5a5; stroke-miterlimit: 10; stroke-width: 2px;"/>
+    </g>
+    <path id="Star4" data-name="Star" d="M1612.133,1433.711c96.414,0,138.448-53.778,138.448-183.548,0,129.77,41.741,183.548,138.448,183.548-96.708,0-138.448,55.338-138.448,183.548,0-128.211-42.034-183.548-138.448-183.548Z" style="fill: #231f20;"/>
+    <path id="Star5" data-name="Star" d="M1101.73,1699.567c71.325,0,102.42-39.784,102.42-135.784,0,96,30.879,135.784,102.42,135.784-71.542,0-102.42,40.937-102.42,135.784,0-94.847-31.096-135.784-102.42-135.784Z" style="fill: #231f20;"/>
+    <g id="Texts3" data-name="Texts">
+      <g>
+        <text transform="translate(1216.407 1500.423)" style="font-family: Satisfy-Regular, Satisfy; font-size: 192.121px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+        <text transform="translate(1216.407 1500.423)" style="fill: #191919; font-family: Satisfy-Regular, Satisfy; font-size: 192.121px; letter-spacing: .03em;"><tspan x="0" y="0">Don&apos;t</tspan></text>
+      </g>
+      <g>
+        <text transform="translate(1307.5 1756.686)" style="font-family: Satisfy-Regular, Satisfy; font-size: 171.537px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+        <text transform="translate(1307.5 1756.686)" style="fill: #191919; font-family: Satisfy-Regular, Satisfy; font-size: 171.537px; letter-spacing: .03em;"><tspan x="0" y="0">Do list</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
