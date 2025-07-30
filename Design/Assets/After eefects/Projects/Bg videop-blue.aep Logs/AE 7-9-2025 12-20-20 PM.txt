@@ -1,22 +1,0 @@
-Adobe After Effects v25.0.1 Windows 64 render log for project “Bg videop-blue.aep”
-
-Rendering started on 7/9/2025 at 12:20:20 PM
-
-  7/9/2025 12:20:20 PM: Starting composition “Comp 80”.
-
-  Output To: D:\Dont-do-list\Design\Assets\After eefects\pngs sequence\Purple\Comp 80 (0-00-00-00).png    7/9/2025 12:20:21 PM: Finished composition “Comp 80”.
-
-
-  7/9/2025 12:20:21 PM: Starting composition “Comp 80”.
-
-  Output To: D:\Dont-do-list\Design\Assets\After eefects\pngs sequence\Purple\Comp 80 (0-00-03-18).png    7/9/2025 12:20:21 PM: Finished composition “Comp 80”.
-
-
-  7/9/2025 12:20:21 PM: Starting composition “Comp 80”.
-
-  Output To: D:\Dont-do-list\Design\Assets\After eefects\pngs sequence\Purple\Comp 80 (0-00-05-03).png    7/9/2025 12:20:21 PM: Finished composition “Comp 80”.
-
-
-  Total Time Elapsed: 1 Seconds
-Log closed on 7/9/2025 at 12:20:21 PM
-
