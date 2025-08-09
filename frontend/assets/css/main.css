@@ -1,0 +1,42 @@
+/* Warning color library */
+/* Success color library */
+/* Destructive color library */
+/* Neutral color library */
+/* Primary color library */
+/* Secondary color library */
+/* Shadows */
+.box {
+  width: 150px;
+  height: 100px;
+  margin: 20px;
+  background: white;
+  border-radius: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.xsmall {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.0196078431);
+}
+
+.small {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.062745098), 0px 1px 2px -1px rgba(16, 24, 40, 0.062745098);
+}
+
+.medium {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.062745098), 0px 4px 6px -1px rgba(16, 24, 40, 0.062745098);
+}
+
+.large {
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.062745098), 0px 4px 6px -4px rgba(16, 24, 40, 0.062745098);
+}
+
+.xlarge {
+  box-shadow: 0px 20px 25px -5px rgba(16, 24, 40, 0.062745098), 0px 8px 10px -6px rgba(16, 24, 40, 0.062745098);
+}
+
+.xxlarge {
+  box-shadow: 0px 25px 50px -12px rgba(16, 24, 40, 0.1450980392);
+}
+
+/*# sourceMappingURL=main.css.map */

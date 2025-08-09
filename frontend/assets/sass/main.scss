@@ -1,0 +1,35 @@
+@use "abstracts/variables";
+
+.box {
+  width: 150px;
+  height: 100px;
+  margin: 20px;
+  background: white;
+  border-radius: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.xsmall {
+  box-shadow: variables.$shadow-xsmall;
+}
+
+.small {
+  box-shadow: variables.$shadow-small;
+}
+
+.medium {
+  box-shadow: variables.$shadow-medium;
+}
+
+.large {
+  box-shadow: variables.$shadow-large;
+}
+
+.xlarge {
+  box-shadow: variables.$shadow-xlarge;
+}
+
+.xxlarge {
+  box-shadow: variables.$shadow-xxlarge;
+}
