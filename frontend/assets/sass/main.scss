@@ -1,4 +1,6 @@
-@use "abstracts/variables";
+@use "./abstracts/mixins" as *;
+@use "./abstracts/variables" as *;
+@use "./base/typography" as *;
 
 .box {
   width: 150px;
@@ -11,25 +13,25 @@
 }
 
 .xsmall {
-  box-shadow: variables.$shadow-xsmall;
+  box-shadow: $shadow-xsmall;
 }
 
 .small {
-  box-shadow: variables.$shadow-small;
+  box-shadow: $shadow-small;
 }
 
 .medium {
-  box-shadow: variables.$shadow-medium;
+  box-shadow: $shadow-medium;
 }
 
 .large {
-  box-shadow: variables.$shadow-large;
+  box-shadow: $shadow-large;
 }
 
 .xlarge {
-  box-shadow: variables.$shadow-xlarge;
+  box-shadow: $shadow-xlarge;
 }
 
 .xxlarge {
-  box-shadow: variables.$shadow-xxlarge;
+  box-shadow: $shadow-xxlarge;
 }

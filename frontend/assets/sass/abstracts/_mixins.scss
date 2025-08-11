@@ -1,0 +1,9 @@
+@use "./variables";
+
+@mixin typography($weight, $size, $style: normal) {
+  font-family: variables.$font-primary;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 1.43;
+  font-style: $style;
+}

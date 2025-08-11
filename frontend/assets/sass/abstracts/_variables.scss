@@ -78,9 +78,43 @@ $secondary-800: #312c85;
 $secondary-900: #1e1a4d;
 
 /* Shadows */
-$shadow-xsmall: 0px 1px 2px 0px #10182805;
-$shadow-small: 0px 1px 3px 0px #10182810, 0px 1px 2px -1px #10182810;
-$shadow-medium: 0px 1px 2px 0px #10182810, 0px 4px 6px -1px #10182810;
-$shadow-large: 0px 10px 15px -3px #10182810, 0px 4px 6px -4px #10182810;
-$shadow-xlarge: 0px 20px 25px -5px #10182810, 0px 8px 10px -6px #10182810;
-$shadow-xxlarge: 0px 25px 50px -12px #10182825;
+$shadow-xsmall: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
+$shadow-small: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+  0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+
+$shadow-medium: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
+  0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+
+$shadow-large: 0px 10px 15px -3px rgba(16, 24, 40, 0.1),
+  0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+
+$shadow-xlarge: 0px 20px 25px -5px rgba(16, 24, 40, 0.1),
+  0px 8px 10px -6px rgba(16, 24, 40, 0.1);
+
+$shadow-xxlarge: 0px 25px 50px -12px rgba(16, 24, 40, 0.25);
+
+/* Font family */
+$font-primary: "Roboto", sans-serif;
+
+/* Font weights */
+$weight-thin: 100;
+$weight-extra-light: 200;
+$weight-light: 300;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semi-bold: 600;
+$weight-bold: 700;
+$weight-extra-bold: 800;
+$weight-black: 900;
+
+/* Font sizes */
+$size-60: 3.812rem;
+$size-50: 3.062rem;
+$size-40: 2.438rem;
+$size-32: 1.938rem;
+$size-25: 1.562rem;
+$size-20: 1.25rem;
+$size-16: 1rem;
+$size-13: 0.812rem;
+$size-10: 0.625rem;
