@@ -1,0 +1,92 @@
+@use "../abstracts/index" as *;
+
+/*buttons all type */
+/*block */
+.btn {
+  @include buttons-base;
+}
+
+//secoundry(dont) button
+
+//modifire
+.btn--secondary {
+  background-color: $secondary-10;
+  color: $secondary-300;
+  @include buttons-states($secondary-300, $secondary-50);
+}
+//primary(do) button
+.btn--primary {
+  background-color: $primary-10;
+  color: $primary-300;
+  @include buttons-states($primary-300, $primary-50);
+}
+//destructive button
+.btn--destructive {
+  background-color: $destructive-500;
+  color: $neutral-50;
+  @include buttons-states($neutral-50, $destructive-600);
+}
+//natural button
+.btn--natural {
+  background-color: $neutral-50;
+  color: $neutral-800;
+  @include buttons-states($neutral-800, $neutral-200);
+}
+//secondary(dont) with icon button
+.btn--secondary-with-icon {
+  @extend .btn--secondary;
+
+  @include buttons-states($secondary-300, $secondary-50);
+}
+//primary(do) with icon button
+.btn--primary-with-icon {
+  @extend .btn--primary;
+  @include buttons-states($primary-300, $primary-50);
+}
+
+//live video button tags are in a grid
+
+.btn--video--bg {
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  width: 100%;
+  height: 2px;
+  padding: 0;
+  box-shadow: $shadow-small;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  color: $primary-10;
+
+  &:hover {
+    box-shadow: $shadow-medium;
+    scale: (1.01);
+  }
+
+  &:active {
+    scale: (0.97);
+  }
+}
+
+.btn-container {
+  display: inline;
+  position: absolute;
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-video {
+  object-fit: fill; //you can make it cover for original video
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*element*/
+.btn__icon {
+  padding: 0.3rem;
+  aspect-ratio: 3 / 3;
+}
