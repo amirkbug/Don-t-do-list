@@ -1,0 +1,143 @@
+@use "../abstracts/index" as *;
+
+@use "../abstracts/index" as *;
+
+.regular-60 {
+  @include typography($weight-regular, $size-60);
+}
+.regular-50 {
+  @include typography($weight-regular, $size-50);
+}
+.regular-40 {
+  @include typography($weight-regular, $size-40);
+}
+
+.medium-60 {
+  @include typography($weight-medium, $size-60);
+}
+.medium-50 {
+  @include typography($weight-medium, $size-50);
+}
+.medium-40 {
+  @include typography($weight-medium, $size-40);
+}
+
+.semibold-60 {
+  @include typography($weight-semi-bold, $size-60);
+}
+.semibold-50 {
+  @include typography($weight-semi-bold, $size-50);
+}
+.semibold-40 {
+  @include typography($weight-semi-bold, $size-40);
+}
+
+.bold-60 {
+  @include typography($weight-bold, $size-60);
+}
+.bold-50 {
+  @include typography($weight-bold, $size-50);
+}
+.bold-40 {
+  @include typography($weight-bold, $size-40);
+}
+
+.extrabold-60 {
+  @include typography($weight-extra-bold, $size-60);
+}
+.extrabold-50 {
+  @include typography($weight-extra-bold, $size-50);
+}
+.extrabold-40 {
+  @include typography($weight-extra-bold, $size-40);
+}
+
+.light-60 {
+  @include typography($weight-light, $size-60);
+}
+.light-50 {
+  @include typography($weight-light, $size-50);
+}
+.light-40 {
+  @include typography($weight-light, $size-40);
+}
+
+.extralight-60 {
+  @include typography($weight-extra-light, $size-60);
+}
+.extralight-50 {
+  @include typography($weight-extra-light, $size-50);
+}
+.extralight-40 {
+  @include typography($weight-extra-light, $size-40);
+}
+
+.thin-60 {
+  @include typography($weight-thin, $size-60);
+}
+.thin-50 {
+  @include typography($weight-thin, $size-50);
+}
+.thin-40 {
+  @include typography($weight-thin, $size-40);
+}
+
+.italic-60 {
+  @include typography($weight-regular, $size-60, italic);
+}
+.italic-50 {
+  @include typography($weight-regular, $size-50, italic);
+}
+.italic-40 {
+  @include typography($weight-regular, $size-40, italic);
+}
+
+.bebas-60 {
+  @include typography($weight-regular, $size-60, normal, "Bebas Neue");
+}
+.bebas-50 {
+  @include typography($weight-regular, $size-50, normal, "Bebas Neue");
+}
+.bebas-40 {
+  @include typography($weight-regular, $size-40, normal, "Bebas Neue");
+}
+
+.regular-32 {
+  @include typography($weight-regular, $size-32);
+}
+.medium-32 {
+  @include typography($weight-medium, $size-32);
+}
+.semibold-32 {
+  @include typography($weight-semi-bold, $size-32);
+}
+.bold-32 {
+  @include typography($weight-bold, $size-32);
+}
+.extrabold-32 {
+  @include typography($weight-extra-bold, $size-32);
+}
+.light-32 {
+  @include typography($weight-light, $size-32);
+}
+.extralight-32 {
+  @include typography($weight-extra-light, $size-32);
+}
+.thin-32 {
+  @include typography($weight-thin, $size-32);
+}
+.italic-32 {
+  @include typography($weight-regular, $size-32, italic);
+}
+.bebus-32 {
+  @include typography($weight-regular, $size-32, normal, "Bebas Neue");
+}
+.bebus-32 {
+  @include typography($weight-regular, $size-32, normal, "Bebas Neue");
+}
+.regular-16 {
+  @include typography($weight-regular, $size-16);
+}
+.semibold-16 {
+  @include typography($weight-semi-bold, $size-16);
+}

@@ -31,17 +31,6 @@
     color: $neutral-800;
     @include buttons-states($neutral-800, $neutral-200);
   }
-  //secondary(dont) with icon button
-  &--secondary-with-icon {
-    @extend .btn--secondary;
-
-    @include buttons-states($secondary-300, $secondary-50);
-  }
-  //primary(do) with icon button
-  &--primary-with-icon {
-    @extend .btn--primary;
-    @include buttons-states($primary-300, $primary-50);
-  }
 }
 
 //live video button tags are in a grid

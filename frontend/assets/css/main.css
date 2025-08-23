@@ -11,45 +11,45 @@
 /*buttons all type */
 /*block */
 .btn {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
   display: inline-flex;
-  gap: 1px;
+  gap: 0.063rem;
   align-items: center;
   justify-content: center;
   border-radius: 58px;
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 0px 11px;
+  padding: 0px 0.688rem;
   border: 3px solid transparent;
   min-height: 44px;
   min-width: 139px;
 }
-.btn--secondary, .btn--secondary-with-icon {
+.btn--secondary {
   background-color: #eef2ff;
   color: #7c86ff;
 }
-.btn--secondary:hover, .btn--secondary-with-icon:hover {
+.btn--secondary:hover {
   border-color: #7c86ff;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
 }
-.btn--secondary:active, .btn--secondary-with-icon:active {
+.btn--secondary:active {
   border-color: #7c86ff;
   background-color: #e0e7ff;
   transform: scale(0.97);
 }
-.btn--primary, .btn--primary-with-icon {
+.btn--primary {
   background-color: #faf5ff;
   color: #c27aff;
 }
-.btn--primary:hover, .btn--primary-with-icon:hover {
+.btn--primary:hover {
   border-color: #c27aff;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
 }
-.btn--primary:active, .btn--primary-with-icon:active {
+.btn--primary:active {
   border-color: #c27aff;
   background-color: #f3e8ff;
   transform: scale(0.97);
@@ -78,24 +78,6 @@
 .btn--natural:active {
   border-color: #171717;
   background-color: #d4d4d4;
-  transform: scale(0.97);
-}
-.btn--secondary-with-icon:hover {
-  border-color: #7c86ff;
-  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
-}
-.btn--secondary-with-icon:active {
-  border-color: #7c86ff;
-  background-color: #e0e7ff;
-  transform: scale(0.97);
-}
-.btn--primary-with-icon:hover {
-  border-color: #c27aff;
-  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
-}
-.btn--primary-with-icon:active {
-  border-color: #c27aff;
-  background-color: #f3e8ff;
   transform: scale(0.97);
 }
 
@@ -140,190 +122,819 @@
   aspect-ratio: 3/3;
 }
 
+.text--input--primary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.625rem;
+}
+.text--input--primary .input_name {
+  padding-left: 0.094rem;
+  color: #c27aff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--primary .input_content {
+  display: flex;
+  gap: 0.313rem;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #faf5ff;
+  color: #c27aff;
+  border-radius: 13px;
+  border: 1.7px solid transparent;
+  transition: all 0.3s ease-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  padding: 0.35rem 0.7rem;
+}
+.text--input--primary .input_content:hover {
+  border: 1.7px solid #c27aff;
+}
+.text--input--primary .input_content:hover .input_content_right {
+  opacity: 60%;
+}
+.text--input--primary .input_content:focus-within {
+  border: 1.7px solid #c27aff;
+}
+.text--input--primary .input_content:focus-within .input_content_right {
+  opacity: 100%;
+}
+.text--input--primary .input_content .input_input {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border: 0px solid transparent;
+  color: #c27aff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--primary .input_content .input_input::placeholder {
+  color: #c27aff;
+  opacity: 30%;
+  padding-bottom: 10px;
+}
+.text--input--primary .input_content .input_input:focus {
+  outline: none;
+}
+.text--input--primary .input_content .input_content_right {
+  display: flex;
+  gap: 0.313rem;
+  align-self: flex-end;
+  align-items: center;
+  padding: 0.01rem;
+  opacity: 30%;
+  transition: all 0.3s ease-out;
+}
+.text--input--primary .input_content .input_content_right :hover {
+  opacity: 100%;
+}
+.text--input--primary .input_content .input_icon_right,
+.text--input--primary .input_content .input_icon_left {
+  font-size: 0.83rem;
+}
+.text--input--primary .input_description {
+  padding-left: 0.188rem;
+  margin: 0px;
+  color: #c27aff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.text--input--secoundry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.625rem;
+}
+.text--input--secoundry .input_name {
+  padding-left: 0.094rem;
+  color: #7c86ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--secoundry .input_content {
+  display: flex;
+  gap: 0.313rem;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #eef2ff;
+  color: #7c86ff;
+  border-radius: 13px;
+  border: 1.7px solid transparent;
+  transition: all 0.3s ease-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  padding: 0.35rem 0.7rem;
+}
+.text--input--secoundry .input_content:hover {
+  border: 1.7px solid #7c86ff;
+}
+.text--input--secoundry .input_content:hover .input_content_right {
+  opacity: 60%;
+}
+.text--input--secoundry .input_content:focus-within {
+  border: 1.7px solid #7c86ff;
+}
+.text--input--secoundry .input_content:focus-within .input_content_right {
+  opacity: 100%;
+}
+.text--input--secoundry .input_content .input_input {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border: 0px solid transparent;
+  color: #7c86ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--secoundry .input_content .input_input::placeholder {
+  color: #7c86ff;
+  opacity: 30%;
+  padding-bottom: 10px;
+}
+.text--input--secoundry .input_content .input_input:focus {
+  outline: none;
+}
+.text--input--secoundry .input_content .input_content_right {
+  display: flex;
+  gap: 0.313rem;
+  align-self: flex-end;
+  align-items: center;
+  padding: 0.01rem;
+  opacity: 30%;
+  transition: all 0.3s ease-out;
+}
+.text--input--secoundry .input_content .input_content_right :hover {
+  opacity: 100%;
+}
+.text--input--secoundry .input_content .input_icon_right,
+.text--input--secoundry .input_content .input_icon_left {
+  font-size: 0.83rem;
+}
+.text--input--secoundry .input_description {
+  padding-left: 0.188rem;
+  margin: 0px;
+  color: #7c86ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.text--input--natural {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.625rem;
+}
+.text--input--natural .input_name {
+  padding-left: 0.094rem;
+  color: #0a0a0a;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--natural .input_content {
+  display: flex;
+  gap: 0.313rem;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  color: #0a0a0a;
+  border-radius: 13px;
+  border: 1.7px solid transparent;
+  transition: all 0.3s ease-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  padding: 0.35rem 0.7rem;
+}
+.text--input--natural .input_content:hover {
+  border: 1.7px solid #0a0a0a;
+}
+.text--input--natural .input_content:hover .input_content_right {
+  opacity: 60%;
+}
+.text--input--natural .input_content:focus-within {
+  border: 1.7px solid #0a0a0a;
+}
+.text--input--natural .input_content:focus-within .input_content_right {
+  opacity: 100%;
+}
+.text--input--natural .input_content .input_input {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border: 0px solid transparent;
+  color: #0a0a0a;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.text--input--natural .input_content .input_input::placeholder {
+  color: #0a0a0a;
+  opacity: 30%;
+  padding-bottom: 10px;
+}
+.text--input--natural .input_content .input_input:focus {
+  outline: none;
+}
+.text--input--natural .input_content .input_content_right {
+  display: flex;
+  gap: 0.313rem;
+  align-self: flex-end;
+  align-items: center;
+  padding: 0.01rem;
+  opacity: 30%;
+  transition: all 0.3s ease-out;
+}
+.text--input--natural .input_content .input_content_right :hover {
+  opacity: 100%;
+}
+.text--input--natural .input_content .input_icon_right,
+.text--input--natural .input_content .input_icon_left {
+  font-size: 0.83rem;
+}
+.text--input--natural .input_description {
+  padding-left: 0.188rem;
+  margin: 0px;
+  color: #0a0a0a;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.regular-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.regular-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.regular-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.medium-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.medium-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.medium-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.semibold-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.semibold-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.semibold-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bold-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bold-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bold-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extrabold-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extrabold-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extrabold-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.light-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.light-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.light-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extralight-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extralight-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extralight-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.thin-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.thin-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.thin-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.italic-60 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.italic-50 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.italic-40 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.bebas-60 {
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 3.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bebas-50 {
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 3.062rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bebas-40 {
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.regular-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.medium-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.semibold-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bold-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extrabold-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.light-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.extralight-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.thin-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.italic-32 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: italic;
+}
+
+.bebus-32 {
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.bebus-32 {
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.regular-16 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
+.semibold-16 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+
 h1.regular-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.medium-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.semibold-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.bold-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extrabold-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.thin-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.light-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extralight-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.italic-60 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 3.812rem;
   line-height: 1.43;
   font-style: italic;
 }
 h1.regular-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.medium-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.semibold-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.bold-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extrabold-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.thin-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.light-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extralight-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.italic-50 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 3.062rem;
   line-height: 1.43;
   font-style: italic;
 }
 h1.regular-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.medium-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.semibold-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.bold-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extrabold-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.thin-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.light-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.extralight-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 2.438rem;
   line-height: 1.43;
   font-style: normal;
 }
 h1.italic-40 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 2.438rem;
   line-height: 1.43;
@@ -331,126 +942,126 @@ h1.italic-40 {
 }
 
 h2.regular-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.medium-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.semibold-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.bold-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.extrabold-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.thin-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.light-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.extralight-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.italic-32 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.938rem;
   line-height: 1.43;
   font-style: italic;
 }
 h2.regular-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.medium-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.semibold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.bold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.extrabold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.thin-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.light-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.extralight-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h2.italic-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.562rem;
   line-height: 1.43;
@@ -458,63 +1069,63 @@ h2.italic-25 {
 }
 
 h3.regular-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.medium-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.semibold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.bold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.extrabold-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.thin-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.light-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.extralight-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 1.562rem;
   line-height: 1.43;
   font-style: normal;
 }
 h3.italic-25 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.562rem;
   line-height: 1.43;
@@ -522,63 +1133,63 @@ h3.italic-25 {
 }
 
 h4.regular-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.medium-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.semibold-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.bold-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.extrabold-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.thin-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.light-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.extralight-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 1.25rem;
   line-height: 1.43;
   font-style: normal;
 }
 h4.italic-20 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.43;
@@ -586,63 +1197,63 @@ h4.italic-20 {
 }
 
 p.regular-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.medium-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.semibold-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.bold-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.extrabold-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.thin-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.light-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.extralight-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
 }
 p.italic-16 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.43;
@@ -650,70 +1261,70 @@ p.italic-16 {
 }
 
 small.regular-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.medium-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.semibold-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.bold-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.extrabold-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.thin-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.light-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.extralight-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
 small.italic-13 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
 }
 small.extrasmall-10 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 0.625rem;
   line-height: 1.43;

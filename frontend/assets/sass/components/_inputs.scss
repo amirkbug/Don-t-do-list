@@ -1,20 +1,13 @@
-.text-input {
-  .text-input-name {
-  }
+@use "../abstracts/index" as *;
 
-  .input-content {
-    .text-input-input {
-    }
-    .input-counter {
-    }
-  }
+.text--input--primary {
+  @include input-base($primary-300, $primary-10);
+}
 
-  .input-icon {
-  }
+.text--input--secoundry {
+  @include input-base($secondary-300, $secondary-10);
+}
 
-  .input-counter {
-  }
-
-  .input-description {
-  }
+.text--input--natural {
+  @include input-base($neutral-900, $neutral-50);
 }

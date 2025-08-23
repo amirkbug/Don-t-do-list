@@ -1,7 +1,7 @@
 @use "./variables" as *;
 
-@mixin typography($weight, $size, $style: normal) {
-  font-family: $font-primary;
+@mixin typography($weight, $size, $style: normal, $font: $font-primary) {
+  font-family: $font;
   font-weight: $weight;
   font-size: $size;
   line-height: 1.43;
@@ -11,13 +11,13 @@
 @mixin buttons-base {
   @include typography($weight-regular, $size-16);
   display: inline-flex;
-  gap: 1px;
+  gap: 0.063rem;
   align-items: center;
   justify-content: center;
   border-radius: 58px;
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 0px 11px;
+  padding: 0px 0.688rem;
   border: 3px solid transparent;
   min-height: 44px;
   min-width: 139px;
@@ -35,5 +35,116 @@
   }
 }
 
-@mixin input-base($text-colors, $input-colors, $input-bg) {
+@mixin input-base(
+  $text-and-border-color: $neutral-900,
+  $bg-color: $neutral-50
+) {
+  //display
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  //spacing
+  padding: 0.625rem;
+
+  .input_name {
+    //spacing
+    padding-left: 0.094rem;
+
+    //color and typo
+    color: $text-and-border-color;
+    @include typography($weight-medium, $size-16);
+  }
+
+  .input_content {
+    //display
+    display: flex;
+    gap: 0.313rem;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+
+    //color and styling
+    background-color: $bg-color;
+    color: $text-and-border-color;
+    border-radius: 13px;
+    border: 1.7px solid transparent;
+    transition: all 0.3s ease-out;
+    @include typography($weight-regular, $size-13);
+
+    //spacing
+    padding: 0.35rem 0.7rem;
+
+    &:hover {
+      border: 1.7px solid $text-and-border-color;
+      .input_content_right {
+        opacity: 60%;
+      }
+    }
+
+    &:focus-within {
+      border: 1.7px solid $text-and-border-color;
+      .input_content_right {
+        opacity: 100%;
+      }
+    }
+
+    .input_input {
+      //display
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      //spacing
+      padding: 0;
+      //color and styling
+      background-color: transparent;
+      border: 0px solid transparent;
+      color: $text-and-border-color;
+      @include typography($weight-regular, $size-13);
+
+      &::placeholder {
+        //color and styling
+        color: $text-and-border-color;
+        opacity: 30%;
+        padding-bottom: 10px;
+      }
+
+      &:focus {
+        //color and styling
+        outline: none;
+      }
+    }
+
+    .input_content_right {
+      //display
+      display: flex;
+      gap: 0.313rem;
+      align-self: flex-end;
+      align-items: center;
+      //spacing
+      padding: 0.01rem;
+      //color and styling
+      opacity: 30%;
+      transition: all 0.3s ease-out;
+
+      :hover {
+        //color and styling
+        opacity: 100%;
+      }
+    }
+    .input_icon_right,
+    .input_icon_left {
+      //color and styling
+      font-size: 0.83rem;
+    }
+  }
+
+  .input_description {
+    //spacing
+    padding-left: 0.188rem;
+    margin: 0px;
+    //color and styling
+    color: $text-and-border-color;
+    @include typography($weight-light, $size-13, italic);
+  }
 }
