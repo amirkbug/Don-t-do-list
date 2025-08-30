@@ -8,6 +8,10 @@
 /* Font family */
 /* Font weights */
 /* Font sizes */
+/* typography */
+/* base */
+/* input */
+/* calendar */
 /*buttons all type */
 /*block */
 .btn {
@@ -20,13 +24,13 @@
   gap: 0.063rem;
   align-items: center;
   justify-content: center;
+  padding: 0px 0.688rem;
+  min-height: 44px;
+  min-width: 139px;
   border-radius: 58px;
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 0px 0.688rem;
   border: 3px solid transparent;
-  min-height: 44px;
-  min-width: 139px;
 }
 .btn--secondary {
   background-color: #eef2ff;
@@ -749,6 +753,320 @@
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
+}
+
+.calendar--primary {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 23.3rem;
+  height: 22.5rem;
+  padding: 1rem;
+  padding-bottom: 3.125rem;
+  background-color: #faf5ff;
+  border: 2px solid #c27aff;
+  border-radius: 10px;
+  color: #404040;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.calendar--primary .calendar_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0px;
+  padding: 0 0.625rem;
+}
+.calendar--primary .calendar_header .calendar_month_year {
+  display: flex;
+  gap: 0.188rem;
+  flex-grow: 1;
+  align-items: center;
+}
+.calendar--primary .calendar_header .calendar_month_year .calendar_month {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--primary .calendar_header .calendar_month_year .calendar_year {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_prev,
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_next {
+  justify-self: end;
+  padding: 0px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-size: 0.55rem;
+  color: #e9d4ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_prev:hover,
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_next:hover {
+  color: #c27aff;
+}
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_prev:active,
+.calendar--primary .calendar_header .calendar_month_year .calendar_btn_year_next:active {
+  scale: 0.7;
+}
+.calendar--primary .calendar_header .calender_nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  transition: all 0.3s ease-out;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_prev {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  color: #e9d4ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_prev:hover {
+  color: #c27aff;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_prev:active {
+  scale: 0.7;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_next {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  color: #e9d4ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_next:hover {
+  color: #c27aff;
+}
+.calendar--primary .calendar_header .calender_nav .calendar_btn_month_next:active {
+  scale: 0.7;
+}
+.calendar--primary .calendar_body {
+  align-items: center;
+}
+.calendar--primary .calendar_body .calendar_days {
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(7, 1fr);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--primary .calendar_body .calendar_days .today {
+  background-color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days button {
+  padding: 0px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease-out;
+  color: #404040;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--primary .calendar_body .calendar_days button:hover {
+  background-color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days button:focus {
+  background-color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days button.inactive:hover {
+  cursor: default;
+  background-color: transparent;
+}
+.calendar--primary .calendar_body .calendar_days button.today {
+  border-radius: 50px;
+  background-color: #e9d4ff;
+}
+.calendar--primary .calendar_body .calendar_days button.today:focus {
+  background-color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days button.today:hover {
+  background-color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: #c27aff;
+}
+.calendar--primary .calendar_body .calendar_days .inactive {
+  color: #a1a1a1;
+}
+
+.calendar--secoundry {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 23.3rem;
+  height: 22.5rem;
+  padding: 1rem;
+  padding-bottom: 3.125rem;
+  background-color: #eef2ff;
+  border: 2px solid #7c86ff;
+  border-radius: 10px;
+  color: #404040;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.calendar--secoundry .calendar_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0px;
+  padding: 0 0.625rem;
+}
+.calendar--secoundry .calendar_header .calendar_month_year {
+  display: flex;
+  gap: 0.188rem;
+  flex-grow: 1;
+  align-items: center;
+}
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_month {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_year {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_prev,
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_next {
+  justify-self: end;
+  padding: 0px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-size: 0.55rem;
+  color: #c6d2ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_prev:hover,
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_next:hover {
+  color: #7c86ff;
+}
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_prev:active,
+.calendar--secoundry .calendar_header .calendar_month_year .calendar_btn_year_next:active {
+  scale: 0.7;
+}
+.calendar--secoundry .calendar_header .calender_nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  transition: all 0.3s ease-out;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_prev {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  color: #c6d2ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_prev:hover {
+  color: #7c86ff;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_prev:active {
+  scale: 0.7;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_next {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+  color: #c6d2ff;
+  transition: all 0.3s ease-out;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_next:hover {
+  color: #7c86ff;
+}
+.calendar--secoundry .calendar_header .calender_nav .calendar_btn_month_next:active {
+  scale: 0.7;
+}
+.calendar--secoundry .calendar_body {
+  align-items: center;
+}
+.calendar--secoundry .calendar_body .calendar_days {
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(7, 1fr);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--secoundry .calendar_body .calendar_days .today {
+  background-color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days button {
+  padding: 0px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease-out;
+  color: #404040;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.calendar--secoundry .calendar_body .calendar_days button:hover {
+  background-color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days button:focus {
+  background-color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days button.inactive:hover {
+  cursor: default;
+  background-color: transparent;
+}
+.calendar--secoundry .calendar_body .calendar_days button.today {
+  border-radius: 50px;
+  background-color: #c6d2ff;
+}
+.calendar--secoundry .calendar_body .calendar_days button.today:focus {
+  background-color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days button.today:hover {
+  background-color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: #7c86ff;
+}
+.calendar--secoundry .calendar_body .calendar_days .inactive {
+  color: #a1a1a1;
 }
 
 h1.regular-60 {

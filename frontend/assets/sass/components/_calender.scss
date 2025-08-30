@@ -1,5 +1,9 @@
-.callender__gird {
-  grid-template-rows: auto auto auto auto auto auto;
-  grid-template-columns: auto auto auto auto auto auto;
-  justify-content: space-evenly;
+@use "../abstracts/index" as *;
+
+.calendar--primary {
+  @include calendar($primary-300, $primary-10, $primary-100);
+}
+
+.calendar--secoundry {
+  @include calendar($secondary-300, $secondary-10, $secondary-100);
 }

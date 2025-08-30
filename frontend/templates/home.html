@@ -6,12 +6,18 @@
     <!-- Css -->
     <link rel="stylesheet" href="/frontend/assets/css/main.css" />
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Bebas Neue -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -19,18 +25,9 @@
     />
     <title>Dont do list</title>
   </head>
-  <body style="background-color: rgb(99, 99, 99)">
-    <div
-      style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 200px;
-      "
-    ></div>
+  <body style="background-color: rgb(239, 239, 239)">
     <!-- input test -->
-   <!-- <div style="display: flex; flex-direction: row;">
+    <!-- <div style="display: flex; flex-direction: row;">
       
 
       <div class="text--input--secoundry">
@@ -72,28 +69,56 @@
         <p class="input_description">Place a text here for description</p>
       </div> -->
 
-      <!-- calender -->
-       <div style="display: flex;">
-      <div class="calender__gird">
-        <div class="mounths">
-        <span>mon</span>
-        <span>tue</span>
-        <span>wed</span>
-        <span>thu</span>
-        <span>fri</span>
-        <span>sat</span>
-        <span>sun</span>
-        </div>
-        <div class="days">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span>7</span>
+    <!-- calender -->
+    <div style="display: flex; gap: 10px; padding: 20px; width: 100vh">
+      <div class="calendar">
+        <div class="calendar--primary">
+          <header class="calendar_header">
+            <div class="calendar_month_year">
+              <span class="calendar_month"></span>
+              <button class="calendar_btn_year_prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <span class="calendar_year">2000</span>
+            </div>
+            <div class="calender_nav">
+              <button class="calendar_btn_month_prev">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+              </button>
+              <button class="calendar_btn_month_next">
+                <i class="fa-solid fa-chevron-right fa-xl"></i>
+              </button>
+            </div>
+          </header>
+          <section class="calendar_body">
+            <div class="calendar_days"></div>
+          </section>
         </div>
       </div>
+
+      <div class="calendar">
+        <div class="calendar--secoundry">
+          <header class="calendar_header">
+            <div class="calendar_month_year">
+              <span class="calendar_month"></span>
+              <span class="calendar_year">2000</span>
+              <button class="calendar_btn_year_next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="calender_nav">
+              <button class="calendar_btn_month_prev">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+              </button>
+              <button class="calendar_btn_month_next">
+                <i class="fa-solid fa-chevron-right fa-xl"></i>
+              </button>
+            </div>
+          </header>
+          <section class="calendar_body">
+            <div class="calendar_days"></div>
+          </section>
+        </div>
       </div>
 
       <!-- button test -->
@@ -132,21 +157,7 @@
         <span class="btn__icon"><i class="fa-brands fa-font-awesome"></i></span>
        </button> -->
 
-       
-       
-      
+      <script src="../assets/js/main.js"></script>
     </div>
-    </div>
-    </div>
-
-    
-
-    
-
-  
-
-    
-
-    <script src="../assets/js/main.js"></script>
   </body>
 </html>
