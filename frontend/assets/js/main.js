@@ -201,7 +201,7 @@ function renderCalendar(calendarEl) {
           today.style.borderRadius = "";
         });
       }
-      if (topEl.className !== "inactive") {
+      if (topEl ? topEl.className !== "inactive" : "") {
         topEl.addEventListener("mouseenter", () => {
           today.style.borderTopLeftRadius = "0px";
           today.style.borderTopRightRadius = "0px";
@@ -210,7 +210,7 @@ function renderCalendar(calendarEl) {
           today.style.borderRadius = "";
         });
       }
-      if (downEl.className !== "inactive") {
+      if (downEl ? downEl.className !== "inactive" : "") {
         downEl.addEventListener("mouseenter", () => {
           today.style.borderBottomLeftRadius = "0px";
           today.style.borderBottomRightRadius = "0px";

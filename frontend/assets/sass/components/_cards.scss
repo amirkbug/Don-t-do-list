@@ -1,0 +1,81 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.info--card--primary {
+  //display
+  display: flex;
+  flex-direction: column;
+  //spacing
+  width: 335px;
+  height: 132px;
+  gap: 20px;
+
+  @include typography($weight-bold, $size-16);
+
+  .card_top_content {
+    //display
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .card_header {
+      //display
+      display: inline;
+      color: $primary-400;
+      justify-self: flex-start;
+    }
+    .card_line {
+      //display
+      display: block;
+      //spacing
+      height: 1px;
+      width: 100%;
+      margin: 0;
+      //color and typo
+      border: 2 solid $primary-500;
+      background-color: $primary-500;
+    }
+  }
+  .card_down_content {
+    .card_lables {
+      //display
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      //spacing
+      margin: 0;
+      padding: 0;
+      //color and typo
+      list-style-type: none;
+      @include typography($weight-bold, $size-13);
+      .card_label {
+        //display
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        .card_label_header {
+          //spacing
+          margin: 0;
+          //color and typo
+          color: $primary-400;
+        }
+        .card_value {
+          //display
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          //spacing
+          height: 66px;
+          width: 66px;
+          aspect-ratio: 1/1;
+          //color and typo
+          color: $primary-400;
+          background-color: $primary-10;
+          border: 2px solid $primary-400;
+          box-shadow: $shadow-small;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+}
