@@ -1,0 +1,84 @@
+@use "../abstracts/index" as *;
+
+/* checkbox mixin */
+@mixin checkbox($border, $bg-color, $text-color, $rgba-glow) {
+  //display
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  .checkbox__label {
+    //color and typo
+    @include typography($weight-regular, $size-13);
+    color: $text-color;
+  }
+
+  .checkbox__input {
+    //display
+    position: absolute;
+    //color and typo
+    opacity: 0;
+  }
+
+  .checkbox__box {
+    //display
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    //spacing
+    width: 20px;
+    height: 20px;
+    //color and typo
+    border-radius: 6px;
+    border: 1px solid $border;
+    background-color: $bg-color;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    transition: all 150ms ease-in;
+
+    &:active {
+      //spacing
+      transform: scale(0.95);
+    }
+    &::before {
+      //color and typo
+      content: "\f00c";
+      opacity: 0.1;
+      font-size: 15px;
+      color: $neutral-50;
+      transform: scale(0.5);
+      transition: all 150ms ease-in;
+    }
+  }
+
+  .checkbox__input:checked + .checkbox__box {
+    //color and typo
+    background-color: $border;
+    box-shadow: 0 0 6px $rgba-glow;
+  }
+
+  .checkbox__input:checked + .checkbox__box::before {
+    //color and typo
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* checkbox clases */
+.checkbox--primary {
+  @include checkbox(
+    $primary-500,
+    $primary-50,
+    $primary-300,
+    rgba(152, 16, 250, 0.5)
+  );
+}
+
+.checkbox--secoundry {
+  @include checkbox(
+    $secondary-500,
+    $primary-50,
+    $secondary-300,
+    rgba(79, 57, 246, 0.5)
+  );
+}

@@ -1,7 +1,8 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-.info--card--primary {
+/* info card mixin */
+@mixin info--card($text-color, $border-color, $bg-color) {
   //display
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@
     .card_header {
       //display
       display: inline;
-      color: $primary-400;
+      color: $text-color;
       justify-self: flex-start;
     }
     .card_line {
@@ -31,8 +32,8 @@
       width: 100%;
       margin: 0;
       //color and typo
-      border: 2 solid $primary-500;
-      background-color: $primary-500;
+      border: 2 solid $border-color;
+      background-color: $border-color;
     }
   }
   .card_down_content {
@@ -57,7 +58,7 @@
           //spacing
           margin: 0;
           //color and typo
-          color: $primary-400;
+          color: $text-color;
         }
         .card_value {
           //display
@@ -69,13 +70,21 @@
           width: 66px;
           aspect-ratio: 1/1;
           //color and typo
-          color: $primary-400;
-          background-color: $primary-10;
-          border: 2px solid $primary-400;
+          color: $text-color;
+          background-color: $bg-color;
+          border: 2px solid $text-color;
           box-shadow: $shadow-small;
           border-radius: 50px;
         }
       }
     }
   }
+}
+
+/* info cards classes */
+.primary--info--card {
+  @include info--card($primary-400, $primary-500, $primary-10);
+}
+.secondary--info--card {
+  @include info--card($secondary-400, $secondary-500, $secondary-10);
 }

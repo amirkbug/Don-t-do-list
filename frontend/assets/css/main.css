@@ -10,6 +10,47 @@
 /* Font sizes */
 /* typography */
 /* base */
+.btn--video--bg {
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  width: 100%;
+  height: 2px;
+  padding: 0;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #faf5ff;
+  /*element*/
+}
+.btn--video--bg:hover {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+  scale: 1.01;
+}
+.btn--video--bg:active {
+  scale: 0.97;
+}
+.btn--video--bg .btn__container {
+  display: inline;
+  position: absolute;
+}
+.btn--video--bg .btn__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn--video--bg .btn__video {
+  object-fit: fill;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*element*/
+.btn__icon {
+  padding: 0.3rem;
+  aspect-ratio: 3/3;
+}
+
 /*buttons all type */
 /*block */
 .btn {
@@ -83,48 +124,9 @@
   transform: scale(0.97);
 }
 
-.btn--video--bg {
-  background: transparent;
-  border: none;
-  overflow: hidden;
-  width: 100%;
-  height: 2px;
-  padding: 0;
-  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  color: #faf5ff;
-  /*element*/
-}
-.btn--video--bg:hover {
-  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
-  scale: 1.01;
-}
-.btn--video--bg:active {
-  scale: 0.97;
-}
-.btn--video--bg .btn__container {
-  display: inline;
-  position: absolute;
-}
-.btn--video--bg .btn__text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.btn--video--bg .btn__video {
-  object-fit: fill;
-  object-position: center;
-  width: 100%;
-  height: 100%;
-}
-
-/*element*/
-.btn__icon {
-  padding: 0.3rem;
-  aspect-ratio: 3/3;
-}
-
-.info--card--primary {
+/* info card mixin */
+/* info cards classes */
+.primary--info--card {
   display: flex;
   flex-direction: column;
   width: 335px;
@@ -136,17 +138,17 @@
   line-height: 1.43;
   font-style: normal;
 }
-.info--card--primary .card_top_content {
+.primary--info--card .card_top_content {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.info--card--primary .card_top_content .card_header {
+.primary--info--card .card_top_content .card_header {
   display: inline;
   color: #ad46ff;
   justify-self: flex-start;
 }
-.info--card--primary .card_top_content .card_line {
+.primary--info--card .card_top_content .card_line {
   display: block;
   height: 1px;
   width: 100%;
@@ -154,7 +156,7 @@
   border: 2 solid #9810fa;
   background-color: #9810fa;
 }
-.info--card--primary .card_down_content .card_lables {
+.primary--info--card .card_down_content .card_lables {
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -167,17 +169,17 @@
   line-height: 1.43;
   font-style: normal;
 }
-.info--card--primary .card_down_content .card_lables .card_label {
+.primary--info--card .card_down_content .card_lables .card_label {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
 }
-.info--card--primary .card_down_content .card_lables .card_label .card_label_header {
+.primary--info--card .card_down_content .card_lables .card_label .card_label_header {
   margin: 0;
   color: #ad46ff;
 }
-.info--card--primary .card_down_content .card_lables .card_label .card_value {
+.primary--info--card .card_down_content .card_lables .card_label .card_value {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,6 +189,73 @@
   color: #ad46ff;
   background-color: #faf5ff;
   border: 2px solid #ad46ff;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  border-radius: 50px;
+}
+
+.secondary--info--card {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  height: 132px;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.secondary--info--card .card_top_content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.secondary--info--card .card_top_content .card_header {
+  display: inline;
+  color: #615fff;
+  justify-self: flex-start;
+}
+.secondary--info--card .card_top_content .card_line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 0;
+  border: 2 solid #4f39f6;
+  background-color: #4f39f6;
+}
+.secondary--info--card .card_down_content .card_lables {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.secondary--info--card .card_down_content .card_lables .card_label {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.secondary--info--card .card_down_content .card_lables .card_label .card_label_header {
+  margin: 0;
+  color: #615fff;
+}
+.secondary--info--card .card_down_content .card_lables .card_label .card_value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 66px;
+  width: 66px;
+  aspect-ratio: 1/1;
+  color: #615fff;
+  background-color: #eef2ff;
+  border: 2px solid #615fff;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
   border-radius: 50px;
 }
@@ -1134,6 +1203,110 @@
 }
 .calendar--secoundry .calendar_body .calendar_days .inactive {
   color: #a1a1a1;
+}
+
+/* checkbox mixin */
+/* checkbox clases */
+.checkbox--primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.checkbox--primary .checkbox__label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #c27aff;
+}
+.checkbox--primary .checkbox__input {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox--primary .checkbox__box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid #9810fa;
+  background-color: #f3e8ff;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  transition: all 150ms ease-in;
+}
+.checkbox--primary .checkbox__box:active {
+  transform: scale(0.95);
+}
+.checkbox--primary .checkbox__box::before {
+  content: "\f00c";
+  opacity: 0.1;
+  font-size: 15px;
+  color: #f5f5f5;
+  transform: scale(0.5);
+  transition: all 150ms ease-in;
+}
+.checkbox--primary .checkbox__input:checked + .checkbox__box {
+  background-color: #9810fa;
+  box-shadow: 0 0 6px rgba(152, 16, 250, 0.5);
+}
+.checkbox--primary .checkbox__input:checked + .checkbox__box::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox--secoundry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.checkbox--secoundry .checkbox__label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #7c86ff;
+}
+.checkbox--secoundry .checkbox__input {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox--secoundry .checkbox__box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid #4f39f6;
+  background-color: #f3e8ff;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  transition: all 150ms ease-in;
+}
+.checkbox--secoundry .checkbox__box:active {
+  transform: scale(0.95);
+}
+.checkbox--secoundry .checkbox__box::before {
+  content: "\f00c";
+  opacity: 0.1;
+  font-size: 15px;
+  color: #f5f5f5;
+  transform: scale(0.5);
+  transition: all 150ms ease-in;
+}
+.checkbox--secoundry .checkbox__input:checked + .checkbox__box {
+  background-color: #4f39f6;
+  box-shadow: 0 0 6px rgba(79, 57, 246, 0.5);
+}
+.checkbox--secoundry .checkbox__input:checked + .checkbox__box::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 h1.regular-60 {
