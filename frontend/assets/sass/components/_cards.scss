@@ -7,9 +7,9 @@
   display: flex;
   flex-direction: column;
   //spacing
-  width: 335px;
-  height: 132px;
-  gap: 20px;
+  width: 20.9rem;
+  height: 8.25rem;
+  gap: 1.25rem;
 
   @include typography($weight-bold, $size-16);
 
@@ -17,7 +17,8 @@
     //display
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3125rem;
+
     .card_header {
       //display
       display: inline;
@@ -28,12 +29,12 @@
       //display
       display: block;
       //spacing
-      height: 1px;
+      height: 1.5px;
       width: 100%;
       margin: 0;
       //color and typo
-      border: 2 solid $border-color;
       background-color: $border-color;
+      border: none;
     }
   }
   .card_down_content {
@@ -41,7 +42,7 @@
       //display
       display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 0.625rem;
       //spacing
       margin: 0;
       padding: 0;
@@ -53,7 +54,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        gap: 10px;
+        gap: 0.625rem;
         .card_label_header {
           //spacing
           margin: 0;
@@ -66,8 +67,8 @@
           justify-content: center;
           align-items: center;
           //spacing
-          height: 66px;
-          width: 66px;
+          height: 4.125rem;
+          width: 4.125rem;
           aspect-ratio: 1/1;
           //color and typo
           color: $text-color;

@@ -129,9 +129,9 @@
 .primary--info--card {
   display: flex;
   flex-direction: column;
-  width: 335px;
-  height: 132px;
-  gap: 20px;
+  width: 20.9rem;
+  height: 8.25rem;
+  gap: 1.25rem;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -141,7 +141,7 @@
 .primary--info--card .card_top_content {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 .primary--info--card .card_top_content .card_header {
   display: inline;
@@ -150,16 +150,16 @@
 }
 .primary--info--card .card_top_content .card_line {
   display: block;
-  height: 1px;
+  height: 1.5px;
   width: 100%;
   margin: 0;
-  border: 2 solid #9810fa;
   background-color: #9810fa;
+  border: none;
 }
 .primary--info--card .card_down_content .card_lables {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.625rem;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -173,7 +173,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 .primary--info--card .card_down_content .card_lables .card_label .card_label_header {
   margin: 0;
@@ -183,8 +183,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 66px;
-  width: 66px;
+  height: 4.125rem;
+  width: 4.125rem;
   aspect-ratio: 1/1;
   color: #ad46ff;
   background-color: #faf5ff;
@@ -196,9 +196,9 @@
 .secondary--info--card {
   display: flex;
   flex-direction: column;
-  width: 335px;
-  height: 132px;
-  gap: 20px;
+  width: 20.9rem;
+  height: 8.25rem;
+  gap: 1.25rem;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -208,7 +208,7 @@
 .secondary--info--card .card_top_content {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 .secondary--info--card .card_top_content .card_header {
   display: inline;
@@ -217,16 +217,16 @@
 }
 .secondary--info--card .card_top_content .card_line {
   display: block;
-  height: 1px;
+  height: 1.5px;
   width: 100%;
   margin: 0;
-  border: 2 solid #4f39f6;
   background-color: #4f39f6;
+  border: none;
 }
 .secondary--info--card .card_down_content .card_lables {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.625rem;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -240,7 +240,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 .secondary--info--card .card_down_content .card_lables .card_label .card_label_header {
   margin: 0;
@@ -250,8 +250,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 66px;
-  width: 66px;
+  height: 4.125rem;
+  width: 4.125rem;
   aspect-ratio: 1/1;
   color: #615fff;
   background-color: #eef2ff;
@@ -1211,7 +1211,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 .checkbox--primary .checkbox__label {
   font-family: "Poppins", sans-serif;
@@ -1229,8 +1229,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 6px;
   border: 1px solid #9810fa;
   background-color: #f3e8ff;
@@ -1262,7 +1262,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 .checkbox--secoundry .checkbox__label {
   font-family: "Poppins", sans-serif;
@@ -1280,8 +1280,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 6px;
   border: 1px solid #4f39f6;
   background-color: #f3e8ff;
