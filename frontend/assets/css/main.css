@@ -1232,7 +1232,7 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 6px;
-  border: 1px solid #9810fa;
+  border: 1.5px solid #9810fa;
   background-color: #f3e8ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
@@ -1283,7 +1283,7 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 6px;
-  border: 1px solid #4f39f6;
+  border: 1.5px solid #4f39f6;
   background-color: #f3e8ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
@@ -1307,6 +1307,64 @@
 .checkbox--secoundry .checkbox__input:checked + .checkbox__box::before {
   opacity: 1;
   transform: scale(1);
+}
+
+.fancy--divider--primary {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  flex: 1;
+}
+.fancy--divider--primary::before, .fancy--divider--primary::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #c27aff;
+}
+.fancy--divider--primary .fancy_divider_content {
+  margin: 0 0.8rem;
+  color: #666;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #c27aff;
+}
+.fancy--divider--primary .fancy_divider_icon {
+  padding: 0.625rem;
+  width: 2.8125rem;
+  height: 2.8125rem;
+  object-fit: cover;
+}
+
+.fancy--divider--secondary {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  flex: 1;
+}
+.fancy--divider--secondary::before, .fancy--divider--secondary::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #7c86ff;
+}
+.fancy--divider--secondary .fancy_divider_content {
+  margin: 0 0.8rem;
+  color: #666;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #7c86ff;
+}
+.fancy--divider--secondary .fancy_divider_icon {
+  padding: 0.625rem;
+  width: 2.8125rem;
+  height: 2.8125rem;
+  object-fit: cover;
 }
 
 h1.regular-60 {
