@@ -1,0 +1,210 @@
+@use "../abstracts/index" as *;
+
+@mixin tasks($btn-row-bg, $circle-btn-bg, $txt-color, $header-txt-color) {
+  //display
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  z-index: 1;
+  //sizing
+  padding: 20px;
+  width: 500px;
+
+  .tasks__btn__top {
+    //display
+    z-index: 10000;
+    transform: translateY(60px);
+    //sizing
+    height: 70px;
+    width: 223px;
+    //color and typo
+    border-radius: 100px 0 100px 100px;
+    border: 0;
+    background-color: $btn-row-bg;
+    transition: all 1s ease-in-out;
+    box-shadow: $shadow-small;
+
+    /* first design (circle in the btn)*/
+    // -webkit-mask: radial-gradient(
+    //   circle 20px at center,
+    //   transparent 20px,
+    //   black 21px
+    // );
+    // -webkit-mask-repeat: no-repeat;
+    // -webkit-mask-position: center;
+    // -webkit-mask-size: cover;
+
+    // mask: radial-gradient(circle 20px at center, transparent 20px, black 21px);
+    // mask-repeat: no-repeat;
+    // mask-position: center;
+    // mask-size: cover;
+
+    /* the circle in the btn */
+    &::before {
+      //display
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      //sizing
+      width: 40px;
+      height: 40px;
+      transform: translate(-50%, -50%);
+      //color and typo
+      background-color: rgba($circle-btn-bg, 0.5);
+      border-radius: 50%;
+    }
+
+    &:hover {
+      //sizing
+      transform: translateY(-10px);
+    }
+  }
+
+  .tasks__body {
+    //display
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    //sizing
+    width: 414px;
+    height: 515px;
+    padding: 50px 20px 50px 20px;
+    //color and typo
+    background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px 10px 60px 60px;
+
+    .tasks__header {
+      //display
+      position: static;
+      z-index: 1000;
+      top: 0;
+      align-items: center;
+      gap: 0;
+      //sizing
+      width: 100%;
+      .tasks__header__texts {
+        //display
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+
+        //sizing
+        padding: 50px 5px 0 5px;
+        //color and typo
+        @include typography($weight-semi-bold, $size-13);
+        color: $header-txt-color;
+      }
+    }
+    .tasks__column {
+      //display
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      //sizing
+      padding: 5px;
+      max-height: 390px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        //display
+        display: none;
+      }
+
+      .tasks__row {
+        //display
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        //sizing
+        padding: 5px;
+        //color an typo
+        background-color: $btn-row-bg;
+        border-radius: 6px;
+        @include typography($weight-semi-bold, $size-13);
+        color: $txt-color;
+        transition: all 300ms ease-out;
+        &.tasks__row span:first-child {
+          //sizing
+          padding: 2px;
+        }
+        &:hover {
+          //color and typo
+          box-shadow: $shadow-medium;
+        }
+      }
+    }
+  }
+
+  .tasks__footer {
+    //display
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    //sizing
+    margin-top: 20px;
+
+    .tasks__plus__btn,
+    .tasks__minus__btn {
+      //display
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      //color and typo
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 40px;
+      transition: 0.3s;
+      color: $txt-color;
+      @include typography($weight-semi-bold, $size-13);
+      &::after {
+        //display
+        content: attr(data-label);
+        position: absolute;
+        white-space: nowrap;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      &.tasks__plus__btn:hover {
+        //display
+        transform: translateX(-40px);
+      }
+      &.tasks__plus__btn:hover::after {
+        //display
+        transform: translateX(50px);
+        opacity: 1;
+      }
+      &.tasks__minus__btn:hover {
+        //display
+        transform: translateX(-40px);
+      }
+      &.tasks__minus__btn:hover::after {
+        //display
+        transform: translateX(57px);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.primary--tasks {
+  @include tasks($primary-300, $primary-100, $primary-50, $primary-400);
+}
+
+.secondary--tasks {
+  @include tasks($secondary-300, $secondary-100, $secondary-50, $secondary-400);
+}

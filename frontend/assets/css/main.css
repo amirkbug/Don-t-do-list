@@ -1208,10 +1208,11 @@
 /* checkbox mixin */
 /* checkbox clases */
 .checkbox--primary {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 0.3125rem;
+  cursor: pointer;
 }
 .checkbox--primary .checkbox__label {
   font-family: "Poppins", sans-serif;
@@ -1259,10 +1260,11 @@
 }
 
 .checkbox--secoundry {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 0.3125rem;
+  cursor: pointer;
 }
 .checkbox--secoundry .checkbox__label {
   font-family: "Poppins", sans-serif;
@@ -1319,7 +1321,7 @@
 .fancy--divider--primary::before, .fancy--divider--primary::after {
   content: "";
   flex: 1;
-  border-bottom: 1px solid #c27aff;
+  border-bottom: 3px solid #c27aff;
 }
 .fancy--divider--primary .fancy_divider_content {
   margin: 0 0.8rem;
@@ -1348,7 +1350,7 @@
 .fancy--divider--secondary::before, .fancy--divider--secondary::after {
   content: "";
   flex: 1;
-  border-bottom: 1px solid #7c86ff;
+  border-bottom: 3px solid #7c86ff;
 }
 .fancy--divider--secondary .fancy_divider_content {
   margin: 0 0.8rem;
@@ -1379,7 +1381,7 @@
   right: 0;
   width: 300px;
   z-index: 1000;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 .navbar .navbar__item {
   display: flex;
@@ -1410,6 +1412,347 @@
 .navbar .navbar__item:hover::after {
   transform: translateY(10px);
   opacity: 1;
+}
+
+.primary--tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  z-index: 1;
+  padding: 20px;
+  width: 500px;
+}
+.primary--tasks .tasks__btn__top {
+  z-index: 10000;
+  transform: translateY(60px);
+  height: 70px;
+  width: 223px;
+  border-radius: 100px 0 100px 100px;
+  border: 0;
+  background-color: #c27aff;
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  /* first design (circle in the btn)*/
+  /* the circle in the btn */
+}
+.primary--tasks .tasks__btn__top::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(233, 212, 255, 0.5);
+  border-radius: 50%;
+}
+.primary--tasks .tasks__btn__top:hover {
+  transform: translateY(-10px);
+}
+.primary--tasks .tasks__body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 414px;
+  height: 515px;
+  padding: 50px 20px 50px 20px;
+  background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px 10px 60px 60px;
+}
+.primary--tasks .tasks__body .tasks__header {
+  position: static;
+  z-index: 1000;
+  top: 0;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.primary--tasks .tasks__body .tasks__header .tasks__header__texts {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 50px 5px 0 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #ad46ff;
+}
+.primary--tasks .tasks__body .tasks__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 5px;
+  max-height: 390px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.primary--tasks .tasks__body .tasks__column::-webkit-scrollbar {
+  display: none;
+}
+.primary--tasks .tasks__body .tasks__column .tasks__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  padding: 5px;
+  background-color: #c27aff;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #f3e8ff;
+  transition: all 300ms ease-out;
+}
+.primary--tasks .tasks__body .tasks__column .tasks__row.tasks__row span:first-child {
+  padding: 2px;
+}
+.primary--tasks .tasks__body .tasks__column .tasks__row:hover {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+}
+.primary--tasks .tasks__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-top: 20px;
+}
+.primary--tasks .tasks__footer .tasks__plus__btn,
+.primary--tasks .tasks__footer .tasks__minus__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+  transition: 0.3s;
+  color: #f3e8ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.primary--tasks .tasks__footer .tasks__plus__btn::after,
+.primary--tasks .tasks__footer .tasks__minus__btn::after {
+  content: attr(data-label);
+  position: absolute;
+  white-space: nowrap;
+  transition: 0.3s;
+  opacity: 0;
+}
+.primary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover,
+.primary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover {
+  transform: translateX(-40px);
+}
+.primary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover::after,
+.primary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover::after {
+  transform: translateX(50px);
+  opacity: 1;
+}
+.primary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover,
+.primary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover {
+  transform: translateX(-40px);
+}
+.primary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover::after,
+.primary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover::after {
+  transform: translateX(57px);
+  opacity: 1;
+}
+
+.secondary--tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  z-index: 1;
+  padding: 20px;
+  width: 500px;
+}
+.secondary--tasks .tasks__btn__top {
+  z-index: 10000;
+  transform: translateY(60px);
+  height: 70px;
+  width: 223px;
+  border-radius: 100px 0 100px 100px;
+  border: 0;
+  background-color: #7c86ff;
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  /* first design (circle in the btn)*/
+  /* the circle in the btn */
+}
+.secondary--tasks .tasks__btn__top::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(198, 210, 255, 0.5);
+  border-radius: 50%;
+}
+.secondary--tasks .tasks__btn__top:hover {
+  transform: translateY(-10px);
+}
+.secondary--tasks .tasks__body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 414px;
+  height: 515px;
+  padding: 50px 20px 50px 20px;
+  background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px 10px 60px 60px;
+}
+.secondary--tasks .tasks__body .tasks__header {
+  position: static;
+  z-index: 1000;
+  top: 0;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.secondary--tasks .tasks__body .tasks__header .tasks__header__texts {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 50px 5px 0 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #615fff;
+}
+.secondary--tasks .tasks__body .tasks__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 5px;
+  max-height: 390px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.secondary--tasks .tasks__body .tasks__column::-webkit-scrollbar {
+  display: none;
+}
+.secondary--tasks .tasks__body .tasks__column .tasks__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  padding: 5px;
+  background-color: #7c86ff;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #e0e7ff;
+  transition: all 300ms ease-out;
+}
+.secondary--tasks .tasks__body .tasks__column .tasks__row.tasks__row span:first-child {
+  padding: 2px;
+}
+.secondary--tasks .tasks__body .tasks__column .tasks__row:hover {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+}
+.secondary--tasks .tasks__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-top: 20px;
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn,
+.secondary--tasks .tasks__footer .tasks__minus__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+  transition: 0.3s;
+  color: #e0e7ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn::after,
+.secondary--tasks .tasks__footer .tasks__minus__btn::after {
+  content: attr(data-label);
+  position: absolute;
+  white-space: nowrap;
+  transition: 0.3s;
+  opacity: 0;
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover,
+.secondary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover {
+  transform: translateX(-40px);
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover::after,
+.secondary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover::after {
+  transform: translateX(50px);
+  opacity: 1;
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover,
+.secondary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover {
+  transform: translateX(-40px);
+}
+.secondary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover::after,
+.secondary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover::after {
+  transform: translateX(57px);
+  opacity: 1;
+}
+
+.video--bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.video--bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 h1.regular-60 {

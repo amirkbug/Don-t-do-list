@@ -3,10 +3,11 @@
 /* checkbox mixin */
 @mixin checkbox($border, $bg-color, $text-color, $rgba-glow) {
   //display
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 0.3125rem;
+  cursor: pointer;
 
   .checkbox__label {
     //color and typo
@@ -41,6 +42,7 @@
       //spacing
       transform: scale(0.95);
     }
+
     &::before {
       //color and typo
       content: "\f00c";

@@ -224,3 +224,7 @@ function renderCalendar(calendarEl) {
 }
 
 calendars.forEach((cal) => renderCalendar(cal));
+
+/* video background slowing */
+const video__bg = document.getElementById("video--bg__video");
+video__bg.playbackRate = 0.5;

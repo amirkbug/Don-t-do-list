@@ -25,8 +25,223 @@
     />
     <title>Dont do list</title>
   </head>
-  <body style="background-color: rgb(80, 80, 80)">
-    <div style="display: flex; gap: 10px">
+  <body style="background-color: rgb(79, 79, 79)">
+    <!-- background -->
+    <div class="video--bg">
+      <video id="video--bg__video" autoplay muted loop>
+        <source
+          src="/frontend/assets/video/live-bg/Last one i rendred.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- tasks -->
+    <!-- <div style="display: flex; flex-direction: row">
+      <section class="primary--tasks">
+        <button class="tasks__btn__top"></button>
+
+        <div class="tasks__body">
+          <header class="tasks__header">
+            <div class="tasks__header__texts">
+              <span>Name</span>
+              <span>Start date</span>
+              <span>Finish date</span>
+              <span>Checkbox</span>
+            </div>
+            <div style="margin: 0px 6px" class="fancy--divider--primary"></div>
+          </header>
+          <div class="tasks__column">
+            <div class="tasks__row">
+              <span>Do your homework 📕</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Do wash the dishes 🍽️</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+            <div class="tasks__row">
+              <span>Do something good today 👍</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+            <div class="tasks__row">
+              <span>Do some skatches ✏️</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Do some stretching 🧘</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Read 10 pages of a book 📖</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Meditate for 5 minutes 🧠</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <footer class="tasks__footer">
+          <button class="tasks__plus__btn" data-label="Add task">
+            <i class="fa-solid fa-plus fa-3x"></i>
+          </button>
+          <button class="tasks__minus__btn" data-label="Delete task">
+            <i class="fa-solid fa-minus fa-3x"></i>
+          </button>
+        </footer>
+      </section>
+
+      <section class="secondary--tasks">
+        <button class="tasks__btn__top"></button>
+
+        <div class="tasks__body">
+          <header class="tasks__header">
+            <div class="tasks__header__texts">
+              <span>Name</span>
+              <span>Start date</span>
+              <span>Finish date</span>
+              <span>Checkbox</span>
+            </div>
+            <div
+              style="margin: 0px 6px"
+              class="fancy--divider--secondary"
+            ></div>
+          </header>
+          <div class="tasks__column">
+            <div class="tasks__row">
+              <span>Don't ignore your goals 🎯</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Don't procrastinate</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+            <div class="tasks__row">
+              <span>Dont be lazy 😴</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+            <div class="tasks__row">
+              <span>Dont use phone for one hour 📵</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Don't skip breakfast 🍳</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Don't stay up too late 🌙</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+
+            <div class="tasks__row">
+              <span>Don't be rude to others 😠</span>
+              <span>2024/7/5</span>
+              <span>2024/7/9</span>
+
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <footer class="tasks__footer">
+          <button class="tasks__plus__btn" data-label="Add task">
+            <i class="fa-solid fa-plus fa-3x"></i>
+          </button>
+          <button class="tasks__minus__btn" data-label="Delete task">
+            <i class="fa-solid fa-minus fa-3x"></i>
+          </button>
+        </footer>
+      </section>
+    </div> -->
+
+    <!-- navbar -->
+    <!-- <div style="display: flex; gap: 10px">
       <nav class="navbar">
         <a href="/about" class="navbar__item" data-label="Info">
           <i class="fa-solid fa-circle-info fa-2xl"></i>
@@ -38,7 +253,7 @@
           <i class="fa-solid fa-trophy fa-2xl"></i>
         </a>
       </nav>
-    </div>
+    </div> -->
 
     <!-- fancy divider -->
     <!-- <div style="display: flex; gap: 10px">
@@ -52,6 +267,10 @@
           alt="dont do list primary icon"
           class="fancy_divider_icon"
         />
+      </div>
+
+      <div class="fancy--divider--primary">
+        <span class="fancy_divider_content">OR</span>
       </div>
     </div> -->
 
