@@ -118,9 +118,16 @@
 .text--input--primary {
   @include input-base($primary-300, $primary-10);
 }
+.text--input--primary--500 {
+  @include input-base($primary-500, $primary-10);
+}
 
-.text--input--secoundry {
+.text--input--secondary {
   @include input-base($secondary-300, $secondary-10);
+}
+
+.text--input--secondary--500 {
+  @include input-base($secondary-500, $secondary-10);
 }
 
 .text--input--natural {

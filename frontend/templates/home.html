@@ -27,14 +27,157 @@
   </head>
   <body style="background-color: rgb(79, 79, 79)">
     <!-- background -->
-    <div class="video--bg">
-      <video id="video--bg__video" autoplay muted loop>
+    <!-- <div class="video--bg">
+      <video id="video--slower" autoplay muted loop>
         <source
-          src="/frontend/assets/video/live-bg/Last one i rendred.mp4"
+          src="/frontend/assets/video/primary-secoundry/Last one i rendred.mp4"
           type="video/mp4"
         />
       </video>
-    </div>
+    </div> -->
+
+    <!-- new--task--modals -->
+    <form class="new--task--modal--primary">
+      <div class="new--task--modal__bg">
+        <video autoplay muted loop>
+          <source
+            src="/frontend/assets/video/primary/purple.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <header class="new--task--modal__header">
+        <h3>Make a new do-task</h3>
+        <p>
+          Create a task you want to accomplish. Add details, set deadlines, and
+          keep track of your progress.
+        </p>
+        <div class="fancy--divider--primary"></div>
+      </header>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Name:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="Type here" />
+          <div class="input_content_right">
+            <span class="texts">20</span>
+          </div>
+        </div>
+        <p class="input_description">Place a text here for description</p>
+      </div>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Start date :</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Finish date:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <footer class="new--task--modal__footer">
+        <button type="button" class="btn btn--primary">
+          <span>cancel</span>
+        </button>
+
+        <button type="button" class="btn btn--primary">
+          <span>ok</span>
+        </button>
+      </footer>
+    </form>
+
+    <form class="new--task--modal--secoundry">
+      <div class="new--task--modal__bg">
+        <video autoplay muted loop>
+          <source
+            src="/frontend/assets/video/secondary/Blue.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <header class="new--task--modal__header">
+        <h3>Make a new do-task</h3>
+        <p>
+          Create a task you want to accomplish. Add details, set deadlines, and
+          keep track of your progress.
+        </p>
+        <div class="fancy--divider--secondary"></div>
+      </header>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Name:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="Type here" />
+          <div class="input_content_right">
+            <span class="texts">20</span>
+          </div>
+        </div>
+        <p class="input_description">Place a text here for description</p>
+      </div>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Start date :</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Finish date:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <footer class="new--task--modal__footer">
+        <button type="button" class="btn btn--secondary">
+          <span>cancel</span>
+        </button>
+
+        <button type="button" class="btn btn--secondary">
+          <span>ok</span>
+        </button>
+      </footer>
+    </form>
 
     <!-- tasks -->
     <!-- <div style="display: flex; flex-direction: row">
