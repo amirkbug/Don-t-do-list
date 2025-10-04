@@ -1928,8 +1928,11 @@
 
 .video--bg {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 .video--bg video {
   width: 100%;
@@ -2124,6 +2127,106 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 0 0.625rem;
+}
+
+.chart--primary {
+  display: flex;
+  flex-direction: column;
+  padding: 0.625rem;
+  width: 20.875rem;
+  height: 13.6875rem;
+  gap: 1.25rem;
+  color: #9810fa;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.chart--primary .chart__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.chart--primary .chart__header p {
+  padding: 0 0 0 0.3125rem;
+  margin: 0;
+}
+.chart--primary .chart__header .chart__header__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+}
+.chart--primary .chart__header .chart__header__btns button {
+  cursor: pointer;
+  padding: 0 0.625rem;
+  background-color: transparent;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.625rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #9810fa;
+  border-radius: 10px;
+  transition: all 300ms ease-out;
+}
+.chart--primary .chart__header .chart__header__btns button:hover {
+  background-color: #faf5ff;
+}
+.chart--primary .chart__header .chart__header__btns button:active {
+  background-color: #faf5ff;
+}
+
+.chart--secoundry {
+  display: flex;
+  flex-direction: column;
+  padding: 0.625rem;
+  width: 20.875rem;
+  height: 13.6875rem;
+  gap: 1.25rem;
+  color: #4f39f6;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.chart--secoundry .chart__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.chart--secoundry .chart__header p {
+  padding: 0 0 0 0.3125rem;
+  margin: 0;
+}
+.chart--secoundry .chart__header .chart__header__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+}
+.chart--secoundry .chart__header .chart__header__btns button {
+  cursor: pointer;
+  padding: 0 0.625rem;
+  background-color: transparent;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.625rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #4f39f6;
+  border-radius: 10px;
+  transition: all 300ms ease-out;
+}
+.chart--secoundry .chart__header .chart__header__btns button:hover {
+  background-color: #eef2ff;
+}
+.chart--secoundry .chart__header .chart__header__btns button:active {
+  background-color: #eef2ff;
 }
 
 html,

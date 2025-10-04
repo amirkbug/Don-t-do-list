@@ -227,4 +227,97 @@ calendars.forEach((cal) => renderCalendar(cal));
 
 /* video background slowing */
 const video__bg = document.getElementById("video--slower");
-video__bg.playbackRate = 0.5;
+video__bg ? (video__bg.playbackRate = 0.5) : "";
+
+/* Chart rendering */
+//get all charts in document
+const charts = document.querySelectorAll(".chart--primary , .chart--secoundry");
+
+function chartsFn(char) {
+  //get canvas for chart.js out of it
+  const ctx = char.querySelector("canvas");
+  //make cahrt an instance to update it later
+  const chartInstance = new Chart(ctx, {
+    //type of chart
+    type: "line",
+    data: {
+      //default for numbers in down
+      labels: [1, 2, 2, 3, 4],
+      datasets: [
+        {
+          label: char.classList.contains("chart--primary")
+            ? "Do tasks that completed"
+            : "Dont tasks that completed",
+          //data that will replaced with api
+          data: [4, 7, 6, 11, 9, 5, 20],
+          borderWidth: 2,
+          //color of the line (render it base on the chart)
+          borderColor: char.classList.contains("chart--primary")
+            ? "#9810fa"
+            : "#4f39f6",
+          //color of the bg points (render it base on the chart)
+          backgroundColor: char.classList.contains("chart--primary")
+            ? "#c27aff"
+            : "#7c86ff",
+          tension: 0.4,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        //x chart lines numbders color(base on condition)
+        x: {
+          ticks: {
+            color: char.classList.contains("chart--primary")
+              ? "#9810fa"
+              : "#4f39f6",
+          },
+        },
+        //y chart lines numbders color (base on condition)
+        y: {
+          ticks: {
+            color: char.classList.contains("chart--primary")
+              ? "#9810fa"
+              : "#4f39f6",
+          },
+        },
+      },
+      responsive: false,
+      plugins: {
+        title: {
+          display: false,
+        },
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+  ///there is a bug tho when we change the days or weaks it
+  //gets more in width
+
+  //get buttons of the charts
+  const buttons = char.querySelectorAll(".chart__header__btns button");
+  let dataLables = [];
+  //change datalables base on the btn that user clicked
+  buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (btn.textContent == "D") {
+        dataLables = Array.from({ length: 24 }, (_, i) => i + 1);
+      } else if (btn.textContent == "W") {
+        dataLables = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+      } else if (btn.textContent == "M") {
+        const currentDate = new Date();
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        const daysInMonth = new Date(year, month, 0).getDate();
+        dataLables = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+      }
+      //update labels and upadate instance
+      chartInstance.data.labels = dataLables;
+      chartInstance.update();
+    })
+  );
+}
+
+charts.forEach((char) => chartsFn(char));

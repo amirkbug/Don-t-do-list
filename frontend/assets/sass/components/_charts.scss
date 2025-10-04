@@ -1,0 +1,64 @@
+@use "../abstracts/index" as *;
+
+@mixin charts($main-color, $btn-hover-bg) {
+  // display
+  display: flex;
+  flex-direction: column;
+  //sizing
+  padding: 0.625rem; // 10px
+  width: 20.875rem; // 334px
+  height: 13.6875rem; // 219px
+  gap: 1.25rem; // 20px
+  //color and typo
+  color: $main-color;
+  @include typography($weight-bold, $size-16);
+
+  .chart__header {
+    //display
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      //sizing
+      padding: 0 0 0 0.3125rem; // 5px
+      margin: 0;
+    }
+
+    .chart__header__btns {
+      //display
+      display: flex;
+      flex-direction: row;
+      gap: 0.625rem; // 10px
+      button {
+        //display
+        cursor: pointer;
+        //sizing
+        padding: 0 0.625rem; // 10px
+        //color and typo
+        background-color: transparent;
+        border: none;
+        @include typography($weight-regular, $size-10);
+        color: $main-color;
+        border-radius: 10px;
+        transition: all 300ms ease-out;
+
+        &:hover {
+          //color and typo
+          background-color: $btn-hover-bg;
+        }
+        &:active {
+          //color and typo
+          background-color: $btn-hover-bg;
+        }
+      }
+    }
+  }
+}
+
+.chart--primary {
+  @include charts($primary-500, $primary-10);
+}
+.chart--secoundry {
+  @include charts($secondary-500, $secondary-10);
+}
