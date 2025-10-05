@@ -2066,69 +2066,6 @@
   padding: 0 0.625rem;
 }
 
-.new--task--modal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  gap: 0.3125rem;
-  width: 32.5625rem;
-  box-sizing: border-box;
-  margin: 1.25rem;
-  padding: 3rem;
-  height: 39.4375rem;
-  border: 0.1875rem solid #f3e8ff;
-  border-radius: 0.625rem;
-  background-color: transparent;
-}
-.new--task--modal .new--task--modal__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
-.new--task--modal .new--task--modal__bg video {
-  object-fit: cover;
-  object-position: center;
-  width: 100%;
-  height: 100%;
-}
-.new--task--modal .new--task--modal__header {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0 0.625rem;
-  color: #9810fa;
-}
-.new--task--modal .new--task--modal__header div {
-  margin: 0.625rem 0;
-}
-.new--task--modal .new--task--modal__header p {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.43;
-  font-style: normal;
-}
-.new--task--modal .new--task--modal__header h3 {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 1.562rem;
-  line-height: 1.43;
-  font-style: normal;
-}
-.new--task--modal .new--task--modal__footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 0.625rem;
-}
-
 .chart--primary {
   display: flex;
   flex-direction: column;
@@ -2227,6 +2164,88 @@
 }
 .chart--secoundry .chart__header .chart__header__btns button:active {
   background-color: #eef2ff;
+}
+
+.trophy--card--primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 3.2rem 3.8rem;
+  background-color: #e9d4ff;
+  border: 2px solid #faf5ff;
+  border-radius: 10px;
+}
+.trophy--card--primary .trophy__header {
+  overflow: hidden;
+  width: 15.625rem;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  background-color: #faf5ff;
+}
+.trophy--card--primary .trophy__header p {
+  text-align: center;
+  white-space: normal;
+  margin: 0;
+  color: #c27aff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.trophy--card--primary .trophy__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  background-color: #faf5ff;
+  border-radius: 150px;
+}
+.trophy--card--primary button {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+
+.trophy--card--secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 3.2rem 3.8rem;
+  background-color: #c6d2ff;
+  border: 2px solid #eef2ff;
+  border-radius: 10px;
+}
+.trophy--card--secondary .trophy__header {
+  overflow: hidden;
+  width: 15.625rem;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  background-color: #eef2ff;
+}
+.trophy--card--secondary .trophy__header p {
+  text-align: center;
+  white-space: normal;
+  margin: 0;
+  color: #7c86ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.trophy--card--secondary .trophy__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  aspect-ratio: 1/1;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  background-color: #eef2ff;
+  border-radius: 150px;
+}
+.trophy--card--secondary button {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
 }
 
 html,
