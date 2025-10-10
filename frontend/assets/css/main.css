@@ -84,6 +84,19 @@
   background-color: #e0e7ff;
   transform: scale(0.97);
 }
+.btn--secondary--100 {
+  background-color: #c6d2ff;
+  color: #4f39f6;
+}
+.btn--secondary--100:hover {
+  border-color: #7c86ff;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.btn--secondary--100:active {
+  border-color: #7c86ff;
+  background-color: #e0e7ff;
+  transform: scale(0.97);
+}
 .btn--primary {
   background-color: #faf5ff;
   color: #c27aff;
@@ -93,6 +106,19 @@
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
 }
 .btn--primary:active {
+  border-color: #c27aff;
+  background-color: #f3e8ff;
+  transform: scale(0.97);
+}
+.btn--primary--100 {
+  background-color: #e9d4ff;
+  color: #9810fa;
+}
+.btn--primary--100:hover {
+  border-color: #c27aff;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.btn--primary--100:active {
   border-color: #c27aff;
   background-color: #f3e8ff;
   transform: scale(0.97);
@@ -1559,6 +1585,35 @@
   object-fit: cover;
 }
 
+.fancy--divider--neutral {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  flex: 1;
+}
+.fancy--divider--neutral::before, .fancy--divider--neutral::after {
+  content: "";
+  flex: 1;
+  border-bottom: 3px solid #f5f5f5;
+}
+.fancy--divider--neutral .fancy_divider_content {
+  margin: 0 0.8rem;
+  color: #666;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #f5f5f5;
+}
+.fancy--divider--neutral .fancy_divider_icon {
+  padding: 0.625rem;
+  width: 2.8125rem;
+  height: 2.8125rem;
+  object-fit: cover;
+}
+
 .navbar {
   display: flex;
   gap: 50px;
@@ -2246,6 +2301,180 @@
 }
 .trophy--card--secondary button {
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+
+.gradiant--divider--secondary--ltr {
+  border: none;
+  height: 0.125rem;
+  width: 100%;
+  margin: 1rem 0;
+  background-image: linear-gradient(to right, #4f39f6 0%, rgba(79, 57, 246, 0.2) 32%, rgba(250, 250, 250, 0.01) 50%);
+}
+
+.gradiant--divider--primary--ltr {
+  border: none;
+  height: 0.125rem;
+  width: 100%;
+  margin: 1rem 0;
+  background-image: linear-gradient(to right, #9810fa 0%, rgba(152, 16, 250, 0.2) 32%, rgba(250, 250, 250, 0.01) 50%);
+}
+
+.gradiant--divider--secondary--rtl {
+  border: none;
+  height: 0.125rem;
+  width: 100%;
+  margin: 1rem 0;
+  background-image: linear-gradient(to left, #4f39f6 0%, rgba(79, 57, 246, 0.2) 32%, rgba(250, 250, 250, 0.01) 50%);
+}
+
+.gradiant--divider--primary--rtl {
+  border: none;
+  height: 0.125rem;
+  width: 100%;
+  margin: 1rem 0;
+  background-image: linear-gradient(to left, #9810fa 0%, rgba(152, 16, 250, 0.2) 32%, rgba(250, 250, 250, 0.01) 50%);
+}
+
+.nonetoast--aboutcard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 0.625rem;
+  padding: 0.625rem;
+}
+.nonetoast--aboutcard .aboutus--card__image {
+  border: 2px solid #f5f5f5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  width: 22.313rem;
+  object-fit: cover;
+}
+.nonetoast--aboutcard div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.875rem;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.nonetoast--aboutcard div header {
+  align-self: flex-start;
+  display: flex;
+  flex: row;
+  gap: 0.625rem;
+  justify-content: left;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #0a0a0a;
+}
+.nonetoast--aboutcard div header h2 {
+  margin: 0;
+}
+.nonetoast--aboutcard div header img {
+  aspect-ratio: 1/1;
+  width: 4.063rem;
+}
+.nonetoast--aboutcard div button {
+  border-radius: 10px;
+  width: fit-content;
+}
+.nonetoast--aboutcard div .aboutus--card__content {
+  display: flex;
+  gap: 0.313rem;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  box-shadow: none;
+}
+.nonetoast--aboutcard div .aboutus--card__content p {
+  margin: 0;
+}
+
+.dont-do-list--aboutcard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 0.625rem;
+  padding: 0.625rem;
+}
+.dont-do-list--aboutcard .aboutus--card__image {
+  border: 2px solid #f5f5f5;
+  border-top-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  width: 22.313rem;
+  object-fit: cover;
+}
+.dont-do-list--aboutcard div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.875rem;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.dont-do-list--aboutcard div header {
+  align-self: flex-start;
+  display: flex;
+  flex: row;
+  gap: 0.625rem;
+  justify-content: left;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.938rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #0a0a0a;
+}
+.dont-do-list--aboutcard div header h2 {
+  margin: 0;
+}
+.dont-do-list--aboutcard div header img {
+  aspect-ratio: 1/1;
+  width: 1.563rem;
+}
+.dont-do-list--aboutcard div button {
+  border-radius: 10px;
+  width: fit-content;
+}
+.dont-do-list--aboutcard div .aboutus--card__content {
+  display: flex;
+  gap: 0.313rem;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  box-shadow: none;
+}
+.dont-do-list--aboutcard div .aboutus--card__content p {
+  margin: 0;
 }
 
 html,

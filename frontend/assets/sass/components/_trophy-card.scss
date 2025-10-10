@@ -6,9 +6,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 2rem;
+  gap: 2rem; //32px
   //sizing
-  padding: 3.2rem 3.8rem;
+  padding: 3.2rem 3.8rem; //51.2px //60.8px
   //color and typo
   background-color: $bg-color;
   border: 2px solid $border-header-bg;
@@ -17,7 +17,7 @@
     //display
     overflow: hidden;
     //sizing
-    width: 15.625rem;
+    width: 15.625rem; //250px
     //color and typo
     box-shadow: $shadow-small;
     background-color: $border-header-bg;

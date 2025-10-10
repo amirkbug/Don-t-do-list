@@ -44,3 +44,7 @@
 .fancy--divider--secondary {
   @include fancy--divider($secondary-300);
 }
+
+.fancy--divider--neutral {
+  @include fancy--divider($neutral-50);
+}
