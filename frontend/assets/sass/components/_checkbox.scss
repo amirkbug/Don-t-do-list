@@ -76,6 +76,14 @@
     rgba(152, 16, 250, 0.5)
   );
 }
+.checkbox--primary--700 {
+  @include checkbox(
+    $primary-500,
+    $primary-50,
+    $primary-700,
+    rgba(255, 255, 255, 0.5)
+  );
+}
 
 .checkbox--secoundry {
   @include checkbox(
@@ -83,5 +91,14 @@
     $primary-50,
     $secondary-300,
     rgba(79, 57, 246, 0.5)
+  );
+}
+
+.checkbox--secoundry--700 {
+  @include checkbox(
+    $secondary-500,
+    $primary-50,
+    $secondary-700,
+    rgba(255, 255, 255, 0.5)
   );
 }

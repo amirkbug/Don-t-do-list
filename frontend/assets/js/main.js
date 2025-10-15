@@ -226,8 +226,8 @@ function renderCalendar(calendarEl) {
 calendars.forEach((cal) => renderCalendar(cal));
 
 /* video background slowing */
-const video__bg = document.getElementById("video--slower");
-video__bg ? (video__bg.playbackRate = 0.5) : "";
+const videos = document.querySelectorAll(".video--slower");
+videos.forEach((video) => (video.playbackRate = 0.5));
 
 /* Chart rendering */
 //get all charts in document

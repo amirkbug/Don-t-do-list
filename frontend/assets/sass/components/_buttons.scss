@@ -80,7 +80,7 @@
   &--destructive {
     background-color: $destructive-500;
     color: $neutral-50;
-    @include buttons-states($neutral-50, $destructive-600);
+    @include buttons-states($destructive-100, $destructive-600);
   }
   //natural button
   &--natural {

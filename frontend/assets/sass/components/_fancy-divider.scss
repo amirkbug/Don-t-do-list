@@ -1,7 +1,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-@mixin fancy--divider($border-txt-color) {
+@mixin fancy--divider($border-height, $border-txt-color) {
   //display
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
     content: "";
     flex: 1;
     //color and typo
-    border-bottom: 3px solid $border-txt-color; //dont change it
+    border-bottom: $border-height solid $border-txt-color; //dont change it
   }
 
   .fancy_divider_content {
@@ -38,13 +38,21 @@
 }
 
 .fancy--divider--primary {
-  @include fancy--divider($primary-300);
+  @include fancy--divider(3px, $primary-300);
+}
+
+.fancy--divider--primary--700 {
+  @include fancy--divider(1.5px, $primary-700);
 }
 
 .fancy--divider--secondary {
-  @include fancy--divider($secondary-300);
+  @include fancy--divider(3px, $secondary-300);
+}
+
+.fancy--divider--secondary--700 {
+  @include fancy--divider(1.5px, $secondary-700);
 }
 
 .fancy--divider--neutral {
-  @include fancy--divider($neutral-50);
+  @include fancy--divider(3px, $neutral-50);
 }
