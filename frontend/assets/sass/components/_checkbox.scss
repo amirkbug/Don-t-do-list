@@ -1,7 +1,7 @@
 @use "../abstracts/index" as *;
 
 /* checkbox mixin */
-@mixin checkbox($border, $bg-color, $text-color, $rgba-glow) {
+@mixin checkbox($border, $bg-color, $text-color, $checked-bg, $rgba-glow) {
   //display
   display: inline-flex;
   justify-content: center;
@@ -56,7 +56,7 @@
 
   .checkbox__input:checked + .checkbox__box {
     //color and typo
-    background-color: $border;
+    background-color: $checked-bg;
     box-shadow: 0 0 6px $rgba-glow;
   }
 
@@ -70,10 +70,11 @@
 /* checkbox clases */
 .checkbox--primary {
   @include checkbox(
-    $primary-500,
+    $primary-300,
     $primary-50,
     $primary-300,
-    rgba(152, 16, 250, 0.5)
+    $primary-500,
+    rgba(255, 255, 255, 0.5)
   );
 }
 .checkbox--primary--700 {
@@ -81,16 +82,18 @@
     $primary-500,
     $primary-50,
     $primary-700,
+    $primary-500,
     rgba(255, 255, 255, 0.5)
   );
 }
 
 .checkbox--secoundry {
   @include checkbox(
-    $secondary-500,
-    $primary-50,
     $secondary-300,
-    rgba(79, 57, 246, 0.5)
+    $secondary-50,
+    $secondary-300,
+    $secondary-500,
+    rgba(255, 255, 255, 0.5)
   );
 }
 
@@ -99,6 +102,7 @@
     $secondary-500,
     $primary-50,
     $secondary-700,
+    $secondary-500,
     rgba(255, 255, 255, 0.5)
   );
 }

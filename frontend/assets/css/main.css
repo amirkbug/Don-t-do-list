@@ -47,8 +47,10 @@
 
 /*element*/
 .btn__icon {
+  display: flex;
   padding: 0.3rem;
   aspect-ratio: 3/3;
+  align-items: center;
 }
 
 /*buttons all type */
@@ -307,12 +309,11 @@
   gap: 0.313rem;
   flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   background-color: #faf5ff;
   color: #c27aff;
   border-radius: 13px;
-  border: 1.7px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease-out;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -322,13 +323,13 @@
   padding: 0.35rem 0.7rem;
 }
 .text--input--primary .input_content:hover {
-  border: 1.7px solid #c27aff;
+  border: 2px solid #c27aff;
 }
 .text--input--primary .input_content:hover .input_content_right {
   opacity: 60%;
 }
 .text--input--primary .input_content:focus-within {
-  border: 1.7px solid #c27aff;
+  border: 2px solid #c27aff;
 }
 .text--input--primary .input_content:focus-within .input_content_right {
   opacity: 100%;
@@ -402,12 +403,11 @@
   gap: 0.313rem;
   flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   background-color: #faf5ff;
   color: #9810fa;
   border-radius: 13px;
-  border: 1.7px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease-out;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -417,13 +417,13 @@
   padding: 0.35rem 0.7rem;
 }
 .text--input--primary--500 .input_content:hover {
-  border: 1.7px solid #9810fa;
+  border: 2px solid #9810fa;
 }
 .text--input--primary--500 .input_content:hover .input_content_right {
   opacity: 60%;
 }
 .text--input--primary--500 .input_content:focus-within {
-  border: 1.7px solid #9810fa;
+  border: 2px solid #9810fa;
 }
 .text--input--primary--500 .input_content:focus-within .input_content_right {
   opacity: 100%;
@@ -497,12 +497,11 @@
   gap: 0.313rem;
   flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   background-color: #eef2ff;
   color: #7c86ff;
   border-radius: 13px;
-  border: 1.7px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease-out;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -512,13 +511,13 @@
   padding: 0.35rem 0.7rem;
 }
 .text--input--secondary .input_content:hover {
-  border: 1.7px solid #7c86ff;
+  border: 2px solid #7c86ff;
 }
 .text--input--secondary .input_content:hover .input_content_right {
   opacity: 60%;
 }
 .text--input--secondary .input_content:focus-within {
-  border: 1.7px solid #7c86ff;
+  border: 2px solid #7c86ff;
 }
 .text--input--secondary .input_content:focus-within .input_content_right {
   opacity: 100%;
@@ -592,12 +591,11 @@
   gap: 0.313rem;
   flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   background-color: #eef2ff;
   color: #4f39f6;
   border-radius: 13px;
-  border: 1.7px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease-out;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -607,13 +605,13 @@
   padding: 0.35rem 0.7rem;
 }
 .text--input--secondary--500 .input_content:hover {
-  border: 1.7px solid #4f39f6;
+  border: 2px solid #4f39f6;
 }
 .text--input--secondary--500 .input_content:hover .input_content_right {
   opacity: 60%;
 }
 .text--input--secondary--500 .input_content:focus-within {
-  border: 1.7px solid #4f39f6;
+  border: 2px solid #4f39f6;
 }
 .text--input--secondary--500 .input_content:focus-within .input_content_right {
   opacity: 100%;
@@ -687,12 +685,11 @@
   gap: 0.313rem;
   flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   background-color: #f5f5f5;
   color: #0a0a0a;
   border-radius: 13px;
-  border: 1.7px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.3s ease-out;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -702,13 +699,13 @@
   padding: 0.35rem 0.7rem;
 }
 .text--input--natural .input_content:hover {
-  border: 1.7px solid #0a0a0a;
+  border: 2px solid #0a0a0a;
 }
 .text--input--natural .input_content:hover .input_content_right {
   opacity: 60%;
 }
 .text--input--natural .input_content:focus-within {
-  border: 1.7px solid #0a0a0a;
+  border: 2px solid #0a0a0a;
 }
 .text--input--natural .input_content:focus-within .input_content_right {
   opacity: 100%;
@@ -1449,7 +1446,7 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 6px;
-  border: 1.5px solid #9810fa;
+  border: 1.5px solid #c27aff;
   background-color: #f3e8ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
@@ -1468,7 +1465,7 @@
 }
 .checkbox--primary .checkbox__input:checked + .checkbox__box {
   background-color: #9810fa;
-  box-shadow: 0 0 6px rgba(152, 16, 250, 0.5);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 .checkbox--primary .checkbox__input:checked + .checkbox__box::before {
   opacity: 1;
@@ -1553,8 +1550,8 @@
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 6px;
-  border: 1.5px solid #4f39f6;
-  background-color: #f3e8ff;
+  border: 1.5px solid #7c86ff;
+  background-color: #e0e7ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   transition: all 150ms ease-in;
@@ -1572,7 +1569,7 @@
 }
 .checkbox--secoundry .checkbox__input:checked + .checkbox__box {
   background-color: #4f39f6;
-  box-shadow: 0 0 6px rgba(79, 57, 246, 0.5);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 .checkbox--secoundry .checkbox__input:checked + .checkbox__box::before {
   opacity: 1;
@@ -2867,6 +2864,146 @@
 .secondary--delete--task--modal footer div button:nth-of-type(2) {
   min-width: 0;
   width: 60%;
+}
+
+.login--form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 64.25rem;
+  height: 45.125rem;
+  justify-content: center;
+  border: 2px solid #e0e7ff;
+  border-radius: 10px;
+  background-color: #e9d4ff;
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+}
+.login--form .login--signup--form__content {
+  padding: 4.375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.login--form .login--signup--form__content a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #8200db;
+  text-decoration: none;
+}
+.login--form .login--signup--form__content .login--signup--form__logo {
+  aspect-ratio: 1/1;
+  width: 4.375rem;
+}
+.login--form .login--signup--form__content header {
+  color: #c27aff;
+}
+.login--form .login--signup--form__content header p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  margin: 0;
+  margin-bottom: 0.625rem;
+}
+.login--form .login--signup--form__content header span {
+  color: #8200db;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.login--form .login--signup--form__content button {
+  border-radius: 10px;
+}
+.login--form .login--signup--form__content footer {
+  display: flex;
+  justify-content: space-between;
+}
+.login--form .login--signup--form__content footer button {
+  width: 45%;
+  gap: 0.313rem;
+}
+.login--form .login--signup--form__image {
+  border-radius: 0px 10px 10px 0px;
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.signup--form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 64.25rem;
+  height: 45.125rem;
+  justify-content: center;
+  border: 2px solid #f3e8ff;
+  border-radius: 10px;
+  background-color: #c6d2ff;
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+}
+.signup--form .login--signup--form__content {
+  padding: 4.375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.signup--form .login--signup--form__content a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #432dd7;
+  text-decoration: none;
+}
+.signup--form .login--signup--form__content .login--signup--form__logo {
+  aspect-ratio: 1/1;
+  width: 4.375rem;
+}
+.signup--form .login--signup--form__content header {
+  color: #7c86ff;
+}
+.signup--form .login--signup--form__content header p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  margin: 0;
+  margin-bottom: 0.625rem;
+}
+.signup--form .login--signup--form__content header span {
+  color: #432dd7;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.signup--form .login--signup--form__content button {
+  border-radius: 10px;
+}
+.signup--form .login--signup--form__content footer {
+  display: flex;
+  justify-content: space-between;
+}
+.signup--form .login--signup--form__content footer button {
+  width: 45%;
+  gap: 0.313rem;
+}
+.signup--form .login--signup--form__image {
+  border-radius: 0px 10px 10px 0px;
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  object-fit: cover;
 }
 
 html,

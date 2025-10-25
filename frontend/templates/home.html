@@ -36,103 +36,304 @@
       </video>
     </div>
     <div
-      style="display: flex; flex-direction: column; padding: 20px; gap: 10px"
+      style="padding: 20px; display: flex; gap: 20px; flex-direction: column"
     >
-      <article class="secondary--delete--task--modal">
-        <video loop autoplay muted>
-          <source src="../assets/video/secondary/Blue.mp4" />
-        </video>
-        <header>
-          <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
-          <img src="../assets/icons/web-icon/exclamation.png" alt="" />
-          <p>Delete the task</p>
-        </header>
-        <section>
-          <p>
-            Are you sure you want to delete 3 selected tasks?
-            <br />
-            <em>This action cannot be undone.</em>
-          </p>
+      <!-- login/signup -->
+      <main class="login--form">
+        <div class="login--signup--form__content">
+          <img
+            class="login--signup--form__logo"
+            src="../assets/icons/dont-do-list-primary.svg"
+            alt="dont-do-list-primary"
+          />
+          <header>
+            <p>Login to your account.</p>
+            <span
+              >Don't have an account?<a style="padding-left: 5px" href="#"
+                >sign up here</a
+              ></span
+            >
+          </header>
+          <div style="padding: 0" class="text--input--primary">
+            <span class="input_name">Email</span>
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><i class="fa-regular fa-envelope"></i
+              ></span>
+              <input
+                type="text"
+                class="input_input"
+                placeholder="Example@gmail.com"
+              />
+            </div>
+          </div>
+          <div style="padding: 0" class="text--input--primary">
+            <span class="input_name">Password</span>
+            <div class="input_content">
+              <span class="input_icon_left">
+                <img
+                  style="width: 13px; padding-top: 3px"
+                  src="../assets/icons/web-icon/lock-primary.svg"
+                  alt="lock-icon"
+                />
+              </span>
+              <input
+                type="password"
+                type="text"
+                class="input_input"
+                placeholder="••••••••"
+              />
+              <div class="input_content_right">
+                <span style="padding-bottom: 1px" class="input_icon_right"
+                  ><i class="fa-regular fa-eye-slash"></i
+                ></span>
+              </div>
+            </div>
+          </div>
           <div
-            style="margin: 5px 0"
-            class="fancy--divider--secondary--700"
-          ></div>
-
-          <div>
-            <p>Tasks to be deleted (showing 3 of 7):</p>
-            <ul>
-              <li>Do your homework</li>
-              <li>Do dishes</li>
-              <li>Do some sketches</li>
-            </ul>
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <label class="checkbox--primary">
+              <input class="checkbox__input" type="checkbox" />
+              <span class="checkbox__box"></span>
+              <span class="checkbox__label">Remember me</span>
+            </label>
+            <a href="#">Forgot password?</a>
           </div>
-        </section>
-        <footer>
-          <label class="checkbox--secoundry--700">
-            <input class="checkbox__input" type="checkbox" />
-            <span class="checkbox__box"></span>
-            <span class="checkbox__label">don’t ask again</span>
-          </label>
-          <div>
-            <button class="btn btn--secondary">
-              <span>Cancel</span>
-            </button>
-            <button class="btn btn--destructive">
-              <span>Delete!</span>
-            </button>
+          <button class="btn btn--primary">
+            <span>Login</span>
+          </button>
+          <div style="margin: 0; flex: 0" class="fancy--divider--primary">
+            <span class="fancy_divider_content">Or continue with</span>
           </div>
-        </footer>
-      </article>
-
-      <article class="primary--delete--task--modal">
-        <video loop autoplay muted>
-          <source src="../assets/video/primary/purple.mp4" />
-        </video>
-        <header>
-          <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
-          <img src="../assets/icons/web-icon/exclamation.png" alt="" />
-          <p>Delete the task</p>
-        </header>
-        <section>
-          <p>
-            Are you sure you want to delete 3 selected tasks?
-            <br />
-            <em>This action cannot be undone.</em>
-          </p>
-          <div style="margin: 5px 0" class="fancy--divider--primary--700"></div>
-
-          <div>
-            <p>Tasks to be deleted (showing 3 of 7):</p>
-            <ul>
-              <li>Do your homework</li>
-              <li>Do dishes</li>
-              <li>Do some sketches</li>
-            </ul>
-          </div>
-        </section>
-        <footer>
-          <label class="checkbox--primary--700">
-            <input class="checkbox__input" type="checkbox" />
-            <span class="checkbox__box"></span>
-            <span class="checkbox__label">don’t ask again</span>
-          </label>
-          <div>
+          <footer>
             <button class="btn btn--primary">
-              <span>Cancel</span>
+              <span>Google</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/web-icon/Google-v2.svg"
+                  alt="Google-icon"
+              /></span>
             </button>
-            <button class="btn btn--destructive">
-              <span>Delete!</span>
+            <button class="btn btn--primary">
+              <span>Github</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/web-icon/Github-v2.svg"
+                  alt="github-icon"
+              /></span>
             </button>
+          </footer>
+        </div>
+        <div class="login--signup--form__image">
+          <img src="../assets/images/unsplash-images/login-img.jpg" alt="" />
+        </div>
+      </main>
+      <main class="signup--form">
+        <div class="login--signup--form__content">
+          <img
+            class="login--signup--form__logo"
+            src="../assets/icons/dont-do-list-alt.svg"
+            alt="dont-do-list-primary"
+          />
+          <header>
+            <p>Create new account.</p>
+            <span
+              >You have an account?<a style="padding-left: 5px" href="#"
+                >Login here</a
+              ></span
+            >
+          </header>
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Name</span>
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><i class="fa-regular fa-user"></i
+              ></span>
+              <input
+                type="text"
+                class="input_input"
+                placeholder="Jason anderson"
+              />
+            </div>
           </div>
-        </footer>
-      </article>
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Email</span>
+            <div class="input_content">
+              <span style="padding-top: 1px" class="input_icon_left"
+                ><i class="fa-solid fa-at"></i
+              ></span>
+              <input
+                type="text"
+                class="input_input"
+                placeholder="Example@gmail.com"
+              />
+            </div>
+          </div>
 
-      <!-- gradiant divider -->
-      <!-- <hr class="gradiant--divider--secondary" />
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Password</span>
+            <div class="input_content">
+              <span class="input_icon_left">
+                <img
+                  style="width: 13px; padding-top: 3px"
+                  src="../assets/icons/web-icon/lock-secondary.svg"
+                  alt="lock-icon"
+                />
+              </span>
+              <input
+                type="password"
+                type="text"
+                class="input_input"
+                placeholder="••••••••"
+              />
+              <div class="input_content_right">
+                <span style="padding-bottom: 1px" class="input_icon_right"
+                  ><i class="fa-regular fa-eye-slash"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <label class="checkbox--secoundry">
+              <input class="checkbox__input" type="checkbox" />
+              <span class="checkbox__box"></span>
+              <span class="checkbox__label">Remember me</span>
+            </label>
+          </div>
+          <button class="btn btn--secondary">
+            <span>Signup</span>
+          </button>
+          <div style="margin: 0; flex: 0" class="fancy--divider--secondary">
+            <span class="fancy_divider_content">Or continue with</span>
+          </div>
+          <footer>
+            <button class="btn btn--secondary">
+              <span>Google</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/web-icon/Google-v2.svg"
+                  alt="Google-icon"
+              /></span>
+            </button>
+            <button class="btn btn--secondary">
+              <span>Github</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/web-icon/Github-v2.svg"
+                  alt="github-icon"
+              /></span>
+            </button>
+          </footer>
+        </div>
+        <div class="login--signup--form__image">
+          <img src="../assets/images/unsplash-images/signup-img.jpg" alt="" />
+        </div>
+      </main>
+    </div>
+
+    <!-- delete task modal -->
+    <!-- <article class="secondary--delete--task--modal">
+      <video loop autoplay muted>
+        <source src="../assets/video/secondary/Blue.mp4" />
+      </video>
+      <header>
+        <img src="../assets/icons/web-icon/exclamation.png" alt="" />
+        <p>Delete the task</p>
+      </header>
+      <section>
+        <p>
+          Are you sure you want to delete 3 selected tasks?
+          <br />
+          <em>This action cannot be undone.</em>
+        </p>
+        <div style="margin: 5px 0" class="fancy--divider--secondary--700"></div>
+
+        <div>
+          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <ul>
+            <li>Do your homework</li>
+            <li>Do dishes</li>
+            <li>Do some sketches</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <label class="checkbox--secoundry--700">
+          <input class="checkbox__input" type="checkbox" />
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">don’t ask again</span>
+        </label>
+        <div>
+          <button class="btn btn--secondary">
+            <span>Cancel</span>
+          </button>
+          <button class="btn btn--destructive">
+            <span>Delete!</span>
+          </button>
+        </div>
+      </footer>
+    </article>
+
+    <article class="primary--delete--task--modal">
+      <video loop autoplay muted>
+        <source src="../assets/video/primary/purple.mp4" />
+      </video>
+      <header>
+        <img src="../assets/icons/web-icon/exclamation.png" alt="" />
+        <p>Delete the task</p>
+      </header>
+      <section>
+        <p>
+          Are you sure you want to delete 3 selected tasks?
+          <br />
+          <em>This action cannot be undone.</em>
+        </p>
+        <div style="margin: 5px 0" class="fancy--divider--primary--700"></div>
+
+        <div>
+          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <ul>
+            <li>Do your homework</li>
+            <li>Do dishes</li>
+            <li>Do some sketches</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <label class="checkbox--primary--700">
+          <input class="checkbox__input" type="checkbox" />
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">don’t ask again</span>
+        </label>
+        <div>
+          <button class="btn btn--primary">
+            <span>Cancel</span>
+          </button>
+          <button class="btn btn--destructive">
+            <span>Delete!</span>
+          </button>
+        </div>
+      </footer>
+    </article>  -->
+
+    <!-- gradiant divider -->
+    <!-- <hr class="gradiant--divider--secondary" />
     <hr class="gradiant--divider--primary" /> -->
 
-      <!-- about us cards -->
-      <!-- <section class="nonetoast--aboutcard">
+    <!-- about us cards -->
+    <!-- <section class="nonetoast--aboutcard">
       <img
         class="aboutus--card__image"
         src="/frontend/assets/images/vertical-nonetoast-logo/vertical changed copy.png"
@@ -230,10 +431,10 @@
         alt="dont do list primary icon"
         class="fancy_divider_icon"
       />
-    </div> -->
+    </div>  -->
 
-      <!-- trophy cards -->
-      <!-- <div style="display: flex; padding: 20px; gap: 20px">
+    <!-- trophy cards -->
+    <!-- <div style="display: flex; padding: 20px; gap: 20px">
       <div class="trophy--card--primary">
         <header class="trophy__header">
           <p>do 10 do tasks</p>
@@ -263,10 +464,10 @@
           <span>More info!</span>
         </button>
       </div>
-    </div> -->
+    </div>  -->
 
-      <!-- new--task--modals -->
-      <!-- <form class="new--task--modal--primary">
+    <!-- new--task--modals -->
+    <!-- <form class="new--task--modal--primary">
       <div class="new--task--modal__bg">
         <video autoplay muted loop>
           <source
@@ -408,8 +609,8 @@
       </footer>
     </form> -->
 
-      <!-- tasks -->
-      <!-- <div style="display: flex; flex-direction: row">
+    <!-- tasks -->
+    <!-- <div style="display: flex; flex-direction: row">
       <section class="primary--tasks">
         <button class="tasks__btn__top"></button>
 
@@ -612,8 +813,8 @@
       </section>
     </div> -->
 
-      <!-- charts -->
-      <!-- <div style="display: flex">
+    <!-- charts -->
+    <!-- <div style="display: flex">
       <div class="chart--primary">
         <header class="chart__header">
           <p>do tasks that completed</p>
@@ -637,10 +838,10 @@
         </header>
         <canvas width="334" height="219"> </canvas>
       </div>
-    </div> -->
+    </div>  -->
 
-      <!-- navbar -->
-      <!-- <div style="display: flex; gap: 10px">
+    <!-- navbar -->
+    <!-- <div style="display: flex; gap: 10px">
       <nav class="navbar">
         <a href="/about" class="navbar__item" data-label="Info">
           <i class="fa-solid fa-circle-info fa-2xl"></i>
@@ -654,8 +855,8 @@
       </nav>
     </div> -->
 
-      <!-- fancy divider -->
-      <!-- <div style="display: flex; gap: 10px">
+    <!-- fancy divider -->
+    <!-- <div style="display: flex; gap: 10px">
       <div class="fancy--divider--primary">
         <span class="fancy_divider_content">OR</span>
       </div>
@@ -673,8 +874,8 @@
       </div>
     </div> -->
 
-      <!-- checkboxes -->
-      <!-- <div style="display: flex; flex-direction: row; gap: 10px; padding: 10px">
+    <!-- checkboxes -->
+    <!-- <div style="display: flex; flex-direction: row; gap: 10px; padding: 10px">
       <label class="checkbox--primary">
         <input class="checkbox__input" type="checkbox" checked />
         <span class="checkbox__box"></span>
@@ -687,8 +888,8 @@
         <span class="checkbox__label">click here</span>
       </label>
     </div> -->
-      <!-- info--cards -->
-      <!-- <div style="display: flex; flex-direction: row; gap: 30px; padding: 10px">
+    <!-- info--cards -->
+    <!-- <div style="display: flex; flex-direction: row; gap: 30px; padding: 10px">
       <section class="primary--info--card">
         <div class="card_top_content">
           <header class="card_header">Do tasks that completed</header>
@@ -736,8 +937,8 @@
       </section>
     </div> -->
 
-      <!-- input test -->
-      <!-- <div style="display: flex; flex-direction: row;">
+    <!-- input test -->
+    <!-- <div style="display: flex; flex-direction: row;">
       
 
       <div class="text--input--secoundry">
@@ -779,8 +980,8 @@
         <p class="input_description">Place a text here for description</p>
       </div> -->
 
-      <!-- calender -->
-      <!-- <div style="display: flex; gap: 10px; padding: 20px; width: 100vh">
+    <!-- calender -->
+    <!-- <div style="display: flex; gap: 10px; padding: 20px; width: 100vh">
       <div class="calendar">
         <div class="calendar--primary">
           <header class="calendar_header">
@@ -831,8 +1032,8 @@
         </div>
       </div> -->
 
-      <!-- button test -->
-      <!-- <p class="regular-16">salam</p>
+    <!-- button test -->
+    <!-- <p class="regular-16">salam</p>
       <p class="semibold-16">salam</p>
 
 
@@ -867,8 +1068,7 @@
         <span class="btn__icon"><i class="fa-brands fa-font-awesome"></i></span>
        </button> -->
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script type="module" src="../assets/js/main.js"></script>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../assets/js/main.js"></script>
   </body>
 </html>

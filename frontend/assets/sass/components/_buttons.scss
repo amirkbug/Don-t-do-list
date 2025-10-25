@@ -42,8 +42,10 @@
 
 /*element*/
 .btn__icon {
+  display: flex;
   padding: 0.3rem;
   aspect-ratio: 3 / 3;
+  align-items: center;
 }
 
 /*buttons all type */
