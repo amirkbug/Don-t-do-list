@@ -9,37 +9,22 @@
   gap: 0;
   z-index: 1;
   //sizing
-  padding: 20px;
-  width: 500px;
+  padding: 1.25rem; //20px
+  width: 31.25rem; //500px
 
   .tasks__btn__top {
     //display
     z-index: 10000;
-    transform: translateY(60px);
+    transform: translateY(3.75rem); //60px
     //sizing
-    height: 70px;
-    width: 223px;
+    height: 4.375rem; //70px
+    width: 13.9375rem; //223px
     //color and typo
     border-radius: 100px 0 100px 100px;
     border: 0;
     background-color: $btn-row-bg;
     transition: all 1s ease-in-out;
     box-shadow: $shadow-small;
-
-    /* first design (circle in the btn)*/
-    // -webkit-mask: radial-gradient(
-    //   circle 20px at center,
-    //   transparent 20px,
-    //   black 21px
-    // );
-    // -webkit-mask-repeat: no-repeat;
-    // -webkit-mask-position: center;
-    // -webkit-mask-size: cover;
-
-    // mask: radial-gradient(circle 20px at center, transparent 20px, black 21px);
-    // mask-repeat: no-repeat;
-    // mask-position: center;
-    // mask-size: cover;
 
     /* the circle in the btn */
     &::before {
@@ -50,8 +35,8 @@
       left: 50%;
       z-index: 1;
       //sizing
-      width: 40px;
-      height: 40px;
+      width: 2.5rem; //40px
+      height: 2.5rem; //40px
       transform: translate(-50%, -50%);
       //color and typo
       background-color: rgba($circle-btn-bg, 0.5);
@@ -60,7 +45,7 @@
 
     &:hover {
       //sizing
-      transform: translateY(-10px);
+      transform: translateY(-0.625rem); //-10px
     }
   }
 
@@ -69,11 +54,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem; //10px
     //sizing
-    width: 414px;
-    height: 515px;
-    padding: 50px 20px;
+    width: 25.875rem; //414px
+    height: 32.1875rem; //515px
+    padding: 3.125rem 1.25rem; //50px 20px
     //color and typo
     background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
     background-size: 100% 100%;
@@ -98,20 +83,21 @@
         justify-items: center;
 
         //sizing
-        padding: 50px 5px 0 5px;
+        padding: 3.125rem 0.3125rem 0 0.3125rem; //50px 5px 0 5px
         //color and typo
         @include typography($weight-semi-bold, $size-13);
         color: $header-txt-color;
       }
     }
+
     .tasks__column {
       //display
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 40px;
+      gap: 2.5rem; //40px
       //sizing
-      padding: 5px;
+      padding: 0.3125rem; //5px
       max-height: 390px;
       overflow-y: auto;
       overflow-x: hidden;
@@ -128,7 +114,7 @@
         justify-items: center;
         text-align: center;
         //sizing
-        padding: 5px;
+        padding: 0.3125rem; //5px
         //color an typo
         background-color: $btn-row-bg;
         border-radius: 6px;
@@ -137,7 +123,7 @@
         transition: all 300ms ease-out;
         &.tasks__row span:first-child {
           //sizing
-          padding: 2px;
+          padding: 0.125rem; //2px
         }
         &:hover {
           //color and typo
@@ -152,9 +138,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 3.75rem; //60px
     //sizing
-    margin-top: 20px;
+    margin-top: 1.25rem; //20px
 
     .tasks__plus__btn,
     .tasks__minus__btn {
@@ -181,20 +167,20 @@
       }
       &.tasks__plus__btn:hover {
         //display
-        transform: translateX(-40px);
+        transform: translateX(-2.5rem); //-40px
       }
       &.tasks__plus__btn:hover::after {
         //display
-        transform: translateX(50px);
+        transform: translateX(3.125rem); //50px
         opacity: 1;
       }
       &.tasks__minus__btn:hover {
         //display
-        transform: translateX(-40px);
+        transform: translateX(-2.5rem); //-40px
       }
       &.tasks__minus__btn:hover::after {
         //display
-        transform: translateX(57px);
+        transform: translateX(3.5625rem); //57px
         opacity: 1;
       }
     }
@@ -207,4 +193,9 @@
 
 .secondary--tasks {
   @include tasks($secondary-300, $secondary-100, $secondary-50, $secondary-400);
+}
+
+.primary--tasks,
+.secondary--tasks {
+  transform: scale(0.95);
 }

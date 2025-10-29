@@ -1,12 +1,12 @@
 @use "../abstracts/index" as *;
 
 /* checkbox mixin */
-@mixin checkbox($border, $bg-color, $text-color, $checked-bg, $rgba-glow) {
+@mixin checkbox($border, $bg-color, $text-color, $rgba-glow) {
   //display
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.3125rem;
+  gap: 5px;
   cursor: pointer;
 
   .checkbox__label {
@@ -20,6 +20,7 @@
     position: absolute;
     //color and typo
     opacity: 0;
+    cursor: pointer;
   }
 
   .checkbox__box {
@@ -28,21 +29,21 @@
     justify-content: center;
     align-items: center;
     //spacing
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
     //color and typo
     border-radius: 6px;
-    border: 1.5px solid $border;
+    border: 1px solid $border;
     background-color: $bg-color;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     transition: all 150ms ease-in;
+    cursor: pointer;
 
     &:active {
       //spacing
       transform: scale(0.95);
     }
-
     &::before {
       //color and typo
       content: "\f00c";
@@ -56,7 +57,7 @@
 
   .checkbox__input:checked + .checkbox__box {
     //color and typo
-    background-color: $checked-bg;
+    background-color: $border;
     box-shadow: 0 0 6px $rgba-glow;
   }
 
@@ -66,43 +67,21 @@
     transform: scale(1);
   }
 }
-
 /* checkbox clases */
 .checkbox--primary {
   @include checkbox(
-    $primary-300,
-    $primary-50,
-    $primary-300,
-    $primary-500,
-    rgba(255, 255, 255, 0.5)
-  );
-}
-.checkbox--primary--700 {
-  @include checkbox(
     $primary-500,
     $primary-50,
-    $primary-700,
-    $primary-500,
-    rgba(255, 255, 255, 0.5)
+    $primary-300,
+    rgba(152, 16, 250, 0.5)
   );
 }
 
 .checkbox--secoundry {
   @include checkbox(
-    $secondary-300,
-    $secondary-50,
-    $secondary-300,
-    $secondary-500,
-    rgba(255, 255, 255, 0.5)
-  );
-}
-
-.checkbox--secoundry--700 {
-  @include checkbox(
     $secondary-500,
     $primary-50,
-    $secondary-700,
-    $secondary-500,
-    rgba(255, 255, 255, 0.5)
+    $secondary-300,
+    rgba(79, 57, 246, 0.5)
   );
 }

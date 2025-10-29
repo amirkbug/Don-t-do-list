@@ -1421,10 +1421,10 @@
 /* checkbox mixin */
 /* checkbox clases */
 .checkbox--primary {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.3125rem;
+  gap: 5px;
   cursor: pointer;
 }
 .checkbox--primary .checkbox__label {
@@ -1438,19 +1438,21 @@
 .checkbox--primary .checkbox__input {
   position: absolute;
   opacity: 0;
+  cursor: pointer;
 }
 .checkbox--primary .checkbox__box {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
   border-radius: 6px;
-  border: 1.5px solid #c27aff;
+  border: 1px solid #9810fa;
   background-color: #f3e8ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   transition: all 150ms ease-in;
+  cursor: pointer;
 }
 .checkbox--primary .checkbox__box:active {
   transform: scale(0.95);
@@ -1465,70 +1467,18 @@
 }
 .checkbox--primary .checkbox__input:checked + .checkbox__box {
   background-color: #9810fa;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 6px rgba(152, 16, 250, 0.5);
 }
 .checkbox--primary .checkbox__input:checked + .checkbox__box::before {
   opacity: 1;
   transform: scale(1);
 }
 
-.checkbox--primary--700 {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3125rem;
-  cursor: pointer;
-}
-.checkbox--primary--700 .checkbox__label {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 0.812rem;
-  line-height: 1.43;
-  font-style: normal;
-  color: #6e11b0;
-}
-.checkbox--primary--700 .checkbox__input {
-  position: absolute;
-  opacity: 0;
-}
-.checkbox--primary--700 .checkbox__box {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 6px;
-  border: 1.5px solid #9810fa;
-  background-color: #f3e8ff;
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  transition: all 150ms ease-in;
-}
-.checkbox--primary--700 .checkbox__box:active {
-  transform: scale(0.95);
-}
-.checkbox--primary--700 .checkbox__box::before {
-  content: "\f00c";
-  opacity: 0.1;
-  font-size: 15px;
-  color: #f5f5f5;
-  transform: scale(0.5);
-  transition: all 150ms ease-in;
-}
-.checkbox--primary--700 .checkbox__input:checked + .checkbox__box {
-  background-color: #9810fa;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-}
-.checkbox--primary--700 .checkbox__input:checked + .checkbox__box::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .checkbox--secoundry {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.3125rem;
+  gap: 5px;
   cursor: pointer;
 }
 .checkbox--secoundry .checkbox__label {
@@ -1542,19 +1492,21 @@
 .checkbox--secoundry .checkbox__input {
   position: absolute;
   opacity: 0;
+  cursor: pointer;
 }
 .checkbox--secoundry .checkbox__box {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
   border-radius: 6px;
-  border: 1.5px solid #7c86ff;
-  background-color: #e0e7ff;
+  border: 1px solid #4f39f6;
+  background-color: #f3e8ff;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   transition: all 150ms ease-in;
+  cursor: pointer;
 }
 .checkbox--secoundry .checkbox__box:active {
   transform: scale(0.95);
@@ -1569,61 +1521,9 @@
 }
 .checkbox--secoundry .checkbox__input:checked + .checkbox__box {
   background-color: #4f39f6;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 6px rgba(79, 57, 246, 0.5);
 }
 .checkbox--secoundry .checkbox__input:checked + .checkbox__box::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.checkbox--secoundry--700 {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3125rem;
-  cursor: pointer;
-}
-.checkbox--secoundry--700 .checkbox__label {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 0.812rem;
-  line-height: 1.43;
-  font-style: normal;
-  color: #372aac;
-}
-.checkbox--secoundry--700 .checkbox__input {
-  position: absolute;
-  opacity: 0;
-}
-.checkbox--secoundry--700 .checkbox__box {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 6px;
-  border: 1.5px solid #4f39f6;
-  background-color: #f3e8ff;
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  transition: all 150ms ease-in;
-}
-.checkbox--secoundry--700 .checkbox__box:active {
-  transform: scale(0.95);
-}
-.checkbox--secoundry--700 .checkbox__box::before {
-  content: "\f00c";
-  opacity: 0.1;
-  font-size: 15px;
-  color: #f5f5f5;
-  transform: scale(0.5);
-  transition: all 150ms ease-in;
-}
-.checkbox--secoundry--700 .checkbox__input:checked + .checkbox__box {
-  background-color: #4f39f6;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-}
-.checkbox--secoundry--700 .checkbox__input:checked + .checkbox__box::before {
   opacity: 1;
   transform: scale(1);
 }
@@ -1825,20 +1725,19 @@
   align-items: center;
   gap: 0;
   z-index: 1;
-  padding: 20px;
-  width: 500px;
+  padding: 1.25rem;
+  width: 31.25rem;
 }
 .primary--tasks .tasks__btn__top {
   z-index: 10000;
-  transform: translateY(60px);
-  height: 70px;
-  width: 223px;
+  transform: translateY(3.75rem);
+  height: 4.375rem;
+  width: 13.9375rem;
   border-radius: 100px 0 100px 100px;
   border: 0;
   background-color: #c27aff;
   transition: all 1s ease-in-out;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
-  /* first design (circle in the btn)*/
   /* the circle in the btn */
 }
 .primary--tasks .tasks__btn__top::before {
@@ -1847,23 +1746,23 @@
   top: 50%;
   left: 50%;
   z-index: 1;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   transform: translate(-50%, -50%);
   background-color: rgba(233, 212, 255, 0.5);
   border-radius: 50%;
 }
 .primary--tasks .tasks__btn__top:hover {
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
 }
 .primary--tasks .tasks__body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
-  width: 414px;
-  height: 515px;
-  padding: 50px 20px;
+  gap: 0.625rem;
+  width: 25.875rem;
+  height: 32.1875rem;
+  padding: 3.125rem 1.25rem;
   background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
   background-size: 100% 100%;
   background-position: center;
@@ -1883,7 +1782,7 @@
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  padding: 50px 5px 0 5px;
+  padding: 3.125rem 0.3125rem 0 0.3125rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.812rem;
@@ -1895,8 +1794,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
-  padding: 5px;
+  gap: 2.5rem;
+  padding: 0.3125rem;
   max-height: 390px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1910,7 +1809,7 @@
   align-items: center;
   justify-items: center;
   text-align: center;
-  padding: 5px;
+  padding: 0.3125rem;
   background-color: #c27aff;
   border-radius: 6px;
   font-family: "Poppins", sans-serif;
@@ -1922,7 +1821,7 @@
   transition: all 300ms ease-out;
 }
 .primary--tasks .tasks__body .tasks__column .tasks__row.tasks__row span:first-child {
-  padding: 2px;
+  padding: 0.125rem;
 }
 .primary--tasks .tasks__body .tasks__column .tasks__row:hover {
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
@@ -1931,8 +1830,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
-  margin-top: 20px;
+  gap: 3.75rem;
+  margin-top: 1.25rem;
 }
 .primary--tasks .tasks__footer .tasks__plus__btn,
 .primary--tasks .tasks__footer .tasks__minus__btn {
@@ -1962,20 +1861,20 @@
 }
 .primary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover,
 .primary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover {
-  transform: translateX(-40px);
+  transform: translateX(-2.5rem);
 }
 .primary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover::after,
 .primary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover::after {
-  transform: translateX(50px);
+  transform: translateX(3.125rem);
   opacity: 1;
 }
 .primary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover,
 .primary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover {
-  transform: translateX(-40px);
+  transform: translateX(-2.5rem);
 }
 .primary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover::after,
 .primary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover::after {
-  transform: translateX(57px);
+  transform: translateX(3.5625rem);
   opacity: 1;
 }
 
@@ -1986,20 +1885,19 @@
   align-items: center;
   gap: 0;
   z-index: 1;
-  padding: 20px;
-  width: 500px;
+  padding: 1.25rem;
+  width: 31.25rem;
 }
 .secondary--tasks .tasks__btn__top {
   z-index: 10000;
-  transform: translateY(60px);
-  height: 70px;
-  width: 223px;
+  transform: translateY(3.75rem);
+  height: 4.375rem;
+  width: 13.9375rem;
   border-radius: 100px 0 100px 100px;
   border: 0;
   background-color: #7c86ff;
   transition: all 1s ease-in-out;
   box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
-  /* first design (circle in the btn)*/
   /* the circle in the btn */
 }
 .secondary--tasks .tasks__btn__top::before {
@@ -2008,23 +1906,23 @@
   top: 50%;
   left: 50%;
   z-index: 1;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   transform: translate(-50%, -50%);
   background-color: rgba(198, 210, 255, 0.5);
   border-radius: 50%;
 }
 .secondary--tasks .tasks__btn__top:hover {
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
 }
 .secondary--tasks .tasks__body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
-  width: 414px;
-  height: 515px;
-  padding: 50px 20px;
+  gap: 0.625rem;
+  width: 25.875rem;
+  height: 32.1875rem;
+  padding: 3.125rem 1.25rem;
   background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
   background-size: 100% 100%;
   background-position: center;
@@ -2044,7 +1942,7 @@
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  padding: 50px 5px 0 5px;
+  padding: 3.125rem 0.3125rem 0 0.3125rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.812rem;
@@ -2056,8 +1954,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
-  padding: 5px;
+  gap: 2.5rem;
+  padding: 0.3125rem;
   max-height: 390px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -2071,7 +1969,7 @@
   align-items: center;
   justify-items: center;
   text-align: center;
-  padding: 5px;
+  padding: 0.3125rem;
   background-color: #7c86ff;
   border-radius: 6px;
   font-family: "Poppins", sans-serif;
@@ -2083,7 +1981,7 @@
   transition: all 300ms ease-out;
 }
 .secondary--tasks .tasks__body .tasks__column .tasks__row.tasks__row span:first-child {
-  padding: 2px;
+  padding: 0.125rem;
 }
 .secondary--tasks .tasks__body .tasks__column .tasks__row:hover {
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
@@ -2092,8 +1990,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
-  margin-top: 20px;
+  gap: 3.75rem;
+  margin-top: 1.25rem;
 }
 .secondary--tasks .tasks__footer .tasks__plus__btn,
 .secondary--tasks .tasks__footer .tasks__minus__btn {
@@ -2123,21 +2021,26 @@
 }
 .secondary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover,
 .secondary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover {
-  transform: translateX(-40px);
+  transform: translateX(-2.5rem);
 }
 .secondary--tasks .tasks__footer .tasks__plus__btn.tasks__plus__btn:hover::after,
 .secondary--tasks .tasks__footer .tasks__minus__btn.tasks__plus__btn:hover::after {
-  transform: translateX(50px);
+  transform: translateX(3.125rem);
   opacity: 1;
 }
 .secondary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover,
 .secondary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover {
-  transform: translateX(-40px);
+  transform: translateX(-2.5rem);
 }
 .secondary--tasks .tasks__footer .tasks__plus__btn.tasks__minus__btn:hover::after,
 .secondary--tasks .tasks__footer .tasks__minus__btn.tasks__minus__btn:hover::after {
-  transform: translateX(57px);
+  transform: translateX(3.5625rem);
   opacity: 1;
+}
+
+.primary--tasks,
+.secondary--tasks {
+  transform: scale(0.95);
 }
 
 .video--bg {
@@ -2500,7 +2403,6 @@
   justify-content: center;
   align-content: center;
   gap: 0.625rem;
-  padding: 0.625rem;
 }
 .nonetoast--aboutcard .aboutus--card__image {
   border: 2px solid #f5f5f5;
@@ -2571,7 +2473,6 @@
   justify-content: center;
   align-content: center;
   gap: 0.625rem;
-  padding: 0.625rem;
 }
 .dont-do-list--aboutcard .aboutus--card__image {
   border: 2px solid #f5f5f5;
@@ -3049,6 +2950,14 @@
 }
 .header #header__right__icon:active {
   text-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1), 0px 4px 6px rgba(16, 24, 40, 0.1);
+}
+
+.vertical-divider {
+  border: none;
+  width: 0.125rem;
+  margin: 0 0.625rem;
+  color: black;
+  background-color: black;
 }
 
 html,
@@ -3637,6 +3546,88 @@ small.extrasmall-10 {
   font-size: 0.625rem;
   line-height: 1.43;
   font-style: normal;
+}
+
+.aboutus-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 2.5rem;
+  border-radius: 0.625rem;
+  background-color: #f5f5f5;
+}
+.aboutus-footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+}
+.aboutus-footer div p {
+  text-align: center;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: black;
+}
+.aboutus-footer div nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+}
+.aboutus-footer div nav span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  background-color: #737373;
+  border-radius: 100%;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  color: #f5f5f5;
+}
+.aboutus-footer div nav span:hover.instagram:hover {
+  background-color: #e1306c;
+}
+.aboutus-footer div nav span:hover.linkedin:hover {
+  background-color: #0a66c2;
+}
+.aboutus-footer div nav span:hover.youtube:hover {
+  background-color: #ff0000;
+}
+.aboutus-footer div nav span:hover.telegram:hover {
+  background-color: #0088cc;
+}
+.aboutus-footer .aboutus--footer__description {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: black;
+}
+
+.aboutus--footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.25rem;
+  background-color: rgb(25, 25, 25);
+  border: 1px solid #f5f5f5;
+  border-radius: 0.625rem;
+}
+.aboutus--footer__container .aboutus--footer__logo {
+  width: 5rem;
+  aspect-ratio: 1/1;
 }
 
 body {
