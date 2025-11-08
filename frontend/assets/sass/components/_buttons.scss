@@ -63,6 +63,11 @@
   }
   //secoundry(dont) button(txt 500 , bg 100)
   &--secondary--100 {
+    background-color: $secondary-10;
+    color: $secondary-500;
+    @include buttons-states($secondary-300, $secondary-50);
+  }
+  &--secondary--200 {
     background-color: $secondary-100;
     color: $secondary-500;
     @include buttons-states($secondary-300, $secondary-50);
@@ -73,7 +78,13 @@
     color: $primary-300;
     @include buttons-states($primary-300, $primary-50);
   }
+
   &--primary--100 {
+    background-color: $primary-10;
+    color: $primary-500;
+    @include buttons-states($primary-300, $primary-50);
+  }
+  &--primary--200 {
     background-color: $primary-100;
     color: $primary-500;
     @include buttons-states($primary-300, $primary-50);

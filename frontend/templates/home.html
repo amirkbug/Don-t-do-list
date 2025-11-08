@@ -35,13 +35,17 @@
   <body style="background-color: rgb(79, 79, 79)">
     <!-- background -->
     <div class="video--bg">
-      <video class="video--slower" autoplay muted loop>
+      <video autoplay muted loop>
         <source
           src="/frontend/assets/video/primary-secondary/Last one i rendred.mp4"
           type="video/mp4"
         />
       </video>
     </div>
+
+    <!-- blur background -->
+    <div class="blur--background--0-2"></div>
+    <div class="blur--background--0-1"></div>
 
     <!-- header -->
     <section class="header">
@@ -50,37 +54,33 @@
         <i class="fa-solid fa-home"></i>
       </header>
 
-      <button
-        style="padding: 0 0; margin: 0 0; border: none"
-        class="btn btn--video--bg"
-      >
-        <div class="btn__container">
-          <div class="btn__text">
-            <span>Login / Signup</span>
-            <span class="btn__icon">
-              <i class="fa-solid fa-user"></i>
-            </span>
+      <a href="login.html">
+        <button
+          style="padding: 0 0; margin: 0 0; border: none"
+          class="btn btn--video--bg"
+        >
+          <div class="btn__container">
+            <div class="btn__text">
+              <span>Login / Signup</span>
+              <span class="btn__icon">
+                <i class="fa-solid fa-user"></i>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <video class="btn__video" muted loop autoplay playsinline>
-          <source
-            src="../assets/video/primary-secondary/Last one i rendred.mp4"
-            type="video/mp4"
-          />
-          your browser doesent support video
-        </video>
-      </button>
+          <video class="btn__video" muted loop autoplay playsinline>
+            <source
+              src="../assets/video/primary-secondary/Last one i rendred.mp4"
+              type="video/mp4"
+            />
+            your browser doesent support video
+          </video>
+        </button>
+      </a>
     </section>
 
     <!-- tasks -->
-    <div
-      style="
-        display: flex;
-        justify-content: space-between;
-        padding: 0 14.375rem;
-      "
-    >
+    <div class="tasks__container">
       <section class="primary--tasks">
         <button class="tasks__btn__top"></button>
 
@@ -171,10 +171,18 @@
           </div>
         </div>
         <footer class="tasks__footer">
-          <button class="tasks__plus__btn" data-label="Add task">
+          <button
+            id="openModalAddDo"
+            class="tasks__plus__btn"
+            data-label="Add task"
+          >
             <i class="fa-solid fa-plus fa-3x"></i>
           </button>
-          <button class="tasks__minus__btn" data-label="Delete task">
+          <button
+            id="openDeleteModalDo"
+            class="tasks__minus__btn"
+            data-label="Delete task"
+          >
             <i class="fa-solid fa-minus fa-3x"></i>
           </button>
         </footer>
@@ -273,26 +281,354 @@
           </div>
         </div>
         <footer class="tasks__footer">
-          <button class="tasks__plus__btn" data-label="Add task">
+          <button
+            id="openModalAddDont"
+            class="tasks__plus__btn"
+            data-label="Add task"
+          >
             <i class="fa-solid fa-plus fa-3x"></i>
           </button>
-          <button class="tasks__minus__btn" data-label="Delete task">
+          <button
+            id="openDeleteModalDont"
+            class="tasks__minus__btn"
+            data-label="Delete task"
+          >
             <i class="fa-solid fa-minus fa-3x"></i>
           </button>
         </footer>
       </section>
     </div>
 
+    <!-- new task modal -->
+    <form class="new--task--modal--primary">
+      <div class="new--task--modal__bg">
+        <video autoplay muted loop>
+          <source
+            src="/frontend/assets/video/primary/purple.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <header class="new--task--modal__header">
+        <h3>Make a new do-task</h3>
+        <p>
+          Create a task you want to accomplish. Add details, set deadlines, and
+          keep track of your progress.
+        </p>
+        <div class="fancy--divider--primary"></div>
+      </header>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Name:</span>
+        <div class="input_content">
+          <input
+            maxlength="50"
+            id="nameInput"
+            type="text"
+            class="input_input"
+            placeholder="Type here"
+          />
+          <div class="input_content_right">
+            <span id="nameInputTxt" class="texts">50</span>
+          </div>
+        </div>
+        <p class="input_description">Place a text here for description</p>
+      </div>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Start date :</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span
+              style="cursor: pointer"
+              id="openCalendarDo"
+              class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <div class="text--input--primary--500">
+        <span class="input_name">Finish date:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span
+              style="cursor: pointer"
+              id="openCalendarDo"
+              class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <footer class="new--task--modal__footer">
+        <button
+          id="closeModalAddDo"
+          type="button"
+          class="btn btn--primary--100"
+        >
+          <span>cancel</span>
+        </button>
+
+        <button id="TaskAddModalDo" type="button" class="btn btn--primary--100">
+          <span>ok</span>
+        </button>
+      </footer>
+    </form>
+
+    <form class="new--task--modal--secoundry">
+      <div class="new--task--modal__bg">
+        <video autoplay muted loop>
+          <source
+            src="/frontend/assets/video/secondary/Blue.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <header class="new--task--modal__header">
+        <h3>Make a new do-task</h3>
+        <p>
+          Create a task you want to accomplish. Add details, set deadlines, and
+          keep track of your progress.
+        </p>
+        <div class="fancy--divider--secondary"></div>
+      </header>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Name:</span>
+        <div class="input_content">
+          <input
+            id="nameInput"
+            maxlength="50"
+            type="text"
+            class="input_input"
+            placeholder="Type here"
+          />
+          <div class="input_content_right">
+            <span id="nameInputTxt" class="texts">50</span>
+          </div>
+        </div>
+        <p class="input_description">Place a text here for description</p>
+      </div>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Start date :</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span
+              style="cursor: pointer"
+              id="openCalendarDont"
+              class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <div class="text--input--secondary--500">
+        <span class="input_name">Finish date:</span>
+        <div class="input_content">
+          <input type="text" class="input_input" placeholder="DD/MM/YYY" />
+          <div class="input_content_right">
+            <span
+              style="cursor: pointer"
+              id="openCalendarDont"
+              class="input_icon_right"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+        </div>
+        <p class="input_description">
+          Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
+        </p>
+      </div>
+
+      <footer class="new--task--modal__footer">
+        <button
+          id="closeModalAddDont"
+          type="button"
+          class="btn btn--secondary--100"
+        >
+          <span>cancel</span>
+        </button>
+
+        <button type="button" class="btn btn--secondary--100">
+          <span>ok</span>
+        </button>
+      </footer>
+    </form>
+
+    <!-- delete task modal -->
+    <article class="secondary--delete--task--modal">
+      <video loop autoplay muted>
+        <source src="../assets/video/secondary/Blue.mp4" />
+      </video>
+      <header>
+        <img src="../assets/icons/other/exclamation.png" alt="" />
+        <p>Delete the task</p>
+      </header>
+      <section>
+        <p>
+          Are you sure you want to delete 3 selected tasks?
+          <br />
+          <em>This action cannot be undone.</em>
+        </p>
+        <div style="margin: 5px 0" class="fancy--divider--secondary--700"></div>
+
+        <div>
+          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <ul>
+            <li>Do your homework</li>
+            <li>Do dishes</li>
+            <li>Do some sketches</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <label class="checkbox--secoundry">
+          <input class="checkbox__input" type="checkbox" />
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">don’t ask again</span>
+        </label>
+        <div>
+          <button id="closeDeleteModalDont" class="btn btn--secondary">
+            <span>Cancel</span>
+          </button>
+          <button class="btn btn--destructive">
+            <span>Delete!</span>
+          </button>
+        </div>
+      </footer>
+    </article>
+
+    <article class="primary--delete--task--modal">
+      <video loop autoplay muted>
+        <source src="../assets/video/primary/purple.mp4" />
+      </video>
+      <header>
+        <img src="../assets/icons/other/exclamation.png" alt="" />
+        <p>Delete the task</p>
+      </header>
+      <section>
+        <p>
+          Are you sure you want to delete 3 selected tasks?
+          <br />
+          <em>This action cannot be undone.</em>
+        </p>
+        <div style="margin: 5px 0" class="fancy--divider--primary--700"></div>
+
+        <div>
+          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <ul>
+            <li>Do your homework</li>
+            <li>Do dishes</li>
+            <li>Do some sketches</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <label class="checkbox--primary">
+          <input class="checkbox__input" type="checkbox" />
+          <span class="checkbox__box"></span>
+          <span class="checkbox__label">don’t ask again</span>
+        </label>
+        <div>
+          <button id="closeDeleteModalDo" class="btn btn--primary">
+            <span>Cancel</span>
+          </button>
+          <button class="btn btn--destructive">
+            <span>Delete!</span>
+          </button>
+        </div>
+      </footer>
+    </article>
+
+    <!-- calender -->
+    <div class="calendar__wrapper">
+      <div class="calendar">
+        <div class="calendar--primary">
+          <header class="calendar_header">
+            <div class="calendar_month_year">
+              <span class="calendar_month"></span>
+              <button class="calendar_btn_year_prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <span class="calendar_year">2000</span>
+              <button class="calendar_btn_year_next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="calender_nav">
+              <button class="calendar_btn_month_prev">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+              </button>
+              <button class="calendar_btn_month_next">
+                <i class="fa-solid fa-chevron-right fa-xl"></i>
+              </button>
+            </div>
+          </header>
+          <section class="calendar_body">
+            <div class="calendar_days"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar__wrapper">
+      <div class="calendar">
+        <div class="calendar--secoundry">
+          <header class="calendar_header">
+            <div class="calendar_month_year">
+              <span class="calendar_month"></span>
+              <button class="calendar_btn_year_prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <span class="calendar_year">2000</span>
+              <button class="calendar_btn_year_next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="calender_nav">
+              <button class="calendar_btn_month_prev">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+              </button>
+              <button class="calendar_btn_month_next">
+                <i class="fa-solid fa-chevron-right fa-xl"></i>
+              </button>
+            </div>
+          </header>
+          <section class="calendar_body">
+            <div class="calendar_days"></div>
+          </section>
+        </div>
+      </div>
+    </div>
     <!-- navbar -->
     <div style="display: flex; gap: 10px">
       <nav class="navbar">
-        <a href="/about" class="navbar__item" data-label="Info">
+        <a href="about-us.html" class="navbar__item" data-label="Info">
           <i class="fa-solid fa-circle-info fa-2xl"></i>
         </a>
-        <a href="/home" class="navbar__item" data-label="Home">
+        <a href="home.html" class="navbar__item" data-label="Home">
           <i class="fa-solid fa-house fa-2xl"></i>
         </a>
-        <a href="/trophy" class="navbar__item" data-label="Trophy">
+        <a href="trophy.html" class="navbar__item" data-label="Trophy">
           <i class="fa-solid fa-trophy fa-2xl"></i>
         </a>
       </nav>

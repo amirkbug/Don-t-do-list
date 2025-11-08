@@ -124,9 +124,12 @@ function renderCalendar(calendarEl) {
   //set on click event to them
   prevMonthBtn.onclick = () => changeMonth(-1);
   nextMonthBtn.onclick = () => changeMonth(1);
-  nextYearBtn
-    ? (nextYearBtn.onclick = () => changeYear(1))
-    : (prevYearBtn.onclick = () => changeYear(-1));
+  if (nextYearBtn) {
+    nextYearBtn.onclick = () => changeYear(1);
+  }
+  if (prevYearBtn) {
+    prevYearBtn.onclick = () => changeYear(-1);
+  }
 
   //write the fn
   function changeMonth(data) {
@@ -179,7 +182,6 @@ function renderCalendar(calendarEl) {
         rightEl.addEventListener("mouseenter", () => {
           today.style.borderBottomRightRadius = "0px";
           today.style.borderTopRightRadius = "0px";
-          console.log(rightElIndex);
         });
         rightEl.addEventListener("mouseleave", () => {
           today.style.borderRadius = "";
@@ -321,3 +323,214 @@ function chartsFn(char) {
 }
 
 charts.forEach((char) => chartsFn(char));
+
+//history back btn
+const header__right__icon = document.querySelector("#header__right__icon");
+if (header__right__icon) {
+  header__right__icon.addEventListener("click", () => {
+    window.location.href = "home.html";
+  });
+}
+
+//new--task--modals
+//openModalDoMakeTask
+function newTaskModalToggleDo() {
+  const newTaskModalDo = document.querySelector(".new--task--modal--primary");
+  const openModalDo = document.getElementById("openModalAddDo");
+  const closeModalDo = document.getElementById("closeModalAddDo");
+  const overlay = document.querySelector(".blur--background--0-2");
+  if (!newTaskModalDo) return;
+
+  if (openModalDo && newTaskModalDo && overlay) {
+    openModalDo.addEventListener("click", () => {
+      newTaskModalDo.classList.add("show");
+      overlay.classList.add("show");
+    });
+  }
+  if (closeModalDo && newTaskModalDo && overlay) {
+    closeModalDo.addEventListener("click", () => {
+      newTaskModalDo.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+  if (overlay && newTaskModalDo) {
+    overlay.addEventListener("click", () => {
+      newTaskModalDo.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+}
+//openModalDontMakeTask
+function newTaskModalToggleDont() {
+  //get the dom element we need
+  const newTaskModalDont = document.querySelector(
+    ".new--task--modal--secoundry"
+  );
+  if (!newTaskModalDont) return;
+  const openModalDont = document.getElementById("openModalAddDont");
+  const closeModalDont = document.getElementById("closeModalAddDont");
+  const overlay = document.querySelector(".blur--background--0-2");
+  const inputs = newTaskModalDont.querySelectorAll("input");
+  const nameInputTxt = newTaskModalDont.querySelector("#nameInputTxt");
+
+  //check if they are there for not having error
+  //treat them as a button whos add and remove classes
+  if (openModalDont && newTaskModalDont && overlay) {
+    openModalDont.addEventListener("click", () => {
+      newTaskModalDont.classList.add("show");
+      overlay.classList.add("show");
+    });
+  }
+  if (closeModalDont && newTaskModalDont && overlay) {
+    closeModalDont.addEventListener("click", () => {
+      newTaskModalDont.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+  if (overlay && newTaskModalDont) {
+    overlay.addEventListener("click", () => {
+      newTaskModalDont.classList.remove("show");
+      overlay.classList.remove("show");
+      inputs.forEach((input) => {
+        nameInputTxt.textContent = 50;
+        input.value = "";
+      });
+    });
+  }
+}
+newTaskModalToggleDont();
+newTaskModalToggleDo();
+
+//openDeleteTasks
+function deleteTasksModalToggleDo() {
+  const deleteTaskModal = document.querySelector(
+    ".primary--delete--task--modal"
+  );
+  if (!deleteTaskModal) return;
+  const openDeleteModalDo = document.getElementById("openDeleteModalDo");
+  const closeDeleteModalDo = document.getElementById("closeDeleteModalDo");
+  const overlay = document.querySelector(".blur--background--0-2");
+
+  if (deleteTaskModal && openDeleteModalDo && overlay) {
+    openDeleteModalDo.addEventListener("click", () => {
+      deleteTaskModal.classList.add("show");
+      overlay.classList.add("show");
+    });
+  }
+  if (deleteTaskModal && closeDeleteModalDo && overlay) {
+    closeDeleteModalDo.addEventListener("click", () => {
+      deleteTaskModal.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+  if (deleteTaskModal && overlay) {
+    overlay.addEventListener("click", () => {
+      deleteTaskModal.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+}
+
+function deleteTasksModalToggleDont() {
+  const deleteTaskModal = document.querySelector(
+    ".secondary--delete--task--modal"
+  );
+  if (!deleteTaskModal) return;
+  const openDeleteModalDont = document.getElementById("openDeleteModalDont");
+  const closeDeleteModalDont = document.getElementById("closeDeleteModalDont");
+  const overlay = document.querySelector(".blur--background--0-2");
+
+  if (deleteTaskModal && openDeleteModalDont && overlay) {
+    openDeleteModalDont.addEventListener("click", () => {
+      deleteTaskModal.classList.add("show");
+      overlay.classList.add("show");
+    });
+  }
+  if (deleteTaskModal && closeDeleteModalDont && overlay) {
+    closeDeleteModalDont.addEventListener("click", () => {
+      deleteTaskModal.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+  if (deleteTaskModal && overlay) {
+    overlay.addEventListener("click", () => {
+      deleteTaskModal.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+}
+deleteTasksModalToggleDo();
+deleteTasksModalToggleDont();
+
+//open calendar modal
+function calendarFunctionDo() {
+  const calendarDo = document.querySelector(".calendar--primary");
+
+  if (!calendarDo) return;
+  const overlay = document.querySelector(".blur--background--0-1");
+  const openCalendar = document.querySelectorAll("#openCalendarDo");
+
+  openCalendar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let rect = btn.getBoundingClientRect();
+      calendarDo.classList.add("show");
+      overlay.classList.add("show");
+      calendarDo.style.top = `${rect.top + window.scrollY}px`;
+      calendarDo.style.left = `${rect.left + window.scrollX + 220}px`;
+    });
+  });
+  overlay.addEventListener("click", () => {
+    calendarDo.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+}
+
+function calendarFunctionDont() {
+  const clenderDont = document.querySelector(".calendar--secoundry");
+  if (!clenderDont) return;
+  const overlay = document.querySelector(".blur--background--0-1");
+  const openCalendar = document.querySelectorAll("#openCalendarDont");
+
+  openCalendar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let rect = btn.getBoundingClientRect();
+      clenderDont.classList.add("show");
+      overlay.classList.add("show");
+      clenderDont.style.top = `${rect.top + window.scrollY}px`;
+      clenderDont.style.left = `${rect.left + window.scrollX + 220}px`;
+    });
+  });
+  overlay.addEventListener("click", () => {
+    clenderDont.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+}
+calendarFunctionDont();
+calendarFunctionDo();
+
+//input amount check
+// function nameInputAmountCheck() {
+//   const nameInput = document.getElementById("nameInput");
+//   const nameCountSpan = document.getElementById("nameInputTxt");
+
+//   nameInput.addEventListener("input", () => {
+//     const remaining = 50 - nameInput.value.length;
+//     nameCountSpan.textContent = remaining;
+//   });
+// }
+
+function nameInputAmountCheck() {
+  const nameInput = document.querySelectorAll("#nameInput");
+  const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+  if (!nameInput) return;
+
+  nameInput.forEach((input) => {
+    input.addEventListener("input", () => {
+      nameCountSpan.forEach((span) => {
+        span.textContent = 50 - input.value.length;
+      });
+    });
+  });
+}
+
+nameInputAmountCheck();

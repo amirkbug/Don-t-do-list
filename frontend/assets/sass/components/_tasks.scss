@@ -7,14 +7,14 @@
   justify-content: space-between;
   align-items: center;
   gap: 0;
-  z-index: 1;
+  z-index: 999;
   //sizing
   padding: 1.25rem; //20px
   width: 31.25rem; //500px
 
   .tasks__btn__top {
     //display
-    z-index: 10000;
+    z-index: 999;
     transform: translateY(3.75rem); //60px
     //sizing
     height: 4.375rem; //70px
@@ -69,7 +69,7 @@
     .tasks__header {
       //display
       position: static;
-      z-index: 1000;
+      z-index: 999;
       top: 0;
       align-items: center;
       gap: 0;
@@ -113,6 +113,7 @@
         align-items: center;
         justify-items: center;
         text-align: center;
+        z-index: 998;
         //sizing
         padding: 0.3125rem; //5px
         //color an typo

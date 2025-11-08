@@ -2,16 +2,21 @@
 
 @mixin new--task--modal($border-color, $txt-color) {
   //display
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
   //sizing
   gap: 0.3125rem; // 5px
   width: 32.5625rem; // 521px
   box-sizing: border-box;
-  margin: 1.25rem; // 20px
   padding: 3rem; // 40px
   height: 39.4375rem; // 631px
   //color and typo
@@ -19,6 +24,7 @@
   border-radius: 0.625rem; // 10px
   background-color: transparent;
 
+  transition: opacity 0.3s ease, transform 0.3s ease;
   .new--task--modal__bg {
     position: absolute;
     top: 0;
@@ -67,7 +73,15 @@
 
 .new--task--modal--primary {
   @include new--task--modal($primary-50, $primary-500);
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 .new--task--modal--secoundry {
   @include new--task--modal($secondary-50, $secondary-500);
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
