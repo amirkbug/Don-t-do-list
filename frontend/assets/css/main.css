@@ -407,6 +407,13 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.text--input--primary .warning {
+  color: #e7000b !important;
+  transition: all 0.5s ease;
+  opacity: 0.8;
 }
 
 .text--input--primary--500 {
@@ -501,6 +508,13 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.text--input--primary--500 .warning {
+  color: #e7000b !important;
+  transition: all 0.5s ease;
+  opacity: 0.8;
 }
 
 .text--input--secondary {
@@ -595,6 +609,13 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.text--input--secondary .warning {
+  color: #e7000b !important;
+  transition: all 0.5s ease;
+  opacity: 0.8;
 }
 
 .text--input--secondary--500 {
@@ -689,6 +710,13 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.text--input--secondary--500 .warning {
+  color: #e7000b !important;
+  transition: all 0.5s ease;
+  opacity: 0.8;
 }
 
 .text--input--natural {
@@ -783,6 +811,13 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: italic;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.text--input--natural .warning {
+  color: #e7000b !important;
+  transition: all 0.5s ease;
+  opacity: 0.8;
 }
 
 .regular-60 {
@@ -2885,7 +2920,7 @@
 }
 .login--form .login--signup--form__content a {
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
@@ -2955,7 +2990,7 @@
 }
 .signup--form .login--signup--form__content a {
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;

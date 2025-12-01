@@ -69,7 +69,7 @@
             <p>Login to your account.</p>
             <span
               >Don't have an account?<a
-                style="padding-left: 5px"
+                style="padding-left: 3px"
                 href="signup.html"
                 >sign up here</a
               ></span
@@ -82,11 +82,14 @@
                 ><i class="fa-regular fa-envelope"></i
               ></span>
               <input
+                max="20"
+                id="emailInputLogin"
                 type="text"
                 class="input_input"
                 placeholder="Example@gmail.com"
               />
             </div>
+            <p id="emailDesc" class="input_description"></p>
           </div>
           <div style="padding: 0" class="text--input--primary">
             <span class="input_name">Password</span>
@@ -99,19 +102,23 @@
                 />
               </span>
               <input
+                id="passwordInputLogin"
                 type="password"
                 type="text"
                 class="input_input"
                 placeholder="••••••••"
+                max="20"
               />
               <div class="input_content_right">
                 <span
+                  id="eyeBtn"
                   style="padding-bottom: 1px; cursor: pointer"
                   class="input_icon_right"
-                  ><i class="fa-regular fa-eye-slash"></i
-                ></span>
+                  ><i class="fa-regular fa-eye-slash"></i>
+                </span>
               </div>
             </div>
+            <p id="PasswordDesc" class="input_description"></p>
           </div>
           <div
             style="
@@ -121,20 +128,24 @@
             "
           >
             <label class="checkbox--primary">
-              <input class="checkbox__input" type="checkbox" />
+              <input
+                id="rememberMeLogin"
+                class="checkbox__input"
+                type="checkbox"
+              />
               <span class="checkbox__box"></span>
               <span class="checkbox__label">Remember me</span>
             </label>
             <a href="#">Forgot password?</a>
           </div>
-          <button class="btn btn--primary">
+          <button id="submitBtnLogin" class="btn btn--primary">
             <span>Login</span>
           </button>
           <div style="margin: 0; flex: 0" class="fancy--divider--primary">
             <span class="fancy_divider_content">Or continue with</span>
           </div>
           <footer>
-            <button class="btn btn--primary">
+            <button id="googleLoginBtn" class="btn btn--primary">
               <span>Google</span>
               <span class="btn__icon"
                 ><img
@@ -142,7 +153,7 @@
                   alt="Google-icon"
               /></span>
             </button>
-            <button class="btn btn--primary">
+            <button id="githubLoginBtn" class="btn btn--primary">
               <span>Github</span>
               <span class="btn__icon"
                 ><img

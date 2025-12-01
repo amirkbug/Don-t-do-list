@@ -30,7 +30,7 @@
       sizes="16x16"
       href="../assets/icons/favicons/user-solid-full-v2.svg"
     />
-    <title>Login</title>
+    <title>Sign up</title>
   </head>
   <body style="background-color: rgb(79, 79, 79)">
     <!-- background -->
@@ -69,7 +69,7 @@
             <p>Create new account.</p>
             <span
               >You have an account?<a
-                style="padding-left: 5px"
+                style="padding-left: 3px"
                 href="login.html"
                 >Login here</a
               ></span
@@ -82,11 +82,14 @@
                 ><i class="fa-regular fa-user"></i
               ></span>
               <input
+                max="20"
+                id="nameInput"
                 type="text"
                 class="input_input"
                 placeholder="Jason anderson"
               />
             </div>
+            <p id="nameDesc" class="input_description"></p>
           </div>
           <div style="padding: 0" class="text--input--secondary">
             <span class="input_name">Email</span>
@@ -95,11 +98,14 @@
                 ><i class="fa-solid fa-at"></i
               ></span>
               <input
+                max="20"
+                id="emailInput"
                 type="text"
                 class="input_input"
                 placeholder="Example@gmail.com"
               />
             </div>
+            <p id="emailDesc" class="input_description"></p>
           </div>
 
           <div style="padding: 0" class="text--input--secondary">
@@ -113,19 +119,24 @@
                 />
               </span>
               <input
+                max="20"
+                id="passwordInput"
                 type="password"
                 type="text"
                 class="input_input"
                 placeholder="••••••••"
               />
               <div class="input_content_right">
-                <span style="padding-bottom: 1px" class="input_icon_right"
+                <span
+                  id="eyeBtn"
+                  style="padding-bottom: 1px; cursor: pointer"
+                  class="input_icon_right"
                   ><i class="fa-regular fa-eye-slash"></i
                 ></span>
               </div>
             </div>
+            <p id="passwordDesc" class="input_description"></p>
           </div>
-
           <div
             style="
               display: flex;
@@ -134,19 +145,24 @@
             "
           >
             <label class="checkbox--secoundry">
-              <input class="checkbox__input" type="checkbox" />
+              <input
+                id="rememberMeSignup"
+                class="checkbox__input"
+                type="checkbox"
+              />
               <span class="checkbox__box"></span>
               <span class="checkbox__label">Remember me</span>
             </label>
+            <a href="#">Forgot password?</a>
           </div>
-          <button class="btn btn--secondary">
+          <button id="submitBtn" class="btn btn--secondary">
             <span>Signup</span>
           </button>
           <div style="margin: 0; flex: 0" class="fancy--divider--secondary">
             <span class="fancy_divider_content">Or continue with</span>
           </div>
           <footer>
-            <button class="btn btn--secondary">
+            <button id="googleBtn" class="btn btn--secondary">
               <span>Google</span>
               <span class="btn__icon"
                 ><img
@@ -154,7 +170,7 @@
                   alt="Google-icon"
               /></span>
             </button>
-            <button class="btn btn--secondary">
+            <button id="githubBtn" class="btn btn--secondary">
               <span>Github</span>
               <span class="btn__icon"
                 ><img

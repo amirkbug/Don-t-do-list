@@ -151,6 +151,50 @@ function renderCalendar(calendarEl) {
     renderCalendar(calendarEl);
   }
 
+  //celandar buttons to dates
+  const activeDaysDo = calendarDays.querySelectorAll(
+    ".calendar--primary button:not(.inactive)"
+  );
+  const activeDaysDont = calendarDays.querySelectorAll(
+    ".calendar--secoundry button:not(.inactive)"
+  );
+  const overlay = document.querySelector(".blur--background--0-1");
+  const calendarDo = document.querySelector(".calendar--primary");
+  const calendarDont = document.querySelector(".calendar--secoundry");
+
+  activeDaysDo.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const day = btn.textContent;
+      const formattedDate = `${year}-${month + 1}-${day.padStart(2, "0")}`;
+
+      if (activeInputDo) {
+        activeInputDo.value = formattedDate;
+      }
+
+      if (calendarDo && overlay) {
+        calendarDo.classList.remove("show");
+        overlay.classList.remove("show");
+      }
+    });
+  });
+
+  activeDaysDont.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const day = btn.textContent;
+      const formattedDate = `${year}-${month + 1}-${day.padStart(2, "0")}`;
+
+      console.log(activeInputDont);
+      if (activeInputDont) {
+        activeInputDont.value = formattedDate;
+      }
+
+      if (calendarDo && overlay) {
+        calendarDont.classList.remove("show");
+        overlay.classList.remove("show");
+      }
+    });
+  });
+
   /* cell today button animation */
   //get all days btns
   const days = calendarDays.querySelectorAll("button");
@@ -339,24 +383,39 @@ function newTaskModalToggleDo() {
   const openModalDo = document.getElementById("openModalAddDo");
   const closeModalDo = document.getElementById("closeModalAddDo");
   const overlay = document.querySelector(".blur--background--0-2");
+  const inputs = newTaskModalDo
+    ? newTaskModalDo.querySelectorAll("input")
+    : null;
+  const nameInputTxt = newTaskModalDo
+    ? newTaskModalDo.querySelector("#nameInputTxt")
+    : null;
   if (!newTaskModalDo) return;
 
   if (openModalDo && newTaskModalDo && overlay) {
     openModalDo.addEventListener("click", () => {
       newTaskModalDo.classList.add("show");
       overlay.classList.add("show");
+      nameInputTxt.textContent = 50;
     });
   }
   if (closeModalDo && newTaskModalDo && overlay) {
     closeModalDo.addEventListener("click", () => {
       newTaskModalDo.classList.remove("show");
       overlay.classList.remove("show");
+      inputs.forEach((input) => {
+        nameInputTxt.textContent = 50;
+        input.value = "";
+      });
     });
   }
   if (overlay && newTaskModalDo) {
     overlay.addEventListener("click", () => {
       newTaskModalDo.classList.remove("show");
       overlay.classList.remove("show");
+      inputs.forEach((input) => {
+        nameInputTxt.textContent = 50;
+        input.value = "";
+      });
     });
   }
 }
@@ -370,8 +429,12 @@ function newTaskModalToggleDont() {
   const openModalDont = document.getElementById("openModalAddDont");
   const closeModalDont = document.getElementById("closeModalAddDont");
   const overlay = document.querySelector(".blur--background--0-2");
-  const inputs = newTaskModalDont.querySelectorAll("input");
-  const nameInputTxt = newTaskModalDont.querySelector("#nameInputTxt");
+  const inputs = newTaskModalDont
+    ? newTaskModalDont.querySelectorAll("input")
+    : null;
+  const nameInputTxt = newTaskModalDont
+    ? newTaskModalDont.querySelector("#nameInputTxt")
+    : null;
 
   //check if they are there for not having error
   //treat them as a button whos add and remove classes
@@ -379,12 +442,17 @@ function newTaskModalToggleDont() {
     openModalDont.addEventListener("click", () => {
       newTaskModalDont.classList.add("show");
       overlay.classList.add("show");
+      nameInputTxt.textContent = 50;
     });
   }
   if (closeModalDont && newTaskModalDont && overlay) {
     closeModalDont.addEventListener("click", () => {
       newTaskModalDont.classList.remove("show");
       overlay.classList.remove("show");
+      inputs.forEach((input) => {
+        nameInputTxt.textContent = 50;
+        input.value = "";
+      });
     });
   }
   if (overlay && newTaskModalDont) {
@@ -462,6 +530,8 @@ function deleteTasksModalToggleDont() {
 deleteTasksModalToggleDo();
 deleteTasksModalToggleDont();
 
+//which input is active in new task add do and dont
+let activeInputDo = null;
 //open calendar modal
 function calendarFunctionDo() {
   const calendarDo = document.querySelector(".calendar--primary");
@@ -472,6 +542,9 @@ function calendarFunctionDo() {
 
   openCalendar.forEach((btn) => {
     btn.addEventListener("click", () => {
+      //btn.dataset.target gives the id of the input and this way we have the input that is selected
+      activeInputDo = document.getElementById(btn.dataset.target);
+
       let rect = btn.getBoundingClientRect();
       calendarDo.classList.add("show");
       overlay.classList.add("show");
@@ -485,6 +558,8 @@ function calendarFunctionDo() {
   });
 }
 
+//which input is active in new task add do and dont
+let activeInputDont = null;
 function calendarFunctionDont() {
   const clenderDont = document.querySelector(".calendar--secoundry");
   if (!clenderDont) return;
@@ -494,8 +569,10 @@ function calendarFunctionDont() {
   openCalendar.forEach((btn) => {
     btn.addEventListener("click", () => {
       let rect = btn.getBoundingClientRect();
+      activeInputDont = document.getElementById(btn.dataset.target);
       clenderDont.classList.add("show");
       overlay.classList.add("show");
+
       clenderDont.style.top = `${rect.top + window.scrollY}px`;
       clenderDont.style.left = `${rect.left + window.scrollX + 220}px`;
     });
@@ -507,17 +584,6 @@ function calendarFunctionDont() {
 }
 calendarFunctionDont();
 calendarFunctionDo();
-
-//input amount check
-// function nameInputAmountCheck() {
-//   const nameInput = document.getElementById("nameInput");
-//   const nameCountSpan = document.getElementById("nameInputTxt");
-
-//   nameInput.addEventListener("input", () => {
-//     const remaining = 50 - nameInput.value.length;
-//     nameCountSpan.textContent = remaining;
-//   });
-// }
 
 function nameInputAmountCheck() {
   const nameInput = document.querySelectorAll("#nameInput");
@@ -534,3 +600,581 @@ function nameInputAmountCheck() {
 }
 
 nameInputAmountCheck();
+
+function makeNewTaskDont() {
+  //modal
+  const newTaskModalDont = document.querySelector(
+    ".new--task--modal--secoundry"
+  );
+  const submitBotton = document.getElementById("addTaskSubmitBtnDont");
+  //inputs
+  const nameInput = newTaskModalDont
+    ? newTaskModalDont.querySelector("#nameInput")
+    : null;
+  const startDateInput = document.getElementById("startDateDont");
+  const finishDateInput = document.getElementById("finishDateDont");
+  const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+  //overlay
+  const overlay = document.querySelector(".blur--background--0-2");
+  //tasks
+  const secoundryTasks = document.querySelector(".secondary--tasks");
+  const taskContainer = secoundryTasks
+    ? secoundryTasks.querySelector(".tasks__column")
+    : null;
+  //descriptions
+  const addNewTaskDescStart = document.getElementById("descriptionDontStart");
+  const addNewTaskDescFinish = document.getElementById("descriptionDontfinish");
+  const addNewTaskDescName = document.getElementById("descriptionDontName");
+
+  if (submitBotton) {
+    submitBotton.addEventListener("click", (e) => {
+      const name = nameInput.value;
+      const startDate = startDateInput.value;
+      const finishDate = finishDateInput.value;
+
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+      //error handlesr
+      let hasErrorStart = false;
+      let hasErrorfinish = false;
+      let hasErrorStartEmpthy = false;
+      let hasErrorfinishEmpthy = false;
+      let hasErrorName = false;
+
+      //if the inputs was empthy
+      if (startDate == "") {
+        addNewTaskDescStart.innerHTML =
+          "This field cannot be empty. Please select a date.";
+        addNewTaskDescStart.classList.add("warning");
+        hasErrorStartEmpthy = true;
+      }
+
+      if (finishDate == "") {
+        addNewTaskDescFinish.innerHTML =
+          "This field cannot be empty. Please select a date.";
+        addNewTaskDescFinish.classList.add("warning");
+        hasErrorfinishEmpthy = true;
+      }
+
+      if (name == "") {
+        addNewTaskDescName.innerHTML = "Name cannot be empty.";
+        addNewTaskDescName.classList.add("warning");
+        hasErrorName = true;
+      }
+
+      //if the inputs was full get regex
+      if (startDate !== "") {
+        const result = dateRegex.test(startDate);
+
+        if (!result) {
+          addNewTaskDescStart.innerHTML = "Please choose a valid date.";
+          addNewTaskDescStart.classList.add("warning");
+          hasErrorStart = true;
+        }
+      }
+
+      if (finishDate !== "") {
+        const result = dateRegex.test(finishDate);
+        if (!result) {
+          addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
+          addNewTaskDescFinish.classList.add("warning");
+          hasErrorfinish = true;
+        }
+      }
+
+      //go to default
+      if (
+        hasErrorStart ||
+        hasErrorfinish ||
+        hasErrorName ||
+        hasErrorStartEmpthy ||
+        hasErrorfinishEmpthy
+      ) {
+        setTimeout(() => {
+          addNewTaskDescFinish.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescStart.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescName.innerHTML = "Place a text here for description";
+
+          addNewTaskDescName.classList.remove("warning");
+          addNewTaskDescStart.classList.remove("warning");
+          addNewTaskDescFinish.classList.remove("warning");
+          hasErrorfinish = false;
+          hasErrorStart = false;
+        }, 6000);
+        return;
+      }
+
+      //make the task
+      const tasksRow = document.createElement("div");
+      tasksRow.className = "tasks__row";
+      tasksRow.innerHTML = `
+              <span>${name}</span>
+              <span>${startDate}</span>
+              <span>${finishDate}</span>
+              <label class="checkbox--secoundry">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+               
+  `;
+
+      //prevent new checkbox from default behavior
+      taskContainer.addEventListener("click", (e) => {
+        const label = e.target.closest(".checkbox--secoundry");
+        if (!label) return;
+
+        e.preventDefault();
+        const input = label.querySelector('input[type="checkbox"]');
+        input.checked = !input.checked;
+      });
+
+      //append the task that we made to the row
+      taskContainer.append(tasksRow);
+
+      //back to defualt
+      nameInput.value = "";
+      startDateInput.value = "";
+      finishDateInput.value = "";
+      nameCountSpan.forEach((span) => {
+        span.textContent = 50;
+      });
+
+      newTaskModalDont.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+}
+makeNewTaskDont();
+
+function makeNewTaskDo() {
+  //modal
+  const newTaskModalDo = document.querySelector(".new--task--modal--primary");
+  const submitBotton = document.getElementById("addTaskSubmitBtn");
+  const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+  //inputs
+  const nameInput = newTaskModalDo
+    ? newTaskModalDo.querySelector("#nameInput")
+    : null;
+  const startDateInput = document.getElementById("startDateDo");
+  const finishDateInput = document.getElementById("finishDateDo");
+  //overlay
+  const overlay = document.querySelector(".blur--background--0-2");
+  //tasks
+  const primaryTasks = document.querySelector(".primary--tasks");
+  const taskContainer = primaryTasks
+    ? primaryTasks.querySelector(".tasks__column")
+    : null;
+  //descriptions
+  const addNewTaskDescStart = document.getElementById("descriptionDoStart");
+  const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
+  const addNewTaskDescName = document.getElementById("descriptionDoName");
+
+  if (submitBotton) {
+    submitBotton.addEventListener("click", (e) => {
+      const name = nameInput.value;
+      const startDate = startDateInput.value;
+      const finishDate = finishDateInput.value;
+
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+      //error handlesr
+      let hasErrorStart = false;
+      let hasErrorfinish = false;
+      let hasErrorStartEmpthy = false;
+      let hasErrorfinishEmpthy = false;
+      let hasErrorName = false;
+
+      //if the inputs was empthy
+      if (startDate == "") {
+        addNewTaskDescStart.innerHTML =
+          "This field cannot be empty. Please select a date.";
+        addNewTaskDescStart.classList.add("warning");
+        hasErrorStartEmpthy = true;
+      }
+
+      if (finishDate == "") {
+        addNewTaskDescFinish.innerHTML =
+          "This field cannot be empty. Please select a date.";
+        addNewTaskDescFinish.classList.add("warning");
+        hasErrorfinishEmpthy = true;
+      }
+
+      if (name == "") {
+        addNewTaskDescName.innerHTML = "Name cannot be empty.";
+        addNewTaskDescName.classList.add("warning");
+        hasErrorName = true;
+      }
+
+      //if the inputs was full get regex
+      if (startDate !== "") {
+        const result = dateRegex.test(startDate);
+        console.log(result, startDate);
+        if (!result) {
+          addNewTaskDescStart.innerHTML = "Please choose a valid date.";
+          addNewTaskDescStart.classList.add("warning");
+          hasErrorStart = true;
+        }
+      }
+
+      if (finishDate !== "") {
+        const result = dateRegex.test(finishDate);
+        if (!result) {
+          addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
+          addNewTaskDescFinish.classList.add("warning");
+          hasErrorfinish = true;
+        }
+      }
+
+      //go to default
+      if (
+        hasErrorStart ||
+        hasErrorfinish ||
+        hasErrorName ||
+        hasErrorStartEmpthy ||
+        hasErrorfinishEmpthy
+      ) {
+        setTimeout(() => {
+          addNewTaskDescFinish.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescStart.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescName.innerHTML = "Place a text here for description";
+
+          addNewTaskDescName.classList.remove("warning");
+          addNewTaskDescStart.classList.remove("warning");
+          addNewTaskDescFinish.classList.remove("warning");
+          hasErrorfinish = false;
+          hasErrorStart = false;
+        }, 6000);
+        return;
+      }
+
+      //make the task
+      const tasksRow = document.createElement("div");
+      tasksRow.className = "tasks__row";
+      tasksRow.innerHTML = `
+              <span>${name}</span>
+              <span>${startDate}</span>
+              <span>${finishDate}</span>
+              <label class="checkbox--primary">
+                <input class="checkbox__input" type="checkbox" />
+                <span class="checkbox__box"></span>
+              </label>
+               
+  `;
+
+      //prevent new checkbox from default behavior
+      taskContainer.addEventListener("click", (e) => {
+        const label = e.target.closest(".checkbox--primary");
+        if (!label) return;
+
+        e.preventDefault();
+        const input = label.querySelector('input[type="checkbox"]');
+        input.checked = !input.checked;
+      });
+
+      //append the task that we made to the row
+      taskContainer.append(tasksRow);
+
+      //back to defualt
+      nameInput.value = "";
+      startDateInput.value = "";
+      finishDateInput.value = "";
+      nameCountSpan.forEach((span) => {
+        span.textContent = 50;
+      });
+
+      newTaskModalDo.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  }
+}
+makeNewTaskDo();
+
+//logged in variable
+
+function login() {
+  //inputs
+  const emailInput = document.getElementById("emailInputLogin");
+  const passwordInputLogin = document.getElementById("passwordInputLogin");
+  const rememberMeLogin = document.getElementById("rememberMeLogin");
+  //btns
+  const submitBtnLogin = document.getElementById("submitBtnLogin");
+  const googleLoginBtn = document.getElementById("googleLoginBtn");
+  const githubLoginBtn = document.getElementById("githubLoginBtn");
+
+  const eyeBtn = document.getElementById("eyeBtn");
+  //description
+  const PasswordDesc = document.getElementById("PasswordDesc");
+  const emailDesc = document.getElementById("emailDesc");
+
+  if (!window.location.pathname.endsWith("login.html")) {
+    return;
+  }
+
+  // helper functions
+  function errorHandling(element, message) {
+    element.innerHTML = message;
+    element.classList.add("warning");
+  }
+
+  function errorClear(element) {
+    element.classList.remove("warning");
+  }
+
+  //eyebtn
+  if (eyeBtn) {
+    eyeBtn.addEventListener("click", () => {
+      if (passwordInputLogin.type == "password") {
+        passwordInputLogin.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye eye-noslash"></i>';
+      } else if (passwordInputLogin.type == "text") {
+        passwordInputLogin.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash eye-slash"></i>';
+      }
+    });
+  }
+
+  //regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+  if (submitBtnLogin) {
+    submitBtnLogin.addEventListener("click", () => {
+      const email = emailInput.value.trim();
+      const password = passwordInputLogin.value.trim();
+      const rememberMe = rememberMeLogin.checked;
+
+      let hasError = false;
+
+      //email validation
+      if (!email) {
+        errorHandling(emailDesc, "Email cannot be empty.");
+        hasError = true;
+      } else if (!emailRegex.test(email)) {
+        errorHandling(
+          emailDesc,
+          "Please enter a valid email address. Example: user@example.com"
+        );
+        hasError = true;
+      } else {
+        errorClear(emailDesc);
+      }
+
+      //password validation
+      if (!password) {
+        errorHandling(PasswordDesc, "Password cannot be empty.");
+        hasError = true;
+      } else if (!passwordRegex.test(password)) {
+        errorHandling(
+          PasswordDesc,
+          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character."
+        );
+        hasError = true;
+      } else {
+        errorClear(PasswordDesc);
+      }
+
+      if (hasError) return;
+
+      if (
+        email == "k.bug.amir@gmail.com" &&
+        password == "Abc1!def" &&
+        rememberMe == true
+      ) {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "home.html";
+      }
+
+      if (
+        email == "k.bug.amir@gmail.com" &&
+        password == "Abc1!def" &&
+        rememberMe == false
+      ) {
+        sessionStorage.setItem("isLoggedIn", "true");
+        window.location.href = "home.html";
+      }
+    });
+  }
+}
+login();
+
+function headerByConditionFn() {
+  const headerByCondition = document.getElementById("headerByCondition");
+
+  const isLoggedIn =
+    sessionStorage.getItem("isLoggedIn") === "true" ||
+    localStorage.getItem("isLoggedIn") === "true";
+
+  if (!headerByCondition) return;
+
+  if (isLoggedIn) {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
+        
+        <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        
+      </section>`;
+  } else {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
+
+        <a href="login.html">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>`;
+  }
+}
+
+headerByConditionFn();
+function signup() {
+  //inputs
+  const nameInput = document.getElementById("nameInput");
+  const emailInput = document.getElementById("emailInput");
+  const passwordInput = document.getElementById("passwordInput");
+  //descriptions
+  const nameDesc = document.getElementById("nameDesc");
+  const emailDesc = document.getElementById("emailDesc");
+  const passwordDesc = document.getElementById("passwordDesc");
+  //btn
+  const submitBtn = document.getElementById("submitBtn");
+  const googleBtn = document.getElementById("googleBtn");
+  const githubBtn = document.getElementById("githubBtn");
+  const eyeBtn = document.getElementById("eyeBtn");
+  const rememberMeInput = document.getElementById("rememberMeSignup");
+
+  //regexes
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+  //haserror
+
+  //checks if the page is signup
+  if (!window.location.pathname.endsWith("signup.html")) {
+    return;
+  }
+
+  //error handling
+  function errorHandler(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+
+  //error handling
+  function errorRemover(element) {
+    element.classList.remove("warning");
+  }
+
+  //eyebtn fn
+  if (eyeBtn) {
+    eyeBtn.addEventListener("click", () => {
+      if (passwordInput.type == "password") {
+        passwordInput.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye eye-noslash"></i>';
+      } else if (passwordInput.type == "text") {
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash eye-slash"></i>';
+        passwordInput.type = "password";
+      }
+    });
+  }
+
+  //submitbtn
+  if (submitBtn) {
+    submitBtn.addEventListener("click", () => {
+      //input values
+      const name = nameInput.value;
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      const rememberMe = rememberMeInput.checked;
+
+      let hasError = false;
+      //name error handling
+      if (!name) {
+        errorHandler(nameDesc, "Name cannot be empty.");
+        hasError = true;
+      } else {
+        let hasError = false;
+        errorRemover(nameDesc);
+      }
+
+      //email error handling
+      if (!email) {
+        errorHandler(emailDesc, "Email cannot be empty.");
+        hasError = true;
+      } else if (!emailRegex.test(email)) {
+        errorHandler(
+          emailDesc,
+          "Please enter a valid email address. Example: user@example.com"
+        );
+        hasError = true;
+      } else {
+        let hasError = false;
+        errorRemover(emailDesc);
+      }
+
+      //password error handling
+      if (!password) {
+        errorHandler(passwordDesc, "Password cannot be empty.");
+        hasError = true;
+      } else if (!passwordRegex.test(password)) {
+        errorHandler(
+          passwordDesc,
+          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character."
+        );
+        hasError = true;
+      } else {
+        let hasError = false;
+        errorRemover(passwordDesc);
+      }
+
+      //error handling
+      if (hasError) return;
+
+      //if everything was ok set the keys and values
+      if (rememberMe) {
+        localStorage.setItem("name", `${name}`);
+        localStorage.setItem("password", `${password}`);
+        localStorage.setItem("email", `${email}`);
+        localStorage.setItem("isLoggedIn", "true");
+      } else if (!rememberMe) {
+        sessionStorage.setItem("name", `${name}`);
+        sessionStorage.setItem("password", `${password}`);
+        sessionStorage.setItem("email", `${email}`);
+        sessionStorage.setItem("isLoggedIn", "true");
+      }
+
+      //go to home
+      window.location.href = "home.html";
+    });
+  }
+}
+signup();

@@ -18,7 +18,7 @@
     flex-grow: 1;
 
     a {
-      @include typography($weight-regular, $size-13);
+      @include typography($weight-semi-bold, $size-13);
       color: $a-tags;
       text-decoration: none;
     }

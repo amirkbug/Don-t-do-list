@@ -111,6 +111,13 @@
     //color and styling
     color: $text-and-border-color;
     @include typography($weight-light, $size-13, italic);
+    transition: all 0.5s ease;
+    opacity: 1;
+  }
+  .warning {
+    color: $destructive-500 !important;
+    transition: all 0.5s ease;
+    opacity: 0.8;
   }
 }
 
