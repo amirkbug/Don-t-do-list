@@ -893,7 +893,7 @@ function makeNewTaskDo() {
 }
 makeNewTaskDo();
 
-//logged in variable
+//logged in and sign up
 
 function login() {
   //inputs
@@ -907,7 +907,7 @@ function login() {
 
   const eyeBtn = document.getElementById("eyeBtn");
   //description
-  const PasswordDesc = document.getElementById("PasswordDesc");
+  const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
   if (!window.location.pathname.endsWith("login.html")) {
@@ -954,108 +954,54 @@ function login() {
       if (!email) {
         errorHandling(emailDesc, "Email cannot be empty.");
         hasError = true;
-      } else if (!emailRegex.test(email)) {
-        errorHandling(
-          emailDesc,
-          "Please enter a valid email address. Example: user@example.com"
-        );
-        hasError = true;
       } else {
         errorClear(emailDesc);
       }
 
       //password validation
       if (!password) {
-        errorHandling(PasswordDesc, "Password cannot be empty.");
-        hasError = true;
-      } else if (!passwordRegex.test(password)) {
-        errorHandling(
-          PasswordDesc,
-          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character."
-        );
+        errorHandling(passwordDesc, "Password cannot be empty.");
         hasError = true;
       } else {
-        errorClear(PasswordDesc);
+        errorClear(passwordDesc);
       }
 
       if (hasError) return;
 
-      if (
-        email == "k.bug.amir@gmail.com" &&
-        password == "Abc1!def" &&
-        rememberMe == true
-      ) {
+      //loggin in with signup
+      let emailIsCorrect =
+        email === localStorage.getItem("email") ||
+        email === sessionStorage.getItem("email");
+      let passwordIsCorrect =
+        password === localStorage.getItem("password") ||
+        password === sessionStorage.getItem("password");
+
+      if (passwordIsCorrect && emailIsCorrect && rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
         window.location.href = "home.html";
-      }
-
-      if (
-        email == "k.bug.amir@gmail.com" &&
-        password == "Abc1!def" &&
-        rememberMe == false
-      ) {
+      } else if (passwordIsCorrect && emailIsCorrect && !rememberMe) {
         sessionStorage.setItem("isLoggedIn", "true");
         window.location.href = "home.html";
+      } else if (!passwordIsCorrect && emailIsCorrect) {
+        errorHandling(passwordDesc, "Password isn't correct.");
+        errorClear(emailDesc);
+        emailDesc.innerHTML = "";
+        return;
+      } else if (passwordIsCorrect && !emailIsCorrect) {
+        errorHandling(emailDesc, "Email isn't correct.");
+        errorClear(passwordDesc);
+        passwordDesc.innerHTML = "";
+        return;
+      } else if (!passwordIsCorrect && !emailIsCorrect) {
+        errorHandling(emailDesc, "Email isnt correct.");
+        errorHandling(passwordDesc, "Password isn't correct.");
+        return;
       }
     });
   }
 }
 login();
 
-function headerByConditionFn() {
-  const headerByCondition = document.getElementById("headerByCondition");
-
-  const isLoggedIn =
-    sessionStorage.getItem("isLoggedIn") === "true" ||
-    localStorage.getItem("isLoggedIn") === "true";
-
-  if (!headerByCondition) return;
-
-  if (isLoggedIn) {
-    headerByCondition.innerHTML = `<section class="header">
-        <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
-        </header>
-        
-        <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
-        
-      </section>`;
-  } else {
-    headerByCondition.innerHTML = `<section class="header">
-        <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
-        </header>
-
-        <a href="login.html">
-          <button
-            style="padding: 0 0; margin: 0 0; border: none"
-            class="btn btn--video--bg"
-          >
-            <div class="btn__container">
-              <div class="btn__text">
-                <span>Login / Signup</span>
-                <span class="btn__icon">
-                  <i class="fa-solid fa-user"></i>
-                </span>
-              </div>
-            </div>
-
-            <video class="btn__video" muted loop autoplay playsinline>
-              <source
-                src="../assets/video/primary-secondary/Last one i rendred.mp4"
-                type="video/mp4"
-              />
-              your browser doesent support video
-            </video>
-          </button>
-        </a>
-      </section>`;
-  }
-}
-
-headerByConditionFn();
 function signup() {
   //inputs
   const nameInput = document.getElementById("nameInput");
@@ -1122,7 +1068,6 @@ function signup() {
         errorHandler(nameDesc, "Name cannot be empty.");
         hasError = true;
       } else {
-        let hasError = false;
         errorRemover(nameDesc);
       }
 
@@ -1136,8 +1081,13 @@ function signup() {
           "Please enter a valid email address. Example: user@example.com"
         );
         hasError = true;
+      } else if (
+        email === localStorage.getItem("email") ||
+        email === sessionStorage.getItem("email")
+      ) {
+        errorHandler(emailDesc, "You already have an account");
+        hasError = true;
       } else {
-        let hasError = false;
         errorRemover(emailDesc);
       }
 
@@ -1152,7 +1102,7 @@ function signup() {
         );
         hasError = true;
       } else {
-        let hasError = false;
+        passwordDesc.innerHTML = "";
         errorRemover(passwordDesc);
       }
 
@@ -1178,3 +1128,57 @@ function signup() {
   }
 }
 signup();
+
+function headerByConditionFn() {
+  const headerByCondition = document.getElementById("headerByCondition");
+
+  const isLoggedIn =
+    sessionStorage.getItem("isLoggedIn") === "true" ||
+    localStorage.getItem("isLoggedIn") === "true";
+
+  if (!headerByCondition) return;
+
+  if (isLoggedIn) {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
+        
+        <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        
+      </section>`;
+  } else {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
+
+        <a href="login.html">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>`;
+  }
+}
+headerByConditionFn();
