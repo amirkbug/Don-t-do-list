@@ -326,6 +326,7 @@
         <span class="input_name">Name:</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             maxlength="50"
             id="nameInput"
             type="text"
@@ -345,6 +346,7 @@
         <span class="input_name">Start date :</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             id="startDateDo"
             type="text"
             class="input_input"
@@ -369,6 +371,7 @@
         <span class="input_name">Finish date:</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             id="finishDateDo"
             type="text"
             class="input_input"
@@ -431,6 +434,7 @@
         <span class="input_name">Name:</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             id="nameInput"
             maxlength="50"
             type="text"
@@ -450,6 +454,7 @@
         <span class="input_name">Start date :</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             id="startDateDont"
             type="text"
             class="input_input"
@@ -474,6 +479,7 @@
         <span class="input_name">Finish date:</span>
         <div class="input_content">
           <input
+            autocomplete="off"
             id="finishDateDont"
             type="text"
             class="input_input"
@@ -530,7 +536,7 @@
         </p>
         <div style="margin: 5px 0" class="fancy--divider--secondary--700"></div>
 
-        <div>
+        <div id="tasksThatShouldBeDeletedDont">
           <p>Tasks to be deleted (showing 3 of 7):</p>
           <ul>
             <li>Do your homework</li>
@@ -541,7 +547,11 @@
       </section>
       <footer>
         <label class="checkbox--secoundry">
-          <input class="checkbox__input" type="checkbox" />
+          <input
+            id="dontAskAgainDeleteDont"
+            class="checkbox__input"
+            type="checkbox"
+          />
           <span class="checkbox__box"></span>
           <span class="checkbox__label">don’t ask again</span>
         </label>
@@ -549,7 +559,7 @@
           <button id="closeDeleteModalDont" class="btn btn--secondary">
             <span>Cancel</span>
           </button>
-          <button class="btn btn--destructive">
+          <button id="deleteTaskDont" class="btn btn--destructive">
             <span>Delete!</span>
           </button>
         </div>
@@ -566,13 +576,13 @@
       </header>
       <section>
         <p>
-          Are you sure you want to delete 3 selected tasks?
+          Are you sure you want to delete selected tasks?
           <br />
           <em>This action cannot be undone.</em>
         </p>
         <div style="margin: 5px 0" class="fancy--divider--primary--700"></div>
 
-        <div>
+        <div id="tasksThatShouldBeDeleted">
           <p>Tasks to be deleted (showing 3 of 7):</p>
           <ul>
             <li>Do your homework</li>
@@ -583,7 +593,11 @@
       </section>
       <footer>
         <label class="checkbox--primary">
-          <input class="checkbox__input" type="checkbox" />
+          <input
+            id="dontAskAgainDelete"
+            class="checkbox__input"
+            type="checkbox"
+          />
           <span class="checkbox__box"></span>
           <span class="checkbox__label">don’t ask again</span>
         </label>
@@ -591,7 +605,7 @@
           <button id="closeDeleteModalDo" class="btn btn--primary">
             <span>Cancel</span>
           </button>
-          <button class="btn btn--destructive">
+          <button id="deleteTaskDo" class="btn btn--destructive">
             <span>Delete!</span>
           </button>
         </div>

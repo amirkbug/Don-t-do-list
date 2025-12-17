@@ -426,9 +426,11 @@ function newTaskModalToggleDont() {
     ".new--task--modal--secoundry"
   );
   if (!newTaskModalDont) return;
+  //btns
   const openModalDont = document.getElementById("openModalAddDont");
   const closeModalDont = document.getElementById("closeModalAddDont");
   const overlay = document.querySelector(".blur--background--0-2");
+  //inputs
   const inputs = newTaskModalDont
     ? newTaskModalDont.querySelectorAll("input")
     : null;
@@ -468,21 +470,130 @@ function newTaskModalToggleDont() {
 }
 newTaskModalToggleDont();
 newTaskModalToggleDo();
+function deleteTaskDo() {
+  //get teh tasknames that user selected
 
-//openDeleteTasks
-function deleteTasksModalToggleDo() {
+  //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
     ".primary--delete--task--modal"
   );
+  const overlay = document.querySelector(".blur--background--0-2");
+  //logged in and sign up
+  const primaryTasks = document.querySelector(".primary--tasks");
+
+  const checkboxInput = primaryTasks.querySelectorAll(
+    ".checkbox__input:checked"
+  );
+
+  const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
+    checkbox.closest("div")
+  );
+  const tasksName = checkboxInputParrent.map((div) => {
+    return div.querySelector("span").textContent.trim();
+  });
+  //btns
+  const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
+
+  //if tasks was zero retutn and do nothing
+  if (tasksName.length == 0) {
+    return;
+  }
+  //local storage
+  localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
+  //delete tasks
+  checkboxInputParrent.forEach((div) => div.remove());
+  //dont show the modal
+  deleteTaskModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
+if (document.getElementById("deleteTaskDont")) {
+  document.getElementById("deleteTaskDont").addEventListener("click", () => {
+    const dontAskAgainDelete = document.getElementById(
+      "dontAskAgainDeleteDont"
+    );
+
+    // save only when modal is opened and user clicks delete
+    localStorage.setItem(
+      "dontAskAgainDeleteDont",
+      `${dontAskAgainDelete.checked}`
+    );
+
+    deleteTaskDont();
+  });
+}
+
+//openDeleteTasks
+function deleteTasksModalToggleDo() {
+  //toggle to delete task
+  const deleteTaskModal = document.querySelector(
+    ".primary--delete--task--modal"
+  );
+
   if (!deleteTaskModal) return;
   const openDeleteModalDo = document.getElementById("openDeleteModalDo");
   const closeDeleteModalDo = document.getElementById("closeDeleteModalDo");
   const overlay = document.querySelector(".blur--background--0-2");
 
+  //open delete task
   if (deleteTaskModal && openDeleteModalDo && overlay) {
     openDeleteModalDo.addEventListener("click", () => {
+      //dont ask again = true then dont open modal
+
+      if (localStorage.getItem("dontAskAgainDelete") == "true") {
+        deleteTaskDo();
+        return;
+      }
+
+      //get the elements in the modal
+      const tasksThatShouldBeDeletedDiv = document.getElementById(
+        "tasksThatShouldBeDeleted"
+      );
+      const tasksThatShouldBeDeletedUl =
+        tasksThatShouldBeDeletedDiv.querySelector("ul");
+      let tasksThatShouldBeDeletedP =
+        tasksThatShouldBeDeletedDiv.querySelector("p");
+
+      let tasksThatShouldBeDeleted = "";
+      //getting the tasks
+      const primaryTasks = document.querySelector(".primary--tasks");
+      const checkboxInput = primaryTasks.querySelectorAll(
+        ".checkbox__input:checked"
+      );
+      const checkboxInputNotChecked =
+        primaryTasks.querySelectorAll(".checkbox__input");
+      //getting the tasks parrent
+      const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
+        checkbox.closest("div")
+      );
+      //get teh tasknames that user selected
+      const tasksName = checkboxInputParrent.map((div) => {
+        return div.querySelector("span").textContent.trim();
+      });
+
+      //showing modal
       deleteTaskModal.classList.add("show");
       overlay.classList.add("show");
+      //change the names in the delete menue
+      const maxDisplay = 3;
+      tasksThatShouldBeDeleted = tasksName
+        .slice(0, maxDisplay)
+        .map((name) => `<li>${name}</li>`)
+        .join("");
+
+      if (tasksName.length > maxDisplay) {
+        tasksThatShouldBeDeleted += `<li>...</li>`;
+      }
+
+      tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
+
+      //change the numbers in delete menue
+      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+
+      //if there was no tasks error
+      if (tasksName.length == 0) {
+        tasksThatShouldBeDeletedP.innerHTML = `<p style="font-weight: 700; font-size: 1.2rem; color: red">No tasks selected.</p>`;
+        tasksThatShouldBeDeletedP.classList.add("warning");
+      }
     });
   }
   if (deleteTaskModal && closeDeleteModalDo && overlay) {
@@ -497,6 +608,58 @@ function deleteTasksModalToggleDo() {
       overlay.classList.remove("show");
     });
   }
+
+  //delete task toggle infos
+}
+deleteTasksModalToggleDo();
+function deleteTaskDont() {
+  //get teh tasknames that user selected
+
+  //overlay and delete task modal
+  const deleteTaskModal = document.querySelector(
+    ".secondary--delete--task--modal"
+  );
+  const overlay = document.querySelector(".blur--background--0-2");
+  //logged in and sign up
+  const primaryTasks = document.querySelector(".secondary--tasks");
+
+  const checkboxInput = primaryTasks.querySelectorAll(
+    ".checkbox__input:checked"
+  );
+
+  const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
+    checkbox.closest("div")
+  );
+  const tasksName = checkboxInputParrent.map((div) => {
+    return div.querySelector("span").textContent.trim();
+  });
+  //btns
+  const dontAskAgainDelete = document.getElementById("dontAskAgainDeleteDont");
+
+  //if tasks was zero retutn and do nothing
+  if (tasksName.length == 0) {
+    return;
+  }
+  //local storage
+  localStorage.setItem(
+    "dontAskAgainDeleteDont",
+    `${dontAskAgainDelete.checked}`
+  );
+  //delete tasks
+  checkboxInputParrent.forEach((div) => div.remove());
+  //dont show the modal
+  deleteTaskModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
+if (document.getElementById("deleteTaskDo")) {
+  document.getElementById("deleteTaskDo").addEventListener("click", () => {
+    const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
+
+    // save only when modal is opened and user clicks delete
+    localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
+
+    deleteTaskDo();
+  });
 }
 
 function deleteTasksModalToggleDont() {
@@ -510,8 +673,61 @@ function deleteTasksModalToggleDont() {
 
   if (deleteTaskModal && openDeleteModalDont && overlay) {
     openDeleteModalDont.addEventListener("click", () => {
+      if (localStorage.getItem("dontAskAgainDeleteDont") == "true") {
+        deleteTaskDont();
+        return;
+      }
+
+      //get the elements in the modal
+      const tasksThatShouldBeDeletedDiv = document.getElementById(
+        "tasksThatShouldBeDeletedDont"
+      );
+      const tasksThatShouldBeDeletedUl =
+        tasksThatShouldBeDeletedDiv.querySelector("ul");
+      let tasksThatShouldBeDeletedP =
+        tasksThatShouldBeDeletedDiv.querySelector("p");
+
+      let tasksThatShouldBeDeleted = "";
+      //getting the tasks
+      const primaryTasks = document.querySelector(".secondary--tasks");
+      const checkboxInput = primaryTasks.querySelectorAll(
+        ".checkbox__input:checked"
+      );
+      const checkboxInputNotChecked =
+        primaryTasks.querySelectorAll(".checkbox__input");
+      //getting the tasks parrent
+      const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
+        checkbox.closest("div")
+      );
+      //get teh tasknames that user selected
+      const tasksName = checkboxInputParrent.map((div) => {
+        return div.querySelector("span").textContent.trim();
+      });
+
+      //showing modal
       deleteTaskModal.classList.add("show");
       overlay.classList.add("show");
+      //change the names in the delete menue
+      const maxDisplay = 3;
+      tasksThatShouldBeDeleted = tasksName
+        .slice(0, maxDisplay)
+        .map((name) => `<li>${name}</li>`)
+        .join("");
+
+      if (tasksName.length > maxDisplay) {
+        tasksThatShouldBeDeleted += `<li>...</li>`;
+      }
+
+      tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
+
+      //change the numbers in delete menue
+      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+
+      //if there was no tasks error
+      if (tasksName.length == 0) {
+        tasksThatShouldBeDeletedP.innerHTML = `<p style="font-weight: 700; font-size: 1.2rem; color: red">No tasks selected.</p>`;
+        tasksThatShouldBeDeletedP.classList.add("warning");
+      }
     });
   }
   if (deleteTaskModal && closeDeleteModalDont && overlay) {
@@ -527,7 +743,6 @@ function deleteTasksModalToggleDont() {
     });
   }
 }
-deleteTasksModalToggleDo();
 deleteTasksModalToggleDont();
 
 //which input is active in new task add do and dont
@@ -607,6 +822,7 @@ function makeNewTaskDont() {
     ".new--task--modal--secoundry"
   );
   const submitBotton = document.getElementById("addTaskSubmitBtnDont");
+  const cancelBtn = document.getElementById("closeModalAddDont");
   //inputs
   const nameInput = newTaskModalDont
     ? newTaskModalDont.querySelector("#nameInput")
@@ -626,6 +842,42 @@ function makeNewTaskDont() {
   const addNewTaskDescFinish = document.getElementById("descriptionDontfinish");
   const addNewTaskDescName = document.getElementById("descriptionDontName");
 
+  //helper functions
+  function errorHandler(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+
+  //error handlesr remover
+  function errorRemover(element) {
+    element.classList.remove("warning");
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      errorRemover(addNewTaskDescFinish);
+      errorRemover(addNewTaskDescStart);
+      errorRemover(addNewTaskDescName);
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+    });
+  }
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      errorRemover(addNewTaskDescFinish);
+      errorRemover(addNewTaskDescStart);
+      errorRemover(addNewTaskDescName);
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+    });
+  }
+
   if (submitBotton) {
     submitBotton.addEventListener("click", (e) => {
       const name = nameInput.value;
@@ -635,76 +887,43 @@ function makeNewTaskDont() {
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
       //error handlesr
-      let hasErrorStart = false;
-      let hasErrorfinish = false;
-      let hasErrorStartEmpthy = false;
-      let hasErrorfinishEmpthy = false;
-      let hasErrorName = false;
+      let hasError = false;
 
       //if the inputs was empthy
       if (startDate == "") {
-        addNewTaskDescStart.innerHTML =
-          "This field cannot be empty. Please select a date.";
-        addNewTaskDescStart.classList.add("warning");
-        hasErrorStartEmpthy = true;
+        errorHandler(
+          addNewTaskDescStart,
+          "This field cannot be empty. Please select a date."
+        );
+        hasError = true;
+      } else if (!dateRegex.test(startDate)) {
+        errorHandler(addNewTaskDescStart, "Please choose a valid date.");
+        hasError = true;
+      } else {
+        errorRemover(addNewTaskDescStart);
+        addNewTaskDescStart.innerHTML = "";
       }
 
       if (finishDate == "") {
-        addNewTaskDescFinish.innerHTML =
-          "This field cannot be empty. Please select a date.";
-        addNewTaskDescFinish.classList.add("warning");
-        hasErrorfinishEmpthy = true;
+        errorHandler(
+          addNewTaskDescFinish,
+          "This field cannot be empty. Please select a date."
+        );
+        hasError = true;
+      } else if (!dateRegex.test(finishDate)) {
+        errorHandler(addNewTaskDescFinish, "Please choose a valid date.");
+        hasError = true;
+      } else {
+        errorRemover(addNewTaskDescFinish);
+        addNewTaskDescFinish.innerHTML = "";
       }
 
       if (name == "") {
-        addNewTaskDescName.innerHTML = "Name cannot be empty.";
-        addNewTaskDescName.classList.add("warning");
-        hasErrorName = true;
+        errorHandler(addNewTaskDescName, "Name cannot be empthy");
+        hasError = true;
       }
 
-      //if the inputs was full get regex
-      if (startDate !== "") {
-        const result = dateRegex.test(startDate);
-
-        if (!result) {
-          addNewTaskDescStart.innerHTML = "Please choose a valid date.";
-          addNewTaskDescStart.classList.add("warning");
-          hasErrorStart = true;
-        }
-      }
-
-      if (finishDate !== "") {
-        const result = dateRegex.test(finishDate);
-        if (!result) {
-          addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
-          addNewTaskDescFinish.classList.add("warning");
-          hasErrorfinish = true;
-        }
-      }
-
-      //go to default
-      if (
-        hasErrorStart ||
-        hasErrorfinish ||
-        hasErrorName ||
-        hasErrorStartEmpthy ||
-        hasErrorfinishEmpthy
-      ) {
-        setTimeout(() => {
-          addNewTaskDescFinish.innerHTML =
-            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-          addNewTaskDescStart.innerHTML =
-            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-          addNewTaskDescName.innerHTML = "Place a text here for description";
-
-          addNewTaskDescName.classList.remove("warning");
-          addNewTaskDescStart.classList.remove("warning");
-          addNewTaskDescFinish.classList.remove("warning");
-          hasErrorfinish = false;
-          hasErrorStart = false;
-        }, 6000);
-        return;
-      }
+      if (hasError) return;
 
       //make the task
       const tasksRow = document.createElement("div");
@@ -741,6 +960,12 @@ function makeNewTaskDont() {
         span.textContent = 50;
       });
 
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+
       newTaskModalDont.classList.remove("show");
       overlay.classList.remove("show");
     });
@@ -748,11 +973,157 @@ function makeNewTaskDont() {
 }
 makeNewTaskDont();
 
+// function makeNewTaskDo() {
+//   //modal
+//   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
+//   const submitBotton = document.getElementById("addTaskSubmitBtn");
+//   const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+//   //inputs
+//   const nameInput = newTaskModalDo
+//     ? newTaskModalDo.querySelector("#nameInput")
+//     : null;
+//   const startDateInput = document.getElementById("startDateDo");
+//   const finishDateInput = document.getElementById("finishDateDo");
+//   //overlay
+//   const overlay = document.querySelector(".blur--background--0-2");
+//   //tasks
+//   const primaryTasks = document.querySelector(".primary--tasks");
+//   const taskContainer = primaryTasks
+//     ? primaryTasks.querySelector(".tasks__column")
+//     : null;
+//   //descriptions
+//   const addNewTaskDescStart = document.getElementById("descriptionDoStart");
+//   const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
+//   const addNewTaskDescName = document.getElementById("descriptionDoName");
+
+//   if (submitBotton) {
+//     submitBotton.addEventListener("click", (e) => {
+//       const name = nameInput.value;
+//       const startDate = startDateInput.value;
+//       const finishDate = finishDateInput.value;
+
+//       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+//       //error handlesr
+//       let hasErrorStart = false;
+//       let hasErrorfinish = false;
+//       let hasErrorStartEmpthy = false;
+//       let hasErrorfinishEmpthy = false;
+//       let hasErrorName = false;
+
+//       //if the inputs was empthy
+//       if (startDate == "") {
+//         addNewTaskDescStart.innerHTML =
+//           "This field cannot be empty. Please select a date.";
+//         addNewTaskDescStart.classList.add("warning");
+//         hasErrorStartEmpthy = true;
+//       }
+
+//       if (finishDate == "") {
+//         addNewTaskDescFinish.innerHTML =
+//           "This field cannot be empty. Please select a date.";
+//         addNewTaskDescFinish.classList.add("warning");
+//         hasErrorfinishEmpthy = true;
+//       }
+
+//       if (name == "") {
+//         addNewTaskDescName.innerHTML = "Name cannot be empty.";
+//         addNewTaskDescName.classList.add("warning");
+//         hasErrorName = true;
+//       }
+
+//       //if the inputs was full get regex
+//       if (startDate !== "") {
+//         const result = dateRegex.test(startDate);
+//         console.log(result, startDate);
+//         if (!result) {
+//           addNewTaskDescStart.innerHTML = "Please choose a valid date.";
+//           addNewTaskDescStart.classList.add("warning");
+//           hasErrorStart = true;
+//         }
+//       }
+
+//       if (finishDate !== "") {
+//         const result = dateRegex.test(finishDate);
+//         if (!result) {
+//           addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
+//           addNewTaskDescFinish.classList.add("warning");
+//           hasErrorfinish = true;
+//         }
+//       }
+
+//       //go to default
+//       if (
+//         hasErrorStart ||
+//         hasErrorfinish ||
+//         hasErrorName ||
+//         hasErrorStartEmpthy ||
+//         hasErrorfinishEmpthy
+//       ) {
+//         setTimeout(() => {
+//           addNewTaskDescFinish.innerHTML =
+//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+//           addNewTaskDescStart.innerHTML =
+//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+//           addNewTaskDescName.innerHTML = "Place a text here for description";
+
+//           addNewTaskDescName.classList.remove("warning");
+//           addNewTaskDescStart.classList.remove("warning");
+//           addNewTaskDescFinish.classList.remove("warning");
+//           hasErrorfinish = false;
+//           hasErrorStart = false;
+//         }, 6000);
+//         return;
+//       }
+
+//       //make the task
+//       const tasksRow = document.createElement("div");
+//       tasksRow.className = "tasks__row";
+//       tasksRow.innerHTML = `
+//               <span>${name}</span>
+//               <span>${startDate}</span>
+//               <span>${finishDate}</span>
+//               <label class="checkbox--primary">
+//                 <input class="checkbox__input" type="checkbox" />
+//                 <span class="checkbox__box"></span>
+//               </label>
+
+//   `;
+
+//       //prevent new checkbox from default behavior
+//       taskContainer.addEventListener("click", (e) => {
+//         const label = e.target.closest(".checkbox--primary");
+//         if (!label) return;
+
+//         e.preventDefault();
+//         const input = label.querySelector('input[type="checkbox"]');
+//         input.checked = !input.checked;
+//       });
+
+//       //append the task that we made to the row
+//       taskContainer.append(tasksRow);
+
+//       //back to defualt
+//       nameInput.value = "";
+//       startDateInput.value = "";
+//       finishDateInput.value = "";
+//       nameCountSpan.forEach((span) => {
+//         span.textContent = 50;
+//       });
+
+//       newTaskModalDo.classList.remove("show");
+//       overlay.classList.remove("show");
+//     });
+//   }
+// }
+// makeNewTaskDo();
+
 function makeNewTaskDo() {
   //modal
   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
   const submitBotton = document.getElementById("addTaskSubmitBtn");
   const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+  const cancelBtn = document.getElementById("closeModalAddDo");
   //inputs
   const nameInput = newTaskModalDo
     ? newTaskModalDo.querySelector("#nameInput")
@@ -771,6 +1142,53 @@ function makeNewTaskDo() {
   const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
   const addNewTaskDescName = document.getElementById("descriptionDoName");
 
+  //helper functions
+  function errorHandler(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+
+  //helper functions
+  function errorRemover(element) {
+    element.classList.remove("warning");
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      errorRemover(addNewTaskDescFinish);
+      errorRemover(addNewTaskDescStart);
+      errorRemover(addNewTaskDescName);
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+    });
+  }
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      errorRemover(addNewTaskDescFinish);
+      errorRemover(addNewTaskDescStart);
+      errorRemover(addNewTaskDescName);
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+    });
+  }
+
+  if (taskContainer) {
+    taskContainer.addEventListener("click", (e) => {
+      const label = e.target.closest(".checkbox--primary");
+      if (!label) return;
+
+      e.preventDefault();
+      const input = label.querySelector('input[type="checkbox"]');
+      input.checked = !input.checked;
+    });
+  }
+
   if (submitBotton) {
     submitBotton.addEventListener("click", (e) => {
       const name = nameInput.value;
@@ -779,77 +1197,46 @@ function makeNewTaskDo() {
 
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
-      //error handlesr
-      let hasErrorStart = false;
-      let hasErrorfinish = false;
-      let hasErrorStartEmpthy = false;
-      let hasErrorfinishEmpthy = false;
-      let hasErrorName = false;
+      let hasError = false;
 
-      //if the inputs was empthy
+      //error handler
       if (startDate == "") {
-        addNewTaskDescStart.innerHTML =
-          "This field cannot be empty. Please select a date.";
-        addNewTaskDescStart.classList.add("warning");
-        hasErrorStartEmpthy = true;
+        errorHandler(
+          addNewTaskDescStart,
+          "This field cannot be empty. Please select a date."
+        );
+        hasError = true;
+      } else if (!dateRegex.test(startDate)) {
+        errorHandler(addNewTaskDescStart, "Please choose a valid date.");
+        hasError = true;
+      } else {
+        errorRemover(addNewTaskDescStart);
+        addNewTaskDescStart.innerHTML = "";
       }
 
       if (finishDate == "") {
-        addNewTaskDescFinish.innerHTML =
-          "This field cannot be empty. Please select a date.";
-        addNewTaskDescFinish.classList.add("warning");
-        hasErrorfinishEmpthy = true;
+        errorHandler(
+          addNewTaskDescFinish,
+          "This field cannot be empty. Please select a date."
+        );
+        hasError = true;
+      } else if (!dateRegex.test(finishDate)) {
+        errorHandler(addNewTaskDescFinish, "Please choose a valid date.");
+        hasError = true;
+      } else {
+        errorRemover(addNewTaskDescFinish);
+        addNewTaskDescFinish.innerHTML = "";
       }
 
       if (name == "") {
-        addNewTaskDescName.innerHTML = "Name cannot be empty.";
-        addNewTaskDescName.classList.add("warning");
-        hasErrorName = true;
+        errorHandler(addNewTaskDescName, "Name cannot be empty.");
+        hasError = true;
+      } else {
+        errorRemover(addNewTaskDescName);
+        addNewTaskDescName.innerHTML = "";
       }
 
-      //if the inputs was full get regex
-      if (startDate !== "") {
-        const result = dateRegex.test(startDate);
-        console.log(result, startDate);
-        if (!result) {
-          addNewTaskDescStart.innerHTML = "Please choose a valid date.";
-          addNewTaskDescStart.classList.add("warning");
-          hasErrorStart = true;
-        }
-      }
-
-      if (finishDate !== "") {
-        const result = dateRegex.test(finishDate);
-        if (!result) {
-          addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
-          addNewTaskDescFinish.classList.add("warning");
-          hasErrorfinish = true;
-        }
-      }
-
-      //go to default
-      if (
-        hasErrorStart ||
-        hasErrorfinish ||
-        hasErrorName ||
-        hasErrorStartEmpthy ||
-        hasErrorfinishEmpthy
-      ) {
-        setTimeout(() => {
-          addNewTaskDescFinish.innerHTML =
-            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-          addNewTaskDescStart.innerHTML =
-            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-          addNewTaskDescName.innerHTML = "Place a text here for description";
-
-          addNewTaskDescName.classList.remove("warning");
-          addNewTaskDescStart.classList.remove("warning");
-          addNewTaskDescFinish.classList.remove("warning");
-          hasErrorfinish = false;
-          hasErrorStart = false;
-        }, 6000);
-        return;
-      }
+      if (hasError) return;
 
       //make the task
       const tasksRow = document.createElement("div");
@@ -865,16 +1252,6 @@ function makeNewTaskDo() {
                
   `;
 
-      //prevent new checkbox from default behavior
-      taskContainer.addEventListener("click", (e) => {
-        const label = e.target.closest(".checkbox--primary");
-        if (!label) return;
-
-        e.preventDefault();
-        const input = label.querySelector('input[type="checkbox"]');
-        input.checked = !input.checked;
-      });
-
       //append the task that we made to the row
       taskContainer.append(tasksRow);
 
@@ -886,6 +1263,12 @@ function makeNewTaskDo() {
         span.textContent = 50;
       });
 
+      addNewTaskDescFinish.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+      addNewTaskDescName.innerHTML = "Place a text here for description";
+      addNewTaskDescStart.innerHTML =
+        'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+
       newTaskModalDo.classList.remove("show");
       overlay.classList.remove("show");
     });
@@ -893,26 +1276,21 @@ function makeNewTaskDo() {
 }
 makeNewTaskDo();
 
-//logged in and sign up
-
 function login() {
-  //inputs
+  // inputs
   const emailInput = document.getElementById("emailInputLogin");
   const passwordInputLogin = document.getElementById("passwordInputLogin");
   const rememberMeLogin = document.getElementById("rememberMeLogin");
-  //btns
-  const submitBtnLogin = document.getElementById("submitBtnLogin");
-  const googleLoginBtn = document.getElementById("googleLoginBtn");
-  const githubLoginBtn = document.getElementById("githubLoginBtn");
 
+  // buttons
+  const submitBtnLogin = document.getElementById("submitBtnLogin");
   const eyeBtn = document.getElementById("eyeBtn");
-  //description
+
+  // descriptions
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
-  if (!window.location.pathname.endsWith("login.html")) {
-    return;
-  }
+  if (!window.location.pathname.endsWith("login.html")) return;
 
   // helper functions
   function errorHandling(element, message) {
@@ -921,85 +1299,76 @@ function login() {
   }
 
   function errorClear(element) {
+    element.innerHTML = "";
     element.classList.remove("warning");
   }
 
-  //eyebtn
+  function clearAllErrors() {
+    errorClear(emailDesc);
+    errorClear(passwordDesc);
+  }
+
+  // eye button
   if (eyeBtn) {
     eyeBtn.addEventListener("click", () => {
-      if (passwordInputLogin.type == "password") {
-        passwordInputLogin.type = "text";
-        eyeBtn.innerHTML = '<i class="fa-regular fa-eye eye-noslash"></i>';
-      } else if (passwordInputLogin.type == "text") {
-        passwordInputLogin.type = "password";
-        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash eye-slash"></i>';
-      }
+      const isPassword = passwordInputLogin.type === "password";
+      passwordInputLogin.type = isPassword ? "text" : "password";
+      eyeBtn.innerHTML = isPassword
+        ? '<i class="fa-regular fa-eye eye-noslash"></i>'
+        : '<i class="fa-regular fa-eye-slash eye-slash"></i>';
     });
   }
 
-  //regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-
   if (submitBtnLogin) {
     submitBtnLogin.addEventListener("click", () => {
+      clearAllErrors();
+
       const email = emailInput.value.trim();
       const password = passwordInputLogin.value.trim();
       const rememberMe = rememberMeLogin.checked;
 
       let hasError = false;
 
-      //email validation
+      // empty validation
       if (!email) {
         errorHandling(emailDesc, "Email cannot be empty.");
         hasError = true;
-      } else {
-        errorClear(emailDesc);
       }
 
-      //password validation
       if (!password) {
         errorHandling(passwordDesc, "Password cannot be empty.");
         hasError = true;
-      } else {
-        errorClear(passwordDesc);
       }
 
       if (hasError) return;
 
-      //loggin in with signup
-      let emailIsCorrect =
-        email === localStorage.getItem("email") ||
-        email === sessionStorage.getItem("email");
-      let passwordIsCorrect =
-        password === localStorage.getItem("password") ||
-        password === sessionStorage.getItem("password");
+      // mock auth (ONLY for UI demo)
+      const storedEmail =
+        localStorage.getItem("email") || sessionStorage.getItem("email");
+      const storedPassword =
+        localStorage.getItem("password") || sessionStorage.getItem("password");
 
-      if (passwordIsCorrect && emailIsCorrect && rememberMe) {
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "home.html";
-      } else if (passwordIsCorrect && emailIsCorrect && !rememberMe) {
-        sessionStorage.setItem("isLoggedIn", "true");
-        window.location.href = "home.html";
-      } else if (!passwordIsCorrect && emailIsCorrect) {
-        errorHandling(passwordDesc, "Password isn't correct.");
-        errorClear(emailDesc);
-        emailDesc.innerHTML = "";
-        return;
-      } else if (passwordIsCorrect && !emailIsCorrect) {
-        errorHandling(emailDesc, "Email isn't correct.");
-        errorClear(passwordDesc);
-        passwordDesc.innerHTML = "";
-        return;
-      } else if (!passwordIsCorrect && !emailIsCorrect) {
-        errorHandling(emailDesc, "Email isnt correct.");
-        errorHandling(passwordDesc, "Password isn't correct.");
+      const isValid = email === storedEmail && password === storedPassword;
+
+      if (!isValid) {
+        const message = "Email or password is incorrect.";
+        errorHandling(emailDesc, message);
+        errorHandling(passwordDesc, message);
         return;
       }
+
+      // success
+      if (rememberMe) {
+        localStorage.setItem("isLoggedIn", "true");
+      } else if (!rememberMe) {
+        sessionStorage.setItem("isLoggedIn", "true");
+      }
+
+      window.location.href = "home.html";
     });
   }
 }
+
 login();
 
 function signup() {
@@ -1129,20 +1498,27 @@ function signup() {
 }
 signup();
 
-function headerByConditionFn() {
-  const headerByCondition = document.getElementById("headerByCondition");
-
+function ConditionalRenderingFn() {
   const isLoggedIn =
     sessionStorage.getItem("isLoggedIn") === "true" ||
     localStorage.getItem("isLoggedIn") === "true";
 
+  //conditionaly rendering links
+
+  //conditionaly rendering header
+  const headerByCondition = document.getElementById("headerByCondition");
+
   if (!headerByCondition) return;
+  const theAddress = window.location.pathname.split("/")[3].split(".")[0];
+  const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
 
   if (isLoggedIn) {
     headerByCondition.innerHTML = `<section class="header">
         <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
+          <h3>${cap}</h3>
+          <i class="fa-solid fa-${
+            theAddress == "about-us" ? "circle-info" : theAddress
+          }"></i>
         </header>
         
         <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
@@ -1151,8 +1527,8 @@ function headerByConditionFn() {
   } else {
     headerByCondition.innerHTML = `<section class="header">
         <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
+          <h3>${cap}</h3>
+          <i class="fa-solid fa-${theAddress}"></i>
         </header>
 
         <a href="login.html">
@@ -1180,5 +1556,9 @@ function headerByConditionFn() {
         </a>
       </section>`;
   }
+
+  const trophyBtn = document.getElementById("trophyBtn");
+  if (!trophyBtn) return;
+  trophyBtn.href = isLoggedIn ? "trophy-details.html" : "signup.html";
 }
-headerByConditionFn();
+ConditionalRenderingFn();

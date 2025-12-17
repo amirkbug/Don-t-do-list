@@ -44,36 +44,38 @@
     </div>
 
     <!-- header -->
-    <section class="header">
-      <header>
-        <h3>Trophy</h3>
-        <i class="fa-solid fa-trophy"></i>
-      </header>
+    <div id="headerByCondition">
+      <section class="header">
+        <header>
+          <h3>Trophy details</h3>
+          <i class="fa-solid fa-trophy"></i>
+        </header>
 
-      <a href="login.html">
-        <button
-          style="padding: 0 0; margin: 0 0; border: none"
-          class="btn btn--video--bg"
-        >
-          <div class="btn__container">
-            <div class="btn__text">
-              <span>Login / Signup</span>
-              <span class="btn__icon">
-                <i class="fa-solid fa-user"></i>
-              </span>
+        <a href="login.html">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <video class="btn__video" muted loop autoplay playsinline>
-            <source
-              src="../assets/video/primary-secondary/Last one i rendred.mp4"
-              type="video/mp4"
-            />
-            your browser doesent support video
-          </video>
-        </button>
-      </a>
-    </section>
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>
+    </div>
     <main class="trophy--layout">
       <div class="trophy--card--primary">
         <header class="trophy__header">
@@ -85,9 +87,9 @@
             alt="Goodies Happy Flame"
           />
         </div>
-        <button class="btn btn--primary">
-          <span>More info!</span>
-        </button>
+        <a id="trophyBtn" href="trophy-details.html">
+          <button class="btn btn--primary">More info!</button>
+        </a>
       </div>
 
       <div class="trophy--card--secondary">

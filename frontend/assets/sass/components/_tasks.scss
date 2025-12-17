@@ -10,7 +10,7 @@
   z-index: 999;
   //sizing
   padding: 1.25rem; //20px
-  width: 31.25rem; //500px
+  width: 31.25rem; //500px //31.25rem
 
   .tasks__btn__top {
     //display
@@ -96,6 +96,7 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 2.5rem; //40px
+      width: 100%;
       //sizing
       padding: 0.3125rem; //5px
       max-height: 390px;

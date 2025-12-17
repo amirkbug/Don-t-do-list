@@ -44,35 +44,38 @@
     </div>
 
     <!-- header -->
-    <section class="header">
-      <header>
-        <h3>About us</h3>
-        <i class="fa-solid fa-circle-info"></i>
-      </header>
-      <a href="login.html">
-        <button
-          style="padding: 0 0; margin: 0 0; border: none"
-          class="btn btn--video--bg"
-        >
-          <div class="btn__container">
-            <div class="btn__text">
-              <span>Login / Signup</span>
-              <span class="btn__icon">
-                <i class="fa-solid fa-user"></i>
-              </span>
-            </div>
-          </div>
+    <div id="headerByCondition">
+      <section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
 
-          <video class="btn__video" muted loop autoplay playsinline>
-            <source
-              src="../assets/video/primary-secondary/Last one i rendred.mp4"
-              type="video/mp4"
-            />
-            your browser doesent support video
-          </video>
-        </button>
-      </a>
-    </section>
+        <a href="login.html">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>
+    </div>
 
     <!-- about us cards -->
     <main class="about--us--layout">
@@ -107,7 +110,7 @@
             </p>
           </div>
           <button class="btn btn--secondary--200">
-            <span>Contact me now!</span>
+            <a target="_blank" href="https://t.me/Kbug1">Contact me now!</a>
           </button>
         </div>
       </section>
@@ -157,7 +160,11 @@
           </div>
 
           <button class="btn btn--primary--200">
-            <span>View on GitHub</span>
+            <a
+              target="_blank"
+              href="https://github.com/amirkbug/Don-t-do-list-git"
+              >View on github</a
+            >
             <span class="btn__icon"><i class="fa-brands fa-github"></i></span>
           </button>
         </div>
@@ -182,18 +189,27 @@
         <div>
           <p>Follow us on</p>
           <nav>
-            <span class="instagram"
-              ><i class="fa-brands fa-instagram fa-lg"></i
-            ></span>
-            <span class="linkedin"
-              ><i class="fa-brands fa-linkedin fa-lg"></i
-            ></span>
-            <span class="youtube"
-              ><i class="fa-brands fa-youtube fa-lg"></i
-            ></span>
-            <span class="telegram"
-              ><i class="fa-brands fa-telegram fa-lg"></i
-            ></span>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/nonetoaststudio/"
+            >
+              <span class="instagram"
+                ><i class="fa-brands fa-instagram fa-lg"></i></span
+            ></a>
+            <a target="_blank" href="https://www.linkedin.com/in/nonetoast/">
+              <span class="linkedin"
+                ><i class="fa-brands fa-linkedin fa-lg"></i
+              ></span>
+            </a>
+            <a target="_blank" href="https://www.youtube.com/@NONETOASTstudio">
+              <span class="youtube">
+                <i class="fa-brands fa-youtube fa-lg"></i>
+              </span>
+            </a>
+            <a target="_blank" href="https://t.me/NONETOASTstudio">
+              <span class="telegram"
+                ><i class="fa-brands fa-telegram fa-lg"></i></span
+            ></a>
           </nav>
         </div>
         <hr class="vertical-divider" />
@@ -225,7 +241,12 @@
         <a href="home.html" class="navbar__item" data-label="Home">
           <i class="fa-solid fa-house fa-2xl"></i>
         </a>
-        <a href="trophy.html" class="navbar__item" data-label="Trophy">
+        <a
+          id="trophyNavbar"
+          href="trophy.html"
+          class="navbar__item"
+          data-label="Trophy"
+        >
           <i class="fa-solid fa-trophy fa-2xl"></i>
         </a>
       </nav>

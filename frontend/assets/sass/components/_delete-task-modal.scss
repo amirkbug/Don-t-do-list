@@ -79,7 +79,6 @@
       margin: 0;
       //color and typo
       @include typography($weight-regular, $size-16);
-
       em {
         //color and typo
         font-style: normal;
