@@ -1850,7 +1850,7 @@
   width: 25.875rem;
   height: 32.1875rem;
   padding: 3.125rem 1.25rem;
-  background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
+  background-image: url("/static/assets/images/tasks-bg/background-icon-v2.svg");
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -2012,7 +2012,7 @@
   width: 25.875rem;
   height: 32.1875rem;
   padding: 3.125rem 1.25rem;
-  background-image: url(/frontend/assets/images/tasks-bg/background-icon-v2.svg);
+  background-image: url("/static/assets/images/tasks-bg/background-icon-v2.svg");
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
