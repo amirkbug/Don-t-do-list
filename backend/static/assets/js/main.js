@@ -1517,12 +1517,13 @@ function ConditionalRenderingFn() {
 
   let theAddress;
   if (pathParts.length === 0) {
-    theAddress = "home"; // وقتی Home هست
+    theAddress = "home"; 
   } else {
     theAddress = pathParts[pathParts.length - 1].split(".")[0];
   }
   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
-
+  const loginLink = document.getElementById("loginLink");
+  const loginUrl = loginLink.dataset.loginUrl; 
   if (isLoggedIn) {
     headerByCondition.innerHTML = `<section class="header">
         <header>
@@ -1542,7 +1543,7 @@ function ConditionalRenderingFn() {
           <i class="fa-solid fa-${theAddress}"></i>
         </header>
 
-        <a href="login.html">
+        <a href="${loginUrl}">
           <button
             style="padding: 0 0; margin: 0 0; border: none"
             class="btn btn--video--bg"

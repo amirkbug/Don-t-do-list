@@ -1,0 +1,139 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block 'title' %}Signup{% endblock 'title' %} 
+{% block 'content' %}
+
+    <!-- login -->
+    <div style="padding: 4.375rem; display: flex; justify-content: center">
+      <main class="signup--form">
+        <div class="login--signup--form__content">
+          <img
+            class="login--signup--form__logo"
+            src="../assets/icons/dont-do-list-logos/dont-do-list-alt.svg"
+            alt="dont-do-list-primary"
+          />
+          <header>
+            <p>Create new account.</p>
+            <span
+              >You have an account?<a
+                style="padding-left: 3px"
+                href="login.html"
+                >Login here</a
+              ></span
+            >
+          </header>
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Name</span>
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><i class="fa-regular fa-user"></i
+              ></span>
+              <input
+                autocomplete="off"
+                max="20"
+                id="nameInput"
+                type="text"
+                class="input_input"
+                placeholder="Jason anderson"
+              />
+            </div>
+            <p id="nameDesc" class="input_description"></p>
+          </div>
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Email</span>
+            <div class="input_content">
+              <span style="padding-top: 1px" class="input_icon_left"
+                ><i class="fa-solid fa-at"></i
+              ></span>
+              <input
+                autocomplete="off"
+                max="20"
+                id="emailInput"
+                type="text"
+                class="input_input"
+                placeholder="Example@gmail.com"
+              />
+            </div>
+            <p id="emailDesc" class="input_description"></p>
+          </div>
+
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Password</span>
+            <div class="input_content">
+              <span class="input_icon_left">
+                <img
+                  style="width: 13px; padding-top: 3px"
+                  src="../assets/icons/lock/lock-secondary.svg"
+                  alt="lock-icon"
+                />
+              </span>
+              <input
+                autocomplete="off"
+                max="20"
+                id="passwordInput"
+                type="password"
+                type="text"
+                class="input_input"
+                placeholder="••••••••"
+              />
+              <div class="input_content_right">
+                <span
+                  id="eyeBtn"
+                  style="padding-bottom: 1px; cursor: pointer"
+                  class="input_icon_right"
+                  ><i class="fa-regular fa-eye-slash"></i
+                ></span>
+              </div>
+            </div>
+            <p id="passwordDesc" class="input_description"></p>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <label class="checkbox--secoundry">
+              <input
+                id="rememberMeSignup"
+                class="checkbox__input"
+                type="checkbox"
+              />
+              <span class="checkbox__box"></span>
+              <span class="checkbox__label">Remember me</span>
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button id="submitBtn" class="btn btn--secondary">
+            <span>Signup</span>
+          </button>
+          <div style="margin: 0; flex: 0" class="fancy--divider--secondary">
+            <span class="fancy_divider_content">Or continue with</span>
+          </div>
+          <footer>
+            <button id="googleBtn" class="btn btn--secondary">
+              <span>Google(soon)</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/google/Google-v2.svg"
+                  alt="Google-icon"
+              /></span>
+            </button>
+            <button id="githubBtn" class="btn btn--secondary">
+              <span>Github(soon)</span>
+              <span class="btn__icon"
+                ><img
+                  src="../assets/icons/github/Github-v2.svg"
+                  alt="github-icon"
+              /></span>
+            </button>
+          </footer>
+        </div>
+        <div class="login--signup--form__image">
+          <img src="../assets/images/unsplash-images/signup-img.jpg" alt="" />
+        </div>
+      </main>
+    </div>
+
+{% endblock 'content' %}

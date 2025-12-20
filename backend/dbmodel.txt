@@ -1,0 +1,13 @@
+table Tasksdont{
+  id int pk
+  discription char
+  startdate date
+  enddate date
+}
+
+table Tasksdo{
+  id int pk
+  discription char
+  startdate date
+  enddate date
+}

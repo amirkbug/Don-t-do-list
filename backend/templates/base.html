@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Css -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bebas Neue -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/svg+html"
+      sizes="16x16"
+      href="{% static 'assets/icons/favicons/house-solid-full.svg' %}"
+    />
+    <title>Home</title>
+  </head>
+  <body style="background-color: rgb(79, 79, 79)">
+    <!-- background -->
+    <div class="video--bg">
+      <video autoplay muted loop>
+        <source
+          src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- blur background -->
+    <div class="blur--background--0-2"></div>
+    <div class="blur--background--0-1"></div>
+
+    <!-- header -->
+
+    <div id="headerByCondition">
+      <section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home"></i>
+        </header>
+
+        <a id="loginLink" data-login-url="{% url 'accounts:signup' %}">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>
+    </div>
+
+    {% block 'content' %} {% endblock 'content' %}
+    <!-- navbar -->
+    <div style="display: flex; gap: 10px">
+      <nav class="navbar">
+        <a href="about-us.html" class="navbar__item" data-label="Info">
+          <i class="fa-solid fa-circle-info fa-2xl"></i>
+        </a>
+        <a href="home.html" class="navbar__item" data-label="Home">
+          <i class="fa-solid fa-house fa-2xl"></i>
+        </a>
+        <a href="trophy.html" class="navbar__item" data-label="Trophy">
+          <i class="fa-solid fa-trophy fa-2xl"></i>
+        </a>
+      </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .models import DoTasks , DontTasks
 
-# Create your views here.
 
 def home(request):
-    return render(request , "home.html")
+    context = {
+    "DontTasks" : DontTasks.objects.all(),
+    "DoTasks" : DoTasks.objects.all(),
+    }
+    
+    return render(request , "root/home.html",context=context)
