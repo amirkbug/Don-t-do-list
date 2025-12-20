@@ -1,0 +1,58 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+@mixin fancy--divider($border-height, $border-txt-color) {
+  //display
+  display: flex;
+  align-items: center;
+  text-align: center;
+  //spacing
+  margin: 2rem 0;
+  flex: 1;
+
+  &::before,
+  &::after {
+    //display
+    content: "";
+    flex: 1;
+    //color and typo
+    border-bottom: $border-height solid $border-txt-color; //dont change it
+  }
+
+  .fancy_divider_content {
+    //spacing
+    margin: 0 0.8rem;
+    //color and typo
+    color: #666;
+    @include typography($weight-regular, $size-13);
+    color: $border-txt-color;
+  }
+
+  .fancy_divider_icon {
+    //spacing
+    padding: 0.625rem;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    object-fit: cover;
+  }
+}
+
+.fancy--divider--primary {
+  @include fancy--divider(3px, $primary-300);
+}
+
+.fancy--divider--primary--700 {
+  @include fancy--divider(1.5px, $primary-700);
+}
+
+.fancy--divider--secondary {
+  @include fancy--divider(3px, $secondary-300);
+}
+
+.fancy--divider--secondary--700 {
+  @include fancy--divider(1.5px, $secondary-700);
+}
+
+.fancy--divider--neutral {
+  @include fancy--divider(3px, $neutral-50);
+}

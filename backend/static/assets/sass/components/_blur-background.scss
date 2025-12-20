@@ -1,0 +1,30 @@
+@use "../abstracts/index" as *;
+@mixin blur--background($color, $index) {
+  //display
+  position: fixed;
+  z-index: $index;
+  pointer-events: none;
+  //sizing
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  //color and typo
+  background-color: $color;
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// rgba(0, 0, 0, 0.2)
+
+.blur--background--0-1 {
+  @include blur--background(rgba(0, 0, 0, 0.01), 1001);
+}
+.blur--background--0-2 {
+  @include blur--background(rgba(0, 0, 0, 0.2), 1000);
+}

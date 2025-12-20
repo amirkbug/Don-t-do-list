@@ -1,0 +1,147 @@
+@use "../abstracts/index" as *;
+
+@mixin delete--task--modal($border-color, $text-color) {
+  //display
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  //sizing
+  width: 19.75rem; //316px
+  height: 25.625rem; //410px
+  padding: 1.625rem 1.563rem; //26px 25px
+  //color and typo
+  border: 0.188rem solid $border-color; //3px
+  border-radius: 0.625rem; //10px
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  video {
+    //display
+    position: absolute;
+    z-index: -1;
+    object-fit: fill;
+    object-position: center;
+    //sizing
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    // color and typo
+    border-radius: 0.375rem; //6px
+  }
+
+  header {
+    //display
+    text-align: center;
+    //sizing
+    margin: 0;
+    //color and typo
+    color: $text-color;
+    p {
+      //sizing
+      margin: 0.625rem 0 0 0; //10px
+      //color and typo
+      @include typography($weight-bold, $size-16);
+    }
+    img {
+      //sizing
+      padding: 0.625rem; //10px
+      aspect-ratio: 1/1;
+      width: 1.875rem; //30px
+      //color and typo
+      box-shadow: $shadow-small;
+      border-radius: 1.875rem; //30px
+      background-color: $destructive-10;
+      color: $destructive-500;
+    }
+  }
+  section {
+    //display
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem; //20px
+    //color and typo
+    color: $text-color;
+    p {
+      //display
+      text-align: center;
+      //sizing
+      margin: 0;
+      //color and typo
+      @include typography($weight-regular, $size-16);
+      em {
+        //color and typo
+        font-style: normal;
+      }
+    }
+    div {
+      //color and typo
+      color: $text-color;
+      @include typography($weight-regular, $size-13);
+      p {
+        //display
+        text-align: left;
+        //sizing
+        margin: 0;
+        //color and typo
+        @include typography($weight-regular, $size-13);
+      }
+      ul {
+        //sizing
+        margin: 0;
+        padding: 0 0.938rem; //15px
+        li {
+          //color and typo
+          @include typography($weight-regular, $size-13);
+        }
+      }
+    }
+  }
+  footer {
+    //display
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; //20px
+    justify-content: space-between;
+    align-items: start;
+    //sizing
+    width: 100%;
+
+    div {
+      //display
+      display: flex;
+      gap: 0.938rem; //15px
+      flex-direction: row;
+      justify-content: space-between;
+      //sizing
+      width: 100%;
+      button:nth-of-type(1) {
+        //sizing
+        min-width: 0;
+        width: 40%;
+      }
+      button:nth-of-type(2) {
+        //sizing
+        min-width: 0;
+        width: 60%;
+      }
+    }
+  }
+}
+
+.primary--delete--task--modal {
+  @include delete--task--modal($primary-50, $primary-700);
+}
+.secondary--delete--task--modal {
+  @include delete--task--modal($secondary-50, $secondary-700);
+}

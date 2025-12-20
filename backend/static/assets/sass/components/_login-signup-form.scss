@@ -1,0 +1,81 @@
+@use "../abstracts/index" as *;
+@mixin login--signup--form($border, $bg-color, $a-tags, $header-txt) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 64.25rem; //1028px
+  height: 45.125rem; //722px
+  justify-content: center;
+  border: 2px solid $border;
+  border-radius: 10px;
+  background-color: $bg-color;
+  box-shadow: $shadow-large;
+
+  .login--signup--form__content {
+    padding: 4.375rem; //70px
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    a {
+      @include typography($weight-semi-bold, $size-13);
+      color: $a-tags;
+      text-decoration: none;
+    }
+
+    .login--signup--form__logo {
+      aspect-ratio: 1/1;
+      width: 4.375rem; //70px
+    }
+    header {
+      color: $header-txt;
+
+      p {
+        @include typography($weight-bold, $size-20);
+        margin: 0;
+        margin-bottom: 0.625rem; //10px
+      }
+      span {
+        color: $a-tags;
+        @include typography($weight-regular, $size-13);
+      }
+    }
+    button {
+      border-radius: 10px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      button {
+        width: 45%;
+        gap: 0.313rem; //5px
+      }
+    }
+  }
+  .login--signup--form__image {
+    border-radius: 0px 10px 10px 0px;
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+
+.login--form {
+  @include login--signup--form(
+    $secondary-50,
+    $primary-100,
+    $primary-600,
+    $primary-300
+  );
+}
+
+.signup--form {
+  @include login--signup--form(
+    $primary-50,
+    $secondary-100,
+    $secondary-600,
+    $secondary-300
+  );
+}
