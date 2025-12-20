@@ -1,0 +1,42 @@
+@use "./variables" as *;
+/* typography */
+@mixin typography($weight, $size, $style: normal, $font: $font-primary) {
+  //color and typo
+  font-family: $font;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 1.43;
+  font-style: $style;
+}
+/* base */
+@mixin buttons-base {
+  @include typography($weight-regular, $size-16);
+  //display
+  display: inline-flex;
+  gap: 0.063rem;
+  align-items: center;
+  justify-content: center;
+  //spacing
+  padding: 0px 0.688rem;
+  min-height: 44px;
+  min-width: 139px;
+  //color and typo
+  border-radius: 58px;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid transparent;
+}
+
+@mixin buttons-states($border-color, $background-color) {
+  &:hover {
+    //color and typo
+    border-color: $border-color;
+    box-shadow: $shadow-small;
+  }
+  &:active {
+    //color and typo
+    border-color: $border-color;
+    background-color: $background-color;
+    transform: scale(0.97);
+  }
+}

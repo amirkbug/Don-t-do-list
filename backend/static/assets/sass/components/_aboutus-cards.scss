@@ -1,0 +1,88 @@
+@use "../abstracts/index" as *;
+
+@mixin aboutus--cards($header-icon-width, $zero-radius, $ten-radius) {
+  //display
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+
+  //sizing
+  gap: 0.625rem; //10px
+  .aboutus--card__image {
+    //color and typo
+    border: 2px solid $neutral-50;
+    border-top-left-radius: $ten-radius;
+    border-top-right-radius: $zero-radius;
+    border-bottom-left-radius: $ten-radius;
+    border-bottom-right-radius: $zero-radius;
+    box-shadow: $shadow-small;
+    width: 22.313rem; //357px
+    object-fit: cover;
+  }
+
+  div {
+    //display
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //sizing
+    gap: 1.25rem; //20px
+    padding: 1.875rem; //30px
+    //color and typo
+    background-color: $neutral-50;
+    border-bottom-right-radius: $ten-radius;
+    border-bottom-left-radius: $zero-radius;
+    border-top-right-radius: $ten-radius;
+    border-top-left-radius: $zero-radius;
+    box-shadow: $shadow-small;
+
+    header {
+      align-self: flex-start;
+      //display
+      display: flex;
+      flex: row;
+      gap: 0.625rem;
+      justify-content: left;
+      align-items: center; //color and typo
+      @include typography($weight-bold, $size-32);
+      color: $neutral-900;
+      h2 {
+        //sizing
+        margin: 0;
+      }
+      img {
+        //sizing
+        aspect-ratio: 1/1;
+        width: $header-icon-width;
+      }
+    }
+    button {
+      //color and typo
+      border-radius: 10px;
+      //sizing
+      width: fit-content;
+    }
+    .aboutus--card__content {
+      // direction: $text-direction;
+      //display
+      display: flex;
+      //sizing
+      gap: 0.313rem; //5.008px
+      padding: 0;
+      @include typography($weight-regular, $size-20);
+      box-shadow: none;
+      p {
+        //sizing
+        margin: 0;
+      }
+    }
+  }
+}
+
+.nonetoast--aboutcard {
+  @include aboutus--cards(4.063rem, 0, 10px);
+}
+.dont-do-list--aboutcard {
+  @include aboutus--cards(1.563rem, 10px, 0);
+}
