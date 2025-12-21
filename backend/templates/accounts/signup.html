@@ -1,7 +1,63 @@
-{% extends "base.html" %} 
-{% load static %} 
-{% block 'title' %}Signup{% endblock 'title' %} 
-{% block 'content' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Css -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bebas Neue -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/svg+html"
+      sizes="16x16"
+      href="{% static 'assets/icons/favicons/user-solid-full-v2.svg' %}"
+    />
+    <title>Sign up</title>
+  </head>
+  <body style="background-color: rgb(79, 79, 79)">
+    <!-- background -->
+    <div class="video--bg">
+      <video class="video--slower" autoplay muted loop>
+        <source
+          src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- header -->
+    <section class="header">
+      <header>
+        <h3>Sign-up</h3>
+        <i class="fa-solid fa-user"></i>
+      </header>
+
+      <a href={% url "root:home" %}>
+      <i
+        id="header__right__icon"
+        class="fa-solid fa-circle-arrow-right fa-lg"
+      ></i>
+      </a>
+    </section>
 
     <!-- login -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
@@ -9,7 +65,7 @@
         <div class="login--signup--form__content">
           <img
             class="login--signup--form__logo"
-            src="../assets/icons/dont-do-list-logos/dont-do-list-alt.svg"
+            src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-alt.svg' %}"
             alt="dont-do-list-primary"
           />
           <header>
@@ -17,7 +73,7 @@
             <span
               >You have an account?<a
                 style="padding-left: 3px"
-                href="login.html"
+                href={% url "accounts:login" %}
                 >Login here</a
               ></span
             >
@@ -63,7 +119,7 @@
               <span class="input_icon_left">
                 <img
                   style="width: 13px; padding-top: 3px"
-                  src="../assets/icons/lock/lock-secondary.svg"
+                  src="{% static 'assets/icons/lock/lock-secondary.svg' %}"
                   alt="lock-icon"
                 />
               </span>
@@ -116,7 +172,7 @@
               <span>Google(soon)</span>
               <span class="btn__icon"
                 ><img
-                  src="../assets/icons/google/Google-v2.svg"
+                  src="{% static 'assets/icons/google/Google-v2.svg' %}"
                   alt="Google-icon"
               /></span>
             </button>
@@ -124,16 +180,19 @@
               <span>Github(soon)</span>
               <span class="btn__icon"
                 ><img
-                  src="../assets/icons/github/Github-v2.svg"
+                  src="{% static 'assets/icons/github/Github-v2.svg' %}"
                   alt="github-icon"
               /></span>
             </button>
           </footer>
         </div>
         <div class="login--signup--form__image">
-          <img src="../assets/images/unsplash-images/signup-img.jpg" alt="" />
+          <img src="{% static 'assets/images/unsplash-images/signup-img.jpg' %}" alt="signup-img.jpg" />
         </div>
       </main>
     </div>
 
-{% endblock 'content' %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

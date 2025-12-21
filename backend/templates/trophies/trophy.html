@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'title' %}trophy-details{% endblock 'title' %}
+{% block 'favicon' %}{% static 'assets/icons/favicons/trophy-solid-full-v2.svg' %}{% endblock 'favicon' %}
+{% block 'content' %}
+
+    <main class="trophy--layout">
+      <div class="trophy--card--primary">
+        <header class="trophy__header">
+          <p>do 10 do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies Happy Flame.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <a data-trohpydetails-url={% url "trophies:trophy_details" %} data-signup-url={% url "accounts:signup" %} id="trophyBtn">
+          <button class="btn btn--primary">More info!</button>
+        </a>
+      </div>
+
+      <div class="trophy--card--secondary">
+        <header class="trophy__header">
+          <p>Do 10 dont do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies-Pointing.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <button class="btn btn--secondary">
+          <span>More info!</span>
+        </button>
+      </div>
+
+      <div class="trophy--card--primary">
+        <header class="trophy__header">
+          <p>Make 10 do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies-Ok.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <button class="btn btn--primary">
+          <span>More info!</span>
+        </button>
+      </div>
+
+      <div class="trophy--card--secondary">
+        <header class="trophy__header">
+          <p>Make 10 dont do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies-Ok.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <button class="btn btn--secondary">
+          <span>More info!</span>
+        </button>
+      </div>
+
+      <div class="trophy--card--primary">
+        <header class="trophy__header">
+          <p>Do 10 do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies-Ok.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <button class="btn btn--primary">
+          <span>More info!</span>
+        </button>
+      </div>
+
+      <div class="trophy--card--primary">
+        <header class="trophy__header">
+          <p>Make 10 do tasks</p>
+        </header>
+        <div class="trophy__image">
+          <img
+            src="{% static 'assets/images/trophy-pic/Goodies Happy Flame.png' %}"
+            alt="Goodies Happy Flame"
+          />
+        </div>
+        <button class="btn btn--primary">
+          <span>More info!</span>
+        </button>
+      </div>
+    </main>
+
+
+{% endblock 'content' %}

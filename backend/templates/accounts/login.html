@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Css -->
-    <link rel="stylesheet" href="/frontend/assets/css/main.css" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,7 +29,7 @@
       rel="icon"
       type="image/svg+html"
       sizes="16x16"
-      href="../assets/icons/favicons/user-solid-full-v2.svg"
+      href="{% static 'assets/icons/favicons/user-solid-full-v2.svg' %}"
     />
     <title>Login</title>
   </head>
@@ -37,7 +38,7 @@
     <div class="video--bg">
       <video class="video--slower" autoplay muted loop>
         <source
-          src="/frontend/assets/video/primary-secondary/Last one i rendred.mp4"
+          src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
           type="video/mp4"
         />
       </video>
@@ -50,10 +51,12 @@
         <i class="fa-solid fa-user"></i>
       </header>
 
+      <a href={% url "root:home" %}>
       <i
         id="header__right__icon"
         class="fa-solid fa-circle-arrow-right fa-lg"
       ></i>
+      </a>
     </section>
 
     <!-- login -->
@@ -62,7 +65,7 @@
         <div class="login--signup--form__content">
           <img
             class="login--signup--form__logo"
-            src="../assets/icons/dont-do-list-logos/dont-do-list-primary.svg"
+            src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-primary.svg' %}"
             alt="dont-do-list-primary"
           />
           <header>
@@ -70,7 +73,7 @@
             <span
               >Don't have an account?<a
                 style="padding-left: 3px"
-                href="signup.html"
+                href={% url "accounts:signup" %}
                 >sign up here</a
               ></span
             >
@@ -98,7 +101,7 @@
               <span class="input_icon_left">
                 <img
                   style="width: 13px; padding-top: 3px"
-                  src="../assets/icons/lock/lock-primary.svg"
+                  src="{% static 'assets/icons/lock/lock-primary.svg' %}"
                   alt="lock-icon"
                 />
               </span>
@@ -152,7 +155,7 @@
               <span>Google(soon)</span>
               <span class="btn__icon"
                 ><img
-                  src="../assets/icons/google/Google-v2.svg"
+                  src="{% static 'assets/icons/google/Google-v2.svg' %}"
                   alt="Google-icon"
               /></span>
             </button>
@@ -160,19 +163,19 @@
               <span>Github(soon)</span>
               <span class="btn__icon"
                 ><img
-                  src="../assets/icons/github/Github-v2.svg"
+                  src="{% static 'assets/icons/github/Github-v2.svg' %}"
                   alt="github-icon"
               /></span>
             </button>
           </footer>
         </div>
         <div class="login--signup--form__image">
-          <img src="../assets/images/unsplash-images/login-img.jpg" alt="" />
+          <img src="{% static 'assets/images/unsplash-images/login-img.jpg' %}" alt="login-img.jpg" />
         </div>
       </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module" src="{% static 'assets/js/main.js' %}"></script>
   </body>
 </html>

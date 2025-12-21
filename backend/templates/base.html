@@ -30,9 +30,9 @@
       rel="icon"
       type="image/svg+html"
       sizes="16x16"
-      href="{% static 'assets/icons/favicons/house-solid-full.svg' %}"
+      href={% block 'favicon' %}{% endblock 'favicon' %}
     />
-    <title>Home</title>
+    <title>{% block 'title' %}{% endblock 'title' %}</title>
   </head>
   <body style="background-color: rgb(79, 79, 79)">
     <!-- background -->
@@ -84,17 +84,18 @@
       </section>
     </div>
 
-    {% block 'content' %} {% endblock 'content' %}
+    {% block 'content' %}
+    {% endblock 'content' %}
     <!-- navbar -->
     <div style="display: flex; gap: 10px">
       <nav class="navbar">
-        <a href="about-us.html" class="navbar__item" data-label="Info">
+        <a href={% url "root:aboutus" %} class="navbar__item" data-label="Info">
           <i class="fa-solid fa-circle-info fa-2xl"></i>
         </a>
-        <a href="home.html" class="navbar__item" data-label="Home">
+        <a href={% url "root:home" %} class="navbar__item" data-label="Home">
           <i class="fa-solid fa-house fa-2xl"></i>
         </a>
-        <a href="trophy.html" class="navbar__item" data-label="Trophy">
+        <a href={% url "trophies:trophies-page" %} class="navbar__item" data-label="Trophy">
           <i class="fa-solid fa-trophy fa-2xl"></i>
         </a>
       </nav>

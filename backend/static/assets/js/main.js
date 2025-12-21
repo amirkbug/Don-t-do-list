@@ -370,14 +370,6 @@ function chartsFn(char) {
 
 charts.forEach((char) => chartsFn(char));
 
-//history back btn
-const header__right__icon = document.querySelector("#header__right__icon");
-if (header__right__icon) {
-  header__right__icon.addEventListener("click", () => {
-    window.location.href = "home.html";
-  });
-}
-
 //new--task--modals
 //openModalDoMakeTask
 function newTaskModalToggleDo() {
@@ -1514,33 +1506,45 @@ function ConditionalRenderingFn() {
   if (!headerByCondition) return;
 
   const pathParts = window.location.pathname.split("/").filter(Boolean);
-
+  //what should icon be?
+  let whatShouldIconBe = "circle-question";
+  //if the address has 0 chars == home
   let theAddress;
   if (pathParts.length === 0) {
-    theAddress = "home"; 
+    theAddress = "home";
   } else {
     theAddress = pathParts[pathParts.length - 1].split(".")[0];
   }
+  //header icon
+  if (theAddress === "home") {
+    whatShouldIconBe = "home";
+  } else if (theAddress === "About-us") {
+    whatShouldIconBe = "circle-info";
+  } else if (theAddress === "Login" || theAddress === "sign-up") {
+    whatShouldIconBe = "user";
+  }
+  console.log(whatShouldIconBe);
+  //header h3
   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
+  //getting login page link
   const loginLink = document.getElementById("loginLink");
-  const loginUrl = loginLink.dataset.loginUrl; 
+  const loginUrl = loginLink.dataset.loginUrl;
+
   if (isLoggedIn) {
     headerByCondition.innerHTML = `<section class="header">
         <header>
           <h3>${cap}</h3>
-          <i class="fa-solid fa-${
-            theAddress == "about-us" ? "circle-info" : theAddress
-          }"></i>
+          <i class="fa-solid fa-${whatShouldIconBe}"></i>
         </header>
         
-        <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
         
       </section>`;
   } else {
     headerByCondition.innerHTML = `<section class="header">
         <header>
           <h3>${cap}</h3>
-          <i class="fa-solid fa-${theAddress}"></i>
+          <i class="fa-solid fa-${whatShouldIconBe}"></i>
         </header>
 
         <a href="${loginUrl}">
@@ -1570,7 +1574,9 @@ function ConditionalRenderingFn() {
   }
 
   const trophyBtn = document.getElementById("trophyBtn");
+  const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl
+   const signupUrl = trophyBtn.dataset.signupUrl
   if (!trophyBtn) return;
-  trophyBtn.href = isLoggedIn ? "trophy-details.html" : "signup.html";
+  trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
 }
 ConditionalRenderingFn();
