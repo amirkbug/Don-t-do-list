@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import DoTasks , DontTasks
+from .models import Tasks
 
 
 def home(request):
+    tasks = Tasks.objects.all() 
     context = {
-    "DontTasks" : DontTasks.objects.all(),
-    "DoTasks" : DoTasks.objects.all(),
+    "tasks": tasks
     }
     
     return render(request , "root/home.html",context=context)
@@ -13,3 +13,5 @@ def home(request):
 
 def aboutus(request):
     return render(request , "root/about-us.html")
+
+

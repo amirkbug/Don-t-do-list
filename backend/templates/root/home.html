@@ -20,16 +20,18 @@
         <div style="margin: 0px 6px" class="fancy--divider--primary"></div>
       </header>
       <div class="tasks__column">
-        {% for DoTask in DoTasks %}
+        {% for task in tasks %}
+        {% if task.task_type == "DO" %}
         <div class="tasks__row">
-          <span>{{DoTask.description}}</span>
-          <span>{{ DoTask.start_date|date:"Y-m-d" }}</span>
-          <span>{{ DoTask.end_date|date:"Y-m-d" }}</span>
+          <span>{{task.description}}</span>
+          <span>{{ task.start_date|date:"Y-m-d" }}</span>
+          <span>{{ task.end_date|date:"Y-m-d" }}</span>
           <label class="checkbox--primary">
             <input class="checkbox__input" type="checkbox" />
             <span class="checkbox__box"></span>
           </label>
         </div>
+        {% endif %}
         {% endfor %}
 
         
@@ -68,16 +70,18 @@
       </header>
       <div class="tasks__column">
 
-        {% for DontTask in DontTasks %}
+        {% for task in tasks %}
+        {% if task.task_type == "DONT" %}
         <div class="tasks__row">
-          <span>{{DontTask.description}}</span>
-          <span>{{ DontTask.start_date|date:"Y-m-d" }}</span>
-          <span>{{ DontTask.end_date|date:"Y-m-d" }}</span>
+          <span>{{task.description}}</span>
+          <span>{{ task.start_date|date:"Y-m-d" }}</span>
+          <span>{{ task.end_date|date:"Y-m-d" }}</span>
           <label class="checkbox--secoundry">
             <input class="checkbox__input" type="checkbox" />
             <span class="checkbox__box"></span>
           </label>
         </div>
+        {% endif %}
         {% endfor %}
 
         

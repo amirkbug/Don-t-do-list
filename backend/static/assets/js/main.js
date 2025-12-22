@@ -1512,7 +1512,7 @@ function ConditionalRenderingFn() {
   let theAddress;
   if (pathParts.length === 0) {
     theAddress = "home";
-  } else {
+  } else if(pathParts.length > 0) {
     theAddress = pathParts[pathParts.length - 1].split(".")[0];
   }
   //header icon
@@ -1522,8 +1522,13 @@ function ConditionalRenderingFn() {
     whatShouldIconBe = "circle-info";
   } else if (theAddress === "Login" || theAddress === "sign-up") {
     whatShouldIconBe = "user";
+  }else if (!isNaN(Number(theAddress))) {
+  whatShouldIconBe = "trophy";
+  theAddress = `Trophy details`;
+}else if (theAddress === "trophies") {
+    whatShouldIconBe = "trophy";
   }
-  console.log(whatShouldIconBe);
+ 
   //header h3
   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
   //getting login page link
@@ -1574,9 +1579,9 @@ function ConditionalRenderingFn() {
   }
 
   const trophyBtn = document.getElementById("trophyBtn");
-  const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl
-   const signupUrl = trophyBtn.dataset.signupUrl
   if (!trophyBtn) return;
+  const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl
+  const signupUrl = trophyBtn.dataset.signupUrl
   trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
 }
 ConditionalRenderingFn();

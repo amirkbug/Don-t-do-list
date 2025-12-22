@@ -1,13 +1,22 @@
-table Tasksdont{
+Table Tasksdont{
   id int pk
   discription char
   startdate date
   enddate date
 }
 
-table Tasksdo{
+Table Tasksdo{
   id int pk
   discription char
   startdate date
   enddate date
 }
+
+Table trophies{
+  id int pk
+  name char
+  picture image
+  information text
+  bio text
+}
+

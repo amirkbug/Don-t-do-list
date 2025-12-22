@@ -4,5 +4,5 @@ app_name = "trophies"
 
 urlpatterns = [
     path("",trophies,name="trophies-page"),
-    path('trohpy-details/',trophy_details , name='trophy_details'),
+    path('trohpy-details/<int:trophy_id>',trophy_details , name='trophy_details'),
 ]

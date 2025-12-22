@@ -6,35 +6,26 @@
 
 
     <!-- card-details -->
-    <main class="trophy--details--card">
+     {% if trophy.trophy_type == "DONT" %}
+    <main class="trophy--details--card--secondary">
       <div>
         <section>
           <img
-            src="{% static 'assets/images/trophy-pic/Goodies Happy Flame.png' %}"
+            src="{{trophy.picture.url}}"
             alt="Goodies Happy Flame.png"
           />
-          <h4>Do 10 do tasks</h4>
+          <h4>{{trophy.name}}</h4>
           <p>Use it to make your home page better!!</p>
         </section>
         <section>
           <article>
             <h2>Information This trophy<i class="fa-solid fa-medal"></i></h2>
             <p>
-              Name: Flixie Age: 7 sparks old (that’s about 14 in flame years)
-              Height: Just tall enough to toast a marshmallow Hometown:
-              Emberglow Hollow, deep inside the Hearthwood Forest
+              {{trophy.information}}
             </p>
             <hr />
             <p>
-              Bio: Flixie was born from the very first spark of a cozy campfire
-              under a full moon. With glowing cheeks, a fiery swirl of hair, and
-              a giggle that crackles like dry twigs, she’s one of the rare
-              Whimflames — magical fire spirits that bring warmth, joy, and a
-              little chaos wherever they go. She spends her days lighting
-              lanterns for lost forest creatures, dancing on fallen leaves, and
-              sometimes accidentally setting toast on fire (oops!). Though
-              small, Flixie dreams of one day becoming a Great Flame Guardian
-              who watches over the balance of warmth and wildness in the world.
+              {{trophy.bio}}
             </p>
             <footer>
               <button class="btn btn--primary">
@@ -48,4 +39,40 @@
         </section>
       </div>
     </main>
+    {% endif %}
+
+    {% if trophy.trophy_type == "DO" %}
+    <main class="trophy--details--card--primary">
+      <div>
+        <section>
+          <img
+            src="{{trophy.picture.url}}"
+            alt="Goodies Happy Flame.png"
+          />
+          <h4>{{trophy.name}}</h4>
+          <p>Use it to make your home page better!!</p>
+        </section>
+        <section>
+          <article>
+            <h2>Information This trophy<i class="fa-solid fa-medal"></i></h2>
+            <p>
+              {{trophy.information}}
+            </p>
+            <hr />
+            <p>
+              {{trophy.bio}}
+            </p>
+            <footer>
+              <button class="btn btn--primary">
+                <span> <a href={% url "trophies:trophies-page" %}>back to trophys</a></span>
+              </button>
+              <button class="btn btn--primary">
+                <span>get it!</span>
+              </button>
+            </footer>
+          </article>
+        </section>
+      </div>
+    </main>
+    {% endif %}
 {% endblock 'content' %}
