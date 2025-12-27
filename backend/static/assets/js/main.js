@@ -83,7 +83,7 @@ function renderCalendar(calendarEl) {
   (start month gets minus 1 every loop then its get
    minus from endprevmonth(31 - 4 , 31 - 3)) */
   for (let i = startMonthDay - 1; i >= 0; i--) {
-    calendarDaysHtml += `<button class="inactive">${endPrevMonth - i}</button>`;
+    calendarDaysHtml += `<button type="button" class="inactive">${endPrevMonth - i}</button>`;
   }
 
   /* rendering all days and if it was current day it gest
@@ -95,7 +95,7 @@ function renderCalendar(calendarEl) {
       year === new Date().getFullYear()
         ? ' class="today"'
         : "";
-    calendarDaysHtml += `<button${className}>${i}</button>`;
+    calendarDaysHtml += `<button${className} type="button">${i}</button>`;
   }
 
   //set the buttons till now
@@ -110,7 +110,7 @@ function renderCalendar(calendarEl) {
 
   //render inactive buttons
   for (let i = 1; i <= extraDays; i++) {
-    calendarDaysHtml += `<button class="inactive">${i}</button>`;
+    calendarDaysHtml += `<button type="button" class="inactive">${i}</button>`;
   }
 
   //set the inner html again
@@ -945,7 +945,7 @@ function makeNewTaskDont() {
 
       //append the task that we made to the row
       taskContainer.append(tasksRow);
-
+      newTaskModalDont.submit();
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -967,150 +967,6 @@ function makeNewTaskDont() {
 }
 makeNewTaskDont();
 
-// function makeNewTaskDo() {
-//   //modal
-//   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
-//   const submitBotton = document.getElementById("addTaskSubmitBtn");
-//   const nameCountSpan = document.querySelectorAll("#nameInputTxt");
-//   //inputs
-//   const nameInput = newTaskModalDo
-//     ? newTaskModalDo.querySelector("#nameInput")
-//     : null;
-//   const startDateInput = document.getElementById("startDateDo");
-//   const finishDateInput = document.getElementById("finishDateDo");
-//   //overlay
-//   const overlay = document.querySelector(".blur--background--0-2");
-//   //tasks
-//   const primaryTasks = document.querySelector(".primary--tasks");
-//   const taskContainer = primaryTasks
-//     ? primaryTasks.querySelector(".tasks__column")
-//     : null;
-//   //descriptions
-//   const addNewTaskDescStart = document.getElementById("descriptionDoStart");
-//   const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
-//   const addNewTaskDescName = document.getElementById("descriptionDoName");
-
-//   if (submitBotton) {
-//     submitBotton.addEventListener("click", (e) => {
-//       const name = nameInput.value;
-//       const startDate = startDateInput.value;
-//       const finishDate = finishDateInput.value;
-
-//       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-
-//       //error handlesr
-//       let hasErrorStart = false;
-//       let hasErrorfinish = false;
-//       let hasErrorStartEmpthy = false;
-//       let hasErrorfinishEmpthy = false;
-//       let hasErrorName = false;
-
-//       //if the inputs was empthy
-//       if (startDate == "") {
-//         addNewTaskDescStart.innerHTML =
-//           "This field cannot be empty. Please select a date.";
-//         addNewTaskDescStart.classList.add("warning");
-//         hasErrorStartEmpthy = true;
-//       }
-
-//       if (finishDate == "") {
-//         addNewTaskDescFinish.innerHTML =
-//           "This field cannot be empty. Please select a date.";
-//         addNewTaskDescFinish.classList.add("warning");
-//         hasErrorfinishEmpthy = true;
-//       }
-
-//       if (name == "") {
-//         addNewTaskDescName.innerHTML = "Name cannot be empty.";
-//         addNewTaskDescName.classList.add("warning");
-//         hasErrorName = true;
-//       }
-
-//       //if the inputs was full get regex
-//       if (startDate !== "") {
-//         const result = dateRegex.test(startDate);
-//         console.log(result, startDate);
-//         if (!result) {
-//           addNewTaskDescStart.innerHTML = "Please choose a valid date.";
-//           addNewTaskDescStart.classList.add("warning");
-//           hasErrorStart = true;
-//         }
-//       }
-
-//       if (finishDate !== "") {
-//         const result = dateRegex.test(finishDate);
-//         if (!result) {
-//           addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
-//           addNewTaskDescFinish.classList.add("warning");
-//           hasErrorfinish = true;
-//         }
-//       }
-
-//       //go to default
-//       if (
-//         hasErrorStart ||
-//         hasErrorfinish ||
-//         hasErrorName ||
-//         hasErrorStartEmpthy ||
-//         hasErrorfinishEmpthy
-//       ) {
-//         setTimeout(() => {
-//           addNewTaskDescFinish.innerHTML =
-//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-//           addNewTaskDescStart.innerHTML =
-//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-//           addNewTaskDescName.innerHTML = "Place a text here for description";
-
-//           addNewTaskDescName.classList.remove("warning");
-//           addNewTaskDescStart.classList.remove("warning");
-//           addNewTaskDescFinish.classList.remove("warning");
-//           hasErrorfinish = false;
-//           hasErrorStart = false;
-//         }, 6000);
-//         return;
-//       }
-
-//       //make the task
-//       const tasksRow = document.createElement("div");
-//       tasksRow.className = "tasks__row";
-//       tasksRow.innerHTML = `
-//               <span>${name}</span>
-//               <span>${startDate}</span>
-//               <span>${finishDate}</span>
-//               <label class="checkbox--primary">
-//                 <input class="checkbox__input" type="checkbox" />
-//                 <span class="checkbox__box"></span>
-//               </label>
-
-//   `;
-
-//       //prevent new checkbox from default behavior
-//       taskContainer.addEventListener("click", (e) => {
-//         const label = e.target.closest(".checkbox--primary");
-//         if (!label) return;
-
-//         e.preventDefault();
-//         const input = label.querySelector('input[type="checkbox"]');
-//         input.checked = !input.checked;
-//       });
-
-//       //append the task that we made to the row
-//       taskContainer.append(tasksRow);
-
-//       //back to defualt
-//       nameInput.value = "";
-//       startDateInput.value = "";
-//       finishDateInput.value = "";
-//       nameCountSpan.forEach((span) => {
-//         span.textContent = 50;
-//       });
-
-//       newTaskModalDo.classList.remove("show");
-//       overlay.classList.remove("show");
-//     });
-//   }
-// }
-// makeNewTaskDo();
 
 function makeNewTaskDo() {
   //modal
@@ -1248,7 +1104,7 @@ function makeNewTaskDo() {
 
       //append the task that we made to the row
       taskContainer.append(tasksRow);
-
+      newTaskModalDo.submit();
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -1585,3 +1441,4 @@ function ConditionalRenderingFn() {
   trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
 }
 ConditionalRenderingFn();
+

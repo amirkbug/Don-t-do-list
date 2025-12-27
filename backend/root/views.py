@@ -1,14 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from .models import Tasks
-
+from .forms import TasksForm
+from django.contrib import messages
 
 def home(request):
-    tasks = Tasks.objects.all() 
-    context = {
-    "tasks": tasks
-    }
+    if request.method == "GET":
+        tasks = Tasks.objects.all() 
+        context = {
+        "tasks": tasks,
+        }
+        return render(request , "root/home.html",context=context)
+    elif request.method == "POST":
+        form = TasksForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("root:home")
+        else:
+            return redirect("root:home")
+            
     
-    return render(request , "root/home.html",context=context)
 
 
 def aboutus(request):

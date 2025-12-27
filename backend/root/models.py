@@ -7,8 +7,8 @@ class Tasks(models.Model):
 )
 
     description = models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.CharField(max_length=10)
+    end_date = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     task_type = models.CharField(max_length=10,default="no-type" , choices=TASK_TYPES)
 

@@ -24,8 +24,8 @@
         {% if task.task_type == "DO" %}
         <div class="tasks__row">
           <span>{{task.description}}</span>
-          <span>{{ task.start_date|date:"Y-m-d" }}</span>
-          <span>{{ task.end_date|date:"Y-m-d" }}</span>
+          <span>{{ task.start_date}}</span>
+          <span>{{ task.end_date}}</span>
           <label class="checkbox--primary">
             <input class="checkbox__input" type="checkbox" />
             <span class="checkbox__box"></span>
@@ -74,8 +74,8 @@
         {% if task.task_type == "DONT" %}
         <div class="tasks__row">
           <span>{{task.description}}</span>
-          <span>{{ task.start_date|date:"Y-m-d" }}</span>
-          <span>{{ task.end_date|date:"Y-m-d" }}</span>
+          <span>{{ task.start_date}}</span>
+          <span>{{ task.end_date}}</span>
           <label class="checkbox--secoundry">
             <input class="checkbox__input" type="checkbox" />
             <span class="checkbox__box"></span>
@@ -107,7 +107,8 @@
 </div>
 
 <!-- new task modal -->
-<form class="new--task--modal--primary">
+<form method="post" class="new--task--modal--primary">
+  {% csrf_token %}
   <div class="new--task--modal__bg">
     <video autoplay muted loop>
       <source
@@ -116,6 +117,8 @@
       />
     </video>
   </div>
+  
+  <input  type="hidden" name="task_type" value="DO">
 
   <header class="new--task--modal__header">
     <h3>Make a new do-task</h3>
@@ -130,6 +133,7 @@
     <span class="input_name">Name:</span>
     <div class="input_content">
       <input
+        name="description"
         autocomplete="off"
         maxlength="50"
         id="nameInput"
@@ -150,6 +154,7 @@
     <span class="input_name">Start date :</span>
     <div class="input_content">
       <input
+        name="start_date"
         autocomplete="off"
         id="startDateDo"
         type="text"
@@ -175,6 +180,7 @@
     <span class="input_name">Finish date:</span>
     <div class="input_content">
       <input
+        name="end_date"
         autocomplete="off"
         id="finishDateDo"
         type="text"
@@ -195,7 +201,7 @@
       Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
     </p>
   </div>
-
+    
   <footer class="new--task--modal__footer">
     <button id="closeModalAddDo" type="button" class="btn btn--primary--100">
       <span>cancel</span>
@@ -207,7 +213,8 @@
   </footer>
 </form>
 
-<form class="new--task--modal--secoundry">
+<form method="post" class="new--task--modal--secoundry">
+  {% csrf_token %}
   <div class="new--task--modal__bg">
     <video autoplay muted loop>
       <source
@@ -216,6 +223,7 @@
       />
     </video>
   </div>
+  <input  type="hidden" name="task_type" value="DONT">
 
   <header class="new--task--modal__header">
     <h3>Make a new do-task</h3>
@@ -230,6 +238,7 @@
     <span class="input_name">Name:</span>
     <div class="input_content">
       <input
+        name="description"
         autocomplete="off"
         id="nameInput"
         maxlength="50"
@@ -250,6 +259,7 @@
     <span class="input_name">Start date :</span>
     <div class="input_content">
       <input
+        name="start_date"
         autocomplete="off"
         id="startDateDont"
         type="text"
@@ -275,6 +285,7 @@
     <span class="input_name">Finish date:</span>
     <div class="input_content">
       <input
+        name="end_date"
         autocomplete="off"
         id="finishDateDont"
         type="text"
