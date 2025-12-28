@@ -9,7 +9,7 @@
      {% if trophy.trophy_type == "DONT" %}
     <main class="trophy--details--card--secondary">
       <div>
-        <section>
+        <section style="background-color: {{trophy.color}};">
           <img
             src="{{trophy.picture.url}}"
             alt="Goodies Happy Flame.png"
@@ -17,7 +17,7 @@
           <h4>{{trophy.name}}</h4>
           <p>Use it to make your home page better!!</p>
         </section>
-        <section>
+        <section >
           <article>
             <h2>Information This trophy<i class="fa-solid fa-medal"></i></h2>
             <p>
@@ -28,10 +28,10 @@
               {{trophy.bio}}
             </p>
             <footer>
-              <button class="btn btn--primary">
+              <button style="background-color: {{trophy.color}};"   class="btn btn--secondary">
                 <span> <a href={% url "trophies:trophies-page" %}>back to trophys</a></span>
               </button>
-              <button class="btn btn--primary">
+              <button style="background-color: {{trophy.color}};"  class="btn btn--secondary">
                 <span>get it!</span>
               </button>
             </footer>
@@ -44,7 +44,7 @@
     {% if trophy.trophy_type == "DO" %}
     <main class="trophy--details--card--primary">
       <div>
-        <section>
+        <section style="background-color: {{trophy.color}};">
           <img
             src="{{trophy.picture.url}}"
             alt="Goodies Happy Flame.png"
@@ -63,10 +63,10 @@
               {{trophy.bio}}
             </p>
             <footer>
-              <button class="btn btn--primary">
+              <button style="background-color: {{trophy.color}};"  class="btn btn--primary">
                 <span> <a href={% url "trophies:trophies-page" %}>back to trophys</a></span>
               </button>
-              <button class="btn btn--primary">
+              <button style="background-color: {{trophy.color}};" class="btn btn--primary">
                 <span>get it!</span>
               </button>
             </footer>

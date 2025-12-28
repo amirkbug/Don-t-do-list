@@ -1,9 +1,10 @@
 .trophy--layout {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
+  margin: 0 auto;
   padding: 4.375rem;
-  gap: 100px;
+  gap: 70px 300px;
   height: 600px;
   overflow-y: auto;
   scrollbar-width: none;

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 def signup(request):
-    return render(request , "accounts/signup.html")
+    if request.metho == "POST":
+        return render(request , "accounts/signup.html")
 
 
 def login(request):
