@@ -59,6 +59,9 @@
     display: flex;
     overflow: hidden;
     object-fit: cover;
+    img {
+      transform: scale(1.2);
+    }
   }
 }
 
@@ -77,5 +80,14 @@
     $secondary-100,
     $secondary-600,
     $secondary-300
+  );
+}
+
+.password--reset--form {
+  @include login--signup--form(
+    $neutral-50,
+    $neutral-200,
+    $neutral-500,
+    $neutral-600
   );
 }
