@@ -83,7 +83,9 @@ function renderCalendar(calendarEl) {
   (start month gets minus 1 every loop then its get
    minus from endprevmonth(31 - 4 , 31 - 3)) */
   for (let i = startMonthDay - 1; i >= 0; i--) {
-    calendarDaysHtml += `<button type="button" class="inactive">${endPrevMonth - i}</button>`;
+    calendarDaysHtml += `<button type="button" class="inactive">${
+      endPrevMonth - i
+    }</button>`;
   }
 
   /* rendering all days and if it was current day it gest
@@ -967,7 +969,6 @@ function makeNewTaskDont() {
 }
 makeNewTaskDont();
 
-
 function makeNewTaskDo() {
   //modal
   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
@@ -1127,6 +1128,7 @@ function makeNewTaskDo() {
 makeNewTaskDo();
 
 function login() {
+  const loginForm = document.querySelector(".login--signup--form__content");
   // inputs
   const emailInput = document.getElementById("emailInputLogin");
   const passwordInputLogin = document.getElementById("passwordInputLogin");
@@ -1140,7 +1142,7 @@ function login() {
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
-  if (!window.location.pathname.endsWith("login.html")) return;
+  if (!submitBtnLogin) return;
 
   // helper functions
   function errorHandling(element, message) {
@@ -1170,7 +1172,9 @@ function login() {
   }
 
   if (submitBtnLogin) {
-    submitBtnLogin.addEventListener("click", () => {
+    submitBtnLogin.addEventListener("click", (e) => {
+      
+      e.preventDefault();
       clearAllErrors();
 
       const email = emailInput.value.trim();
@@ -1192,21 +1196,7 @@ function login() {
 
       if (hasError) return;
 
-      // mock auth (ONLY for UI demo)
-      const storedEmail =
-        localStorage.getItem("email") || sessionStorage.getItem("email");
-      const storedPassword =
-        localStorage.getItem("password") || sessionStorage.getItem("password");
-
-      const isValid = email === storedEmail && password === storedPassword;
-
-      if (!isValid) {
-        const message = "Email or password is incorrect.";
-        errorHandling(emailDesc, message);
-        errorHandling(passwordDesc, message);
-        return;
-      }
-
+    
       // success
       if (rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
@@ -1214,7 +1204,8 @@ function login() {
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
-      window.location.href = "home.html";
+      loginForm.submit();
+      
     });
   }
 }
@@ -1348,97 +1339,119 @@ function signup() {
 }
 signup();
 
-function ConditionalRenderingFn() {
-  const isLoggedIn =
-    sessionStorage.getItem("isLoggedIn") === "true" ||
-    localStorage.getItem("isLoggedIn") === "true";
+//we can use django conditional rendering insted
+// function ConditionalRenderingFn() {
+//   const isLoggedIn =
+//     sessionStorage.getItem("isLoggedIn") === "true" ||
+//     localStorage.getItem("isLoggedIn") === "true";
 
-  //conditionaly rendering links
+//   //conditionaly rendering links
 
-  //conditionaly rendering header
-  const headerByCondition = document.getElementById("headerByCondition");
+//   //conditionaly rendering header
+//   const headerByCondition = document.getElementById("headerByCondition");
 
-  console.log(window.location.pathname);
-  if (!headerByCondition) return;
+//   console.log(window.location.pathname);
+//   if (!headerByCondition) return;
 
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
-  //what should icon be?
-  let whatShouldIconBe = "circle-question";
-  //if the address has 0 chars == home
-  let theAddress;
-  if (pathParts.length === 0) {
-    theAddress = "home";
-  } else if(pathParts.length > 0) {
-    theAddress = pathParts[pathParts.length - 1].split(".")[0];
-  }
-  //header icon
-  if (theAddress === "home") {
-    whatShouldIconBe = "home";
-  } else if (theAddress === "About-us") {
-    whatShouldIconBe = "circle-info";
-  } else if (theAddress === "Login" || theAddress === "sign-up") {
-    whatShouldIconBe = "user";
-  }else if (!isNaN(Number(theAddress))) {
-  whatShouldIconBe = "trophy";
-  theAddress = `Trophy details`;
-}else if (theAddress === "trophies") {
-    whatShouldIconBe = "trophy";
-  }
- 
-  //header h3
-  const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
-  //getting login page link
-  const loginLink = document.getElementById("loginLink");
-  const loginUrl = loginLink.dataset.loginUrl;
+//   const pathParts = window.location.pathname.split("/").filter(Boolean);
+//   //what should icon be?
+//   let whatShouldIconBe = "circle-question";
+//   //if the address has 0 chars == home
+//   let theAddress;
+//   if (pathParts.length === 0) {
+//     theAddress = "home";
+//   } else if (pathParts.length > 0) {
+//     theAddress = pathParts[pathParts.length - 1].split(".")[0];
+//   }
+//   //header icon
+//   if (theAddress === "home") {
+//     whatShouldIconBe = "home";
+//   } else if (theAddress === "About-us") {
+//     whatShouldIconBe = "circle-info";
+//   } else if (theAddress === "Login" || theAddress === "sign-up") {
+//     whatShouldIconBe = "user";
+//   } else if (!isNaN(Number(theAddress))) {
+//     whatShouldIconBe = "trophy";
+//     theAddress = `Trophy details`;
+//   } else if (theAddress === "trophies") {
+//     whatShouldIconBe = "trophy";
+//   }
 
-  if (isLoggedIn) {
-    headerByCondition.innerHTML = `<section class="header">
-        <header>
-          <h3>${cap}</h3>
-          <i class="fa-solid fa-${whatShouldIconBe}"></i>
-        </header>
+//   //header h3
+//   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
+//   //getting login page link
+//   const loginLink = document.getElementById("loginLink");
+//   const loginUrl = loginLink.dataset.loginUrl;
+
+//   if (isLoggedIn) {
+//     headerByCondition.innerHTML = `<section class="header">
+//         <header>
+//           <h3>${cap}</h3>
+//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
+//         </header>
         
-        <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+//         <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
         
-      </section>`;
-  } else {
-    headerByCondition.innerHTML = `<section class="header">
-        <header>
-          <h3>${cap}</h3>
-          <i class="fa-solid fa-${whatShouldIconBe}"></i>
-        </header>
+//       </section>`;
+//   } else {
+//     headerByCondition.innerHTML = `<section class="header">
+//         <header>
+//           <h3>${cap}</h3>
+//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
+//         </header>
 
-        <a href="${loginUrl}">
-          <button
-            style="padding: 0 0; margin: 0 0; border: none"
-            class="btn btn--video--bg"
-          >
-            <div class="btn__container">
-              <div class="btn__text">
-                <span>Login / Signup</span>
-                <span class="btn__icon">
-                  <i class="fa-solid fa-user"></i>
-                </span>
-              </div>
-            </div>
+//         <a href="${loginUrl}">
+//           <button
+//             style="padding: 0 0; margin: 0 0; border: none"
+//             class="btn btn--video--bg"
+//           >
+//             <div class="btn__container">
+//               <div class="btn__text">
+//                 <span>Login / Signup</span>
+//                 <span class="btn__icon">
+//                   <i class="fa-solid fa-user"></i>
+//                 </span>
+//               </div>
+//             </div>
 
-            <video class="btn__video" muted loop autoplay playsinline>
-              <source
-                src="/static/assets/video/primary-secondary/Last_one_i_rendred.mp4"
-                type="video/mp4"
-              />
-              your browser doesent support video
-            </video>
-          </button>
-        </a>
-      </section>`;
-  }
+//             <video class="btn__video" muted loop autoplay playsinline>
+//               <source
+//                 src="/static/assets/video/primary-secondary/Last_one_i_rendred.mp4"
+//                 type="video/mp4"
+//               />
+//               your browser doesent support video
+//             </video>
+//           </button>
+//         </a>
+//       </section>`;
+//   }
 
-  const trophyBtn = document.getElementById("trophyBtn");
-  if (!trophyBtn) return;
-  const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl
-  const signupUrl = trophyBtn.dataset.signupUrl
-  trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
+//   const trophyBtn = document.getElementById("trophyBtn");
+//   if (!trophyBtn) return;
+//   const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl;
+//   const signupUrl = trophyBtn.dataset.signupUrl;
+//   trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
+// }
+// ConditionalRenderingFn();
+
+function toast() {
+  document.querySelectorAll(".toast").forEach((el) => {
+    Toastify({
+      text: el.dataset.text,
+      duration: 4000,
+      gravity: "top", // بالا
+      position: "center", // وسط
+      style: {
+        background:
+          el.dataset.type === "error"
+            ? "#E7000B"
+            : el.dataset.type === "success"
+            ? "#00C950"
+            : "#333",
+        fontFamily: "Poppins, sans-serif",
+        fontWeight: "400",
+      },
+    }).showToast();
+  });
 }
-ConditionalRenderingFn();
-
+toast();

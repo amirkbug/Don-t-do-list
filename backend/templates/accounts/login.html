@@ -24,6 +24,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+    <!-- toast -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- favicon -->
     <link
       rel="icon"
@@ -44,6 +48,15 @@
       </video>
     </div>
 
+    <!-- django errors toast -->
+     {% if messages %}
+     {% for message in messages %}
+     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
+     </div>
+     {% endfor %}
+     {% endif %}
+
+
     <!-- header -->
     <section class="header">
       <header>
@@ -52,17 +65,18 @@
       </header>
 
       <a href={% url "root:home" %}>
-      <i
+        <i
         id="header__right__icon"
         class="fa-solid fa-circle-arrow-right fa-lg"
-      ></i>
+        ></i>
       </a>
     </section>
 
     <!-- login -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
       <main class="login--form">
-        <div class="login--signup--form__content">
+        <form method="POST" class="login--signup--form__content">
+          {% csrf_token %}
           <img
             class="login--signup--form__logo"
             src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-primary.svg' %}"
@@ -85,6 +99,7 @@
                 ><i class="fa-regular fa-envelope"></i
               ></span>
               <input
+                name="username"
                 autocomplete="off"
                 max="20"
                 id="emailInputLogin"
@@ -94,6 +109,12 @@
               />
             </div>
             <p id="emailDesc" class="input_description"></p>
+            {% if messages %}
+            {% for message in messages %}
+            <p data-emailms="{{message}}" id="emailDesc" class="input_description"></p>
+            {% endfor %}
+            {% endif %}
+            
           </div>
           <div style="padding: 0" class="text--input--primary">
             <span class="input_name">Password</span>
@@ -106,10 +127,10 @@
                 />
               </span>
               <input
+                name="password"
                 autocomplete="off"
                 id="passwordInputLogin"
                 type="password"
-                type="text"
                 class="input_input"
                 placeholder="••••••••"
                 max="20"
@@ -124,6 +145,11 @@
               </div>
             </div>
             <p id="PasswordDesc" class="input_description"></p>
+            {% if messages %}
+            {% for message in messages %}
+            <p data-passwordms="{{message}}" id="PasswordDesc" class="input_description"></p>
+            {% endfor %}
+            {% endif %}
           </div>
           <div
             style="
@@ -144,7 +170,7 @@
             </label>
             <a href="#">Forgot password?</a>
           </div>
-          <button id="submitBtnLogin" class="btn btn--primary">
+          <button id="submitBtnLogin" type="button" class="btn btn--primary">
             <span>Login</span>
           </button>
           <div style="margin: 0; flex: 0" class="fancy--divider--primary">
@@ -168,7 +194,7 @@
               /></span>
             </button>
           </footer>
-        </div>
+        </form>
         <div class="login--signup--form__image">
           <img src="{% static 'assets/images/unsplash-images/login-img.jpg' %}" alt="login-img.jpg" />
         </div>
@@ -177,5 +203,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

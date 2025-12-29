@@ -1,8 +1,17 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %} 
 {% block 'title' %}home{% endblock 'title' %} 
-{% block 'favicon' %}{% static 'assets/icons/favicons/house-solid-full.svg' %}{% endblock 'favicon' %}
+{% block 'favicon' %} {% static 'assets/icons/favicons/house-solid-full.svg' %} {% endblock 'favicon' %}
 {% block 'content' %}
+
+<!-- django errors toast -->
+     {% if messages %}
+     {% for message in messages %}
+     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
+     </div>
+     {% endfor %}
+     {% endif %}
+
 
 <!-- tasks -->
 <div class="tasks__container">
@@ -20,8 +29,7 @@
         <div style="margin: 0px 6px" class="fancy--divider--primary"></div>
       </header>
       <div class="tasks__column">
-        {% for task in tasks %}
-        {% if task.task_type == "DO" %}
+        {% for task in tasks %} {% if task.task_type == "DO" %}
         <div class="tasks__row">
           <span>{{task.description}}</span>
           <span>{{ task.start_date}}</span>
@@ -31,10 +39,7 @@
             <span class="checkbox__box"></span>
           </label>
         </div>
-        {% endif %}
-        {% endfor %}
-
-        
+        {% endif %} {% endfor %}
       </div>
     </div>
     <footer class="tasks__footer">
@@ -69,9 +74,7 @@
         <div style="margin: 0px 6px" class="fancy--divider--secondary"></div>
       </header>
       <div class="tasks__column">
-
-        {% for task in tasks %}
-        {% if task.task_type == "DONT" %}
+        {% for task in tasks %} {% if task.task_type == "DONT" %}
         <div class="tasks__row">
           <span>{{task.description}}</span>
           <span>{{ task.start_date}}</span>
@@ -81,10 +84,7 @@
             <span class="checkbox__box"></span>
           </label>
         </div>
-        {% endif %}
-        {% endfor %}
-
-        
+        {% endif %} {% endfor %}
       </div>
     </div>
     <footer class="tasks__footer">
@@ -117,8 +117,8 @@
       />
     </video>
   </div>
-  
-  <input  type="hidden" name="task_type" value="DO">
+
+  <input type="hidden" name="task_type" value="DO" />
 
   <header class="new--task--modal__header">
     <h3>Make a new do-task</h3>
@@ -201,7 +201,7 @@
       Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date
     </p>
   </div>
-    
+
   <footer class="new--task--modal__footer">
     <button id="closeModalAddDo" type="button" class="btn btn--primary--100">
       <span>cancel</span>
@@ -223,7 +223,7 @@
       />
     </video>
   </div>
-  <input  type="hidden" name="task_type" value="DONT">
+  <input type="hidden" name="task_type" value="DONT" />
 
   <header class="new--task--modal__header">
     <h3>Make a new do-task</h3>

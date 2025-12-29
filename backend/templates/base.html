@@ -20,6 +20,10 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
+
+    <!-- toast -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -51,14 +55,47 @@
 
     <!-- header -->
 
-    <div id="headerByCondition">
+{% if request.user.is_authenticated %}
+      <section class="header">
+        <header>
+          <h3>Home</h3>
+          <i class="fa-solid fa-home}"></i>
+        </header>
+        
+        <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        <a id="loginLink" href={% url "accounts:logout" %}>
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Logout</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+        
+      </section>
+      {% else %}
       <section class="header">
         <header>
           <h3>Home</h3>
           <i class="fa-solid fa-home"></i>
         </header>
 
-        <a id="loginLink" data-login-url="{% url 'accounts:signup' %}">
+        <a id="loginLink" href={% url "accounts:signup" %}>
           <button
             style="padding: 0 0; margin: 0 0; border: none"
             class="btn btn--video--bg"
@@ -82,7 +119,8 @@
           </button>
         </a>
       </section>
-    </div>
+{% endif %}
+    
 
     {% block 'content' %}
     {% endblock 'content' %}
@@ -103,5 +141,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

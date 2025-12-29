@@ -1,4 +1,4 @@
-from django.shortcuts import render ,redirect
+from django.shortcuts import render ,redirect 
 from .models import Tasks
 from .forms import TasksForm
 from django.contrib import messages
@@ -17,8 +17,11 @@ def home(request):
             form.save()
             return redirect("root:home")
         else:
-            return redirect("root:home")
-            
+            messages.add_message(request,messages.ERROR , "Something went wrong while creating the task. Please try again.")
+            return redirect(request.path_info)
+    else:
+        messages.add_message(request,messages.ERROR , "This action is not supported.")
+        return redirect(request.path_info)
     
 
 
