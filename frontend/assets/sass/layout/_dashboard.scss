@@ -1,0 +1,19 @@
+@use "../abstracts/index" as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 600px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 50px;
+  margin: 20px;
+  .dashboard--sections {
+    height: fit-content;
+    gap: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+}

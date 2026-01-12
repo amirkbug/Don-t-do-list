@@ -32,7 +32,7 @@
     background-color: $bg-color;
     color: $text-and-border-color;
     border-radius: 13px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     transition: all 0.3s ease-out;
     @include typography($weight-regular, $size-13);
 
@@ -40,14 +40,14 @@
     padding: 0.35rem 0.7rem;
 
     &:hover {
-      border: 2px solid $text-and-border-color;
+      border: 1px solid $text-and-border-color;
       .input_content_right {
         opacity: 60%;
       }
     }
 
     &:focus-within {
-      border: 2px solid $text-and-border-color;
+      border: 1px solid $text-and-border-color;
       .input_content_right {
         opacity: 100%;
       }
@@ -91,7 +91,7 @@
       opacity: 30%;
       transition: all 0.3s ease-out;
 
-      :hover {
+      &:hover {
         //color and styling
         opacity: 100%;
       }

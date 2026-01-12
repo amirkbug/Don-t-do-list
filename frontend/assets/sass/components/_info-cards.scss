@@ -1,0 +1,94 @@
+@use "../abstracts/index" as *;
+.info--cards--holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 600px;
+  padding: 0px 20px;
+  margin: 0px 20px;
+}
+
+.info--cards--userinfo {
+  //display
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  //sizing
+  width: fit-content;
+  height: 22.188rem;
+  padding: 1.25rem;
+
+  //color and typo
+  background-color: $neutral-50;
+  border-radius: 10px;
+  border: 2px solid $neutral-800;
+
+  .info--cards--userinfo--profile--section {
+    //display
+    display: flex;
+    flex-direction: column;
+
+    i {
+      //display
+      position: relative;
+
+      //sizing
+      left: 1.5rem; // 25px
+      bottom: 0.3rem; // 5px
+
+      //color and typo
+      opacity: 0.2; // 20%
+      cursor: pointer;
+      transition: opacity 0.3s ease-out;
+
+      &:hover {
+        //color and typo
+        opacity: 0.9; // 90%
+      }
+    }
+  }
+
+  .info--cards--userinfo--profile {
+    //sizing
+    object-fit: contain;
+    width: 3.125rem; // 50px
+    aspect-ratio: 1 / 1;
+
+    //color and typo
+    background-color: $neutral-300;
+    border-radius: 50%;
+  }
+
+  section {
+    //display
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    //sizing
+    width: 100%;
+
+    //color and typo
+    @include typography($weight-regular, $size-13);
+
+    small {
+      //sizing
+      padding: 0.625rem; // 10px
+    }
+
+    p {
+      //sizing
+      padding: 0.625rem; // 10px
+      margin: 0;
+    }
+  }
+
+  .input_content {
+    //color and typo
+    border: 1px solid $neutral-100;
+  }
+}

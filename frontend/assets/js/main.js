@@ -328,7 +328,7 @@ function chartsFn(char) {
           },
         },
       },
-      responsive: false,
+      responsive: true,
       plugins: {
         title: {
           display: false,
@@ -1562,3 +1562,14 @@ function ConditionalRenderingFn() {
   trophyBtn.href = isLoggedIn ? "trophy-details.html" : "signup.html";
 }
 ConditionalRenderingFn();
+
+//trippyes
+tippy("[data-tooltip]", {
+  content(reference) {
+    return reference.dataset.tooltip;
+  },
+  placement: "top",
+  arrow: false,
+  animation: "fade",
+  theme: "natural",
+});
