@@ -1,5 +1,3 @@
-console.log("script is runing");
-
 /* --------- live bg btn --------- */
 const btn = document.querySelector(".btn--video--bg");
 
@@ -157,10 +155,10 @@ function renderCalendar(calendarEl) {
 
   //celandar buttons to dates
   const activeDaysDo = calendarDays.querySelectorAll(
-    ".calendar--primary button:not(.inactive)"
+    ".calendar--primary button:not(.inactive)",
   );
   const activeDaysDont = calendarDays.querySelectorAll(
-    ".calendar--secoundry button:not(.inactive)"
+    ".calendar--secoundry button:not(.inactive)",
   );
   const overlay = document.querySelector(".blur--background--0-1");
   const calendarDo = document.querySelector(".calendar--primary");
@@ -366,7 +364,7 @@ function chartsFn(char) {
       //update labels and upadate instance
       chartInstance.data.labels = dataLables;
       chartInstance.update();
-    })
+    }),
   );
 }
 
@@ -419,7 +417,7 @@ function newTaskModalToggleDo() {
 function newTaskModalToggleDont() {
   //get the dom element we need
   const newTaskModalDont = document.querySelector(
-    ".new--task--modal--secoundry"
+    ".new--task--modal--secoundry",
   );
   if (!newTaskModalDont) return;
   //btns
@@ -471,18 +469,18 @@ function deleteTaskDo() {
 
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
-    ".primary--delete--task--modal"
+    ".primary--delete--task--modal",
   );
   const overlay = document.querySelector(".blur--background--0-2");
   //logged in and sign up
   const primaryTasks = document.querySelector(".primary--tasks");
 
   const checkboxInput = primaryTasks.querySelectorAll(
-    ".checkbox__input:checked"
+    ".checkbox__input:checked",
   );
 
   const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-    checkbox.closest("div")
+    checkbox.closest("div"),
   );
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
@@ -505,13 +503,13 @@ function deleteTaskDo() {
 if (document.getElementById("deleteTaskDont")) {
   document.getElementById("deleteTaskDont").addEventListener("click", () => {
     const dontAskAgainDelete = document.getElementById(
-      "dontAskAgainDeleteDont"
+      "dontAskAgainDeleteDont",
     );
 
     // save only when modal is opened and user clicks delete
     localStorage.setItem(
       "dontAskAgainDeleteDont",
-      `${dontAskAgainDelete.checked}`
+      `${dontAskAgainDelete.checked}`,
     );
 
     deleteTaskDont();
@@ -522,7 +520,7 @@ if (document.getElementById("deleteTaskDont")) {
 function deleteTasksModalToggleDo() {
   //toggle to delete task
   const deleteTaskModal = document.querySelector(
-    ".primary--delete--task--modal"
+    ".primary--delete--task--modal",
   );
 
   if (!deleteTaskModal) return;
@@ -542,7 +540,7 @@ function deleteTasksModalToggleDo() {
 
       //get the elements in the modal
       const tasksThatShouldBeDeletedDiv = document.getElementById(
-        "tasksThatShouldBeDeleted"
+        "tasksThatShouldBeDeleted",
       );
       const tasksThatShouldBeDeletedUl =
         tasksThatShouldBeDeletedDiv.querySelector("ul");
@@ -553,13 +551,13 @@ function deleteTasksModalToggleDo() {
       //getting the tasks
       const primaryTasks = document.querySelector(".primary--tasks");
       const checkboxInput = primaryTasks.querySelectorAll(
-        ".checkbox__input:checked"
+        ".checkbox__input:checked",
       );
       const checkboxInputNotChecked =
         primaryTasks.querySelectorAll(".checkbox__input");
       //getting the tasks parrent
       const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-        checkbox.closest("div")
+        checkbox.closest("div"),
       );
       //get teh tasknames that user selected
       const tasksName = checkboxInputParrent.map((div) => {
@@ -613,18 +611,18 @@ function deleteTaskDont() {
 
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
-    ".secondary--delete--task--modal"
+    ".secondary--delete--task--modal",
   );
   const overlay = document.querySelector(".blur--background--0-2");
   //logged in and sign up
   const primaryTasks = document.querySelector(".secondary--tasks");
 
   const checkboxInput = primaryTasks.querySelectorAll(
-    ".checkbox__input:checked"
+    ".checkbox__input:checked",
   );
 
   const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-    checkbox.closest("div")
+    checkbox.closest("div"),
   );
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
@@ -639,7 +637,7 @@ function deleteTaskDont() {
   //local storage
   localStorage.setItem(
     "dontAskAgainDeleteDont",
-    `${dontAskAgainDelete.checked}`
+    `${dontAskAgainDelete.checked}`,
   );
   //delete tasks
   checkboxInputParrent.forEach((div) => div.remove());
@@ -660,7 +658,7 @@ if (document.getElementById("deleteTaskDo")) {
 
 function deleteTasksModalToggleDont() {
   const deleteTaskModal = document.querySelector(
-    ".secondary--delete--task--modal"
+    ".secondary--delete--task--modal",
   );
   if (!deleteTaskModal) return;
   const openDeleteModalDont = document.getElementById("openDeleteModalDont");
@@ -676,7 +674,7 @@ function deleteTasksModalToggleDont() {
 
       //get the elements in the modal
       const tasksThatShouldBeDeletedDiv = document.getElementById(
-        "tasksThatShouldBeDeletedDont"
+        "tasksThatShouldBeDeletedDont",
       );
       const tasksThatShouldBeDeletedUl =
         tasksThatShouldBeDeletedDiv.querySelector("ul");
@@ -687,13 +685,13 @@ function deleteTasksModalToggleDont() {
       //getting the tasks
       const primaryTasks = document.querySelector(".secondary--tasks");
       const checkboxInput = primaryTasks.querySelectorAll(
-        ".checkbox__input:checked"
+        ".checkbox__input:checked",
       );
       const checkboxInputNotChecked =
         primaryTasks.querySelectorAll(".checkbox__input");
       //getting the tasks parrent
       const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-        checkbox.closest("div")
+        checkbox.closest("div"),
       );
       //get teh tasknames that user selected
       const tasksName = checkboxInputParrent.map((div) => {
@@ -815,7 +813,7 @@ nameInputAmountCheck();
 function makeNewTaskDont() {
   //modal
   const newTaskModalDont = document.querySelector(
-    ".new--task--modal--secoundry"
+    ".new--task--modal--secoundry",
   );
   const submitBotton = document.getElementById("addTaskSubmitBtnDont");
   const cancelBtn = document.getElementById("closeModalAddDont");
@@ -889,7 +887,7 @@ function makeNewTaskDont() {
       if (startDate == "") {
         errorHandler(
           addNewTaskDescStart,
-          "This field cannot be empty. Please select a date."
+          "This field cannot be empty. Please select a date.",
         );
         hasError = true;
       } else if (!dateRegex.test(startDate)) {
@@ -903,7 +901,7 @@ function makeNewTaskDont() {
       if (finishDate == "") {
         errorHandler(
           addNewTaskDescFinish,
-          "This field cannot be empty. Please select a date."
+          "This field cannot be empty. Please select a date.",
         );
         hasError = true;
       } else if (!dateRegex.test(finishDate)) {
@@ -1054,7 +1052,7 @@ function makeNewTaskDo() {
       if (startDate == "") {
         errorHandler(
           addNewTaskDescStart,
-          "This field cannot be empty. Please select a date."
+          "This field cannot be empty. Please select a date.",
         );
         hasError = true;
       } else if (!dateRegex.test(startDate)) {
@@ -1068,7 +1066,7 @@ function makeNewTaskDo() {
       if (finishDate == "") {
         errorHandler(
           addNewTaskDescFinish,
-          "This field cannot be empty. Please select a date."
+          "This field cannot be empty. Please select a date.",
         );
         hasError = true;
       } else if (!dateRegex.test(finishDate)) {
@@ -1173,7 +1171,6 @@ function login() {
 
   if (submitBtnLogin) {
     submitBtnLogin.addEventListener("click", (e) => {
-      
       e.preventDefault();
       clearAllErrors();
 
@@ -1196,7 +1193,6 @@ function login() {
 
       if (hasError) return;
 
-    
       // success
       if (rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
@@ -1205,7 +1201,6 @@ function login() {
       }
 
       loginForm.submit();
-      
     });
   }
 }
@@ -1213,6 +1208,7 @@ function login() {
 login();
 
 function signup() {
+  const signupForm = document.querySelector(".login--signup--form__content");
   //inputs
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
@@ -1228,16 +1224,12 @@ function signup() {
   const eyeBtn = document.getElementById("eyeBtn");
   const rememberMeInput = document.getElementById("rememberMeSignup");
 
+  console.log(submitBtn, nameDesc, nameInput);
+
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-  //haserror
-
-  //checks if the page is signup
-  if (!window.location.pathname.endsWith("signup.html")) {
-    return;
-  }
 
   //error handling
   function errorHandler(element, message) {
@@ -1247,6 +1239,7 @@ function signup() {
 
   //error handling
   function errorRemover(element) {
+    element.innerHTML = "";
     element.classList.remove("warning");
   }
 
@@ -1265,7 +1258,8 @@ function signup() {
 
   //submitbtn
   if (submitBtn) {
-    submitBtn.addEventListener("click", () => {
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       //input values
       const name = nameInput.value;
       const email = emailInput.value;
@@ -1288,7 +1282,7 @@ function signup() {
       } else if (!emailRegex.test(email)) {
         errorHandler(
           emailDesc,
-          "Please enter a valid email address. Example: user@example.com"
+          "Please enter a valid email address. Example: user@example.com",
         );
         hasError = true;
       } else if (
@@ -1308,7 +1302,7 @@ function signup() {
       } else if (!passwordRegex.test(password)) {
         errorHandler(
           passwordDesc,
-          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character."
+          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character.",
         );
         hasError = true;
       } else {
@@ -1321,19 +1315,12 @@ function signup() {
 
       //if everything was ok set the keys and values
       if (rememberMe) {
-        localStorage.setItem("name", `${name}`);
-        localStorage.setItem("password", `${password}`);
-        localStorage.setItem("email", `${email}`);
         localStorage.setItem("isLoggedIn", "true");
       } else if (!rememberMe) {
-        sessionStorage.setItem("name", `${name}`);
-        sessionStorage.setItem("password", `${password}`);
-        sessionStorage.setItem("email", `${email}`);
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
-      //go to home
-      window.location.href = "home.html";
+      signupForm.submit();
     });
   }
 }
@@ -1389,9 +1376,9 @@ signup();
 //           <h3>${cap}</h3>
 //           <i class="fa-solid fa-${whatShouldIconBe}"></i>
 //         </header>
-        
+
 //         <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
-        
+
 //       </section>`;
 //   } else {
 //     headerByCondition.innerHTML = `<section class="header">
@@ -1446,8 +1433,8 @@ function toast() {
           el.dataset.type === "error"
             ? "#E7000B"
             : el.dataset.type === "success"
-            ? "#00C950"
-            : "#333",
+              ? "#00C950"
+              : "#333",
         fontFamily: "Poppins, sans-serif",
         fontWeight: "400",
       },

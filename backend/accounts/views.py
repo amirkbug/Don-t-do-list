@@ -2,12 +2,23 @@ from django.shortcuts import render , redirect
 from django.contrib.auth import login , logout , authenticate , password_validation 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import LoginForm
+from .forms import LoginForm , SignupForm
 
 
 def signup(request):
     if request.method == "GET":
         return render(request , "accounts/signup.html")
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            messages.add_message(request,messages.SUCCESS , "Welcome back 👋 Let’s get things done.")
+            return redirect("root:home")
+        else:
+            messages.add_message(request,messages.ERROR,"Something went wrong. Please try again.")
+            return redirect(request.path_info)
+
 
 
 def login_view(request):
@@ -36,3 +47,20 @@ def login_view(request):
 def logout_view (request):
     logout(request)
     return redirect("root:home")
+
+
+
+def password_chaange(request):
+    pass
+
+def password_reset(request):
+    pass
+
+def password_reset_done(request):
+    pass
+
+def password_reset_confirm(request):
+    pass
+
+def password_reset_complete(request):
+    pass

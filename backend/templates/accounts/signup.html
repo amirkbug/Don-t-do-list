@@ -24,6 +24,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+
+    <!-- toast -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- favicon -->
     <link
       rel="icon"
@@ -44,6 +49,15 @@
       </video>
     </div>
 
+    <!-- django errors toast -->
+     {% if messages %}
+     {% for message in messages %}
+     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
+     </div>
+     {% endfor %}
+     {% endif %}
+
+
     <!-- header -->
     <section class="header">
       <header>
@@ -59,10 +73,11 @@
       </a>
     </section>
 
-    <!-- login -->
+    <!-- signup -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
       <main class="signup--form">
-        <div class="login--signup--form__content">
+        <form method="post" class="login--signup--form__content">
+          {% csrf_token %}
           <img
             class="login--signup--form__logo"
             src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-alt.svg' %}"
@@ -85,6 +100,7 @@
                 ><i class="fa-regular fa-user"></i
               ></span>
               <input
+                name="username"
                 autocomplete="off"
                 max="20"
                 id="nameInput"
@@ -102,6 +118,7 @@
                 ><i class="fa-solid fa-at"></i
               ></span>
               <input
+                name="email"
                 autocomplete="off"
                 max="20"
                 id="emailInput"
@@ -124,11 +141,42 @@
                 />
               </span>
               <input
+                name="password1"
                 autocomplete="off"
                 max="20"
                 id="passwordInput"
                 type="password"
-                type="text"
+                class="input_input"
+                placeholder="••••••••"
+              />
+              <div class="input_content_right">
+                <span
+                  id="eyeBtn"
+                  style="padding-bottom: 1px; cursor: pointer"
+                  class="input_icon_right"
+                  ><i class="fa-regular fa-eye-slash"></i
+                ></span>
+              </div>
+            </div>
+            <p id="passwordDesc" class="input_description"></p>
+          </div>
+
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Confirm password</span>
+            <div class="input_content">
+              <span class="input_icon_left">
+                <img
+                  style="width: 13px; padding-top: 3px"
+                  src="{% static 'assets/icons/lock/lock-secondary.svg' %}"
+                  alt="lock-icon"
+                />
+              </span>
+              <input
+                name="password2"
+                autocomplete="off"
+                max="20"
+                id="passwordInput"
+                type="password"
                 class="input_input"
                 placeholder="••••••••"
               />
@@ -185,7 +233,7 @@
               /></span>
             </button>
           </footer>
-        </div>
+        </form>
         <div class="login--signup--form__image">
           <img src="{% static 'assets/images/unsplash-images/signup-img.jpg' %}" alt="signup-img.jpg" />
         </div>
@@ -194,5 +242,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
