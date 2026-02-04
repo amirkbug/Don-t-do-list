@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,7 +28,7 @@
       rel="icon"
       type="image/svg+html"
       sizes="16x16"
-      href="../assets/icons/favicons/house-solid-full.svg"
+      href="../assets/icons/favicons/address-card-solid-full.svg"
     />
     <title>Dashboard</title>
   </head>
@@ -52,85 +52,98 @@
     <section class="header">
       <header>
         <h3>Dashboard</h3>
-        <i class="fa-regular fa-id-card"></i>
+        <i class="fa-solid fa-address-card"></i>
       </header>
 
       <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="" />
     </section>
 
     <main class="dashboard">
-      <from class="info--cards--userinfo">
-        <section class="info--cards--userinfo--profile--section">
-          <img
-            class="info--cards--userinfo--profile"
-            src="../assets/images/trophy-pic/Goodies Happy Flame.png"
-            alt="Goodies Happy Flame.png"
-          />
-          <i class="fa-regular fa-pen-to-square"></i>
-        </section>
-
-        <section>
-          <small>Trophy's that you get</small>
-          <p>2/10</p>
-        </section>
-
-        <div class="text--input--natural">
-          <div class="input_content">
-            <span class="input_icon_left"
-              ><i class="fa-regular fa-user"></i
-            ></span>
-            <input type="text" class="input_input" placeholder="Example" />
-            <div class="input_content_right">
-              <span class="texts">20</span>
-            </div>
-          </div>
-        </div>
-        <div class="text--input--natural">
-          <div class="input_content">
-            <span class="input_icon_left"><i class="fa-solid fa-at"></i></span>
-            <input
-              type="text"
-              class="input_input"
-              placeholder="Example@gmail.com"
-              readonly
+      <div class="dashboard--sections">
+        <from class="info--cards--userinfo">
+          <section class="info--cards--userinfo--profile--section">
+            <img
+              class="info--cards--userinfo--profile"
+              src="../assets/images/trophy-pic/Goodies Happy Flame.png"
+              alt="Goodies Happy Flame.png"
             />
-            <div class="input_content_right">
-              <span class="input_icon_right">
-                <i
-                  data-tooltip="Change email (soon)"
-                  style="cursor: pointer"
-                  class="fa-regular fa-pen-to-square"
-                ></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="text--input--natural">
-          <div class="input_content">
-            <span class="input_icon_left"
-              ><img
-                style="width: 13px; padding-top: 3px"
-                src="../assets/icons/lock/lock-solid-full-black.svg"
-                alt="lock-icon"
-            /></span>
-            <input
-              type="password"
-              class="input_input"
-              placeholder="••••••••"
-              readonly
-            />
-            <div class="input_content_right">
-              <span class="input_icon_right"
-                ><i
-                  data-tooltip="Change password"
-                  style="cursor: pointer"
-                  class="fa-regular fa-pen-to-square"
-                ></i
+            <i class="fa-regular fa-pen-to-square"></i>
+          </section>
+
+          <section>
+            <small>Trophy's that you get</small>
+            <p>2/10</p>
+          </section>
+
+          <div class="text--input--natural">
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><i class="fa-regular fa-user"></i
               ></span>
+              <input type="text" class="input_input" placeholder="Example" />
+              <div class="input_content_right">
+                <span class="texts">20</span>
+              </div>
             </div>
           </div>
-        </div>
-      </from>
+          <div class="text--input--natural">
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><i class="fa-solid fa-at"></i
+              ></span>
+              <input
+                type="text"
+                class="input_input"
+                placeholder="Example@gmail.com"
+                readonly
+              />
+              <div class="input_content_right">
+                <span class="input_icon_right">
+                  <i
+                    data-tooltip="Change email (soon)"
+                    style="cursor: pointer"
+                    class="fa-regular fa-pen-to-square"
+                  ></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="text--input--natural">
+            <div class="input_content">
+              <span class="input_icon_left"
+                ><img
+                  style="width: 13px; padding-top: 3px"
+                  src="../assets/icons/lock/lock-solid-full-black.svg"
+                  alt="lock-icon"
+              /></span>
+              <input
+                type="password"
+                class="input_input"
+                placeholder="••••••••"
+                readonly
+              />
+              <div class="input_content_right">
+                <span class="input_icon_right"
+                  ><i
+                    data-tooltip="Change password"
+                    style="cursor: pointer"
+                    class="fa-regular fa-pen-to-square"
+                  ></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </from>
+        <article class="info--cards--btnbox">
+          <a>
+            <button>Logout</button>
+          </a>
+          <a>
+            <button>Delete account</button>
+          </a>
+        </article>
+      </div>
+
       <div class="dashboard--sections">
         <section class="info--cards--holder">
           <section class="primary--info--card">

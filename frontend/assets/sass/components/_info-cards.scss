@@ -92,3 +92,34 @@
     border: 1px solid $neutral-100;
   }
 }
+
+.info--cards--btnbox {
+  //display
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: start;
+
+  //sizing
+  height: fit-content;
+  padding: 1.563rem; //25px
+
+  //color and typo
+  background-color: $neutral-50;
+  border-radius: 10px;
+  border: 2px solid $neutral-800;
+
+  a {
+    button {
+      //sizing
+      width: 100%;
+      //color and typo
+      background-color: transparent;
+      border: none;
+      color: $destructive-500;
+      @include typography($weight-medium, $size-16);
+      cursor: pointer;
+    }
+  }
+}

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   height: 600px;
   overflow-y: auto;
   scrollbar-width: none;
@@ -12,7 +12,7 @@
   margin: 20px;
   .dashboard--sections {
     height: fit-content;
-    gap: 100px;
+    gap: 25px;
     display: flex;
     flex-direction: column;
   }
