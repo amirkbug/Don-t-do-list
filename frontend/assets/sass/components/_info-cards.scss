@@ -17,9 +17,9 @@
   align-items: center;
 
   //sizing
-  width: fit-content;
-  height: 22.188rem;
-  padding: 1.25rem;
+  width: 380px;
+  height: 548px;
+  padding: 2rem;
 
   //color and typo
   background-color: $neutral-50;
@@ -30,13 +30,17 @@
     //display
     display: flex;
     flex-direction: column;
+    img {
+      aspect-ratio: 1/1;
+      width: 100px;
+    }
 
     i {
       //display
       position: relative;
 
       //sizing
-      left: 1.5rem; // 25px
+      left: 40px; // 25px
       bottom: 0.3rem; // 5px
 
       //color and typo
@@ -73,7 +77,7 @@
     width: 100%;
 
     //color and typo
-    @include typography($weight-regular, $size-13);
+    @include typography($weight-regular, $size-16);
 
     small {
       //sizing
@@ -117,9 +121,13 @@
       //color and typo
       background-color: transparent;
       border: none;
-      color: $destructive-500;
+      color: $destructive-400;
       @include typography($weight-medium, $size-16);
       cursor: pointer;
+      transition: color 0.3s ease-out;
+      &:hover {
+        color: $destructive-500;
+      }
     }
   }
 }
