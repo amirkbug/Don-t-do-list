@@ -3550,6 +3550,69 @@ body {
   color: #e7000b;
 }
 
+.next--prev--small--btn {
+  aspect-ratio: 1/1;
+  width: 50px;
+  border: none;
+  background-color: #faf5ff;
+  border: solid 1px #c27aff;
+  opacity: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ad46ff;
+  transition: all 0.2s ease-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  width: 1.875rem;
+}
+.next--prev--small--btn:hover {
+  opacity: 100%;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.next--prev--small--btn:active {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+}
+.next--prev--small--btn:active {
+  transform: scale(0.9);
+}
+
+.number--small--btn {
+  aspect-ratio: 1/1;
+  width: 50px;
+  border: none;
+  background-color: #faf5ff;
+  border: solid 1px #c27aff;
+  opacity: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ad46ff;
+  transition: all 0.2s ease-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  width: 1.875rem;
+  opacity: 30%;
+}
+.number--small--btn:hover {
+  opacity: 100%;
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+}
+.number--small--btn:active {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+}
+.number--small--btn:hover {
+  box-shadow: none;
+  opacity: 80%;
+}
+.number--small--btn:active {
+  box-shadow: none;
+}
+
 html,
 body {
   margin: 0;
@@ -4243,11 +4306,12 @@ small.extrasmall-10 {
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: space-between;
+  align-items: end;
+  overflow-y: auto;
+  scrollbar-width: none;
   padding: 4.375rem;
   gap: 100px;
   height: 600px;
-  overflow-y: auto;
-  scrollbar-width: none;
 }
 
 .tasks__container {
@@ -4272,6 +4336,15 @@ small.extrasmall-10 {
   gap: 60px;
   display: flex;
   flex-direction: column;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 }
 
 .tippy-box[data-theme~=natural] {
