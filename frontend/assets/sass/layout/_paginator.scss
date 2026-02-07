@@ -2,10 +2,12 @@
 .pagination {
   //display
   display: flex;
+
   flex-direction: row;
   justify-content: center;
   align-items: center;
   //sizing
   gap: 10px;
   width: 100%;
+  grid-column: 1 / -1;
 }
