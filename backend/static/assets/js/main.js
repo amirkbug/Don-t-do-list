@@ -1,18 +1,18 @@
+console.log("script is runing");
+
 /* --------- live bg btn --------- */
 const btn = document.querySelector(".btn--video--bg");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.querySelector(".btn--video--bg");
-  if (btn) {
-    const video = btn.querySelector(".btn__video");
-    btn.addEventListener("mouseenter", () => {
-      video.playbackRate = 3;
-    });
-    btn.addEventListener("mouseleave", () => {
-      video.playbackRate = 1;
-    });
-  }
-});
+if (btn) {
+  const video = document.querySelector(".btn--video--bg .btn__video");
+
+  btn.addEventListener("mouseenter", () => {
+    video.playbackRate = 3;
+  });
+  btn.addEventListener("mouseleave", () => {
+    video.playbackRate = 1;
+  });
+}
 
 /* --------- calender --------- */
 //get all calendars in document
@@ -81,9 +81,7 @@ function renderCalendar(calendarEl) {
   (start month gets minus 1 every loop then its get
    minus from endprevmonth(31 - 4 , 31 - 3)) */
   for (let i = startMonthDay - 1; i >= 0; i--) {
-    calendarDaysHtml += `<button type="button" class="inactive">${
-      endPrevMonth - i
-    }</button>`;
+    calendarDaysHtml += `<button class="inactive">${endPrevMonth - i}</button>`;
   }
 
   /* rendering all days and if it was current day it gest
@@ -95,7 +93,7 @@ function renderCalendar(calendarEl) {
       year === new Date().getFullYear()
         ? ' class="today"'
         : "";
-    calendarDaysHtml += `<button${className} type="button">${i}</button>`;
+    calendarDaysHtml += `<button${className}>${i}</button>`;
   }
 
   //set the buttons till now
@@ -110,7 +108,7 @@ function renderCalendar(calendarEl) {
 
   //render inactive buttons
   for (let i = 1; i <= extraDays; i++) {
-    calendarDaysHtml += `<button type="button" class="inactive">${i}</button>`;
+    calendarDaysHtml += `<button class="inactive">${i}</button>`;
   }
 
   //set the inner html again
@@ -155,10 +153,10 @@ function renderCalendar(calendarEl) {
 
   //celandar buttons to dates
   const activeDaysDo = calendarDays.querySelectorAll(
-    ".calendar--primary button:not(.inactive)",
+    ".calendar--primary button:not(.inactive)"
   );
   const activeDaysDont = calendarDays.querySelectorAll(
-    ".calendar--secoundry button:not(.inactive)",
+    ".calendar--secoundry button:not(.inactive)"
   );
   const overlay = document.querySelector(".blur--background--0-1");
   const calendarDo = document.querySelector(".calendar--primary");
@@ -330,7 +328,7 @@ function chartsFn(char) {
           },
         },
       },
-      responsive: false,
+      responsive: true,
       plugins: {
         title: {
           display: false,
@@ -364,11 +362,19 @@ function chartsFn(char) {
       //update labels and upadate instance
       chartInstance.data.labels = dataLables;
       chartInstance.update();
-    }),
+    })
   );
 }
 
 charts.forEach((char) => chartsFn(char));
+
+//history back btn
+const header__right__icon = document.querySelector("#header__right__icon");
+if (header__right__icon) {
+  header__right__icon.addEventListener("click", () => {
+    window.location.href = "home.html";
+  });
+}
 
 //new--task--modals
 //openModalDoMakeTask
@@ -417,7 +423,7 @@ function newTaskModalToggleDo() {
 function newTaskModalToggleDont() {
   //get the dom element we need
   const newTaskModalDont = document.querySelector(
-    ".new--task--modal--secoundry",
+    ".new--task--modal--secoundry"
   );
   if (!newTaskModalDont) return;
   //btns
@@ -469,18 +475,18 @@ function deleteTaskDo() {
 
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
-    ".primary--delete--task--modal",
+    ".primary--delete--task--modal"
   );
   const overlay = document.querySelector(".blur--background--0-2");
   //logged in and sign up
   const primaryTasks = document.querySelector(".primary--tasks");
 
   const checkboxInput = primaryTasks.querySelectorAll(
-    ".checkbox__input:checked",
+    ".checkbox__input:checked"
   );
 
   const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-    checkbox.closest("div"),
+    checkbox.closest("div")
   );
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
@@ -503,13 +509,13 @@ function deleteTaskDo() {
 if (document.getElementById("deleteTaskDont")) {
   document.getElementById("deleteTaskDont").addEventListener("click", () => {
     const dontAskAgainDelete = document.getElementById(
-      "dontAskAgainDeleteDont",
+      "dontAskAgainDeleteDont"
     );
 
     // save only when modal is opened and user clicks delete
     localStorage.setItem(
       "dontAskAgainDeleteDont",
-      `${dontAskAgainDelete.checked}`,
+      `${dontAskAgainDelete.checked}`
     );
 
     deleteTaskDont();
@@ -520,7 +526,7 @@ if (document.getElementById("deleteTaskDont")) {
 function deleteTasksModalToggleDo() {
   //toggle to delete task
   const deleteTaskModal = document.querySelector(
-    ".primary--delete--task--modal",
+    ".primary--delete--task--modal"
   );
 
   if (!deleteTaskModal) return;
@@ -540,7 +546,7 @@ function deleteTasksModalToggleDo() {
 
       //get the elements in the modal
       const tasksThatShouldBeDeletedDiv = document.getElementById(
-        "tasksThatShouldBeDeleted",
+        "tasksThatShouldBeDeleted"
       );
       const tasksThatShouldBeDeletedUl =
         tasksThatShouldBeDeletedDiv.querySelector("ul");
@@ -551,13 +557,13 @@ function deleteTasksModalToggleDo() {
       //getting the tasks
       const primaryTasks = document.querySelector(".primary--tasks");
       const checkboxInput = primaryTasks.querySelectorAll(
-        ".checkbox__input:checked",
+        ".checkbox__input:checked"
       );
       const checkboxInputNotChecked =
         primaryTasks.querySelectorAll(".checkbox__input");
       //getting the tasks parrent
       const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-        checkbox.closest("div"),
+        checkbox.closest("div")
       );
       //get teh tasknames that user selected
       const tasksName = checkboxInputParrent.map((div) => {
@@ -611,18 +617,18 @@ function deleteTaskDont() {
 
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
-    ".secondary--delete--task--modal",
+    ".secondary--delete--task--modal"
   );
   const overlay = document.querySelector(".blur--background--0-2");
   //logged in and sign up
   const primaryTasks = document.querySelector(".secondary--tasks");
 
   const checkboxInput = primaryTasks.querySelectorAll(
-    ".checkbox__input:checked",
+    ".checkbox__input:checked"
   );
 
   const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-    checkbox.closest("div"),
+    checkbox.closest("div")
   );
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
@@ -637,7 +643,7 @@ function deleteTaskDont() {
   //local storage
   localStorage.setItem(
     "dontAskAgainDeleteDont",
-    `${dontAskAgainDelete.checked}`,
+    `${dontAskAgainDelete.checked}`
   );
   //delete tasks
   checkboxInputParrent.forEach((div) => div.remove());
@@ -658,7 +664,7 @@ if (document.getElementById("deleteTaskDo")) {
 
 function deleteTasksModalToggleDont() {
   const deleteTaskModal = document.querySelector(
-    ".secondary--delete--task--modal",
+    ".secondary--delete--task--modal"
   );
   if (!deleteTaskModal) return;
   const openDeleteModalDont = document.getElementById("openDeleteModalDont");
@@ -674,7 +680,7 @@ function deleteTasksModalToggleDont() {
 
       //get the elements in the modal
       const tasksThatShouldBeDeletedDiv = document.getElementById(
-        "tasksThatShouldBeDeletedDont",
+        "tasksThatShouldBeDeletedDont"
       );
       const tasksThatShouldBeDeletedUl =
         tasksThatShouldBeDeletedDiv.querySelector("ul");
@@ -685,13 +691,13 @@ function deleteTasksModalToggleDont() {
       //getting the tasks
       const primaryTasks = document.querySelector(".secondary--tasks");
       const checkboxInput = primaryTasks.querySelectorAll(
-        ".checkbox__input:checked",
+        ".checkbox__input:checked"
       );
       const checkboxInputNotChecked =
         primaryTasks.querySelectorAll(".checkbox__input");
       //getting the tasks parrent
       const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-        checkbox.closest("div"),
+        checkbox.closest("div")
       );
       //get teh tasknames that user selected
       const tasksName = checkboxInputParrent.map((div) => {
@@ -813,7 +819,7 @@ nameInputAmountCheck();
 function makeNewTaskDont() {
   //modal
   const newTaskModalDont = document.querySelector(
-    ".new--task--modal--secoundry",
+    ".new--task--modal--secoundry"
   );
   const submitBotton = document.getElementById("addTaskSubmitBtnDont");
   const cancelBtn = document.getElementById("closeModalAddDont");
@@ -887,7 +893,7 @@ function makeNewTaskDont() {
       if (startDate == "") {
         errorHandler(
           addNewTaskDescStart,
-          "This field cannot be empty. Please select a date.",
+          "This field cannot be empty. Please select a date."
         );
         hasError = true;
       } else if (!dateRegex.test(startDate)) {
@@ -901,7 +907,7 @@ function makeNewTaskDont() {
       if (finishDate == "") {
         errorHandler(
           addNewTaskDescFinish,
-          "This field cannot be empty. Please select a date.",
+          "This field cannot be empty. Please select a date."
         );
         hasError = true;
       } else if (!dateRegex.test(finishDate)) {
@@ -945,7 +951,7 @@ function makeNewTaskDont() {
 
       //append the task that we made to the row
       taskContainer.append(tasksRow);
-      newTaskModalDont.submit();
+
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -966,6 +972,151 @@ function makeNewTaskDont() {
   }
 }
 makeNewTaskDont();
+
+// function makeNewTaskDo() {
+//   //modal
+//   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
+//   const submitBotton = document.getElementById("addTaskSubmitBtn");
+//   const nameCountSpan = document.querySelectorAll("#nameInputTxt");
+//   //inputs
+//   const nameInput = newTaskModalDo
+//     ? newTaskModalDo.querySelector("#nameInput")
+//     : null;
+//   const startDateInput = document.getElementById("startDateDo");
+//   const finishDateInput = document.getElementById("finishDateDo");
+//   //overlay
+//   const overlay = document.querySelector(".blur--background--0-2");
+//   //tasks
+//   const primaryTasks = document.querySelector(".primary--tasks");
+//   const taskContainer = primaryTasks
+//     ? primaryTasks.querySelector(".tasks__column")
+//     : null;
+//   //descriptions
+//   const addNewTaskDescStart = document.getElementById("descriptionDoStart");
+//   const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
+//   const addNewTaskDescName = document.getElementById("descriptionDoName");
+
+//   if (submitBotton) {
+//     submitBotton.addEventListener("click", (e) => {
+//       const name = nameInput.value;
+//       const startDate = startDateInput.value;
+//       const finishDate = finishDateInput.value;
+
+//       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+//       //error handlesr
+//       let hasErrorStart = false;
+//       let hasErrorfinish = false;
+//       let hasErrorStartEmpthy = false;
+//       let hasErrorfinishEmpthy = false;
+//       let hasErrorName = false;
+
+//       //if the inputs was empthy
+//       if (startDate == "") {
+//         addNewTaskDescStart.innerHTML =
+//           "This field cannot be empty. Please select a date.";
+//         addNewTaskDescStart.classList.add("warning");
+//         hasErrorStartEmpthy = true;
+//       }
+
+//       if (finishDate == "") {
+//         addNewTaskDescFinish.innerHTML =
+//           "This field cannot be empty. Please select a date.";
+//         addNewTaskDescFinish.classList.add("warning");
+//         hasErrorfinishEmpthy = true;
+//       }
+
+//       if (name == "") {
+//         addNewTaskDescName.innerHTML = "Name cannot be empty.";
+//         addNewTaskDescName.classList.add("warning");
+//         hasErrorName = true;
+//       }
+
+//       //if the inputs was full get regex
+//       if (startDate !== "") {
+//         const result = dateRegex.test(startDate);
+//         console.log(result, startDate);
+//         if (!result) {
+//           addNewTaskDescStart.innerHTML = "Please choose a valid date.";
+//           addNewTaskDescStart.classList.add("warning");
+//           hasErrorStart = true;
+//         }
+//       }
+
+//       if (finishDate !== "") {
+//         const result = dateRegex.test(finishDate);
+//         if (!result) {
+//           addNewTaskDescFinish.innerHTML = "Please choose a valid date.";
+//           addNewTaskDescFinish.classList.add("warning");
+//           hasErrorfinish = true;
+//         }
+//       }
+
+//       //go to default
+//       if (
+//         hasErrorStart ||
+//         hasErrorfinish ||
+//         hasErrorName ||
+//         hasErrorStartEmpthy ||
+//         hasErrorfinishEmpthy
+//       ) {
+//         setTimeout(() => {
+//           addNewTaskDescFinish.innerHTML =
+//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+//           addNewTaskDescStart.innerHTML =
+//             'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+//           addNewTaskDescName.innerHTML = "Place a text here for description";
+
+//           addNewTaskDescName.classList.remove("warning");
+//           addNewTaskDescStart.classList.remove("warning");
+//           addNewTaskDescFinish.classList.remove("warning");
+//           hasErrorfinish = false;
+//           hasErrorStart = false;
+//         }, 6000);
+//         return;
+//       }
+
+//       //make the task
+//       const tasksRow = document.createElement("div");
+//       tasksRow.className = "tasks__row";
+//       tasksRow.innerHTML = `
+//               <span>${name}</span>
+//               <span>${startDate}</span>
+//               <span>${finishDate}</span>
+//               <label class="checkbox--primary">
+//                 <input class="checkbox__input" type="checkbox" />
+//                 <span class="checkbox__box"></span>
+//               </label>
+
+//   `;
+
+//       //prevent new checkbox from default behavior
+//       taskContainer.addEventListener("click", (e) => {
+//         const label = e.target.closest(".checkbox--primary");
+//         if (!label) return;
+
+//         e.preventDefault();
+//         const input = label.querySelector('input[type="checkbox"]');
+//         input.checked = !input.checked;
+//       });
+
+//       //append the task that we made to the row
+//       taskContainer.append(tasksRow);
+
+//       //back to defualt
+//       nameInput.value = "";
+//       startDateInput.value = "";
+//       finishDateInput.value = "";
+//       nameCountSpan.forEach((span) => {
+//         span.textContent = 50;
+//       });
+
+//       newTaskModalDo.classList.remove("show");
+//       overlay.classList.remove("show");
+//     });
+//   }
+// }
+// makeNewTaskDo();
 
 function makeNewTaskDo() {
   //modal
@@ -1052,7 +1203,7 @@ function makeNewTaskDo() {
       if (startDate == "") {
         errorHandler(
           addNewTaskDescStart,
-          "This field cannot be empty. Please select a date.",
+          "This field cannot be empty. Please select a date."
         );
         hasError = true;
       } else if (!dateRegex.test(startDate)) {
@@ -1066,7 +1217,7 @@ function makeNewTaskDo() {
       if (finishDate == "") {
         errorHandler(
           addNewTaskDescFinish,
-          "This field cannot be empty. Please select a date.",
+          "This field cannot be empty. Please select a date."
         );
         hasError = true;
       } else if (!dateRegex.test(finishDate)) {
@@ -1103,7 +1254,7 @@ function makeNewTaskDo() {
 
       //append the task that we made to the row
       taskContainer.append(tasksRow);
-      newTaskModalDo.submit();
+
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -1126,7 +1277,6 @@ function makeNewTaskDo() {
 makeNewTaskDo();
 
 function login() {
-  const loginForm = document.querySelector(".login--signup--form__content");
   // inputs
   const emailInput = document.getElementById("emailInputLogin");
   const passwordInputLogin = document.getElementById("passwordInputLogin");
@@ -1140,7 +1290,7 @@ function login() {
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
-  if (!submitBtnLogin) return;
+  if (!window.location.pathname.endsWith("login.html")) return;
 
   // helper functions
   function errorHandling(element, message) {
@@ -1170,8 +1320,7 @@ function login() {
   }
 
   if (submitBtnLogin) {
-    submitBtnLogin.addEventListener("click", (e) => {
-      e.preventDefault();
+    submitBtnLogin.addEventListener("click", () => {
       clearAllErrors();
 
       const email = emailInput.value.trim();
@@ -1193,6 +1342,21 @@ function login() {
 
       if (hasError) return;
 
+      // mock auth (ONLY for UI demo)
+      const storedEmail =
+        localStorage.getItem("email") || sessionStorage.getItem("email");
+      const storedPassword =
+        localStorage.getItem("password") || sessionStorage.getItem("password");
+
+      const isValid = email === storedEmail && password === storedPassword;
+
+      if (!isValid) {
+        const message = "Email or password is incorrect.";
+        errorHandling(emailDesc, message);
+        errorHandling(passwordDesc, message);
+        return;
+      }
+
       // success
       if (rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
@@ -1200,7 +1364,7 @@ function login() {
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
-      loginForm.submit();
+      window.location.href = "home.html";
     });
   }
 }
@@ -1208,7 +1372,6 @@ function login() {
 login();
 
 function signup() {
-  const signupForm = document.querySelector(".login--signup--form__content");
   //inputs
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
@@ -1224,12 +1387,16 @@ function signup() {
   const eyeBtn = document.getElementById("eyeBtn");
   const rememberMeInput = document.getElementById("rememberMeSignup");
 
-  console.log(submitBtn, nameDesc, nameInput);
-
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+  //haserror
+
+  //checks if the page is signup
+  if (!window.location.pathname.endsWith("signup.html")) {
+    return;
+  }
 
   //error handling
   function errorHandler(element, message) {
@@ -1239,7 +1406,6 @@ function signup() {
 
   //error handling
   function errorRemover(element) {
-    element.innerHTML = "";
     element.classList.remove("warning");
   }
 
@@ -1258,8 +1424,7 @@ function signup() {
 
   //submitbtn
   if (submitBtn) {
-    submitBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+    submitBtn.addEventListener("click", () => {
       //input values
       const name = nameInput.value;
       const email = emailInput.value;
@@ -1282,7 +1447,7 @@ function signup() {
       } else if (!emailRegex.test(email)) {
         errorHandler(
           emailDesc,
-          "Please enter a valid email address. Example: user@example.com",
+          "Please enter a valid email address. Example: user@example.com"
         );
         hasError = true;
       } else if (
@@ -1302,7 +1467,7 @@ function signup() {
       } else if (!passwordRegex.test(password)) {
         errorHandler(
           passwordDesc,
-          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character.",
+          "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character."
         );
         hasError = true;
       } else {
@@ -1315,130 +1480,96 @@ function signup() {
 
       //if everything was ok set the keys and values
       if (rememberMe) {
+        localStorage.setItem("name", `${name}`);
+        localStorage.setItem("password", `${password}`);
+        localStorage.setItem("email", `${email}`);
         localStorage.setItem("isLoggedIn", "true");
       } else if (!rememberMe) {
+        sessionStorage.setItem("name", `${name}`);
+        sessionStorage.setItem("password", `${password}`);
+        sessionStorage.setItem("email", `${email}`);
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
-      signupForm.submit();
+      //go to home
+      window.location.href = "home.html";
     });
   }
 }
 signup();
 
-//we can use django conditional rendering insted
-// function ConditionalRenderingFn() {
-//   const isLoggedIn =
-//     sessionStorage.getItem("isLoggedIn") === "true" ||
-//     localStorage.getItem("isLoggedIn") === "true";
+function ConditionalRenderingFn() {
+  const isLoggedIn =
+    sessionStorage.getItem("isLoggedIn") === "true" ||
+    localStorage.getItem("isLoggedIn") === "true";
 
-//   //conditionaly rendering links
+  //conditionaly rendering links
 
-//   //conditionaly rendering header
-//   const headerByCondition = document.getElementById("headerByCondition");
+  //conditionaly rendering header
+  const headerByCondition = document.getElementById("headerByCondition");
 
-//   console.log(window.location.pathname);
-//   if (!headerByCondition) return;
+  if (!headerByCondition) return;
+  const theAddress = window.location.pathname.split("/")[3].split(".")[0];
+  const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
 
-//   const pathParts = window.location.pathname.split("/").filter(Boolean);
-//   //what should icon be?
-//   let whatShouldIconBe = "circle-question";
-//   //if the address has 0 chars == home
-//   let theAddress;
-//   if (pathParts.length === 0) {
-//     theAddress = "home";
-//   } else if (pathParts.length > 0) {
-//     theAddress = pathParts[pathParts.length - 1].split(".")[0];
-//   }
-//   //header icon
-//   if (theAddress === "home") {
-//     whatShouldIconBe = "home";
-//   } else if (theAddress === "About-us") {
-//     whatShouldIconBe = "circle-info";
-//   } else if (theAddress === "Login" || theAddress === "sign-up") {
-//     whatShouldIconBe = "user";
-//   } else if (!isNaN(Number(theAddress))) {
-//     whatShouldIconBe = "trophy";
-//     theAddress = `Trophy details`;
-//   } else if (theAddress === "trophies") {
-//     whatShouldIconBe = "trophy";
-//   }
+  if (isLoggedIn) {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>${cap}</h3>
+          <i class="fa-solid fa-${
+            theAddress == "about-us" ? "circle-info" : theAddress
+          }"></i>
+        </header>
+        
+        <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        
+      </section>`;
+  } else {
+    headerByCondition.innerHTML = `<section class="header">
+        <header>
+          <h3>${cap}</h3>
+          <i class="fa-solid fa-${theAddress}"></i>
+        </header>
 
-//   //header h3
-//   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
-//   //getting login page link
-//   const loginLink = document.getElementById("loginLink");
-//   const loginUrl = loginLink.dataset.loginUrl;
+        <a href="login.html">
+          <button
+            style="padding: 0 0; margin: 0 0; border: none"
+            class="btn btn--video--bg"
+          >
+            <div class="btn__container">
+              <div class="btn__text">
+                <span>Login / Signup</span>
+                <span class="btn__icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
 
-//   if (isLoggedIn) {
-//     headerByCondition.innerHTML = `<section class="header">
-//         <header>
-//           <h3>${cap}</h3>
-//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
-//         </header>
+            <video class="btn__video" muted loop autoplay playsinline>
+              <source
+                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                type="video/mp4"
+              />
+              your browser doesent support video
+            </video>
+          </button>
+        </a>
+      </section>`;
+  }
 
-//         <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
-
-//       </section>`;
-//   } else {
-//     headerByCondition.innerHTML = `<section class="header">
-//         <header>
-//           <h3>${cap}</h3>
-//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
-//         </header>
-
-//         <a href="${loginUrl}">
-//           <button
-//             style="padding: 0 0; margin: 0 0; border: none"
-//             class="btn btn--video--bg"
-//           >
-//             <div class="btn__container">
-//               <div class="btn__text">
-//                 <span>Login / Signup</span>
-//                 <span class="btn__icon">
-//                   <i class="fa-solid fa-user"></i>
-//                 </span>
-//               </div>
-//             </div>
-
-//             <video class="btn__video" muted loop autoplay playsinline>
-//               <source
-//                 src="/static/assets/video/primary-secondary/Last_one_i_rendred.mp4"
-//                 type="video/mp4"
-//               />
-//               your browser doesent support video
-//             </video>
-//           </button>
-//         </a>
-//       </section>`;
-//   }
-
-//   const trophyBtn = document.getElementById("trophyBtn");
-//   if (!trophyBtn) return;
-//   const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl;
-//   const signupUrl = trophyBtn.dataset.signupUrl;
-//   trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
-// }
-// ConditionalRenderingFn();
-
-function toast() {
-  document.querySelectorAll(".toast").forEach((el) => {
-    Toastify({
-      text: el.dataset.text,
-      duration: 4000,
-      gravity: "top", // بالا
-      position: "center", // وسط
-      style: {
-        background:
-          el.dataset.type === "error"
-            ? "#E7000B"
-            : el.dataset.type === "success"
-              ? "#00C950"
-              : "#333",
-        fontFamily: "Poppins, sans-serif",
-        fontWeight: "400",
-      },
-    }).showToast();
-  });
+  const trophyBtn = document.getElementById("trophyBtn");
+  if (!trophyBtn) return;
+  trophyBtn.href = isLoggedIn ? "trophy-details.html" : "signup.html";
 }
-toast();
+ConditionalRenderingFn();
+
+//trippyes
+tippy("[data-tooltip]", {
+  content(reference) {
+    return reference.dataset.tooltip;
+  },
+  placement: "top",
+  arrow: false,
+  animation: "fade",
+  theme: "natural",
+});

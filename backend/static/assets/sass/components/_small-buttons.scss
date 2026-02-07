@@ -1,0 +1,53 @@
+@use "../abstracts/index" as *;
+
+@mixin sm-buttons() {
+  //sizing
+  aspect-ratio: 1/1;
+  width: 50px;
+  //color and typo
+  border: none;
+  background-color: $primary-10;
+  border: solid 1px $primary-300;
+  opacity: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+  color: $primary-400;
+  transition: all 0.2s ease-out;
+  @include typography($weight-medium, $size-13);
+  &:hover {
+    //color and typo
+    opacity: 100%;
+    box-shadow: $shadow-small;
+  }
+  &:active {
+    //color and typo
+    box-shadow: $shadow-medium;
+  }
+}
+
+.next--prev--small--btn {
+  @include sm-buttons();
+  //sizing
+  width: 1.875rem; //30px
+  &:active {
+    //sizing
+    transform: scale(0.9);
+  }
+}
+
+.number--small--btn {
+  @include sm-buttons();
+  //sizing
+  width: 1.875rem; //30px
+  //color and typo
+  opacity: 30%;
+  &:hover {
+    //color and typo
+    box-shadow: none;
+    opacity: 80%;
+  }
+  &:active {
+    //color and typo
+    box-shadow: none;
+  }
+}

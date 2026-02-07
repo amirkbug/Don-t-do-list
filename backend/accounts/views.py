@@ -13,7 +13,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            messages.add_message(request,messages.SUCCESS , "Welcome back 👋 Let’s get things done.")
+            messages.add_message(request, messages.SUCCESS , "Welcome back 👋 Let’s get things done.")
             return redirect("root:home")
         else:
             messages.add_message(request,messages.ERROR,"Something went wrong. Please try again.")

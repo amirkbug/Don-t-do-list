@@ -1,0 +1,133 @@
+@use "../abstracts/index" as *;
+.info--cards--holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 600px;
+  padding: 0px 20px;
+  margin: 0px 20px;
+}
+
+.info--cards--userinfo {
+  //display
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  //sizing
+  width: 380px;
+  height: 548px;
+  padding: 2rem;
+
+  //color and typo
+  background-color: $neutral-50;
+  border-radius: 10px;
+  border: 2px solid $neutral-800;
+
+  .info--cards--userinfo--profile--section {
+    //display
+    display: flex;
+    flex-direction: column;
+    img {
+      aspect-ratio: 1/1;
+      width: 100px;
+    }
+
+    i {
+      //display
+      position: relative;
+
+      //sizing
+      left: 40px; // 25px
+      bottom: 0.3rem; // 5px
+
+      //color and typo
+      opacity: 0.2; // 20%
+      cursor: pointer;
+      transition: opacity 0.3s ease-out;
+
+      &:hover {
+        //color and typo
+        opacity: 0.9; // 90%
+      }
+    }
+  }
+
+  .info--cards--userinfo--profile {
+    //sizing
+    object-fit: contain;
+    width: 3.125rem; // 50px
+    aspect-ratio: 1 / 1;
+
+    //color and typo
+    background-color: $neutral-300;
+    border-radius: 50%;
+  }
+
+  section {
+    //display
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    //sizing
+    width: 100%;
+
+    //color and typo
+    @include typography($weight-regular, $size-16);
+
+    small {
+      //sizing
+      padding: 0.625rem; // 10px
+    }
+
+    p {
+      //sizing
+      padding: 0.625rem; // 10px
+      margin: 0;
+    }
+  }
+
+  .input_content {
+    //color and typo
+    border: 1px solid $neutral-100;
+  }
+}
+
+.info--cards--btnbox {
+  //display
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: start;
+
+  //sizing
+  height: fit-content;
+  padding: 1.563rem; //25px
+
+  //color and typo
+  background-color: $neutral-50;
+  border-radius: 10px;
+  border: 2px solid $neutral-800;
+
+  a {
+    button {
+      //sizing
+      width: 100%;
+      //color and typo
+      background-color: transparent;
+      border: none;
+      color: $destructive-400;
+      @include typography($weight-medium, $size-16);
+      cursor: pointer;
+      transition: color 0.3s ease-out;
+      &:hover {
+        color: $destructive-500;
+      }
+    }
+  }
+}
