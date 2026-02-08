@@ -1,19 +1,21 @@
 @use "../abstracts/index" as *;
 
 .dashboard {
+  //display
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  height: 600px;
   overflow-y: auto;
   scrollbar-width: none;
-  padding: 50px;
+  //sizing
   margin: 20px;
   .dashboard--sections {
-    height: fit-content;
-    gap: 60px;
+    //display
     display: flex;
     flex-direction: column;
+    //sizing
+    height: fit-content;
+    gap: 60px;
   }
 }
