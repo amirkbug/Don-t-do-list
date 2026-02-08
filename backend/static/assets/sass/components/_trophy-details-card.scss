@@ -6,7 +6,7 @@ body {
   justify-content: space-between;
 }
 
-.trophy--details--card {
+@mixin trophy--details--card($bg-color) {
   //display
   display: flex;
   flex-direction: row;
@@ -34,7 +34,7 @@ body {
       padding: 20px;
       border-radius: 10px;
       //color and typo
-      background-color: rgb(255, 182, 85);
+      background-color: $bg-color;
       box-shadow: $shadow-medium;
 
       img {
@@ -122,9 +122,17 @@ body {
     gap: 20px;
     button {
       //color and typo
-      background-color: rgb(255, 182, 85);
+      background-color: $bg-color;
       color: $neutral-900;
       border-radius: 10px;
     }
   }
+}
+
+.trophy--details--card--primary {
+  @include trophy--details--card($primary-300);
+}
+
+.trophy--details--card--secondary {
+  @include trophy--details--card($secondary-300);
 }

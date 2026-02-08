@@ -1,11 +1,17 @@
 @use "../abstracts/index" as *;
 .pagination {
-  //display
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  //sizing
-  gap: 10px;
+  justify-content: center;
+  gap: 6px;
   width: 100%;
+  grid-column: 1 / -1;
+}
+
+.slot {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,16 +6,11 @@
   //display
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   //spacing
+  width: 20.9rem;
+  height: 8.25rem;
   gap: 1.25rem;
-  width: 100%;
-  padding: 20px;
-  //color and typo
-  background-color: $bg-color;
-  border-radius: 10px;
-  border: 1px solid $border-color;
-  box-shadow: $shadow-medium;
+
   @include typography($weight-bold, $size-16);
 
   .card_top_content {

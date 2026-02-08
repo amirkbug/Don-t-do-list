@@ -1,13 +1,11 @@
 .trophy--layout {
-  //display
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
-  align-items: end;
+  margin: 0 auto;
+  padding: 4.375rem;
+  gap: 70px 300px;
+  height: 600px;
   overflow-y: auto;
   scrollbar-width: none;
-  //sizing
-  padding: 4.375rem; //70px
-  gap: 100px;
-  height: 600px;
 }

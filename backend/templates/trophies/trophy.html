@@ -50,16 +50,29 @@
 
       
       <!-- paginator -->
-       
+      
       <nav class="pagination">
+        <span class="slot">
+        {% if trophies.has_previous %}
+        <a href="?page={{ trophies.previous_page_number }}">
         <button class="next--prev--small--btn">
           <i class="fa-solid fa-chevron-left fa-sm"></i>
         </button>
-        <button style="cursor: auto" class="number--small--btn">1</button>
+        </a>
+        {% endif %}
+        </span>
+        <button style="cursor: auto" class="number--small--btn">{{trophies.number}}</button>
+        <span class="slot">
+        {% if trophies.has_next %}
+        <a href="?page={{ trophies.next_page_number }}">
         <button class="next--prev--small--btn">
           <i class="fa-solid fa-chevron-right fa-sm"></i>
         </button>
+        </a>
+        {% endif %}
+        </span>
       </nav>
+      
       
     </main>
 

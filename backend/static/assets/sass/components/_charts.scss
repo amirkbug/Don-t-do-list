@@ -1,20 +1,16 @@
 @use "../abstracts/index" as *;
 
-@mixin charts($main-color, $btn-hover-bg, $bg-color) {
+@mixin charts($main-color, $btn-hover-bg) {
   // display
   display: flex;
   flex-direction: column;
   //sizing
-  padding: 20px; // 10px
-  width: 100%; // 334px
-  height: fit-content; // 219px
+  padding: 0.625rem; // 10px
+  width: 20.875rem; // 334px
+  height: 13.6875rem; // 219px
   gap: 1.25rem; // 20px
   //color and typo
   color: $main-color;
-  background-color: $bg-color;
-  box-shadow: $shadow-small;
-  border-radius: 10px;
-  border: 1px solid $main-color;
   @include typography($weight-bold, $size-16);
 
   .chart__header {
@@ -44,7 +40,7 @@
         border: none;
         @include typography($weight-regular, $size-10);
         color: $main-color;
-        border-radius: 4px;
+        border-radius: 10px;
         transition: all 300ms ease-out;
 
         &:hover {
@@ -61,8 +57,8 @@
 }
 
 .chart--primary {
-  @include charts($primary-500, $primary-100, $primary-10);
+  @include charts($primary-500, $primary-10);
 }
 .chart--secoundry {
-  @include charts($secondary-500, $secondary-100, $secondary-10);
+  @include charts($secondary-500, $secondary-10);
 }
