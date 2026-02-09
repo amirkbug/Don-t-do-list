@@ -49,6 +49,9 @@ def logout_view (request):
     return redirect("root:home")
 
 
+def dashboard_view(request):
+    return render(request , "accounts/dashboard.html")
+
 
 def password_chaange(request):
     pass

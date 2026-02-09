@@ -53,15 +53,16 @@
     <div class="blur--background--0-2"></div>
     <div class="blur--background--0-1"></div>
 
-    <!-- header -->
 
 {% if request.user.is_authenticated %}
       <section class="header">
         <header>
           <h3>Home</h3>
-          <i class="fa-solid fa-home}"></i>
+          <i class="fa-solid fa-home"></i>
         </header>
+        <a href={% url "accounts:dashboard" %}>
         <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
+        </a>
       </section>
       {% else %}
       <section class="header">
@@ -114,8 +115,17 @@
       </nav>
     </div>
 
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <!-- charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- js -->
     <script type="module" src="{% static 'assets/js/main.js' %}"></script>
+    <!-- toast -->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

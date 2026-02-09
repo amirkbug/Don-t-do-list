@@ -306,7 +306,7 @@ function chartsFn(char) {
           //color of the bg points (render it base on the chart)
           backgroundColor: char.classList.contains("chart--primary")
             ? "#c27aff"
-            : "#7c86ff",
+            : "#ffffff",
           tension: 0.4,
         },
       ],
@@ -330,7 +330,7 @@ function chartsFn(char) {
           },
         },
       },
-      responsive: false,
+      responsive: true,
       plugins: {
         title: {
           display: false,
@@ -1224,8 +1224,6 @@ function signup() {
   const eyeBtn = document.getElementById("eyeBtn");
   const rememberMeInput = document.getElementById("rememberMeSignup");
 
-  console.log(submitBtn, nameDesc, nameInput);
-
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =
@@ -1442,3 +1440,22 @@ function toast() {
   });
 }
 toast();
+
+function backInHistory() {
+  const headerRightIcon = document.querySelector("#header__right__icon");
+  headerRightIcon.addEventListener("click", () => {
+    history.back();
+  });
+}
+backInHistory();
+
+//trippyes
+tippy("[data-tooltip]", {
+  content(reference) {
+    return reference.dataset.tooltip;
+  },
+  placement: "top",
+  arrow: false,
+  animation: "fade",
+  theme: "natural",
+});

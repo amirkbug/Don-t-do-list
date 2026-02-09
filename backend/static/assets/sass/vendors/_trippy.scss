@@ -1,0 +1,7 @@
+@use "../abstracts/index" as *;
+
+.tippy-box[data-theme~="natural"] {
+  background-color: $neutral-800;
+  color: $neutral-50;
+  @include typography($weight-regular, $size-10);
+}
