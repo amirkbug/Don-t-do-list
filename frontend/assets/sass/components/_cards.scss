@@ -29,6 +29,15 @@
       display: inline;
       color: $text-color;
       justify-self: flex-start;
+      span.warning {
+        color: $destructive-500;
+      }
+      span.neutral {
+        color: $neutral-500;
+      }
+      span.success {
+        color: $success-500;
+      }
     }
     .card_line {
       //display

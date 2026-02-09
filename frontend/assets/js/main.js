@@ -1573,3 +1573,20 @@ tippy("[data-tooltip]", {
   animation: "fade",
   theme: "natural",
 });
+
+function accountSettingToggle() {
+  const info__cards__btnbox = document.querySelector(".info--cards--btnbox");
+  const btn = info__cards__btnbox.querySelector("button");
+  const xMark = info__cards__btnbox.querySelector("i");
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    info__cards__btnbox.classList.add("is_open");
+    info__cards__btnbox.style.alignItems = "start";
+  });
+  xMark.addEventListener("click", () => {
+    info__cards__btnbox.classList.remove("is_open");
+    info__cards__btnbox.style.alignItems = "center";
+  });
+}
+
+accountSettingToggle();

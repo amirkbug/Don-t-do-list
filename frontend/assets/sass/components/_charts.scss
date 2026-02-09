@@ -23,10 +23,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    min-height: 44px;
     p {
       //sizing
       padding: 0 0 0 0.3125rem; // 5px
       margin: 0;
+      span.warning {
+        color: $destructive-500;
+      }
+      span.neutral {
+        color: $neutral-500;
+      }
+      span.success {
+        color: $success-500;
+      }
     }
 
     .chart__header__btns {
