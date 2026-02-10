@@ -2,7 +2,6 @@
 .info--cards--holder {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
   max-width: 600px;
   padding: 0px 20px;
@@ -99,35 +98,96 @@
 
 .info--cards--btnbox {
   //display
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-  align-items: start;
-
+  gap: 45px;
+  align-items: center;
+  overflow: hidden;
   //sizing
-  height: fit-content;
-  padding: 1.563rem; //25px
-
+  height: 0.625rem; //10px
+  padding: 15px 25px; //25px
   //color and typo
   background-color: $neutral-50;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   border: 2px solid $neutral-800;
-
+  transition: all 0.3s ease;
   a {
-    button {
-      //sizing
-      width: 100%;
+    //display
+    opacity: 0;
+    //color and typo
+    @include typography($weight-medium, $size-16);
+    transform: translateY(100px);
+    transition: color 0.3s ease;
+    pointer-events: none;
+  }
+  a:first-of-type {
+    //color and typo
+    color: $neutral-400;
+
+    &:hover {
       //color and typo
-      background-color: transparent;
-      border: none;
+      color: $neutral-500;
+    }
+  }
+  a:last-child {
+    //color and typo
+    color: $destructive-300;
+    &:hover {
+      //color and typo
       color: $destructive-400;
-      @include typography($weight-medium, $size-16);
-      cursor: pointer;
-      transition: color 0.3s ease-out;
-      &:hover {
-        color: $destructive-500;
-      }
+    }
+  }
+  i {
+    //display
+    position: absolute;
+    left: 26.563rem; //425px
+    bottom: 9.313rem; //149px
+    width: 0.625rem; //10px
+    display: none;
+    //color and typo
+    color: $neutral-400;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    &:hover {
+      //color and typo
+      color: $neutral-900;
+    }
+  }
+  button {
+    //display
+    display: inline-block;
+    //color and typo
+    background-color: transparent;
+    border: none;
+    color: $neutral-400;
+    @include typography($weight-medium, $size-16);
+    cursor: pointer;
+    transform: translateY(70px);
+    transition: color 0.3s ease;
+    &:hover {
+      //color and typo
+      color: $neutral-900;
+    }
+  }
+
+  &.is_open {
+    //sizing
+    height: 8.75rem; //140px
+    button {
+      //display
+      display: none;
+    }
+    a {
+      //color and typo
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    i {
+      //display
+      display: inline-block;
     }
   }
 }

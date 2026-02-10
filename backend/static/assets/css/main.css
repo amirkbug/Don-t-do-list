@@ -207,6 +207,15 @@
   color: #ad46ff;
   justify-self: flex-start;
 }
+.primary--info--card .card_top_content .card_header span.warning {
+  color: #e7000b;
+}
+.primary--info--card .card_top_content .card_header span.neutral {
+  color: #525252;
+}
+.primary--info--card .card_top_content .card_header span.success {
+  color: #00a63e;
+}
 .primary--info--card .card_top_content .card_line {
   display: block;
   height: 1.5px;
@@ -278,6 +287,15 @@
   display: inline;
   color: #615fff;
   justify-self: flex-start;
+}
+.secondary--info--card .card_top_content .card_header span.warning {
+  color: #e7000b;
+}
+.secondary--info--card .card_top_content .card_header span.neutral {
+  color: #525252;
+}
+.secondary--info--card .card_top_content .card_header span.success {
+  color: #00a63e;
 }
 .secondary--info--card .card_top_content .card_line {
   display: block;
@@ -2327,10 +2345,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  min-height: 44px;
 }
 .chart--primary .chart__header p {
   padding: 0 0 0 0.3125rem;
   margin: 0;
+}
+.chart--primary .chart__header p span.warning {
+  color: #e7000b;
+}
+.chart--primary .chart__header p span.neutral {
+  color: #525252;
+}
+.chart--primary .chart__header p span.success {
+  color: #00a63e;
 }
 .chart--primary .chart__header .chart__header__btns {
   display: flex;
@@ -2381,10 +2409,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  min-height: 44px;
 }
 .chart--secoundry .chart__header p {
   padding: 0 0 0 0.3125rem;
   margin: 0;
+}
+.chart--secoundry .chart__header p span.warning {
+  color: #e7000b;
+}
+.chart--secoundry .chart__header p span.neutral {
+  color: #525252;
+}
+.chart--secoundry .chart__header p span.success {
+  color: #00a63e;
 }
 .chart--secoundry .chart__header .chart__header__btns {
   display: flex;
@@ -3483,7 +3521,6 @@ body {
 .info--cards--holder {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
   max-width: 600px;
   padding: 0px 20px;
@@ -3552,32 +3589,86 @@ body {
 }
 
 .info--cards--btnbox {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-  align-items: start;
-  height: fit-content;
-  padding: 1.563rem;
+  gap: 45px;
+  align-items: center;
+  overflow: hidden;
+  height: 0.625rem;
+  padding: 15px 25px;
   background-color: #f5f5f5;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   border: 2px solid #171717;
+  transition: all 0.3s ease;
 }
-.info--cards--btnbox a button {
-  width: 100%;
+.info--cards--btnbox a {
+  opacity: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.43;
+  font-style: normal;
+  transform: translateY(100px);
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+.info--cards--btnbox a:first-of-type {
+  color: #737373;
+}
+.info--cards--btnbox a:first-of-type:hover {
+  color: #525252;
+}
+.info--cards--btnbox a:last-child {
+  color: #ff6467;
+}
+.info--cards--btnbox a:last-child:hover {
+  color: #fb2c36;
+}
+.info--cards--btnbox i {
+  position: absolute;
+  left: 26.563rem;
+  bottom: 9.313rem;
+  width: 0.625rem;
+  display: none;
+  color: #737373;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.info--cards--btnbox i:hover {
+  color: #0a0a0a;
+}
+.info--cards--btnbox button {
+  display: inline-block;
   background-color: transparent;
   border: none;
-  color: #fb2c36;
+  color: #737373;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.43;
   font-style: normal;
   cursor: pointer;
-  transition: color 0.3s ease-out;
+  transform: translateY(70px);
+  transition: color 0.3s ease;
 }
-.info--cards--btnbox a button:hover {
-  color: #e7000b;
+.info--cards--btnbox button:hover {
+  color: #0a0a0a;
+}
+.info--cards--btnbox.is_open {
+  height: 8.75rem;
+}
+.info--cards--btnbox.is_open button {
+  display: none;
+}
+.info--cards--btnbox.is_open a {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.info--cards--btnbox.is_open i {
+  display: inline-block;
 }
 
 .next--prev--small--btn {

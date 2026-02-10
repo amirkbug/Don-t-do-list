@@ -29,7 +29,7 @@
       rel="icon"
       type="image/svg+html"
       sizes="16x16"
-      href="{% static 'assets/icons/favicons/address-card-solid-full.svg' %}"
+      href="{% static 'assets/icons/favicons/address-card-solid-full.svg' %}' %}"
     />
     <title>Dashboard</title>
   </head>
@@ -141,12 +141,10 @@
           </div>
         </from>
         <article class="info--cards--btnbox">
-          <a href={% url "accounts:logout" %}>
-            <button>Logout</button>
-          </a>
-          <a>
-            <button>Delete account</button>
-          </a>
+          <i class="fa-solid fa-xmark"></i>
+          <button>Account settings ⚙️</button>
+          <a>Logout ↩️</a>
+          <a>Delete account ❌</a>
         </article>
       </div>
 
@@ -154,7 +152,9 @@
         <section class="info--cards--holder">
           <section class="primary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Do Tasks <span class="neutral">Created</span> ➕
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -176,7 +176,9 @@
           </section>
           <section class="primary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Do Tasks <span class="success">Completed</span> ✅
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -198,7 +200,9 @@
           </section>
           <section class="primary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Do Tasks <span class="warning">Deleted</span> 🗑️
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -222,36 +226,36 @@
         <section class="info--cards--holder">
           <div class="chart--primary">
             <header class="chart__header">
-              <p>do tasks that made</p>
+              <p>Do Tasks <span class="neutral">Created</span> ➕</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="117"></canvas>
           </div>
           <div class="chart--primary">
             <header class="chart__header">
-              <p>do tasks that deleted</p>
+              <p>Do Tasks <span class="success">Completed</span> ✅</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="157"></canvas>
           </div>
           <div class="chart--primary">
             <header class="chart__header">
-              <p>do tasks that completed</p>
+              <p>Do Tasks <span class="warning">Deleted</span> 🗑️</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="200"></canvas>
           </div>
         </section>
       </div>
@@ -259,7 +263,9 @@
         <section class="info--cards--holder">
           <section class="secondary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Don’t Tasks <span class="neutral">Created</span> ➕
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -281,7 +287,9 @@
           </section>
           <section class="secondary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Don’t Tasks <span class="success">Completed</span> ✅
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -303,7 +311,9 @@
           </section>
           <section class="secondary--info--card">
             <div class="card_top_content">
-              <header class="card_header">Do tasks that completed</header>
+              <header class="card_header">
+                Don’t Tasks <span class="warning">Deleted</span> 🗑️
+              </header>
               <hr class="card_line" />
             </div>
             <div class="card_down_content">
@@ -327,36 +337,36 @@
         <section class="info--cards--holder">
           <div class="chart--secoundry">
             <header class="chart__header">
-              <p>do tasks that made</p>
+              <p>Don’t Tasks <span class="neutral">Created ➕</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="125"></canvas>
           </div>
           <div class="chart--secoundry">
             <header class="chart__header">
-              <p>do tasks that deleted</p>
+              <p>Don’t Tasks <span class="success">Completed</span> ✅</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="165"></canvas>
           </div>
           <div class="chart--secoundry">
             <header class="chart__header">
-              <p>do tasks that completed</p>
+              <p>Do Tasks <span class="warning">Deleted</span> 🗑️</p>
               <div class="chart__header__btns">
                 <button>D</button>
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="219"> </canvas>
+            <canvas height="205"></canvas>
           </div>
         </section>
       </div>
