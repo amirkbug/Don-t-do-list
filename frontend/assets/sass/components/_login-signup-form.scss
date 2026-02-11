@@ -19,8 +19,15 @@
 
     a {
       @include typography($weight-semi-bold, $size-13);
-      color: $a-tags;
-      text-decoration: none;
+      color: $header-txt;
+      text-decoration: underline;
+      text-decoration-color: $header-txt;
+      transition: all 0.3s ease-out;
+      &:hover {
+        color: $a-tags;
+        text-decoration-color: $a-tags;
+        text-decoration-color: none;
+      }
     }
 
     .login--signup--form__logo {

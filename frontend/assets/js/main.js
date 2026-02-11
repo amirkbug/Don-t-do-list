@@ -1277,6 +1277,9 @@ function makeNewTaskDo() {
 makeNewTaskDo();
 
 function login() {
+  //loginform
+  const loginForm = document.querySelector(".login--form");
+  if (!loginForm) return;
   // inputs
   const emailInput = document.getElementById("emailInputLogin");
   const passwordInputLogin = document.getElementById("passwordInputLogin");
@@ -1320,7 +1323,8 @@ function login() {
   }
 
   if (submitBtnLogin) {
-    submitBtnLogin.addEventListener("click", () => {
+    submitBtnLogin.addEventListener("click", (e) => {
+      e.preventDefault();
       clearAllErrors();
 
       const email = emailInput.value.trim();
@@ -1364,6 +1368,12 @@ function login() {
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
+      //prevent multiple submit
+      submitBtnLogin.disabled = true;
+      submitBtnLogin.innerText = "Submitting...";
+
+      //go to home
+      loginForm.submit();
       window.location.href = "home.html";
     });
   }
@@ -1372,6 +1382,8 @@ function login() {
 login();
 
 function signup() {
+  //form
+  const signupForm = document.querySelector(".signup--form");
   //inputs
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
@@ -1385,7 +1397,6 @@ function signup() {
   const googleBtn = document.getElementById("googleBtn");
   const githubBtn = document.getElementById("githubBtn");
   const eyeBtn = document.getElementById("eyeBtn");
-  const rememberMeInput = document.getElementById("rememberMeSignup");
 
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1407,6 +1418,7 @@ function signup() {
   //error handling
   function errorRemover(element) {
     element.classList.remove("warning");
+    element.innerHTML = "";
   }
 
   //eyebtn fn
@@ -1424,12 +1436,12 @@ function signup() {
 
   //submitbtn
   if (submitBtn) {
-    submitBtn.addEventListener("click", () => {
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       //input values
       const name = nameInput.value;
       const email = emailInput.value;
       const password = passwordInput.value;
-      const rememberMe = rememberMeInput.checked;
 
       let hasError = false;
       //name error handling
@@ -1478,25 +1490,30 @@ function signup() {
       //error handling
       if (hasError) return;
 
-      //if everything was ok set the keys and values
-      if (rememberMe) {
-        localStorage.setItem("name", `${name}`);
-        localStorage.setItem("password", `${password}`);
-        localStorage.setItem("email", `${email}`);
-        localStorage.setItem("isLoggedIn", "true");
-      } else if (!rememberMe) {
-        sessionStorage.setItem("name", `${name}`);
-        sessionStorage.setItem("password", `${password}`);
-        sessionStorage.setItem("email", `${email}`);
-        sessionStorage.setItem("isLoggedIn", "true");
-      }
+      //prevent multiple submit
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
 
       //go to home
+      signupForm.submit();
+      localStorage.setItem("isLoggedIn", "true");
       window.location.href = "home.html";
     });
   }
 }
 signup();
+
+//this is just for frontend not for backend
+function logout() {
+  const logoutBtn = document.querySelector("#logout");
+  if (!logoutBtn) return;
+  logoutBtn.addEventListener("click", () => {
+    localStorage.setItem("isLoggedIn", "false");
+    sessionStorage.setItem("isLoggedIn", "false");
+    window.location.href = "home.html";
+  });
+}
+logout();
 
 function ConditionalRenderingFn() {
   const isLoggedIn =
@@ -1547,7 +1564,7 @@ function ConditionalRenderingFn() {
 
             <video class="btn__video" muted loop autoplay playsinline>
               <source
-                src="../assets/video/primary-secondary/Last one i rendred.mp4"
+                src="../assets/video/primary-secondary/Last_one_i_rendred.mp4"
                 type="video/mp4"
               />
               your browser doesent support video
@@ -1564,18 +1581,23 @@ function ConditionalRenderingFn() {
 ConditionalRenderingFn();
 
 //trippyes
-tippy("[data-tooltip]", {
-  content(reference) {
-    return reference.dataset.tooltip;
-  },
-  placement: "top",
-  arrow: false,
-  animation: "fade",
-  theme: "natural",
-});
+const tooltips = document.querySelectorAll("[data-tooltip]");
+
+if (tooltips.length > 0) {
+  tippy(tooltips, {
+    content(reference) {
+      return reference.dataset.tooltip;
+    },
+    placement: "top",
+    arrow: false,
+    animation: "fade",
+    theme: "natural",
+  });
+}
 
 function accountSettingToggle() {
   const info__cards__btnbox = document.querySelector(".info--cards--btnbox");
+  if (!info__cards__btnbox) return;
   const btn = info__cards__btnbox.querySelector("button");
   const xMark = info__cards__btnbox.querySelector("i");
   btn.addEventListener("click", (e) => {
@@ -1588,5 +1610,268 @@ function accountSettingToggle() {
     info__cards__btnbox.style.alignItems = "center";
   });
 }
-
 accountSettingToggle();
+
+function changePassword() {
+  //form
+  const changePassword = document.querySelector("#changePassword");
+  if (!changePassword) return;
+  const changePassForm = document.querySelector(".password--reset--form");
+  //inputs
+  const inputs = changePassForm.querySelectorAll("input");
+  //btns
+  const submitBtn = changePassForm.querySelector("button");
+  const eyeBtns = changePassForm.querySelectorAll("#eyeBtn");
+  //descriptions
+  const currentPasswordDesc = document.querySelector("#currentPasswordDesc");
+  const newPasswordDesc = document.querySelector("#newPasswordDesc");
+  const newPasswordConfrimDesc = document.querySelector(
+    "#newPasswordConfrimDesc",
+  );
+  //regex
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  //eyebtns
+  eyeBtns.forEach((eyeBtn) => {
+    eyeBtn.addEventListener("click", () => {
+      const input = eyeBtn
+        .closest(".text--input--natural")
+        .querySelector("input");
+
+      if (input.type === "password") {
+        input.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      } else {
+        input.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      }
+    });
+  });
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const currentPassword = inputs[0].value.trim();
+    const newPassword = inputs[1].value.trim();
+    const confirmNewPassword = inputs[2].value.trim();
+
+    //error handling
+    //currentPassword error handling
+    let hasError = false;
+    if (!currentPassword) {
+      errorHandling(currentPasswordDesc, "Current password cannot be empty.");
+      hasError = true;
+    } else {
+      errorRemover(currentPasswordDesc);
+    }
+
+    //newPassword error handling
+    if (!newPassword) {
+      errorHandling(newPasswordDesc, "New password cannot be empty.");
+      hasError = true;
+    } else if (!passwordRegex.test(newPassword)) {
+      errorHandling(
+        newPasswordDesc,
+        "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+      );
+      hasError = true;
+    } else if (newPassword === currentPassword) {
+      errorHandling(
+        newPasswordDesc,
+        "New password cannot be the same as current password.",
+      );
+      hasError = true;
+    } else {
+      errorRemover(newPasswordDesc);
+    }
+
+    //confirmNewPassword
+
+    if (!confirmNewPassword) {
+      errorHandling(
+        newPasswordConfrimDesc,
+        "Please confirm your new password.",
+      );
+      hasError = true;
+    } else if (confirmNewPassword !== newPassword) {
+      errorHandling(newPasswordConfrimDesc, "Passwords do not match.");
+      hasError = true;
+    } else {
+      errorRemover(newPasswordConfrimDesc);
+    }
+
+    //if we had an error stop
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    changePassForm.submit();
+    window.location.href = "home.html";
+  });
+}
+changePassword();
+
+function passwordResetConfirm() {
+  //forms
+  const resetPassword = document.querySelector("#resetPassword");
+  if (!resetPassword) return;
+  const resetPasswordForm = document.querySelector(".password--reset--form");
+  //inputs
+  const inputs = resetPasswordForm.querySelectorAll("input");
+
+  //descriptions
+  const passwordDesc = resetPasswordForm.querySelector("#password");
+  const confirmPasswordDesc =
+    resetPasswordForm.querySelector("#confirmPassword");
+  //btns
+  const submitBtn = resetPasswordForm.querySelector("button");
+  const eyeBtns = resetPasswordForm.querySelectorAll("#eyeBtn");
+
+  //regex
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  eyeBtns.forEach((eyeBtn) => {
+    eyeBtn.addEventListener("click", () => {
+      const input = eyeBtn
+        .closest(".text--input--natural")
+        .querySelector("input");
+
+      if (input.type === "password") {
+        input.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      } else {
+        input.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      }
+    });
+  });
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    //inputs values
+    const password = inputs[0].value.trim();
+    const confirmPassword = inputs[1].value.trim();
+
+    //error handling
+    let hasError = false;
+
+    if (!password) {
+      errorHandling(passwordDesc, "password cannot be empty.");
+      hasError = true;
+    } else if (!passwordRegex.test(password)) {
+      errorHandling(
+        passwordDesc,
+        "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+      );
+      hasError = true;
+    } else {
+      errorRemover(passwordDesc);
+    }
+
+    if (!confirmPassword) {
+      errorHandling(confirmPasswordDesc, "Confirm password cannot be empty.");
+      hasError = true;
+    } else if (confirmPassword !== password) {
+      errorHandling(confirmPasswordDesc, "Passwords do not match.");
+      hasError = true;
+    } else {
+      errorRemover(confirmPasswordDesc);
+    }
+
+    //if haserror true
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    resetPassword.submit();
+  });
+}
+passwordResetConfirm();
+
+function passwordReset() {
+  //form
+  const passwordResetConfirm = document.querySelector("#passwordResetConfirm");
+  if (!passwordResetConfirm) return;
+  const passwordResetConfirmForm = document.querySelector(
+    ".password--reset--form",
+  );
+  //input
+  const emailField = passwordResetConfirmForm.querySelector("input");
+  //descriptions
+  const emailDesc = passwordResetConfirmForm.querySelector("#emailDesc");
+  //btn
+  const submitBtn = passwordResetConfirmForm.querySelector("button");
+  //regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = emailField.value.trim();
+    console.log(email);
+
+    //error handling
+    let hasError = false;
+    if (!email) {
+      errorHandling(emailDesc, "Email cannot be empty.");
+      hasError = true;
+    } else if (!emailRegex.test(email)) {
+      errorHandling(
+        emailDesc,
+        "Please enter a valid email address. Example: user@example.com",
+      );
+      hasError = true;
+    } else {
+      errorRemover(emailDesc);
+    }
+
+    //if we had error
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    passwordResetConfirmForm.submit();
+    window.location.href = "password-reset-done-success.html";
+  });
+}
+passwordReset();
