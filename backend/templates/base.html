@@ -54,53 +54,57 @@
     <div class="blur--background--0-1"></div>
 
 
-{% if request.user.is_authenticated %}
-      <section class="header">
-        <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
-        </header>
-        <a href={% url "accounts:dashboard" %}>
-        <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
-        </a>
-      </section>
+<section class="header">
+      <header>
+        <h3>{% block 'header-title' %}{% endblock 'header-title' %}</h3>
+        {% block 'header_icon' %}{% endblock 'header_icon' %}
+      </header>
+
+      
+      {% if header_mode == "back" %}  
+      <i
+        id="header__right__icon"
+        class="fa-solid fa-circle-arrow-right fa-lg"
+      ></i>
+      
+      {% elif request.user.is_authenticated %}
+      <a href={% url "accounts:dashboard" %}>
+        <img
+          src="{% static 'assets/images/trophy-pic/Goodies Happy Flame.png' %}"
+          alt="Goodies Happy Flame.png"
+        />
+      </a>
       {% else %}
-      <section class="header">
-        <header>
-          <h3>Home</h3>
-          <i class="fa-solid fa-home"></i>
-        </header>
+      <button
+        style="padding: 0 0; margin: 0 0; border: none"
+        class="btn btn--video--bg"
+      >
+        <div class="btn__container">
+          <div class="btn__text">
+            <a href={% url "accounts:login" %}>Login / Signup</a>
+            <span class="btn__icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+          </div>
+        </div>
 
-        <a id="loginLink" href={% url "accounts:signup" %}>
-          <button
-            style="padding: 0 0; margin: 0 0; border: none"
-            class="btn btn--video--bg"
-          >
-            <div class="btn__container">
-              <div class="btn__text">
-                <span>Login / Signup</span>
-                <span class="btn__icon">
-                  <i class="fa-solid fa-user"></i>
-                </span>
-              </div>
-            </div>
-
-            <video class="btn__video" muted loop autoplay playsinline>
-              <source
-                src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
-                type="video/mp4"
-              />
-              your browser doesent support video
-            </video>
-          </button>
-        </a>
-      </section>
-{% endif %}
-    
-
+        <video class="btn__video" muted loop autoplay playsinline>
+          <source
+            src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
+            type="video/mp4"
+          />
+          your browser doesent support video
+        </video> 
+      </button>
+      
+      {% endif %}
+    </section>
     {% block 'content' %}
+
     {% endblock 'content' %}
     <!-- navbar -->
+    {% if header_mode == "back" %}
+    {% else %}
     <div style="display: flex; gap: 10px">
       <nav class="navbar">
         <a href={% url "root:aboutus" %} class="navbar__item" data-label="Info">
@@ -114,7 +118,7 @@
         </a>
       </nav>
     </div>
-
+    {% endif %}
     <!-- Development -->
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>

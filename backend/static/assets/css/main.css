@@ -2984,8 +2984,15 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
+  color: #c27aff;
+  text-decoration: underline;
+  text-decoration-color: #c27aff;
+  transition: all 0.3s ease-out;
+}
+.login--form .login--signup--form__content a:hover {
   color: #8200db;
-  text-decoration: none;
+  text-decoration-color: #8200db;
+  text-decoration-color: none;
 }
 .login--form .login--signup--form__content .login--signup--form__logo {
   aspect-ratio: 1/1;
@@ -3029,6 +3036,9 @@
   overflow: hidden;
   object-fit: cover;
 }
+.login--form .login--signup--form__image img {
+  transform: scale(1.2);
+}
 
 .signup--form {
   display: grid;
@@ -3054,8 +3064,15 @@
   font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
+  color: #7c86ff;
+  text-decoration: underline;
+  text-decoration-color: #7c86ff;
+  transition: all 0.3s ease-out;
+}
+.signup--form .login--signup--form__content a:hover {
   color: #432dd7;
-  text-decoration: none;
+  text-decoration-color: #432dd7;
+  text-decoration-color: none;
 }
 .signup--form .login--signup--form__content .login--signup--form__logo {
   aspect-ratio: 1/1;
@@ -3098,6 +3115,89 @@
   display: flex;
   overflow: hidden;
   object-fit: cover;
+}
+.signup--form .login--signup--form__image img {
+  transform: scale(1.2);
+}
+
+.password--reset--form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 64.25rem;
+  height: 45.125rem;
+  justify-content: center;
+  border: 2px solid #f5f5f5;
+  border-radius: 10px;
+  background-color: #d4d4d4;
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+}
+.password--reset--form .login--signup--form__content {
+  padding: 4.375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.password--reset--form .login--signup--form__content a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #404040;
+  text-decoration: underline;
+  text-decoration-color: #404040;
+  transition: all 0.3s ease-out;
+}
+.password--reset--form .login--signup--form__content a:hover {
+  color: #525252;
+  text-decoration-color: #525252;
+  text-decoration-color: none;
+}
+.password--reset--form .login--signup--form__content .login--signup--form__logo {
+  aspect-ratio: 1/1;
+  width: 4.375rem;
+}
+.password--reset--form .login--signup--form__content header {
+  color: #404040;
+}
+.password--reset--form .login--signup--form__content header p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+  margin: 0;
+  margin-bottom: 0.625rem;
+}
+.password--reset--form .login--signup--form__content header span {
+  color: #525252;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.password--reset--form .login--signup--form__content button {
+  border-radius: 10px;
+}
+.password--reset--form .login--signup--form__content footer {
+  display: flex;
+  justify-content: space-between;
+}
+.password--reset--form .login--signup--form__content footer button {
+  width: 45%;
+  gap: 0.313rem;
+}
+.password--reset--form .login--signup--form__image {
+  border-radius: 0px 10px 10px 0px;
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  object-fit: cover;
+}
+.password--reset--form .login--signup--form__image img {
+  transform: scale(1.2);
 }
 
 .header {
@@ -3438,7 +3538,6 @@ body {
   min-height: 22.25rem;
   padding: 1.25rem;
   gap: 1.875rem;
-  aspect-ratio: 1/1;
   background-color: #f5f5f5;
   border: 0.125rem solid #00c950;
   color: #00c950;
@@ -3484,7 +3583,6 @@ body {
   min-height: 22.25rem;
   padding: 1.25rem;
   gap: 1.875rem;
-  aspect-ratio: 1/1;
   background-color: #f5f5f5;
   border: 0.125rem solid #fb2c36;
   color: #fb2c36;

@@ -1,52 +1,10 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Css -->
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Poppins -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bebas Neue -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- toast -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-    <!-- favicon -->
-    <link
-      rel="icon"
-      type="image/svg+html"
-      sizes="16x16"
-      href="{% static 'assets/icons/favicons/user-solid-full-v2.svg' %}"
-    />
-    <title>Login</title>
-  </head>
-  <body style="background-color: rgb(79, 79, 79)">
-    <!-- background -->
-    <div class="video--bg">
-      <video class="video--slower" autoplay muted loop>
-        <source
-          src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
-          type="video/mp4"
-        />
-      </video>
-    </div>
+{% block 'title' %}Login{% endblock 'title' %}
+{% block 'header-title' %}Login{% endblock 'header-title' %}
+{% block 'header_icon' %}<i class="fa-solid fa-right-to-bracket"></i>{% endblock 'header_icon' %}
+{% block 'favicon' %}{% static 'assets/icons/favicons/right-to-bracket-solid-full.svg' %}{% endblock 'favicon' %}
+{% block 'content' %}
 
     <!-- django errors toast -->
      {% if messages %}
@@ -56,18 +14,6 @@
      {% endfor %}
      {% endif %}
 
-
-    <!-- header -->
-    <section class="header">
-      <header>
-        <h3>Login</h3>
-        <i class="fa-solid fa-user"></i>
-      </header>
-        <i
-        id="header__right__icon"
-        class="fa-solid fa-circle-arrow-right fa-lg"
-        ></i>
-    </section>
 
     <!-- login -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
@@ -121,7 +67,6 @@
               </span>
               <input
                 name="password"
-                autocomplete="off"
                 id="passwordInputLogin"
                 type="password"
                 class="input_input"
@@ -190,8 +135,4 @@
       </main>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="{% static 'assets/js/main.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  </body>
-</html>
+{% endblock 'content' %}

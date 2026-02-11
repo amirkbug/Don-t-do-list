@@ -7,7 +7,10 @@ from .forms import LoginForm , SignupForm
 
 def signup(request):
     if request.method == "GET":
-        return render(request , "accounts/signup.html")
+        context = {
+        "header_mode":"back",
+        }
+        return render(request , "accounts/signup.html",context)
     if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -23,7 +26,10 @@ def signup(request):
 
 def login_view(request):
     if request.method == "GET":
-        return render(request , "accounts/login.html")
+        context = {
+        "header_mode":"back",
+        }
+        return render(request , "accounts/login.html" , context)
     
     elif request.method =="POST":
         form = LoginForm(request.POST)
@@ -50,7 +56,10 @@ def logout_view (request):
 
 
 def dashboard_view(request):
-    return render(request , "accounts/dashboard.html")
+    context = {
+        "header_mode":"back",
+    }
+    return render(request , "accounts/dashboard.html",context)
 
 
 def password_chaange(request):

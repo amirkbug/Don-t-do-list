@@ -1,53 +1,10 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Css -->
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Poppins -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Bebas Neue -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- toast -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-    <!-- favicon -->
-    <link
-      rel="icon"
-      type="image/svg+html"
-      sizes="16x16"
-      href="{% static 'assets/icons/favicons/user-solid-full-v2.svg' %}"
-    />
-    <title>Sign up</title>
-  </head>
-  <body style="background-color: rgb(79, 79, 79)">
-    <!-- background -->
-    <div class="video--bg">
-      <video class="video--slower" autoplay muted loop>
-        <source
-          src="{% static 'assets/video/primary-secondary/Last_one_i_rendred.mp4' %}"
-          type="video/mp4"
-        />
-      </video>
-    </div>
+{% block 'title' %}Signup{% endblock 'title' %}
+{% block 'header-title' %}Signup{% endblock 'header-title' %}
+{% block 'header_icon' %}<i class="fa-solid fa-user-plus"></i>{% endblock 'header_icon' %}
+{% block 'favicon' %}{% static 'assets/icons/favicons/user-plus-solid-full.svg' %}{% endblock 'favicon' %}
+{% block 'content' %}
 
     <!-- django errors toast -->
      {% if messages %}
@@ -57,24 +14,11 @@
      {% endfor %}
      {% endif %}
 
-
-    <!-- header -->
-    <section class="header">
-      <header>
-        <h3>Sign-up</h3>
-        <i class="fa-solid fa-user"></i>
-      </header>
-      <i
-        id="header__right__icon"
-        class="fa-solid fa-circle-arrow-right fa-lg"
-      ></i>
-    </section>
-
     <!-- signup -->
-    <div style="padding: 4.375rem; display: flex; justify-content: center">
-      <main class="signup--form">
-        <form method="post" class="login--signup--form__content">
-          {% csrf_token %}
+      <div style="padding: 4.375rem; display: flex; justify-content: center">
+      <form method="POST" class="signup--form">
+        {% csrf_token %}
+        <div class="login--signup--form__content">
           <img
             class="login--signup--form__logo"
             src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-alt.svg' %}"
@@ -138,7 +82,7 @@
                 />
               </span>
               <input
-                name="password1"
+              name="password2"
                 autocomplete="off"
                 max="20"
                 id="passwordInput"
@@ -157,9 +101,8 @@
             </div>
             <p id="passwordDesc" class="input_description"></p>
           </div>
-
           <div style="padding: 0" class="text--input--secondary">
-            <span class="input_name">Confirm password</span>
+            <span class="input_name">Password</span>
             <div class="input_content">
               <span class="input_icon_left">
                 <img
@@ -169,7 +112,7 @@
                 />
               </span>
               <input
-                name="password2"
+              name="password1"
                 autocomplete="off"
                 max="20"
                 id="passwordInput"
@@ -187,24 +130,6 @@
               </div>
             </div>
             <p id="passwordDesc" class="input_description"></p>
-          </div>
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            "
-          >
-            <label class="checkbox--secoundry">
-              <input
-                id="rememberMeSignup"
-                class="checkbox__input"
-                type="checkbox"
-              />
-              <span class="checkbox__box"></span>
-              <span class="checkbox__label">Remember me</span>
-            </label>
-            <a href="#">Forgot password?</a>
           </div>
           <button id="submitBtn" class="btn btn--secondary">
             <span>Signup</span>
@@ -230,15 +155,11 @@
               /></span>
             </button>
           </footer>
-        </form>
-        <div class="login--signup--form__image">
-          <img src="{% static 'assets/images/unsplash-images/signup-img.jpg' %}" alt="signup-img.jpg" />
         </div>
-      </main>
+        <div class="login--signup--form__image">
+          <img src="{% static 'assets/images/unsplash-images/signup-img.jpg' %}" alt="" />
+        </div>
+      </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="{% static 'assets/js/main.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  </body>
-</html>
+{% endblock 'content' %}

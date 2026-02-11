@@ -1200,6 +1200,11 @@ function login() {
         sessionStorage.setItem("isLoggedIn", "true");
       }
 
+      //prevent multiple submit
+      submitBtnLogin.disabled = true;
+      submitBtnLogin.innerText = "Submitting...";
+
+      //go to home
       loginForm.submit();
     });
   }
@@ -1208,7 +1213,7 @@ function login() {
 login();
 
 function signup() {
-  const signupForm = document.querySelector(".login--signup--form__content");
+  const signupForm = document.querySelector(".signup--form");
   //inputs
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
@@ -1222,7 +1227,6 @@ function signup() {
   const googleBtn = document.getElementById("googleBtn");
   const githubBtn = document.getElementById("githubBtn");
   const eyeBtn = document.getElementById("eyeBtn");
-  const rememberMeInput = document.getElementById("rememberMeSignup");
 
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1262,7 +1266,6 @@ function signup() {
       const name = nameInput.value;
       const email = emailInput.value;
       const password = passwordInput.value;
-      const rememberMe = rememberMeInput.checked;
 
       let hasError = false;
       //name error handling
@@ -1311,113 +1314,17 @@ function signup() {
       //error handling
       if (hasError) return;
 
-      //if everything was ok set the keys and values
-      if (rememberMe) {
-        localStorage.setItem("isLoggedIn", "true");
-      } else if (!rememberMe) {
-        sessionStorage.setItem("isLoggedIn", "true");
-      }
+      //prevent multiple submit
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
 
+      //go to home
+      localStorage.setItem("isLoggedIn", "true");
       signupForm.submit();
     });
   }
 }
 signup();
-
-//we can use django conditional rendering insted
-// function ConditionalRenderingFn() {
-//   const isLoggedIn =
-//     sessionStorage.getItem("isLoggedIn") === "true" ||
-//     localStorage.getItem("isLoggedIn") === "true";
-
-//   //conditionaly rendering links
-
-//   //conditionaly rendering header
-//   const headerByCondition = document.getElementById("headerByCondition");
-
-//   console.log(window.location.pathname);
-//   if (!headerByCondition) return;
-
-//   const pathParts = window.location.pathname.split("/").filter(Boolean);
-//   //what should icon be?
-//   let whatShouldIconBe = "circle-question";
-//   //if the address has 0 chars == home
-//   let theAddress;
-//   if (pathParts.length === 0) {
-//     theAddress = "home";
-//   } else if (pathParts.length > 0) {
-//     theAddress = pathParts[pathParts.length - 1].split(".")[0];
-//   }
-//   //header icon
-//   if (theAddress === "home") {
-//     whatShouldIconBe = "home";
-//   } else if (theAddress === "About-us") {
-//     whatShouldIconBe = "circle-info";
-//   } else if (theAddress === "Login" || theAddress === "sign-up") {
-//     whatShouldIconBe = "user";
-//   } else if (!isNaN(Number(theAddress))) {
-//     whatShouldIconBe = "trophy";
-//     theAddress = `Trophy details`;
-//   } else if (theAddress === "trophies") {
-//     whatShouldIconBe = "trophy";
-//   }
-
-//   //header h3
-//   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
-//   //getting login page link
-//   const loginLink = document.getElementById("loginLink");
-//   const loginUrl = loginLink.dataset.loginUrl;
-
-//   if (isLoggedIn) {
-//     headerByCondition.innerHTML = `<section class="header">
-//         <header>
-//           <h3>${cap}</h3>
-//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
-//         </header>
-
-//         <img src="/static/assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
-
-//       </section>`;
-//   } else {
-//     headerByCondition.innerHTML = `<section class="header">
-//         <header>
-//           <h3>${cap}</h3>
-//           <i class="fa-solid fa-${whatShouldIconBe}"></i>
-//         </header>
-
-//         <a href="${loginUrl}">
-//           <button
-//             style="padding: 0 0; margin: 0 0; border: none"
-//             class="btn btn--video--bg"
-//           >
-//             <div class="btn__container">
-//               <div class="btn__text">
-//                 <span>Login / Signup</span>
-//                 <span class="btn__icon">
-//                   <i class="fa-solid fa-user"></i>
-//                 </span>
-//               </div>
-//             </div>
-
-//             <video class="btn__video" muted loop autoplay playsinline>
-//               <source
-//                 src="/static/assets/video/primary-secondary/Last_one_i_rendred.mp4"
-//                 type="video/mp4"
-//               />
-//               your browser doesent support video
-//             </video>
-//           </button>
-//         </a>
-//       </section>`;
-//   }
-
-//   const trophyBtn = document.getElementById("trophyBtn");
-//   if (!trophyBtn) return;
-//   const trohpyDetailsUrl = trophyBtn.dataset.trohpydetailsUrl;
-//   const signupUrl = trophyBtn.dataset.signupUrl;
-//   trophyBtn.href = isLoggedIn ? trohpyDetailsUrl : signupUrl;
-// }
-// ConditionalRenderingFn();
 
 function toast() {
   document.querySelectorAll(".toast").forEach((el) => {
@@ -1443,13 +1350,17 @@ toast();
 
 function backInHistory() {
   const headerRightIcon = document.querySelector("#header__right__icon");
+  if(!headerRightIcon) return
   headerRightIcon.addEventListener("click", () => {
-    history.back();
+    window.location.href = "/";
   });
 }
 backInHistory();
 
 //trippyes
+const tooltips = document.querySelectorAll("[data-tooltip]");
+
+if (tooltips.length > 0) {
 tippy("[data-tooltip]", {
   content(reference) {
     return reference.dataset.tooltip;
@@ -1459,9 +1370,11 @@ tippy("[data-tooltip]", {
   animation: "fade",
   theme: "natural",
 });
+}
 
 function accountSettingToggle() {
   const info__cards__btnbox = document.querySelector(".info--cards--btnbox");
+  if (!info__cards__btnbox) return;
   const btn = info__cards__btnbox.querySelector("button");
   const xMark = info__cards__btnbox.querySelector("i");
   btn.addEventListener("click", (e) => {
