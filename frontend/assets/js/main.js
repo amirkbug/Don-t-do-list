@@ -1875,3 +1875,24 @@ function passwordReset() {
   });
 }
 passwordReset();
+
+//fn for category btns
+function categoryButtons() {
+  const btns = document.querySelectorAll(".small--buttons--v2");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isActive = btn.classList.contains("active");
+
+      //delete all active classes
+      btns.forEach((b) => b.classList.remove("active"));
+
+      //if there was no active add it
+      if (!isActive) {
+        btn.classList.add("active");
+      }
+    });
+  });
+}
+
+categoryButtons();

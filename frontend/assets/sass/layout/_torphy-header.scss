@@ -1,11 +1,11 @@
 @use "../abstracts/index" as *;
-.pagination {
+
+.trophy--header {
   //display
   display: flex;
-
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   //sizing
   gap: 10px;
   width: 100%;
