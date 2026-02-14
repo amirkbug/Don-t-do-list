@@ -976,6 +976,17 @@
 .text--input--natural.search .input_content {
   border-radius: 50px;
 }
+.text--input--natural.search .input_icon_left {
+  padding: 0;
+  opacity: 40%;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.text--input--natural.search .input_icon_left:hover {
+  opacity: 70%;
+}
 
 /* calendar */
 .calendar--primary {

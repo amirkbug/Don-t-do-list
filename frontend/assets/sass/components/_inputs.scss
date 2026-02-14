@@ -154,4 +154,17 @@
     //color and typo
     border-radius: 50px;
   }
+  .input_icon_left {
+    //sizigin
+    padding: 0;
+    opacity: 40%;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:hover {
+      //color and typo
+      opacity: 70%;
+    }
+  }
 }
