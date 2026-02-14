@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
-{% block 'title' %}trophy-details{% endblock 'title' %}
+{% block 'title' %}Trophy-details{% endblock 'title' %}
+{% block 'header-title' %}Trophy-details{% endblock 'header-title' %}
+{% block 'header_icon' %}<i class="fa-solid fa-trophy"></i>{% endblock 'header_icon' %}
 {% block 'favicon' %}{% static 'assets/icons/favicons/trophy-solid-full-v2.svg' %}{% endblock 'favicon' %}
 {% block 'content' %}
 
 
     <!-- card-details -->
-     {% if trophy.trophy_type == "DONT" %}
+    {% if trophy.trophy_type == "DONT" %}
     <main class="trophy--details--card--secondary">
       <div>
         <section style="background-color: {{trophy.color}};">

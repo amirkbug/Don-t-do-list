@@ -7,7 +7,23 @@
 {% block 'content' %}
 
     <main class="trophy--layout">
-      
+      <!-- trophy header -->
+      <header class="trophy--header">
+        <div class="text--input--natural search">
+          <div class="input_content">
+            <span class="input_icon_left"><i class="fas fa-search"></i></span>
+            <input
+              type="text"
+              class="input_input"
+              placeholder="Search challenges..."
+            />
+          </div>
+        </div>
+        <nav class="category--btns">
+          <a class="small--buttons--v2 primary">Do</a>
+          <a class="small--buttons--v2 secondary">Don't</a>
+        </nav>
+      </header>
       {% for trophy in trophies %}
       {% if trophy.trophy_type == "DONT" %}
       <div class="trophy--card--secondary">
@@ -52,7 +68,6 @@
 
       
       <!-- paginator -->
-      
       <nav class="pagination">
         <span class="slot">
         {% if trophies.has_previous %}

@@ -1350,7 +1350,7 @@ toast();
 
 function backInHistory() {
   const headerRightIcon = document.querySelector("#header__right__icon");
-  if(!headerRightIcon) return
+  if (!headerRightIcon) return;
   headerRightIcon.addEventListener("click", () => {
     window.location.href = "/";
   });
@@ -1361,15 +1361,15 @@ backInHistory();
 const tooltips = document.querySelectorAll("[data-tooltip]");
 
 if (tooltips.length > 0) {
-tippy("[data-tooltip]", {
-  content(reference) {
-    return reference.dataset.tooltip;
-  },
-  placement: "top",
-  arrow: false,
-  animation: "fade",
-  theme: "natural",
-});
+  tippy("[data-tooltip]", {
+    content(reference) {
+      return reference.dataset.tooltip;
+    },
+    placement: "top",
+    arrow: false,
+    animation: "fade",
+    theme: "natural",
+  });
 }
 
 function accountSettingToggle() {
@@ -1389,3 +1389,24 @@ function accountSettingToggle() {
 }
 
 accountSettingToggle();
+
+//fn for category btns
+function categoryButtons() {
+  const btns = document.querySelectorAll(".small--buttons--v2");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isActive = btn.classList.contains("active");
+
+      //delete all active classes
+      btns.forEach((b) => b.classList.remove("active"));
+
+      //if there was no active add it
+      if (!isActive) {
+        btn.classList.add("active");
+      }
+    });
+  });
+}
+
+categoryButtons();

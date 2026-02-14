@@ -1,0 +1,10 @@
+@use "../abstracts/index" as *;
+.category--btns {
+  //display
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  //sizing
+  width: 120px;
+}

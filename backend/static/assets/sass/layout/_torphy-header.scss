@@ -1,0 +1,13 @@
+@use "../abstracts/index" as *;
+
+.trophy--header {
+  //display
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  //sizing
+  gap: 10px;
+  width: 100%;
+  grid-column: 1 / -1;
+}
