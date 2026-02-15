@@ -6,22 +6,46 @@
 {% block 'favicon' %}{% static 'assets/icons/favicons/trophy-solid-full-v2.svg' %}{% endblock 'favicon' %}
 {% block 'content' %}
 
+    <!-- django errors toast -->
+     {% if messages %}
+     {% for message in messages %}
+     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
+     </div>
+     {% endfor %}
+     {% endif %}
+
     <main class="trophy--layout">
       <!-- trophy header -->
       <header class="trophy--header">
-        <div class="text--input--natural search">
+        <form class="text--input--natural search">
           <div class="input_content">
-            <span class="input_icon_left"><i class="fas fa-search"></i></span>
+            <button type="submit" class="input_icon_left">
+              <i class="fas fa-search"></i>
+            </button>
             <input
+              name="search"
               type="text"
               class="input_input"
               placeholder="Search challenges..."
             />
           </div>
-        </div>
+        </form>
         <nav class="category--btns">
-          <a class="small--buttons--v2 primary">Do</a>
-          <a class="small--buttons--v2 secondary">Don't</a>
+
+          <a
+          href="{% if request.GET.type == 'DO' %}?{% else %}?type=DO{% endif %}"
+          class="small--buttons--v2 primary
+          {% if request.GET.type == 'DO' %} active {% endif %}">
+          Do
+          </a>
+
+          <a
+          href="{% if request.GET.type == 'DONT' %}?{% else %}?type=DONT{% endif %}"
+          class="small--buttons--v2 secondary
+          {% if request.GET.type == 'DONT' %} active {% endif %}">
+          Don't
+          </a>
+          
         </nav>
       </header>
       {% for trophy in trophies %}

@@ -3,7 +3,8 @@
 /* input */
 @mixin input-base(
   $text-and-border-color: $neutral-900,
-  $bg-color: $neutral-50
+  $bg-color: $neutral-50,
+  $border-color-hover
 ) {
   //display
   display: flex;
@@ -40,15 +41,21 @@
     padding: 0.35rem 0.7rem;
 
     &:hover {
+      //color and type
       border: 1px solid $text-and-border-color;
+      box-shadow: $shadow-xsmall;
       .input_content_right {
+        //color and type
         opacity: 60%;
       }
     }
 
     &:focus-within {
-      border: 1px solid $text-and-border-color;
+      //color and type
+      border: 1px solid $border-color-hover;
+      box-shadow: $shadow-small;
       .input_content_right {
+        //color and type
         opacity: 100%;
       }
     }
@@ -122,20 +129,42 @@
 }
 
 .text--input--primary {
-  @include input-base($primary-300, $primary-10);
+  @include input-base($primary-300, $primary-10, $primary-400);
 }
 .text--input--primary--500 {
-  @include input-base($primary-500, $primary-10);
+  @include input-base($primary-500, $primary-10, $primary-600);
 }
 
 .text--input--secondary {
-  @include input-base($secondary-300, $secondary-10);
+  @include input-base($secondary-300, $secondary-10, $secondary-400);
 }
 
 .text--input--secondary--500 {
-  @include input-base($secondary-500, $secondary-10);
+  @include input-base($secondary-500, $secondary-10, $secondary-600);
 }
 
 .text--input--natural {
-  @include input-base($neutral-600, $neutral-50);
+  @include input-base($neutral-600, $neutral-50, $neutral-700);
+}
+
+.text--input--natural.search {
+  @include input-base($neutral-600, $neutral-50, $neutral-700);
+
+  .input_content {
+    //color and typo
+    border-radius: 50px;
+  }
+  .input_icon_left {
+    //sizigin
+    padding: 0;
+    opacity: 40%;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:hover {
+      //color and typo
+      opacity: 70%;
+    }
+  }
 }
