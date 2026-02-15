@@ -149,7 +149,7 @@
 
 .text--input--natural.search {
   @include input-base($neutral-600, $neutral-50, $neutral-700);
-
+  padding: 0;
   .input_content {
     //color and typo
     border-radius: 50px;
