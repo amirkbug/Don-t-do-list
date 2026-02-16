@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block 'title' %}trophy-details{% endblock 'title' %}
+{% block 'title' %}Trophy{% endblock 'title' %}
 {% block 'header-title' %}Trophy{% endblock 'header-title' %}
 {% block 'header_icon' %}<i class="fa-solid fa-trophy"></i>{% endblock 'header_icon' %}
 {% block 'favicon' %}{% static 'assets/icons/favicons/trophy-solid-full-v2.svg' %}{% endblock 'favicon' %}
@@ -19,12 +19,14 @@
       <header class="trophy--header">
         <form class="text--input--natural search">
           <div class="input_content">
-            <button type="submit" class="input_icon_left">
+            <button  class="input_icon_left">
               <i class="fas fa-search"></i>
             </button>
             <input
+              maxlength="20"
               name="search"
-              type="text"
+              value="{{ trophy_search|default:'' }}"
+              type="input"
               class="input_input"
               placeholder="Search challenges..."
             />
@@ -33,16 +35,23 @@
         <nav class="category--btns">
 
           <a
-          href="{% if request.GET.type == 'DO' %}?{% else %}?type=DO{% endif %}"
-          class="small--buttons--v2 primary
-          {% if request.GET.type == 'DO' %} active {% endif %}">
-          Do
+          href={% url "trophies:trophies-page" %}{% if trophy_search %}?search={{ trophy_search }}{% endif %}
+          class="small--buttons--v2 neutral {% if not trophy_category %} active {% endif %}"
+          >
+          All
           </a>
 
           <a
-          href="{% if request.GET.type == 'DONT' %}?{% else %}?type=DONT{% endif %}"
-          class="small--buttons--v2 secondary
-          {% if request.GET.type == 'DONT' %} active {% endif %}">
+          href="{% url 'trophies:trophy_category' trophy_cat='DO' %}{% if trophy_search %}?search={{ trophy_search }}{% endif %}"
+          class="small--buttons--v2 primary {% if  trophy_category == 'DO' %} active {% endif %}"
+          >
+          Do
+          </a>  
+
+          <a
+          href="{% url 'trophies:trophy_category' trophy_cat='DONT' %}{% if trophy_search %}?search={{ trophy_search }}{% endif %}"
+          class="small--buttons--v2 secondary {% if trophy_category == 'DONT' %} active {% endif %}"
+          >
           Don't
           </a>
           
@@ -95,7 +104,7 @@
       <nav class="pagination">
         <span class="slot">
         {% if trophies.has_previous %}
-        <a href="?page={{ trophies.previous_page_number }}">
+        <a href="?page={{ trophies.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
         <button class="next--prev--small--btn">
           <i class="fa-solid fa-chevron-left fa-sm"></i>
         </button>
@@ -105,7 +114,7 @@
         <button style="cursor: auto" class="number--small--btn">{{trophies.number}}</button>
         <span class="slot">
         {% if trophies.has_next %}
-        <a href="?page={{ trophies.next_page_number }}">
+        <a href="?page={{ trophies.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
         <button class="next--prev--small--btn">
           <i class="fa-solid fa-chevron-right fa-sm"></i>
         </button>
