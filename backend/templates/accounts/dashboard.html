@@ -73,12 +73,13 @@
                 placeholder="••••••••"
                 readonly
               />
-              <div class="input_content_right">
-                <a href="change-password.html" class="input_icon_right"
+              <div style="padding-bottom: 1px;" class="input_content_right">
+                <a href={% url "accounts:password_change" %} class="input_icon_right"
                   ><i
                     data-tooltip="Change password"
                     style="cursor: pointer"
                     class="fa-regular fa-pen-to-square"
+                    
                   ></i
                 ></a>
               </div>

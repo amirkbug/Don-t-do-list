@@ -1131,7 +1131,6 @@ function login() {
   const emailInput = document.getElementById("emailInputLogin");
   const passwordInputLogin = document.getElementById("passwordInputLogin");
   const rememberMeLogin = document.getElementById("rememberMeLogin");
-
   // buttons
   const submitBtnLogin = document.getElementById("submitBtnLogin");
   const eyeBtn = document.getElementById("eyeBtn");
@@ -1352,7 +1351,7 @@ function backInHistory() {
   const headerRightIcon = document.querySelector("#header__right__icon");
   if (!headerRightIcon) return;
   headerRightIcon.addEventListener("click", () => {
-    window.location.href = "/";
+      window.history.back();
   });
 }
 backInHistory();
@@ -1409,3 +1408,118 @@ function categoryButtons() {
 }
 
 categoryButtons();
+
+
+function changePassword() {
+  //form
+  const changePassword = document.querySelector("#changePassword");
+  if (!changePassword) return;
+  const changePassForm = document.querySelector(".password--reset--form");
+  //inputs
+  const inputs = changePassForm.querySelectorAll("input");
+  const confirmNewPassword = changePassForm.querySelector("#confirmNewPassword");
+  const newPassword = changePassForm.querySelector("#newPassword");
+  const currentPassword = changePassForm.querySelector("#currentPassword");
+  //btns
+  const submitBtn = changePassForm.querySelector("button");
+  const eyeBtns = changePassForm.querySelectorAll(".eyeBtn");
+  //descriptions
+  const currentPasswordDesc = document.querySelector("#currentPasswordDesc");
+  const newPasswordDesc = document.querySelector("#newPasswordDesc");
+  const newPasswordConfrimDesc = document.querySelector(
+    "#newPasswordConfrimDesc",
+  );
+  //regex
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  //eyebtns
+  eyeBtns.forEach((eyeBtn) => {
+    eyeBtn.addEventListener("click", () => {
+      const input = eyeBtn
+        .closest(".text--input--natural")
+        .querySelector("input");
+
+      if (input.type === "password") {
+        input.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      } else {
+        input.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      }
+    });
+  });
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const currentPasswordValue = currentPassword.value.trim();
+    const newPasswordValue = newPassword.value.trim();
+    const confirmNewPasswordValue = confirmNewPassword.value.trim();
+
+    //error handling
+    //currentPassword error handling
+    let hasError = false;
+    if (!currentPasswordValue) {
+      errorHandling(currentPasswordDesc, "Current password cannot be empty.");
+      hasError = true;
+    } else {
+      errorRemover(currentPasswordDesc);
+    }
+
+    //newPassword error handling
+    if (!newPasswordValue) {
+      errorHandling(newPasswordDesc, "New password cannot be empty.");
+      hasError = true;
+    } else if (!passwordRegex.test(newPasswordValue)) {
+      errorHandling(
+        newPasswordDesc,
+        "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+      );
+      hasError = true;
+    } else if (newPasswordValue === currentPasswordValue) {
+      errorHandling(
+        newPasswordDesc,
+        "New password cannot be the same as current password.",
+      );
+      hasError = true;
+    } else {
+      errorRemover(newPasswordDesc);
+    }
+
+    //confirmNewPassword
+
+    if (!confirmNewPasswordValue) {
+      errorHandling(
+        newPasswordConfrimDesc,
+        "Please confirm your new password.",
+      );
+      hasError = true;
+    } else if (confirmNewPasswordValue !== newPasswordValue) {
+      errorHandling(newPasswordConfrimDesc, "Passwords do not match.");
+      hasError = true;
+    } else {
+      errorRemover(newPasswordConfrimDesc);
+    }
+
+    //if we had an error stop
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    changePassForm.submit();
+  });
+}
+changePassword();
