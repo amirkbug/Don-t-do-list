@@ -18,7 +18,7 @@
     <!-- login -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
       <main class="login--form">
-        <form method="POST" class="login--signup--form__content">
+        <form method="POST" id="loginForm" class="login--signup--form__content">
           {% csrf_token %}
           <img
             class="login--signup--form__logo"
@@ -102,7 +102,7 @@
               <span class="checkbox__box"></span>
               <span class="checkbox__label">Remember me</span>
             </label>
-            <a href="#">Forgot password?</a>
+            <a href={% url "accounts:password_reset" %}>Forgot password?</a>
           </div>
           <button id="submitBtnLogin" type="button" class="btn btn--primary">
             <span>Login</span>

@@ -54,6 +54,8 @@
     <div class="blur--background--0-1"></div>
 
 
+{% if header_mode == "nothing" %}
+{% else %}
 <section class="header">
       <header>
         <h3>{% block 'header-title' %}{% endblock 'header-title' %}</h3>
@@ -74,6 +76,7 @@
           alt="Goodies Happy Flame.png"
         />
       </a>
+      {% elif header_mode == "just_header" %}
       {% else %}
       <button
         style="padding: 0 0; margin: 0 0; border: none"
@@ -99,11 +102,12 @@
       
       {% endif %}
     </section>
+    {% endif %}
     {% block 'content' %}
 
     {% endblock 'content' %}
     <!-- navbar -->
-    {% if header_mode == "back" %}
+    {% if header_mode == "back" or header_mode == "nothing" or header_mode == "just_header"  %}
     {% else %}
     <div style="display: flex; gap: 10px">
       <nav class="navbar">

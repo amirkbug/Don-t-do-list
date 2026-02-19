@@ -1126,6 +1126,8 @@ function makeNewTaskDo() {
 makeNewTaskDo();
 
 function login() {
+  const loginFormId = document.querySelector("#loginForm");
+  if (!loginFormId) return;
   const loginForm = document.querySelector(".login--signup--form__content");
   // inputs
   const emailInput = document.getElementById("emailInputLogin");
@@ -1139,7 +1141,7 @@ function login() {
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
-  if (!submitBtnLogin) return;
+  
 
   // helper functions
   function errorHandling(element, message) {
@@ -1212,6 +1214,8 @@ function login() {
 login();
 
 function signup() {
+  const signupFormId = document.querySelector("#signupForm");
+  if(!signupFormId) return;
   const signupForm = document.querySelector(".signup--form");
   //inputs
   const nameInput = document.getElementById("nameInput");
@@ -1348,10 +1352,19 @@ function toast() {
 toast();
 
 function backInHistory() {
+  //forms
+  const loginFormId = document.querySelector("#loginForm");
+  const signupFormId = document.querySelector("#signupForm");
+  //btn
   const headerRightIcon = document.querySelector("#header__right__icon");
   if (!headerRightIcon) return;
   headerRightIcon.addEventListener("click", () => {
+    if (loginFormId || signupFormId) {
+      window.location.href = "/"
+    }else{
       window.history.back();
+    }
+      
   });
 }
 backInHistory();
@@ -1523,3 +1536,154 @@ function changePassword() {
   });
 }
 changePassword();
+
+
+function passwordReset() {
+  //form
+  const passwordResetConfirm = document.querySelector("#passwordResetConfirm");
+  if (!passwordResetConfirm) return;
+  const passwordResetConfirmForm = document.querySelector(
+    ".password--reset--form",
+  );
+  //input
+  const emailField = passwordResetConfirmForm.querySelector("#emailInput");
+  //descriptions
+  const emailDesc = passwordResetConfirmForm.querySelector("#emailDesc");
+  //btn
+  const submitBtn = passwordResetConfirmForm.querySelector("button");
+  //regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = emailField.value.trim();
+
+    //error handling
+    let hasError = false;
+    if (!email) {
+      errorHandling(emailDesc, "Email cannot be empty.");
+      hasError = true;
+    } else if (!emailRegex.test(email)) {
+      errorHandling(
+        emailDesc,
+        "Please enter a valid email address. Example: user@example.com",
+      );
+      hasError = true;
+    } else {
+      errorRemover(emailDesc);
+    }
+
+    //if we had error
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    passwordResetConfirmForm.submit();
+  });
+}
+passwordReset();
+
+
+function passwordResetConfirm() {
+  //forms
+  const resetPassword = document.querySelector("#resetPassword");
+  if (!resetPassword) return;
+  const resetPasswordForm = document.querySelector(".password--reset--form");
+  //inputs
+  const newPassword = resetPasswordForm.querySelector("#newPassword");
+  const confirmPassword = resetPasswordForm.querySelector("#confirmPassword");
+  //descriptions
+  const passwordDesc = resetPasswordForm.querySelector("#password");
+  const confirmPasswordDesc = resetPasswordForm.querySelector("#confirmPassword");
+  //btns
+  const submitBtn = resetPasswordForm.querySelector("button");
+  const eyeBtns = resetPasswordForm.querySelectorAll("#eyeBtn");
+
+  //regex
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+  //functions
+  function errorHandling(element, message) {
+    element.classList.add("warning");
+    element.innerHTML = message;
+  }
+  function errorRemover(element) {
+    element.classList.remove("warning");
+    element.innerHTML = "";
+  }
+
+  eyeBtns.forEach((eyeBtn) => {
+    eyeBtn.addEventListener("click", () => {
+      const input = eyeBtn
+        .closest(".text--input--natural")
+        .querySelector("input");
+
+      if (input.type === "password") {
+        input.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      } else {
+        input.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      }
+    });
+  });
+
+  //submitbtn
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    //inputs values
+    const passwordValue = newPassword.value.trim();
+    const confirmPasswordValue = confirmPassword.value.trim();
+
+    //error handling
+    let hasError = false;
+
+    if (!passwordValue) {
+      errorHandling(passwordDesc, "password cannot be empty.");
+      hasError = true;
+    } else if (!passwordRegex.test(passwordValue)) {
+      errorHandling(
+        passwordDesc,
+        "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+      );
+      hasError = true;
+    } else {
+      errorRemover(passwordDesc);
+    }
+
+    if (!confirmPasswordValue) {
+      errorHandling(confirmPasswordDesc, "Confirm password cannot be empty.");
+      hasError = true;
+    } else if (confirmPasswordValue !== passwordValue) {
+      errorHandling(confirmPasswordDesc, "Passwords do not match.");
+      hasError = true;
+    } else {
+      errorRemover(confirmPasswordDesc);
+    }
+
+    //if haserror true
+    if (hasError) return;
+
+    //user cant do multiple submit
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    //if we dont have an error continue
+    resetPassword.submit();
+  });
+}
+passwordResetConfirm();

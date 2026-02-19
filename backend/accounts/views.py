@@ -1,9 +1,12 @@
-from django.shortcuts import render , redirect 
+from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib.auth import login , logout , authenticate , password_validation 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import LoginForm , SignupForm
-
+from .forms import LoginForm , SignupForm , PasswordReset
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+from uuid import uuid4
+from .models import PersonalTokens
 
 def signup(request):
     if request.method == "GET":
@@ -16,7 +19,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            messages.add_message(request, messages.SUCCESS , "Welcome to Don’t Do List. Define what to do… and what not to")
+            messages.add_message(request, messages.SUCCESS , "Welcome to Don’t Do List👋. Define what to do… and what not to")
             return redirect("root:home")
         else:
             messages.add_message(request,messages.ERROR,"Something went wrong. Please try again.")
@@ -103,14 +106,86 @@ def password_change(request):
         return redirect("/")
 
 
+
 def password_reset(request):
-    pass
+    # in get method just render the page
+    if request.method == "GET":
+        context = {
+        "header_mode":"back",
+        }
+        return render(request , "accounts/password-reset.html" , context)
+    if request.method == "POST":
+        # get the form from post request
+        form = PasswordReset(request.POST)
+        if form.is_valid():
+            # get the user from eamil
+            user = get_object_or_404(User , email = form.cleaned_data["email"])
+            try:
+                # check if the user already have an token
+                token = PersonalTokens.objects.get(user=user)
+            except:
+                # if not make one for them
+                token = PersonalTokens.objects.create(user=user,token=str(uuid4()))
+            send_mail(
+                "Reset Your Password – Don’t Do List",
+                f"http://127.0.0.1:8000/accounts/password_reset_confirm/{token.token}", # change this with mjml
+                "admin",
+                [user.email],
+                fail_silently=True
+            )
+            return redirect("accounts:password_reset_done")
+        else:
+            messages.add_message(request,messages.ERROR,"your email is not valid")
+            return redirect(request.path_info)
+    else:
+        messages.add_message(request , messages.ERROR , "This action is not supported.")
+        return redirect("/")
+
+
+
 
 def password_reset_done(request):
-    pass
+    context = {
+        "header_mode":"nothing",
+    }
+    return render(request , "accounts/password-reset-done-success.html" , context)
 
-def password_reset_confirm(request):
-    pass
+
+
+def password_reset_confirm(request,token):
+    # in get method just render the page
+    if request.method == "GET":
+        context={
+        "header_mode":"just_header",
+        }
+        return render(request , "accounts/password-reset-confirm.html", context)
+    if request.method == "POST":
+        # in post method get the user from token
+        user = PersonalTokens.objects.get(token=token).user
+        # in post method get the passwords
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+        # validate passwords
+        if password1 != password2:
+            messages.add_message(request , messages.ERROR , "Passwords do not match.")
+            return redirect(request.path_info)
+        try:
+            password_validation.validate_password(password1)
+            user.set_password(password1)
+            user.save()
+            return redirect("accounts:password_reset_complete")
+        # if the passwords wasnt valid
+        except:
+            messages.add_message(request , messages.ERROR , "Something went wrong. Please try again.")
+            return redirect(request.path_info)
+    else:
+        messages.add_message(request , messages.ERROR , "This action is not supported.")
+        return redirect("/")
+
+
 
 def password_reset_complete(request):
-    pass
+    context={
+        "header_mode":"nothing",
+    }
+    return render(request , "accounts/password-reset-complete.html" , context)

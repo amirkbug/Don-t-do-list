@@ -16,7 +16,7 @@
 
     <!-- signup -->
       <div style="padding: 4.375rem; display: flex; justify-content: center">
-      <form method="POST" class="signup--form">
+      <form method="POST" id="signupForm" class="signup--form">
         {% csrf_token %}
         <div class="login--signup--form__content">
           <img
@@ -82,7 +82,7 @@
                 />
               </span>
               <input
-              name="password2"
+                name="password2"
                 autocomplete="off"
                 max="20"
                 id="passwordInput"

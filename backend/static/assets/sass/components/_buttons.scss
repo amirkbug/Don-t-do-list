@@ -53,7 +53,12 @@
 .btn {
   @include buttons-base;
 
-  //secoundry(dont) button
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
   //modifire
   &--secondary {
@@ -100,5 +105,12 @@
     background-color: $neutral-50;
     color: $neutral-800;
     @include buttons-states($neutral-800, $neutral-200);
+    
+  }
+  &--success {
+    background-color: $success-400;
+    color: $neutral-50;
+    @include buttons-states($success-300, $success-500);
+    
   }
 }
