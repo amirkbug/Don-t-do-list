@@ -105,7 +105,11 @@
     background-color: $neutral-50;
     color: $neutral-800;
     @include buttons-states($neutral-800, $neutral-200);
-    
+  }
+  &--natural--100 {
+    background-color: $neutral-100;
+    color: $neutral-800;
+    @include buttons-states($neutral-800, $neutral-200);
   }
   &--success {
     background-color: $success-400;

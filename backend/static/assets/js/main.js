@@ -1141,7 +1141,8 @@ function login() {
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
 
-  
+  //regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // helper functions
   function errorHandling(element, message) {
@@ -1185,6 +1186,12 @@ function login() {
       if (!email) {
         errorHandling(emailDesc, "Email cannot be empty.");
         hasError = true;
+      } else if (!emailRegex.test(email)) {
+        errorHandling(
+          emailDesc,
+          "Please enter a valid email address. Example: user@example.com",
+        );
+        hasError = true;
       }
 
       if (!password) {
@@ -1221,15 +1228,17 @@ function signup() {
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
+  const confrimPasswordInput = document.getElementById("confrimPasswordInput")
   //descriptions
   const nameDesc = document.getElementById("nameDesc");
   const emailDesc = document.getElementById("emailDesc");
   const passwordDesc = document.getElementById("passwordDesc");
+  const confirmPasswordDesc = document.getElementById("confirmPasswordDesc")
   //btn
   const submitBtn = document.getElementById("submitBtn");
   const googleBtn = document.getElementById("googleBtn");
   const githubBtn = document.getElementById("githubBtn");
-  const eyeBtn = document.getElementById("eyeBtn");
+  const eyeBtns = document.querySelectorAll("#eyeBtn");
 
   //regexes
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1249,26 +1258,31 @@ function signup() {
   }
 
   //eyebtn fn
-  if (eyeBtn) {
+  eyeBtns.forEach((eyeBtn) => {
     eyeBtn.addEventListener("click", () => {
-      if (passwordInput.type == "password") {
-        passwordInput.type = "text";
-        eyeBtn.innerHTML = '<i class="fa-regular fa-eye eye-noslash"></i>';
-      } else if (passwordInput.type == "text") {
-        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash eye-slash"></i>';
-        passwordInput.type = "password";
+      const input = eyeBtn
+        .closest(".text--input--secondary")
+        .querySelector("input");
+
+      if (input.type === "password") {
+        input.type = "text";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      } else {
+        input.type = "password";
+        eyeBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
       }
     });
-  }
+  });
 
   //submitbtn
   if (submitBtn) {
     submitBtn.addEventListener("click", (e) => {
       e.preventDefault();
       //input values
-      const name = nameInput.value;
-      const email = emailInput.value;
-      const password = passwordInput.value;
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password1 = passwordInput.value.trim();
+      const password2 = confrimPasswordInput.value.trim();
 
       let hasError = false;
       //name error handling
@@ -1289,28 +1303,34 @@ function signup() {
           "Please enter a valid email address. Example: user@example.com",
         );
         hasError = true;
-      } else if (
-        email === localStorage.getItem("email") ||
-        email === sessionStorage.getItem("email")
-      ) {
-        errorHandler(emailDesc, "You already have an account");
-        hasError = true;
       } else {
         errorRemover(emailDesc);
       }
 
       //password error handling
-      if (!password) {
+      if (!password1) {
         errorHandler(passwordDesc, "Password cannot be empty.");
         hasError = true;
-      } else if (!passwordRegex.test(password)) {
+      } else if (!passwordRegex.test(password1)) {
         errorHandler(
           passwordDesc,
           "Password must be at least 8 characters long and include uppercase, lowercase, number, and a special character.",
         );
         hasError = true;
       } else {
-        passwordDesc.innerHTML = "";
+        errorRemover(passwordDesc);
+      }
+
+      if (!password2) {
+        errorHandler(confirmPasswordDesc, "Confirm password cannot be empty.");
+        hasError = true;
+      } else if (password1 !== password2) {
+        errorHandler(
+          confirmPasswordDesc,
+          "Passwords do not match.",
+        );
+        hasError = true;
+      } else {
         errorRemover(passwordDesc);
       }
 
@@ -1355,11 +1375,12 @@ function backInHistory() {
   //forms
   const loginFormId = document.querySelector("#loginForm");
   const signupFormId = document.querySelector("#signupForm");
+  const dashboardId = document.querySelector('#dashboardId')
   //btn
   const headerRightIcon = document.querySelector("#header__right__icon");
   if (!headerRightIcon) return;
   headerRightIcon.addEventListener("click", () => {
-    if (loginFormId || signupFormId) {
+    if (loginFormId || signupFormId || dashboardId) {
       window.location.href = "/"
     }else{
       window.history.back();
@@ -1687,3 +1708,5 @@ function passwordResetConfirm() {
   });
 }
 passwordResetConfirm();
+
+

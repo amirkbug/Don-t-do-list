@@ -1,12 +1,13 @@
 from django.shortcuts import render , redirect , get_object_or_404
-from django.contrib.auth import login , logout , authenticate , password_validation 
+from django.contrib.auth import login , logout , authenticate , password_validation , get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import LoginForm , SignupForm , PasswordReset
+from .forms import LoginForm , PasswordReset , RegistrationForm , EditProfileForm
 from django.core.mail import send_mail
-from django.contrib.auth.models import User
 from uuid import uuid4
 from .models import PersonalTokens
+
+User = get_user_model()
 
 def signup(request):
     if request.method == "GET":
@@ -15,15 +16,25 @@ def signup(request):
         }
         return render(request , "accounts/signup.html",context)
     if request.method == "POST":
-        form = SignupForm(request.POST)
+        form = RegistrationForm(request.POST)
+        try:
+            email = form.cleaned_data["email"]
+            user = get_object_or_404(User , email=email)
+        except:
+            messages.add_message(request,messages.ERROR, "It seems this email is already registered. Please log in or use a different email.")
+            return redirect(request.path_info)
         if form.is_valid():
             user = form.save()
             login(request,user)
             messages.add_message(request, messages.SUCCESS , "Welcome to Don’t Do List👋. Define what to do… and what not to")
-            return redirect("root:home")
+            return redirect("root:home")    
         else:
-            messages.add_message(request,messages.ERROR,"Something went wrong. Please try again.")
+            
+            messages.add_message(request,messages.ERROR, "Something went wrong. Please try again.")
             return redirect(request.path_info)
+    else:
+        messages.add_message(request , messages.ERROR , "This action is not supported.")
+        return redirect("/")
 
 
 
@@ -37,9 +48,14 @@ def login_view(request):
     elif request.method =="POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data["username"]
+            email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
-            user = authenticate(username=username , password = password)
+            try:
+                username = get_object_or_404(User , email=email).username
+                user = authenticate(username=username , password = password)
+            except:
+                messages.add_message(request , messages.ERROR , "Incorrect email or password. Try again.")
+                return redirect(request.path_info)
             if user is not None:
                 login(request,user)
                 messages.add_message(request , messages.SUCCESS , "Logged in successfully. Welcome back!")
@@ -47,22 +63,41 @@ def login_view(request):
             else:
                 messages.add_message(request , messages.ERROR , "Incorrect email or password. Try again.")
                 return redirect(request.path_info)
-            
+        else:
+            messages.add_message(request , messages.ERROR , "Incorrect email or password. Try again.")
+            return redirect(request.path_info)
     else:
         messages.add_message(request , messages.ERROR , "This action is not supported.")
         return redirect("/")
+            
+   
 
-@login_required()
+@login_required
 def logout_view (request):
     logout(request)
     return redirect("root:home")
 
-
+@login_required
 def dashboard_view(request):
-    context = {
+    user = request.user
+    if request.method == "GET":
+        context = {
         "header_mode":"back",
-    }
-    return render(request , "accounts/dashboard.html",context)
+        "user":user
+        }
+        return render(request , "accounts/dashboard.html",context)
+    if request.method == "POST":
+        form = EditProfileForm(request.POST,request.FILES,instance=user)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,"Profile updated successfully ✨")
+            return redirect(request.path_info)
+        else:
+            messages.add_message(request,messages.ERROR, "Something went wrong. Please try again.")
+            return redirect(request.path_info)
+    else:
+        messages.add_message(request , messages.ERROR , "This action is not supported.")
+        return redirect("/")
 
 @login_required()
 def password_change(request):

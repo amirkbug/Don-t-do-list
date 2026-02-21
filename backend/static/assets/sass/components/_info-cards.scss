@@ -39,8 +39,8 @@
       position: relative;
 
       //sizing
-      left: 40px; // 25px
-      bottom: 0.3rem; // 5px
+      left: 2.5rem; //40px 
+      bottom: 0.625rem; //10px
 
       //color and typo
       opacity: 0.2; // 20%
@@ -56,7 +56,7 @@
 
   .info--cards--userinfo--profile {
     //sizing
-    object-fit: contain;
+    object-fit: cover;
     width: 3.125rem; // 50px
     aspect-ratio: 1 / 1;
 
@@ -88,6 +88,14 @@
       padding: 0.625rem; // 10px
       margin: 0;
     }
+  }
+
+  button{
+    border-radius: 10px;
+    width: 100%;
+    height: 35px !important;
+    min-height: 1px;
+    @include typography($weight-medium, $size-13);
   }
 
   .input_content {

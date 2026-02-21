@@ -18,7 +18,7 @@
       <div style="padding: 4.375rem; display: flex; justify-content: center">
       <form method="POST" id="signupForm" class="signup--form">
         {% csrf_token %}
-        <div class="login--signup--form__content">
+        <div style="padding: 4.375rem;" class="login--signup--form__content">
           <img
             class="login--signup--form__logo"
             src="{% static 'assets/icons/dont-do-list-logos/dont-do-list-alt.svg' %}"
@@ -82,7 +82,7 @@
                 />
               </span>
               <input
-                name="password2"
+                name="password1"
                 autocomplete="off"
                 max="20"
                 id="passwordInput"
@@ -102,7 +102,7 @@
             <p id="passwordDesc" class="input_description"></p>
           </div>
           <div style="padding: 0" class="text--input--secondary">
-            <span class="input_name">Password</span>
+            <span class="input_name">Confirm Password</span>
             <div class="input_content">
               <span class="input_icon_left">
                 <img
@@ -112,10 +112,10 @@
                 />
               </span>
               <input
-              name="password1"
+                name="password2"
                 autocomplete="off"
                 max="20"
-                id="passwordInput"
+                id="confrimPasswordInput"
                 type="password"
                 class="input_input"
                 placeholder="••••••••"
@@ -129,7 +129,7 @@
                 ></span>
               </div>
             </div>
-            <p id="passwordDesc" class="input_description"></p>
+            <p id="confirmPasswordDesc" class="input_description"></p>
           </div>
           <button id="submitBtn" class="btn btn--secondary">
             <span>Signup</span>

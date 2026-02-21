@@ -6,19 +6,36 @@
 {% block 'favicon' %}{% static 'assets/icons/favicons/address-card-solid-full.svg' %}{% endblock 'favicon' %}
 {% block 'content' %}
 
+     {% if messages %}
+     {% for message in messages %}
+     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
+     </div>
+     {% endfor %}
+     {% endif %}
+
+
     <main class="dashboard">
       <div style="gap: 60px" class="dashboard--sections">
-        <from class="info--cards--userinfo">
+        <form method="post" enctype="multipart/form-data" class="info--cards--userinfo" id="dashboardId">
+          {% csrf_token %}
           <section class="info--cards--userinfo--profile--section">
             <img
               class="info--cards--userinfo--profile"
-              src="{% static 'assets/images/trophy-pic/Goodies Happy Flame.png' %}"
-              alt="Goodies Happy Flame.png"
+              src="{{user.profile_picture.url}}" 
+              alt="user-profile"
             />
+            <label for="profileInput">
             <i
-              data-tooltip="Change profile"
+              data-tooltip="Select a new image, then click Save Changes"
               class="fa-regular fa-pen-to-square fa-lg"
             ></i>
+            </label>
+            <input
+            id="profileInput"
+            type="file"
+            name="profile_picture"
+            hidden
+            />
           </section>
 
           <section>
@@ -31,7 +48,7 @@
               <span class="input_icon_left"
                 ><i class="fa-regular fa-user"></i
               ></span>
-              <input type="text" class="input_input" placeholder="Example" />
+              <input value="{{user.username}}" name="username" type="text" class="input_input" placeholder="Example" />
               <div class="input_content_right">
                 <span class="texts">20</span>
               </div>
@@ -45,7 +62,7 @@
               <input
                 type="text"
                 class="input_input"
-                placeholder="Example@gmail.com"
+                placeholder="{{user.email}}"
                 readonly
               />
               <div class="input_content_right">
@@ -70,7 +87,7 @@
               <input
                 type="password"
                 class="input_input"
-                placeholder="••••••••"
+                placeholder="••••••••••"
                 readonly
               />
               <div style="padding-bottom: 1px;" class="input_content_right">
@@ -85,12 +102,16 @@
               </div>
             </div>
           </div>
-        </from>
+          <button type="submit" class="btn btn--natural--100 ">
+              <span>Save Changes</span>
+          </button>
+        </form>
         <article class="info--cards--btnbox">
           <i class="fa-solid fa-xmark"></i>
           <button>Account settings ⚙️</button>
           <a href={% url "accounts:logout" %}>Logout ↩️</a>
           <a>Delete account ❌</a>
+          
         </article>
       </div>
 
