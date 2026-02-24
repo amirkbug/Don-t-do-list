@@ -17,25 +17,32 @@ def signup(request):
         return render(request , "accounts/signup.html",context)
     if request.method == "POST":
         form = RegistrationForm(request.POST)
-        try:
-            email = form.cleaned_data["email"]
-            user = get_object_or_404(User , email=email)
-        except:
-            messages.add_message(request,messages.ERROR, "It seems this email is already registered. Please log in or use a different email.")
+        email = request.POST.get("email")
+        username = request.POST.get("username")
+
+        # check if the email is the same
+        if User.objects.filter(email=email).exists():
+            messages.add_message(request , messages.ERROR , "It seems this email is already registered. Please log in or use a different email.")
             return redirect(request.path_info)
+        
+        # check if the username is the same
+        if User.objects.filter(username=username).exists():
+            messages.add_message(request , messages.ERROR , "This username is already taken. Please choose another one.")
+            return redirect(request.path_info)
+        
+        # check if the form is valid
         if form.is_valid():
             user = form.save()
-            login(request,user)
+            login(request , user)
             messages.add_message(request, messages.SUCCESS , "Welcome to Don’t Do List👋. Define what to do… and what not to")
-            return redirect("root:home")    
-        else:
-            
-            messages.add_message(request,messages.ERROR, "Something went wrong. Please try again.")
+            return redirect("root:home")
+        else: 
+            print(form.errors)
+            messages.add_message(request,messages.ERROR, "Something went wrong. Please try again.") 
             return redirect(request.path_info)
-    else:
-        messages.add_message(request , messages.ERROR , "This action is not supported.")
+    else: 
+        messages.add_message(request , messages.ERROR , "This action is not supported.") 
         return redirect("/")
-
 
 
 def login_view(request):

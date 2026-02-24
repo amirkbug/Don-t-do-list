@@ -154,10 +154,11 @@
           background-color: $border;
         }
 
-        &.inactive:hover {
+        &.inactive {
           //color and typo
           cursor: default;
           background-color: transparent;
+          pointer-events: none;
         }
         &.today {
           //color and typo

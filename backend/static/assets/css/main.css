@@ -1496,9 +1496,10 @@
 .calendar--primary .calendar_body .calendar_days button:focus {
   background-color: #c27aff;
 }
-.calendar--primary .calendar_body .calendar_days button.inactive:hover {
+.calendar--primary .calendar_body .calendar_days button.inactive {
   cursor: default;
   background-color: transparent;
+  pointer-events: none;
 }
 .calendar--primary .calendar_body .calendar_days button.today {
   border-radius: 50px;
@@ -1666,9 +1667,10 @@
 .calendar--secoundry .calendar_body .calendar_days button:focus {
   background-color: #7c86ff;
 }
-.calendar--secoundry .calendar_body .calendar_days button.inactive:hover {
+.calendar--secoundry .calendar_body .calendar_days button.inactive {
   cursor: default;
   background-color: transparent;
+  pointer-events: none;
 }
 .calendar--secoundry .calendar_body .calendar_days button.today {
   border-radius: 50px;
