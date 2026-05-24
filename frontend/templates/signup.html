@@ -58,7 +58,7 @@
 
     <!-- login -->
     <div style="padding: 4.375rem; display: flex; justify-content: center">
-      <form class="signup--form">
+      <form id="signupForm" class="signup--form">
         <div class="login--signup--form__content">
           <img
             class="login--signup--form__logo"
@@ -125,7 +125,6 @@
                 max="20"
                 id="passwordInput"
                 type="password"
-                type="text"
                 class="input_input"
                 placeholder="••••••••"
               />
@@ -139,6 +138,35 @@
               </div>
             </div>
             <p id="passwordDesc" class="input_description"></p>
+          </div>
+          <div style="padding: 0" class="text--input--secondary">
+            <span class="input_name">Confirm Password</span>
+            <div class="input_content">
+              <span class="input_icon_left">
+                <img
+                  style="width: 13px; padding-top: 3px"
+                  src="../assets/icons/lock/lock-secondary.svg"
+                  alt="lock-icon"
+                />
+              </span>
+              <input
+                autocomplete="off"
+                max="20"
+                id="confrimPasswordInput"
+                type="password"
+                class="input_input"
+                placeholder="••••••••"
+              />
+              <div class="input_content_right">
+                <span
+                  id="eyeBtn"
+                  style="padding-bottom: 1px; cursor: pointer"
+                  class="input_icon_right"
+                  ><i class="fa-regular fa-eye-slash"></i
+                ></span>
+              </div>
+            </div>
+            <p id="confirmPasswordDesc" class="input_description"></p>
           </div>
           <button id="submitBtn" class="btn btn--secondary">
             <span>Signup</span>

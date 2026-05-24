@@ -53,7 +53,11 @@
 .btn {
   @include buttons-base;
 
-  //secoundry(dont) button
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
   //modifire
   &--secondary {
@@ -98,6 +102,11 @@
   //natural button
   &--natural {
     background-color: $neutral-50;
+    color: $neutral-800;
+    @include buttons-states($neutral-800, $neutral-200);
+  }
+  &--natural--100 {
+    background-color: $neutral-100;
     color: $neutral-800;
     @include buttons-states($neutral-800, $neutral-200);
   }
