@@ -1,19 +1,5 @@
 console.log("script is runing");
 
-/* --------- live bg btn --------- */
-const btn = document.querySelector(".btn--video--bg");
-
-if (btn) {
-  const video = document.querySelector(".btn--video--bg .btn__video");
-
-  btn.addEventListener("mouseenter", () => {
-    video.playbackRate = 3;
-  });
-  btn.addEventListener("mouseleave", () => {
-    video.playbackRate = 1;
-  });
-}
-
 /* --------- calender --------- */
 //get all calendars in document
 const calendars = document.querySelectorAll(".calendar");
@@ -498,8 +484,6 @@ function deleteTaskDo() {
   if (tasksName.length == 0) {
     return;
   }
-  //local storage
-  localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
   //delete tasks
   checkboxInputParrent.forEach((div) => div.remove());
   //dont show the modal
@@ -508,16 +492,11 @@ function deleteTaskDo() {
 }
 if (document.getElementById("deleteTaskDont")) {
   document.getElementById("deleteTaskDont").addEventListener("click", () => {
-    const dontAskAgainDelete = document.getElementById(
-      "dontAskAgainDeleteDont",
-    );
-
-    // save only when modal is opened and user clicks delete
-    localStorage.setItem(
-      "dontAskAgainDeleteDont",
-      `${dontAskAgainDelete.checked}`,
-    );
-
+    deleteTaskDont();
+  });
+}
+if (document.getElementById("completeTaskDont")) {
+  document.getElementById("completeTaskDont").addEventListener("click", () => {
     deleteTaskDont();
   });
 }
@@ -587,7 +566,7 @@ function deleteTasksModalToggleDo() {
       tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
 
       //change the numbers in delete menue
-      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+      tasksThatShouldBeDeletedP.innerHTML = `Selected tasks (selected ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
 
       //if there was no tasks error
       if (tasksName.length == 0) {
@@ -633,18 +612,11 @@ function deleteTaskDont() {
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
   });
-  //btns
-  const dontAskAgainDelete = document.getElementById("dontAskAgainDeleteDont");
 
   //if tasks was zero retutn and do nothing
   if (tasksName.length == 0) {
     return;
   }
-  //local storage
-  localStorage.setItem(
-    "dontAskAgainDeleteDont",
-    `${dontAskAgainDelete.checked}`,
-  );
   //delete tasks
   checkboxInputParrent.forEach((div) => div.remove());
   //dont show the modal
@@ -653,11 +625,11 @@ function deleteTaskDont() {
 }
 if (document.getElementById("deleteTaskDo")) {
   document.getElementById("deleteTaskDo").addEventListener("click", () => {
-    const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
-
-    // save only when modal is opened and user clicks delete
-    localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
-
+    deleteTaskDo();
+  });
+}
+if (document.getElementById("completeTaskDo")) {
+  document.getElementById("completeTaskDo").addEventListener("click", () => {
     deleteTaskDo();
   });
 }
@@ -721,7 +693,7 @@ function deleteTasksModalToggleDont() {
       tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
 
       //change the numbers in delete menue
-      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+      tasksThatShouldBeDeletedP.innerHTML = `Selected tasks (selected ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
 
       //if there was no tasks error
       if (tasksName.length == 0) {
@@ -1538,29 +1510,28 @@ function ConditionalRenderingFn() {
           <i class="fa-solid fa-${theAddress}"></i>
         </header>
 
-        <a href="login.html">
-          <button
-            style="padding: 0 0; margin: 0 0; border: none"
-            class="btn btn--video--bg"
-          >
-            <div class="btn__container">
-              <div class="btn__text">
-                <span>Login / Signup</span>
-                <span class="btn__icon">
-                  <i class="fa-solid fa-user"></i>
-                </span>
-              </div>
-            </div>
+        <a
+        href="login.html"
+        style="padding: 0 0; margin: 0 0; border: none; width: 160px"
+        class="btn btn--video--bg"
+      >
+        <div class="btn__container">
+          <div class="btn__text">
+            <span>Login / Signup</span>
+            <span class="btn__icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+          </div>
+        </div>
 
-            <video class="btn__video" muted loop autoplay playsinline>
-              <source
-                src="../assets/video/primary-secondary/Last_one_i_rendred.mp4"
-                type="video/mp4"
-              />
-              your browser doesent support video
-            </video>
-          </button>
-        </a>
+        <video class="btn__video" muted loop autoplay playsinline>
+          <source
+            src="../assets/video/primary-secondary/Last_one_i_rendred.mp4"
+            type="video/mp4"
+          />
+          your browser doesent support video
+        </video>
+      </a>
       </section>`;
   }
 
@@ -1569,6 +1540,22 @@ function ConditionalRenderingFn() {
   trophyBtn.href = isLoggedIn ? "trophy-details.html" : "signup.html";
 }
 ConditionalRenderingFn();
+
+/* --------- live bg btn --------- */
+const btn = document.querySelector(".btn--video--bg");
+
+if (btn) {
+  const video = document.querySelector(".btn--video--bg .btn__video");
+
+  btn.addEventListener("mouseenter", () => {
+    video.playbackRate = 3;
+    console.log("button is here");
+  });
+  btn.addEventListener("mouseleave", () => {
+    video.playbackRate = 1;
+    console.log("button is here");
+  });
+}
 
 //trippyes
 const tooltips = document.querySelectorAll("[data-tooltip]");

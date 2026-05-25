@@ -2638,13 +2638,9 @@
   justify-content: space-between;
   width: 100%;
 }
-.primary--delete--task--modal footer div button:nth-of-type(1) {
+.primary--delete--task--modal footer div button {
+  flex: 1;
   min-width: 0;
-  width: 40%;
-}
-.primary--delete--task--modal footer div button:nth-of-type(2) {
-  min-width: 0;
-  width: 60%;
 }
 
 .secondary--delete--task--modal {
@@ -2764,13 +2760,9 @@
   justify-content: space-between;
   width: 100%;
 }
-.secondary--delete--task--modal footer div button:nth-of-type(1) {
+.secondary--delete--task--modal footer div button {
+  flex: 1;
   min-width: 0;
-  width: 40%;
-}
-.secondary--delete--task--modal footer div button:nth-of-type(2) {
-  min-width: 0;
-  width: 60%;
 }
 
 .login--form {

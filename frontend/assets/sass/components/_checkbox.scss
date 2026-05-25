@@ -1,7 +1,7 @@
 @use "../abstracts/index" as *;
 
 /* checkbox mixin */
-@mixin checkbox($border, $bg-color, $text-color, $rgba-glow) {
+@mixin checkbox($border, $bg-color, $text-color, $rgba-glow: none) {
   //display
   display: flex;
   justify-content: center;

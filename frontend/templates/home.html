@@ -533,14 +533,14 @@
       </header>
       <section>
         <p>
-          Are you sure you want to delete 3 selected tasks?
+          Are you sure you want to delete/complete 3 selected tasks?
           <br />
           <em>This action cannot be undone.</em>
         </p>
         <div style="margin: 5px 0" class="fancy--divider--secondary--700"></div>
 
         <div id="tasksThatShouldBeDeletedDont">
-          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <p>Selected tasks (showing 3 of 7):</p>
           <ul>
             <li>Do your homework</li>
             <li>Do dishes</li>
@@ -549,21 +549,15 @@
         </div>
       </section>
       <footer>
-        <label class="checkbox--secoundry">
-          <input
-            id="dontAskAgainDeleteDont"
-            class="checkbox__input"
-            type="checkbox"
-          />
-          <span class="checkbox__box"></span>
-          <span class="checkbox__label">don’t ask again</span>
-        </label>
         <div>
           <button id="closeDeleteModalDont" class="btn btn--secondary">
             <span>Cancel</span>
           </button>
           <button id="deleteTaskDont" class="btn btn--destructive">
             <span>Delete!</span>
+          </button>
+          <button id="completeTaskDont" class="btn btn--success">
+            <span>complete</span>
           </button>
         </div>
       </footer>
@@ -579,14 +573,14 @@
       </header>
       <section>
         <p>
-          Are you sure you want to delete selected tasks?
+          Are you sure you want to delete/complete selected tasks?
           <br />
           <em>This action cannot be undone.</em>
         </p>
         <div style="margin: 5px 0" class="fancy--divider--primary--700"></div>
 
         <div id="tasksThatShouldBeDeleted">
-          <p>Tasks to be deleted (showing 3 of 7):</p>
+          <p>Selected tasks (showing 3 of 7):</p>
           <ul>
             <li>Do your homework</li>
             <li>Do dishes</li>
@@ -595,21 +589,15 @@
         </div>
       </section>
       <footer>
-        <label class="checkbox--primary">
-          <input
-            id="dontAskAgainDelete"
-            class="checkbox__input"
-            type="checkbox"
-          />
-          <span class="checkbox__box"></span>
-          <span class="checkbox__label">don’t ask again</span>
-        </label>
         <div>
           <button id="closeDeleteModalDo" class="btn btn--primary">
             <span>Cancel</span>
           </button>
           <button id="deleteTaskDo" class="btn btn--destructive">
             <span>Delete!</span>
+          </button>
+          <button id="completeTaskDo" class="btn btn--success">
+            <span>complete</span>
           </button>
         </div>
       </footer>
