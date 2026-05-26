@@ -1,5 +1,3 @@
-
-
 /* --------- live bg btn --------- */
 const btn = document.querySelector(".btn--video--bg");
 
@@ -185,7 +183,7 @@ function renderCalendar(calendarEl) {
     });
   });
 
-  console.log("dfsdfsdfsdf")
+  console.log("dfsdfsdfsdf");
 
   activeDaysDont.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -476,7 +474,9 @@ newTaskModalToggleDo();
 function deleteTaskDo() {
   //get the hidden form for deleting tasks from database
   const deleteTasksFormDo = document.getElementById("deleteTasksFormDo");
-  const deleteTasksFormDoMinus = document.getElementById("deleteTasksFormDoMinus");
+  const deleteTasksFormDoMinus = document.getElementById(
+    "deleteTasksFormDoMinus",
+  );
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
     ".primary--delete--task--modal",
@@ -496,8 +496,7 @@ function deleteTaskDo() {
     return div.querySelector("span").textContent.trim();
   });
   //get task ids
-  const taskIdsDo = checkboxInputParrent.map((div) =>
-  div.dataset.id);
+  const taskIdsDo = checkboxInputParrent.map((div) => div.dataset.id);
   //btns
   const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
   //if tasks was zero retutn and do nothing
@@ -507,15 +506,15 @@ function deleteTaskDo() {
   //local storage
   localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
   //base on ids put the inputs in form for deleting in database
-  taskIdsDo.forEach(id => {
+  taskIdsDo.forEach((id) => {
     const input = document.createElement("input");
     input.type = "hidden";
     input.name = "selected_tasks";
     input.value = id;
-    if(localStorage.getItem("dontAskAgainDelete") == "true"){
+    if (localStorage.getItem("dontAskAgainDelete") == "true") {
       deleteTasksFormDoMinus.appendChild(input);
       deleteTasksFormDoMinus.submit();
-    }else{
+    } else {
       deleteTasksFormDo.appendChild(input);
       deleteTasksFormDo.submit();
     }
@@ -526,20 +525,14 @@ function deleteTaskDo() {
 }
 if (document.getElementById("deleteTaskDont")) {
   document.getElementById("deleteTaskDont").addEventListener("click", () => {
-    const dontAskAgainDelete = document.getElementById(
-      "dontAskAgainDeleteDont",
-    );
-
-    // save only when modal is opened and user clicks delete
-    localStorage.setItem(
-      "dontAskAgainDeleteDont",
-      `${dontAskAgainDelete.checked}`,
-    );
-
     deleteTaskDont();
   });
 }
-
+if (document.getElementById("completeTaskDont")) {
+  document.getElementById("completeTaskDont").addEventListener("click", () => {
+    deleteTaskDo();
+  });
+}
 //openDeleteTasks
 function deleteTasksModalToggleDo() {
   //toggle to delete task
@@ -605,7 +598,7 @@ function deleteTasksModalToggleDo() {
       tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
 
       //change the numbers in delete menue
-      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+      tasksThatShouldBeDeletedP.innerHTML = `Selected tasks (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
 
       //if there was no tasks error
       if (tasksName.length == 0) {
@@ -633,7 +626,9 @@ deleteTasksModalToggleDo();
 function deleteTaskDont() {
   //get the hidden form for deleting tasks from database
   const deleteTasksFormDont = document.getElementById("deleteTasksFormDont");
-  const deleteTasksFormDontMinus = document.getElementById("deleteTasksFormDontMinus");
+  const deleteTasksFormDontMinus = document.getElementById(
+    "deleteTasksFormDontMinus",
+  );
   //overlay and delete task modal
   const deleteTaskModal = document.querySelector(
     ".secondary--delete--task--modal",
@@ -655,10 +650,8 @@ function deleteTaskDont() {
   //btns
   const dontAskAgainDelete = document.getElementById("dontAskAgainDeleteDont");
 
-
   //take tasks ids
-  const tasksIdsDont = checkboxInputParrent.map((div)=>div.dataset.id);
-
+  const tasksIdsDont = checkboxInputParrent.map((div) => div.dataset.id);
 
   //if tasks was zero retutn and do nothing
   if (tasksName.length == 0) {
@@ -670,31 +663,31 @@ function deleteTaskDont() {
     "dontAskAgainDeleteDont",
     `${dontAskAgainDelete.checked}`,
   );
-  //put the tasks in a form for deleting them 
-  tasksIdsDont.forEach(id=>{
+  //put the tasks in a form for deleting them
+  tasksIdsDont.forEach((id) => {
     const input = document.createElement("input");
     input.name = "selected_tasks";
     input.type = "hidden";
     input.value = id;
-    if(localStorage.getItem("dontAskAgainDeleteDont") == "true"){
+    if (localStorage.getItem("dontAskAgainDeleteDont") == "true") {
       deleteTasksFormDontMinus.append(input);
       deleteTasksFormDontMinus.submit();
-    }else{
+    } else {
       deleteTasksFormDont.append(input);
       deleteTasksFormDont.submit();
     }
-  })
+  });
   //dont show the modal
   deleteTaskModal.classList.remove("show");
   overlay.classList.remove("show");
 }
 if (document.getElementById("deleteTaskDo")) {
   document.getElementById("deleteTaskDo").addEventListener("click", () => {
-    const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
-
-    // save only when modal is opened and user clicks delete
-    localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
-
+    deleteTaskDo();
+  });
+}
+if (document.getElementById("completeTaskDo")) {
+  document.getElementById("completeTaskDo").addEventListener("click", () => {
     deleteTaskDo();
   });
 }
@@ -758,7 +751,7 @@ function deleteTasksModalToggleDont() {
       tasksThatShouldBeDeletedUl.innerHTML = tasksThatShouldBeDeleted;
 
       //change the numbers in delete menue
-      tasksThatShouldBeDeletedP.innerHTML = `Tasks to be deleted (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
+      tasksThatShouldBeDeletedP.innerHTML = `Selected tasks (showing ${checkboxInput.length} of ${checkboxInputNotChecked.length}):`;
 
       //if there was no tasks error
       if (tasksName.length == 0) {
@@ -938,7 +931,8 @@ function makeNewTaskDont() {
         hasError = true;
       } else {
         errorRemover(addNewTaskDescStart);
-        addNewTaskDescStart.innerHTML = 'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+        addNewTaskDescStart.innerHTML =
+          'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
       }
 
       if (finishDate == "") {
@@ -952,15 +946,16 @@ function makeNewTaskDont() {
         hasError = true;
       } else {
         errorRemover(addNewTaskDescFinish);
-        addNewTaskDescFinish.innerHTML = 'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+        addNewTaskDescFinish.innerHTML =
+          'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
       }
 
       if (name == "") {
         errorHandler(addNewTaskDescName, "Name cannot be empthy");
         hasError = true;
-      }else {
+      } else {
         errorRemover(addNewTaskDescName);
-        addNewTaskDescName.innerHTML = 'Place a text here for description';
+        addNewTaskDescName.innerHTML = "Place a text here for description";
       }
 
       if (hasError) return;
@@ -1106,7 +1101,8 @@ function makeNewTaskDo() {
         hasError = true;
       } else {
         errorRemover(addNewTaskDescStart);
-        addNewTaskDescStart.innerHTML = 'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+        addNewTaskDescStart.innerHTML =
+          'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
       }
 
       if (finishDate == "") {
@@ -1120,7 +1116,8 @@ function makeNewTaskDo() {
         hasError = true;
       } else {
         errorRemover(addNewTaskDescFinish);
-        addNewTaskDescFinish.innerHTML = 'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+        addNewTaskDescFinish.innerHTML =
+          'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
       }
 
       if (name == "") {
@@ -1128,7 +1125,7 @@ function makeNewTaskDo() {
         hasError = true;
       } else {
         errorRemover(addNewTaskDescName);
-        addNewTaskDescName.innerHTML = 'Place a text here for description';
+        addNewTaskDescName.innerHTML = "Place a text here for description";
       }
 
       if (hasError) return;
@@ -1268,13 +1265,13 @@ login();
 
 function signup() {
   const signupFormId = document.querySelector("#signupForm");
-  if(!signupFormId) return;
+  if (!signupFormId) return;
   const signupForm = document.querySelector(".signup--form");
   //inputs
   const nameInput = document.getElementById("nameInput");
   const emailInput = document.getElementById("emailInput");
   const passwordInput = document.getElementById("passwordInput");
-  const confrimPasswordInput = document.getElementById("confrimPasswordInput")
+  const confrimPasswordInput = document.getElementById("confrimPasswordInput");
   //descriptions
   const nameDesc = document.getElementById("nameDesc");
   const emailDesc = document.getElementById("emailDesc");
@@ -1371,10 +1368,7 @@ function signup() {
         errorHandler(confirmPasswordDesc, "Confirm password cannot be empty.");
         hasError = true;
       } else if (password1 !== password2) {
-        errorHandler(
-          confirmPasswordDesc,
-          "Passwords do not match.",
-        );
+        errorHandler(confirmPasswordDesc, "Passwords do not match.");
         hasError = true;
       } else {
         errorRemover(confirmPasswordDesc);
@@ -1421,17 +1415,16 @@ function backInHistory() {
   //forms
   const loginFormId = document.querySelector("#loginForm");
   const signupFormId = document.querySelector("#signupForm");
-  const dashboardId = document.querySelector('#dashboardId')
+  const dashboardId = document.querySelector("#dashboardId");
   //btn
   const headerRightIcon = document.querySelector("#header__right__icon");
   if (!headerRightIcon) return;
   headerRightIcon.addEventListener("click", () => {
     if (loginFormId || signupFormId || dashboardId) {
-      window.location.href = "/"
-    }else{
+      window.location.href = "/";
+    } else {
       window.history.back();
     }
-      
   });
 }
 backInHistory();
@@ -1489,7 +1482,6 @@ function categoryButtons() {
 
 categoryButtons();
 
-
 function changePassword() {
   //form
   const changePassword = document.querySelector("#changePassword");
@@ -1497,7 +1489,9 @@ function changePassword() {
   const changePassForm = document.querySelector(".password--reset--form");
   //inputs
   const inputs = changePassForm.querySelectorAll("input");
-  const confirmNewPassword = changePassForm.querySelector("#confirmNewPassword");
+  const confirmNewPassword = changePassForm.querySelector(
+    "#confirmNewPassword",
+  );
   const newPassword = changePassForm.querySelector("#newPassword");
   const currentPassword = changePassForm.querySelector("#currentPassword");
   //btns
@@ -1604,7 +1598,6 @@ function changePassword() {
 }
 changePassword();
 
-
 function passwordReset() {
   //form
   const passwordResetConfirm = document.querySelector("#passwordResetConfirm");
@@ -1663,7 +1656,6 @@ function passwordReset() {
 }
 passwordReset();
 
-
 function passwordResetConfirm() {
   //forms
   const resetPassword = document.querySelector("#resetPassword");
@@ -1674,7 +1666,8 @@ function passwordResetConfirm() {
   const confirmPassword = resetPasswordForm.querySelector("#confirmPassword");
   //descriptions
   const passwordDesc = resetPasswordForm.querySelector("#password");
-  const confirmPasswordDesc = resetPasswordForm.querySelector("#confirmPassword");
+  const confirmPasswordDesc =
+    resetPasswordForm.querySelector("#confirmPassword");
   //btns
   const submitBtn = resetPasswordForm.querySelector("button");
   const eyeBtns = resetPasswordForm.querySelectorAll("#eyeBtn");
@@ -1755,9 +1748,6 @@ function passwordResetConfirm() {
 }
 passwordResetConfirm();
 
-
-
-
-function dataCategorization(){
-  const tasksData = document.getElementById("tasksData")
+function dataCategorization() {
+  const tasksData = document.getElementById("tasksData");
 }

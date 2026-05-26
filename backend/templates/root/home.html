@@ -1,19 +1,17 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% load static %} 
 {% block 'title' %}Home{% endblock 'title' %} 
-{% block 'header-title' %}Home{% endblock 'header-title' %}
-{% block 'header_icon' %}<i class="fa-solid fa-home"></i>{% endblock 'header_icon' %}
-{% block 'favicon' %} {% static 'assets/icons/favicons/house-solid-full.svg' %} {% endblock 'favicon' %}
+{% block 'header-title' %}Home{% endblock 'header-title' %} 
+{% block 'header_icon' %}<i class="fa-solid fa-home"></i>{% endblock 'header_icon' %} 
+{% block 'favicon' %} 
+{% static 'assets/icons/favicons/house-solid-full.svg' %} 
+{% endblock 'favicon' %} 
 {% block 'content' %}
 
 <!-- django errors toast -->
-     {% if messages %}
-     {% for message in messages %}
-     <div class="toast" data-type="{{message.tags}}" data-text="{{message}}">
-     </div>
-     {% endfor %}
-     {% endif %}
-
+{% if messages %} {% for message in messages %}
+<div class="toast" data-type="{{message.tags}}" data-text="{{message}}"></div>
+{% endfor %} {% endif %}
 
 <!-- tasks -->
 <div class="tasks__container">
@@ -59,8 +57,13 @@
       >
         <i class="fa-solid fa-minus fa-3x"></i>
       </button>
-      <form id="deleteTasksFormDoMinus" method="post" action="{% url 'root:delete-tasks' %}" hidden>
-      {% csrf_token %}
+      <form
+        id="deleteTasksFormDoMinus"
+        method="post"
+        action="{% url 'root:delete-tasks' %}"
+        hidden
+      >
+        {% csrf_token %}
       </form>
     </footer>
   </section>
@@ -107,8 +110,13 @@
       >
         <i class="fa-solid fa-minus fa-3x"></i>
       </button>
-      <form id="deleteTasksFormDontMinus" method="post" action="{% url 'root:delete-tasks' %}" hidden>
-      {% csrf_token %}
+      <form
+        id="deleteTasksFormDontMinus"
+        method="post"
+        action="{% url 'root:delete-tasks' %}"
+        hidden
+      >
+        {% csrf_token %}
       </form>
     </footer>
   </section>
@@ -364,15 +372,6 @@
     </div>
   </section>
   <footer>
-    <label class="checkbox--secoundry">
-      <input
-        id="dontAskAgainDeleteDont"
-        class="checkbox__input"
-        type="checkbox"
-      />
-      <span class="checkbox__box"></span>
-      <span class="checkbox__label">don’t ask again</span>
-    </label>
     <div>
       <button id="closeDeleteModalDont" class="btn btn--secondary">
         <span>Cancel</span>
@@ -380,8 +379,16 @@
       <button id="deleteTaskDont" class="btn btn--destructive">
         <span>Delete!</span>
       </button>
-      <form id="deleteTasksFormDont" method="post" action="{% url 'root:delete-tasks' %}" hidden>
-      {% csrf_token %}
+      <button id="completeTaskDont" class="btn btn--success">
+        <span>Complete</span>
+      </button>
+      <form
+        id="deleteTasksFormDont"
+        method="post"
+        action="{% url 'root:delete-tasks' %}"
+        hidden
+      >
+        {% csrf_token %}
       </form>
     </div>
   </footer>
@@ -416,11 +423,6 @@
     </div>
   </section>
   <footer>
-    <label class="checkbox--primary">
-      <input id="dontAskAgainDelete" class="checkbox__input" type="checkbox" />
-      <span class="checkbox__box"></span>
-      <span class="checkbox__label">don’t ask again</span>
-    </label>
     <div>
       <button id="closeDeleteModalDo" class="btn btn--primary">
         <span>Cancel</span>
@@ -428,8 +430,16 @@
       <button id="deleteTaskDo" class="btn btn--destructive">
         <span>Delete!</span>
       </button>
-      <form id="deleteTasksFormDo" method="post" action="{% url 'root:delete-tasks' %}" hidden>
-      {% csrf_token %}
+      <button id="completeTaskDo" class="btn btn--success">
+        <span>Complete</span>
+      </button>
+      <form
+        id="deleteTasksFormDo"
+        method="post"
+        action="{% url 'root:delete-tasks' %}"
+        hidden
+      >
+        {% csrf_token %}
       </form>
     </div>
   </footer>
