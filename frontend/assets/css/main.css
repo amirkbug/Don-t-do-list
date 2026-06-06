@@ -3238,6 +3238,10 @@ body {
   border-radius: 0.625rem;
   box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
 }
+.password-reset-status-card--success footer {
+  display: flex;
+  gap: 20px;
+}
 .password-reset-status-card--success section {
   display: flex;
   flex-direction: column;
@@ -3283,6 +3287,10 @@ body {
   border-radius: 0.625rem;
   box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
 }
+.password-reset-status-card--fail footer {
+  display: flex;
+  gap: 20px;
+}
 .password-reset-status-card--fail section {
   display: flex;
   flex-direction: column;
@@ -3307,6 +3315,55 @@ body {
   font-style: normal;
 }
 .password-reset-status-card--fail button {
+  border-radius: 0.625rem;
+}
+
+.password-reset-status-card--neutral {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 6.25rem;
+  width: 100%;
+  max-width: 25.375rem;
+  min-height: 22.25rem;
+  padding: 1.25rem;
+  gap: 1.875rem;
+  background-color: #f5f5f5;
+  border: 0.125rem solid #737373;
+  color: #737373;
+  border-radius: 0.625rem;
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+}
+.password-reset-status-card--neutral footer {
+  display: flex;
+  gap: 20px;
+}
+.password-reset-status-card--neutral section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.password-reset-status-card--neutral section h4 {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.password-reset-status-card--neutral section p {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.password-reset-status-card--neutral button {
   border-radius: 0.625rem;
 }
 
