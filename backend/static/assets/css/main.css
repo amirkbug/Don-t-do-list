@@ -2399,6 +2399,14 @@
   line-height: 1.43;
   font-style: normal;
 }
+.new--task--modal--primary .new--task--modal__header b {
+  color: #e17100;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
 .new--task--modal--primary .new--task--modal__footer {
   display: flex;
   flex-direction: row;
@@ -2469,6 +2477,14 @@
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.562rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.new--task--modal--secoundry .new--task--modal__header b {
+  color: #e17100;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.812rem;
   line-height: 1.43;
   font-style: normal;
 }
@@ -2981,10 +2997,18 @@
 }
 .primary--delete--task--modal footer div {
   display: flex;
-  gap: 0.938rem;
+  gap: 5px;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+.primary--delete--task--modal footer div form {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+}
+.primary--delete--task--modal footer div form button {
+  flex: 1;
 }
 .primary--delete--task--modal footer div button {
   flex: 1;
@@ -3103,10 +3127,18 @@
 }
 .secondary--delete--task--modal footer div {
   display: flex;
-  gap: 0.938rem;
+  gap: 5px;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+.secondary--delete--task--modal footer div form {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+}
+.secondary--delete--task--modal footer div form button {
+  flex: 1;
 }
 .secondary--delete--task--modal footer div button {
   flex: 1;
@@ -3125,11 +3157,17 @@
   box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
 }
 .login--form .login--signup--form__content {
-  padding: 4.375rem;
+  padding: 7rem 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+}
+.login--form .login--signup--form__content .captcha-box {
+  transform: scale(1.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .login--form .login--signup--form__content a {
   font-family: "Poppins", sans-serif;
@@ -3205,11 +3243,17 @@
   box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
 }
 .signup--form .login--signup--form__content {
-  padding: 4.375rem;
+  padding: 7rem 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+}
+.signup--form .login--signup--form__content .captcha-box {
+  transform: scale(1.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .signup--form .login--signup--form__content a {
   font-family: "Poppins", sans-serif;
@@ -3285,11 +3329,17 @@
   box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
 }
 .password--reset--form .login--signup--form__content {
-  padding: 4.375rem;
+  padding: 7rem 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+}
+.password--reset--form .login--signup--form__content .captcha-box {
+  transform: scale(1.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .password--reset--form .login--signup--form__content a {
   font-family: "Poppins", sans-serif;
@@ -3766,6 +3816,51 @@ body {
   font-style: normal;
 }
 .password-reset-status-card--fail button {
+  border-radius: 0.625rem;
+}
+
+.password-reset-status-card--neutral {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 6.25rem;
+  width: 100%;
+  max-width: 25.375rem;
+  min-height: 22.25rem;
+  padding: 1.25rem;
+  gap: 1.875rem;
+  background-color: #f5f5f5;
+  border: 0.125rem solid #737373;
+  color: #737373;
+  border-radius: 0.625rem;
+  box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
+}
+.password-reset-status-card--neutral section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.password-reset-status-card--neutral section h4 {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.password-reset-status-card--neutral section p {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 0.812rem;
+  line-height: 1.43;
+  font-style: normal;
+}
+.password-reset-status-card--neutral button {
   border-radius: 0.625rem;
 }
 
@@ -4779,7 +4874,7 @@ small.extrasmall-10 {
 
 .about--us--layout {
   padding: 4.375rem 4.375rem 0 4.375rem;
-  height: 670px;
+  height: 620px;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -4853,7 +4948,22 @@ small.extrasmall-10 {
   gap: 100px;
   margin: 0 auto;
   gap: 70px 300px;
-  height: 600px;
+  height: 540px;
+}
+
+.No--trophies--yet--page {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2.438rem;
+  line-height: 1.43;
+  font-style: normal;
+  color: #e7000b;
 }
 
 .tippy-box[data-theme~=natural] {

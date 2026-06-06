@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "accounts",
     "trophies",
     'colorfield',
+    "django_recaptcha",
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,10 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
 AUTH_USER_MODEL = "accounts.CustomUserModel"
+
+
+RECAPTCHA_PUBLIC_KEY = "6LcD1wUtAAAAAJJ6KP1O4c6zxeiOBlYhSdHMzXzT"
+RECAPTCHA_PRIVATE_KEY = "6LcD1wUtAAAAAGtwHF7qBI_MpBBuDGMjra1NM4hf"
+
+# 30 days for login with checkbox on
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30

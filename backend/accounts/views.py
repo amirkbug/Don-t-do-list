@@ -5,9 +5,16 @@ from django.contrib import messages
 from .forms import LoginForm , PasswordReset , RegistrationForm , EditProfileForm
 from django.core.mail import send_mail
 from uuid import uuid4
-from .models import PersonalTokens
+from .models import PersonalTokens , DailyStats
+from django.utils import timezone
+from datetime import timedelta
+from django.db.models import Sum
+from calendar import monthrange
+from trophies.models import Trophies , UserTrophy
+
 
 User = get_user_model()
+
 
 def signup(request):
     if request.method == "GET":
@@ -65,6 +72,9 @@ def login_view(request):
                 return redirect(request.path_info)
             if user is not None:
                 login(request,user)
+                # we have an remember me boxcheck in the template so if it was not true it will expire after quit of search engine
+                if not request.POST.get("remember_me"):
+                    request.session.set_expiry(0)
                 messages.add_message(request , messages.SUCCESS , "Logged in successfully. Welcome back!")
                 return redirect("root:home")
             else:
@@ -86,11 +96,124 @@ def logout_view (request):
 
 @login_required
 def dashboard_view(request):
+    #all trophies and user trphies
+    all_trophies_count = Trophies.objects.count()
+    user_trophies_count = UserTrophy.objects.filter(user=request.user).count()
+    #today
+    today = timezone.now().date()
+    #we need the days we have in the month now
+    days_in_month = monthrange(today.year, today.month)[1]
+    #user
     user = request.user
+    #the date of week
+    week_ago = today - timedelta(days=7)
+    #the date of month
+    start_of_month = today.replace(day=1)
+    #today tasks
+    #all data that we need for charts
+    chart_data = {
+    "weekly": {
+        "do": {
+            "created": [None] * 7,
+            "completed": [None] * 7,
+            "deleted": [None] * 7,
+        },
+        "dont": {
+            "created": [None] * 7,
+            "completed": [None] * 7,
+            "deleted": [None] * 7,
+        }
+    },
+    "monthly": {
+        "do": {
+            "created": [None] * days_in_month,
+            "completed": [None] * days_in_month,
+            "deleted": [None] * days_in_month,
+        },
+        "dont": {
+            "created": [None] * days_in_month,
+            "completed": [None] * days_in_month,
+            "deleted": [None] * days_in_month,
+        }
+    }
+}
+    
+    daily_stats , created = DailyStats.objects.get_or_create(
+        user=user,
+        date = today
+    )
+    #weakly stats
+    weakly_stats = DailyStats.objects.filter(
+        user=user,
+        date__gte=week_ago
+    ).aggregate(
+
+        tasks_created_Do=Sum("tasks_created_Do"),
+        tasks_completed_Do=Sum("tasks_completed_Do"),
+        tasks_deleted_Do=Sum("tasks_deleted_Do"),
+
+        tasks_created_Dont=Sum("tasks_created_Dont"),
+        tasks_completed_Dont=Sum("tasks_completed_Dont"),
+        tasks_deleted_Dont=Sum("tasks_deleted_Dont"),
+
+    )
+    #weakly stats for chart
+    weakly_chart = DailyStats.objects.filter(
+        user=user,
+        date__gte=week_ago
+    ).order_by("date")
+    #weakly chart
+    for stat in weakly_chart:
+        # we need the index to fill in
+        index = stat.date.weekday()
+        chart_data["weekly"]["do"]["created"][index]=stat.tasks_created_Do or None
+        chart_data["weekly"]["do"]["completed"][index]=stat.tasks_completed_Do or None
+        chart_data["weekly"]["do"]["deleted"][index]=stat.tasks_deleted_Do or None
+
+        chart_data["weekly"]["dont"]["created"][index]=stat.tasks_created_Dont or None
+        chart_data["weekly"]["dont"]["completed"][index]=stat.tasks_completed_Dont or None
+        chart_data["weekly"]["dont"]["deleted"][index]=stat.tasks_deleted_Dont or None
+
+    #monthly stats
+    montyly_stats = DailyStats.objects.filter(
+        user=user,
+        date__gte = start_of_month
+    ).aggregate(
+        tasks_created_Do=Sum("tasks_created_Do"),
+        tasks_completed_Do=Sum("tasks_completed_Do"),
+        tasks_deleted_Do=Sum("tasks_deleted_Do"),
+
+        tasks_created_Dont=Sum("tasks_created_Dont"),
+        tasks_completed_Dont=Sum("tasks_completed_Dont"),
+        tasks_deleted_Dont=Sum("tasks_deleted_Dont"),
+    )
+    #monthly chart
+    montyly_chart = DailyStats.objects.filter(
+        user=user,
+        date__gte = start_of_month
+    ).order_by("date")
+    #montly arrays 
+    for stat in montyly_chart:
+        # index start from 0 but here start from 1
+        index = stat.date.day - 1
+
+        chart_data["monthly"]["do"]["created"][index]=stat.tasks_created_Do or None
+        chart_data["monthly"]["do"]["completed"][index]=stat.tasks_completed_Do or None
+        chart_data["monthly"]["do"]["deleted"][index]=stat.tasks_deleted_Do or None
+
+        chart_data["monthly"]["dont"]["created"][index]=stat.tasks_created_Dont or None
+        chart_data["monthly"]["dont"]["completed"][index]=stat.tasks_completed_Dont or None
+        chart_data["monthly"]["dont"]["deleted"][index]=stat.tasks_deleted_Dont or None
     if request.method == "GET":
         context = {
         "header_mode":"back",
-        "user":user
+        "user":user,
+        "daily_stats":daily_stats,
+        "weakly_stats":weakly_stats,
+        "monthly_stats":montyly_stats,
+        "chart_data": chart_data,
+        "all_trophies_count":all_trophies_count,
+        "user_trophies_count":user_trophies_count
         }
         return render(request , "accounts/dashboard.html",context)
     if request.method == "POST":
@@ -152,8 +275,10 @@ def password_change(request):
 def password_reset(request):
     # in get method just render the page
     if request.method == "GET":
+        form = PasswordReset()
         context = {
         "header_mode":"back",
+        "form":form,
         }
         return render(request , "accounts/password-reset.html" , context)
     if request.method == "POST":
@@ -161,7 +286,10 @@ def password_reset(request):
         form = PasswordReset(request.POST)
         if form.is_valid():
             # get the user from eamil
-            user = get_object_or_404(User , email = form.cleaned_data["email"])
+            try:
+                user = get_object_or_404(User , email = form.cleaned_data["email"])
+            except:
+                return redirect("accounts:password_reset_done")
             try:
                 # check if the user already have an token
                 token = PersonalTokens.objects.get(user=user)
@@ -231,3 +359,14 @@ def password_reset_complete(request):
         "header_mode":"nothing",
     }
     return render(request , "accounts/password-reset-complete.html" , context)
+
+@login_required
+def delete_account(request):
+    user = request.user
+
+    logout(request)
+    user.delete()
+
+    messages.success(request,"Your account has been deleted.")
+    return redirect("/")
+    

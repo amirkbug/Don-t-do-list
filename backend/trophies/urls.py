@@ -1,5 +1,5 @@
 from django.urls import path , include
-from .views import trophies , trophy_details
+from .views import trophies , trophy_details , unlock_trophy
 app_name = "trophies"
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path("trophy-category/<str:trophy_cat>", trophies ,name="trophy_category"),
     path("trophy-search/<str:trophy_search_variable>", trophies ,name="trophy_search"),
     path('trohpy-details/<int:trophy_id>',trophy_details , name='trophy_details'),
+    path('unlock_trophy/<int:trophy_id>', unlock_trophy , name="unlock_trophy")
 ]

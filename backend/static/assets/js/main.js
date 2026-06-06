@@ -183,8 +183,6 @@ function renderCalendar(calendarEl) {
     });
   });
 
-  console.log("dfsdfsdfsdf");
-
   activeDaysDont.forEach((btn) => {
     btn.addEventListener("click", () => {
       const day = btn.textContent;
@@ -287,24 +285,73 @@ videos.forEach((video) => (video.playbackRate = 0.5));
 /* Chart rendering */
 //get all charts in document
 const charts = document.querySelectorAll(".chart--primary , .chart--secoundry");
+//chart data out of chartdatael
+const chartDataElement = document.getElementById("chart-data");
 
-function chartsFn(char) {
+const chartData = chartDataElement
+  ? JSON.parse(chartDataElement.textContent)
+  : null;
+
+function chartsFn(char, chartData) {
+  //chart header
+  const chartHeader = char.querySelector(".chart__header");
+  //chart header span
+  const span = chartHeader.querySelector("span");
   //get canvas for chart.js out of it
   const ctx = char.querySelector("canvas");
+  const defaultLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  //default data for every chart
+  let defaultData = [];
+  if (char.classList.contains("chart--primary")) {
+    if (span.classList.contains("neutral")) {
+      defaultData = chartData.weekly.do.created;
+    } else if (span.classList.contains("success")) {
+      defaultData = chartData.weekly.do.completed;
+    } else if (span.classList.contains("warning")) {
+      defaultData = chartData.weekly.do.deleted;
+    }
+  } else if (char.classList.contains("chart--secoundry")) {
+    if (span.classList.contains("neutral")) {
+      defaultData = chartData.weekly.dont.created;
+    } else if (span.classList.contains("success")) {
+      defaultData = chartData.weekly.dont.completed;
+    } else if (span.classList.contains("warning")) {
+      defaultData = chartData.weekly.dont.deleted;
+    }
+  }
+  //finding what should be the lable
+  let chartLabel = "";
+  if (char.classList.contains("chart--primary")) {
+    if (span.classList.contains("neutral")) {
+      chartLabel = "Do tasks that created";
+    } else if (span.classList.contains("success")) {
+      chartLabel = "Do tasks that completed";
+    } else if (span.classList.contains("warning")) {
+      chartLabel = "Do tasks that deleted";
+    }
+  } else if (char.classList.contains("chart--secoundry")) {
+    if (span.classList.contains("neutral")) {
+      chartLabel = "Dont tasks that created";
+    } else if (span.classList.contains("success")) {
+      chartLabel = "Dont tasks that completed";
+    } else if (span.classList.contains("warning")) {
+      chartLabel = "Dont tasks that deleted";
+    }
+  }
+  //data we need for the datasets.data
   //make cahrt an instance to update it later
   const chartInstance = new Chart(ctx, {
     //type of chart
     type: "line",
     data: {
       //default for numbers in down
-      labels: [1, 2, 2, 3, 4],
+      labels: defaultLabels,
       datasets: [
         {
-          label: char.classList.contains("chart--primary")
-            ? "Do tasks that completed"
-            : "Dont tasks that completed",
+          label: chartLabel,
           //data that will replaced with api
-          data: [4, 7, 6, 11, 9, 5, 20],
+          data: defaultData,
           borderWidth: 2,
           //color of the line (render it base on the chart)
           borderColor: char.classList.contains("chart--primary")
@@ -330,7 +377,11 @@ function chartsFn(char) {
         },
         //y chart lines numbders color (base on condition)
         y: {
+          beginAtZero: true,
+          min: 0,
+          max: 100,
           ticks: {
+            stepSize: 10,
             color: char.classList.contains("chart--primary")
               ? "#9810fa"
               : "#4f39f6",
@@ -354,28 +405,87 @@ function chartsFn(char) {
   //get buttons of the charts
   const buttons = char.querySelectorAll(".chart__header__btns button");
   let dataLables = [];
+  let data = [];
   //change datalables base on the btn that user clicked
   buttons.forEach((btn) =>
     btn.addEventListener("click", () => {
-      if (btn.textContent == "D") {
-        dataLables = Array.from({ length: 24 }, (_, i) => i + 1);
-      } else if (btn.textContent == "W") {
-        dataLables = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+      if (btn.textContent == "W") {
+        dataLables = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        if (char.classList.contains("chart--primary")) {
+          if (span.classList.contains("neutral")) {
+            data = chartData.weekly.do.created;
+          } else if (span.classList.contains("success")) {
+            data = chartData.weekly.do.completed;
+          } else if (span.classList.contains("warning")) {
+            data = chartData.weekly.do.deleted;
+          }
+        } else if (char.classList.contains("chart--secoundry")) {
+          if (span.classList.contains("neutral")) {
+            data = chartData.weekly.dont.created;
+          } else if (span.classList.contains("success")) {
+            data = chartData.weekly.dont.completed;
+          } else if (span.classList.contains("warning")) {
+            data = chartData.weekly.dont.deleted;
+          }
+        }
       } else if (btn.textContent == "M") {
         const currentDate = new Date();
         const month = currentDate.getMonth() + 1;
         const year = currentDate.getFullYear();
         const daysInMonth = new Date(year, month, 0).getDate();
         dataLables = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+        if (char.classList.contains("chart--primary")) {
+          if (span.classList.contains("neutral")) {
+            data = chartData.monthly.do.created;
+          } else if (span.classList.contains("success")) {
+            data = chartData.monthly.do.completed;
+          } else if (span.classList.contains("warning")) {
+            data = chartData.monthly.do.deleted;
+          }
+        } else if (char.classList.contains("chart--secoundry")) {
+          if (span.classList.contains("neutral")) {
+            data = chartData.monthly.dont.created;
+          } else if (span.classList.contains("success")) {
+            data = chartData.monthly.dont.completed;
+          } else if (span.classList.contains("warning")) {
+            data = chartData.monthly.dont.deleted;
+          }
+        }
       }
+      console.log(dataLables.length);
+      console.log(data.length);
+      console.log(data);
       //update labels and upadate instance
       chartInstance.data.labels = dataLables;
+      chartInstance.data.datasets[0].data = data;
       chartInstance.update();
     }),
   );
 }
 
-charts.forEach((char) => chartsFn(char));
+charts.forEach((char) => chartsFn(char, chartData));
+
+function toast() {
+  document.querySelectorAll(".toast").forEach((el) => {
+    Toastify({
+      text: el.dataset.text,
+      duration: 4000,
+      gravity: "top", // بالا
+      position: "center", // وسط
+      style: {
+        background:
+          el.dataset.type === "error"
+            ? "#E7000B"
+            : el.dataset.type === "success"
+              ? "#00C950"
+              : "#333",
+        fontFamily: "Poppins, sans-serif",
+        fontWeight: "400",
+      },
+    }).showToast();
+  });
+}
+toast();
 
 //new--task--modals
 //openModalDoMakeTask
@@ -490,46 +600,68 @@ function deleteTaskDo() {
   );
 
   const checkboxInputParrent = [...checkboxInput].map((checkbox) =>
-    checkbox.closest("div"),
+    checkbox.closest(".tasks__row"),
   );
   const tasksName = checkboxInputParrent.map((div) => {
     return div.querySelector("span").textContent.trim();
   });
   //get task ids
   const taskIdsDo = checkboxInputParrent.map((div) => div.dataset.id);
+
   //btns
   const dontAskAgainDelete = document.getElementById("dontAskAgainDelete");
+  //django
+  const taskContainerdiv = document.querySelector(".tasks__container");
+  const isAuthenticated = taskContainerdiv
+    ? taskContainerdiv.dataset.auth === "true"
+    : null;
   //if tasks was zero retutn and do nothing
   if (tasksName.length == 0) {
     return;
   }
-  //local storage
-  localStorage.setItem("dontAskAgainDelete", `${dontAskAgainDelete.checked}`);
+
+  //localstorage delete
+  if (!isAuthenticated) {
+    const guestTasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+    const filteredTasks = guestTasks.filter(
+      (task) => !taskIdsDo.includes(task.id),
+    );
+
+    localStorage.setItem("guestTasks", JSON.stringify(filteredTasks));
+
+    checkboxInputParrent.forEach((div) => {
+      div.remove();
+    });
+
+    deleteTaskModal.classList.remove("show");
+    overlay.classList.remove("show");
+
+    return;
+  }
+
   //base on ids put the inputs in form for deleting in database
   taskIdsDo.forEach((id) => {
     const input = document.createElement("input");
     input.type = "hidden";
     input.name = "selected_tasks";
     input.value = id;
-    if (localStorage.getItem("dontAskAgainDelete") == "true") {
-      deleteTasksFormDoMinus.appendChild(input);
-      deleteTasksFormDoMinus.submit();
-    } else {
-      deleteTasksFormDo.appendChild(input);
-      deleteTasksFormDo.submit();
-    }
+    deleteTasksFormDo.appendChild(input);
   });
+  if (isAuthenticated) {
+    deleteTasksFormDo.submit();
+  }
   //dont show the modal
   deleteTaskModal.classList.remove("show");
   overlay.classList.remove("show");
 }
-if (document.getElementById("deleteTaskDont")) {
-  document.getElementById("deleteTaskDont").addEventListener("click", () => {
-    deleteTaskDont();
+if (document.getElementById("deleteTaskDo")) {
+  document.getElementById("deleteTaskDo").addEventListener("click", () => {
+    deleteTaskDo();
   });
 }
-if (document.getElementById("completeTaskDont")) {
-  document.getElementById("completeTaskDont").addEventListener("click", () => {
+if (document.getElementById("completeTaskDo")) {
+  document.getElementById("completeTaskDo").addEventListener("click", () => {
     deleteTaskDo();
   });
 }
@@ -653,27 +785,45 @@ function deleteTaskDont() {
   //take tasks ids
   const tasksIdsDont = checkboxInputParrent.map((div) => div.dataset.id);
 
+  //django
+  const taskContainerdiv = document.querySelector(".tasks__container");
+  const isAuthenticated = taskContainerdiv
+    ? taskContainerdiv.dataset.auth === "true"
+    : null;
+
   //if tasks was zero retutn and do nothing
   if (tasksName.length == 0) {
     return;
   }
 
-  //local storage
-  localStorage.setItem(
-    "dontAskAgainDeleteDont",
-    `${dontAskAgainDelete.checked}`,
-  );
+  //localstorage delete
+  if (!isAuthenticated) {
+    const guestTasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+    const filteredTasks = guestTasks.filter(
+      (task) => !tasksIdsDont.includes(task.id),
+    );
+
+    localStorage.setItem("guestTasks", JSON.stringify(filteredTasks));
+
+    checkboxInputParrent.forEach((div) => {
+      div.remove();
+    });
+
+    deleteTaskModal.classList.remove("show");
+    overlay.classList.remove("show");
+
+    return;
+  }
+
   //put the tasks in a form for deleting them
   tasksIdsDont.forEach((id) => {
     const input = document.createElement("input");
     input.name = "selected_tasks";
     input.type = "hidden";
     input.value = id;
-    if (localStorage.getItem("dontAskAgainDeleteDont") == "true") {
-      deleteTasksFormDontMinus.append(input);
-      deleteTasksFormDontMinus.submit();
-    } else {
-      deleteTasksFormDont.append(input);
+    deleteTasksFormDont.append(input);
+    if (isAuthenticated) {
       deleteTasksFormDont.submit();
     }
   });
@@ -681,17 +831,17 @@ function deleteTaskDont() {
   deleteTaskModal.classList.remove("show");
   overlay.classList.remove("show");
 }
-if (document.getElementById("deleteTaskDo")) {
-  document.getElementById("deleteTaskDo").addEventListener("click", () => {
-    deleteTaskDo();
-  });
-}
-if (document.getElementById("completeTaskDo")) {
-  document.getElementById("completeTaskDo").addEventListener("click", () => {
-    deleteTaskDo();
-  });
-}
 
+if (document.getElementById("deleteTaskDont")) {
+  document.getElementById("deleteTaskDont").addEventListener("click", () => {
+    deleteTaskDont();
+  });
+}
+if (document.getElementById("completeTaskDont")) {
+  document.getElementById("completeTaskDont").addEventListener("click", () => {
+    deleteTaskDont();
+  });
+}
 function deleteTasksModalToggleDont() {
   const deleteTaskModal = document.querySelector(
     ".secondary--delete--task--modal",
@@ -864,6 +1014,7 @@ function makeNewTaskDont() {
   const overlay = document.querySelector(".blur--background--0-2");
   //tasks
   const secoundryTasks = document.querySelector(".secondary--tasks");
+  const taskContainerdiv = document.querySelector(".tasks__container");
   const taskContainer = secoundryTasks
     ? secoundryTasks.querySelector(".tasks__column")
     : null;
@@ -871,6 +1022,11 @@ function makeNewTaskDont() {
   const addNewTaskDescStart = document.getElementById("descriptionDontStart");
   const addNewTaskDescFinish = document.getElementById("descriptionDontfinish");
   const addNewTaskDescName = document.getElementById("descriptionDontName");
+
+  //see the user if login or no
+  const isAuthenticated = taskContainerdiv
+    ? taskContainerdiv.dataset.auth === "true"
+    : null;
 
   //helper functions
   function errorHandler(element, message) {
@@ -979,14 +1135,65 @@ function makeNewTaskDont() {
         const label = e.target.closest(".checkbox--secoundry");
         if (!label) return;
 
-        e.preventDefault();
         const input = label.querySelector('input[type="checkbox"]');
         input.checked = !input.checked;
       });
 
-      //append the task that we made to the row
-      taskContainer.append(tasksRow);
-      newTaskModalDont.submit();
+      if (!isAuthenticated) {
+        //tasks in an object form
+        const datasWeNeed = {
+          id: crypto.randomUUID(),
+          name,
+          startDate,
+          finishDate,
+          type: "DONT",
+        };
+        //get the guest tasks in the localstorage
+        const tasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+        if (tasks.length >= 5) {
+          console.log(tasks.length);
+          Toastify({
+            text: "Guest accounts can create up to 5 tasks. Sign in to add more.",
+            duration: 4000,
+            gravity: "top", // بالا
+            position: "center", // وسط
+            style: {
+              background: "#E7000B",
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: "400",
+            },
+          }).showToast();
+          //back to defualt
+          nameInput.value = "";
+          startDateInput.value = "";
+          finishDateInput.value = "";
+          nameCountSpan.forEach((span) => {
+            span.textContent = 50;
+          });
+
+          addNewTaskDescFinish.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescName.innerHTML = "Place a text here for description";
+          addNewTaskDescStart.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+
+          newTaskModalDont.classList.remove("show");
+          overlay.classList.remove("show");
+
+          return;
+        }
+        //push them into array of objects
+        tasks.push(datasWeNeed);
+        //set the tasks in localstorage
+        localStorage.setItem("guestTasks", JSON.stringify(tasks));
+
+        //load the tasks
+        taskLoader(datasWeNeed);
+      } else {
+        taskContainer.append(tasksRow);
+        newTaskModalDont.submit();
+      }
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -1008,6 +1215,36 @@ function makeNewTaskDont() {
 }
 makeNewTaskDont();
 
+function taskLoader(task) {
+  //get where the tasks are
+  const primaryTasks = document.querySelector(".primary--tasks");
+  const secoundryTasks = document.querySelector(".secondary--tasks");
+  //set the checkbox class
+  const checkboxClass =
+    task.type === "DO" ? "checkbox--primary" : "checkbox--secoundry";
+  //get the right column for rendering tasks in
+  const tasksContainer =
+    task.type == "DO"
+      ? primaryTasks.querySelector(".tasks__column")
+      : secoundryTasks.querySelector(".tasks__column");
+  //make the task row
+  const taskRow = document.createElement("div");
+  taskRow.className = "tasks__row";
+  taskRow.dataset.id = task.id;
+  taskRow.innerHTML = `
+    <span>${task.name}</span>
+    <span>${task.startDate}</span>
+    <span>${task.finishDate}</span>
+    <label class="${checkboxClass}">
+      <input class="checkbox__input" type="checkbox" />
+      <span class="checkbox__box"></span>
+    </label>
+  `;
+
+  //append it to the column
+  tasksContainer.append(taskRow);
+}
+
 function makeNewTaskDo() {
   //modal
   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
@@ -1024,6 +1261,7 @@ function makeNewTaskDo() {
   const overlay = document.querySelector(".blur--background--0-2");
   //tasks
   const primaryTasks = document.querySelector(".primary--tasks");
+  const taskContainerdiv = document.querySelector(".tasks__container");
   const taskContainer = primaryTasks
     ? primaryTasks.querySelector(".tasks__column")
     : null;
@@ -1031,6 +1269,11 @@ function makeNewTaskDo() {
   const addNewTaskDescStart = document.getElementById("descriptionDoStart");
   const addNewTaskDescFinish = document.getElementById("descriptionDofinish");
   const addNewTaskDescName = document.getElementById("descriptionDoName");
+
+  //django
+  const isAuthenticated = taskContainerdiv
+    ? taskContainerdiv.dataset.auth === "true"
+    : null;
 
   //helper functions
   function errorHandler(element, message) {
@@ -1065,17 +1308,6 @@ function makeNewTaskDo() {
       addNewTaskDescName.innerHTML = "Place a text here for description";
       addNewTaskDescStart.innerHTML =
         'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
-    });
-  }
-
-  if (taskContainer) {
-    taskContainer.addEventListener("click", (e) => {
-      const label = e.target.closest(".checkbox--primary");
-      if (!label) return;
-
-      e.preventDefault();
-      const input = label.querySelector('input[type="checkbox"]');
-      input.checked = !input.checked;
     });
   }
 
@@ -1144,9 +1376,69 @@ function makeNewTaskDo() {
                
   `;
 
-      //append the task that we made to the row
-      taskContainer.append(tasksRow);
-      newTaskModalDo.submit();
+      //prevent new checkbox from default behavior
+      taskContainer.addEventListener("click", (e) => {
+        const label = e.target.closest(".checkbox--primary");
+        if (!label) return;
+
+        const input = label.querySelector('input[type="checkbox"]');
+        input.checked = !input.checked;
+      });
+
+      if (!isAuthenticated) {
+        //tasks in an object form
+        const datasWeNeed = {
+          id: crypto.randomUUID(),
+          name,
+          startDate,
+          finishDate,
+          type: "DO",
+        };
+        //get the guest tasks in the localstorage
+        const tasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+        if (tasks.length >= 5) {
+          console.log(tasks.length);
+          Toastify({
+            text: "Guest accounts can create up to 5 tasks. Sign in to add more.",
+            duration: 4000,
+            gravity: "top", // بالا
+            position: "center", // وسط
+            style: {
+              background: "#E7000B",
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: "400",
+            },
+          }).showToast();
+          //back to defualt
+          nameInput.value = "";
+          startDateInput.value = "";
+          finishDateInput.value = "";
+          nameCountSpan.forEach((span) => {
+            span.textContent = 50;
+          });
+
+          addNewTaskDescFinish.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+          addNewTaskDescName.innerHTML = "Place a text here for description";
+          addNewTaskDescStart.innerHTML =
+            'Tap the <i class="fa-regular fa-calendar"></i> icon to choose a date';
+
+          newTaskModalDo.classList.remove("show");
+          overlay.classList.remove("show");
+
+          return;
+        }
+        //push them into array of objects
+        tasks.push(datasWeNeed);
+        //set the tasks in localstorage
+        localStorage.setItem("guestTasks", JSON.stringify(tasks));
+
+        //load the tasks
+        taskLoader(datasWeNeed);
+      } else {
+        taskContainer.append(tasksRow);
+        newTaskModalDo.submit();
+      }
       //back to defualt
       nameInput.value = "";
       startDateInput.value = "";
@@ -1167,6 +1459,14 @@ function makeNewTaskDo() {
   }
 }
 makeNewTaskDo();
+
+function loadGuestTasks() {
+  const tasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+  tasks.forEach((task) => {
+    taskLoader(task);
+  });
+}
 
 function login() {
   const loginFormId = document.querySelector("#loginForm");
@@ -1388,28 +1688,6 @@ function signup() {
   }
 }
 signup();
-
-function toast() {
-  document.querySelectorAll(".toast").forEach((el) => {
-    Toastify({
-      text: el.dataset.text,
-      duration: 4000,
-      gravity: "top", // بالا
-      position: "center", // وسط
-      style: {
-        background:
-          el.dataset.type === "error"
-            ? "#E7000B"
-            : el.dataset.type === "success"
-              ? "#00C950"
-              : "#333",
-        fontFamily: "Poppins, sans-serif",
-        fontWeight: "400",
-      },
-    }).showToast();
-  });
-}
-toast();
 
 function backInHistory() {
   //forms
@@ -1748,6 +2026,30 @@ function passwordResetConfirm() {
 }
 passwordResetConfirm();
 
-function dataCategorization() {
-  const tasksData = document.getElementById("tasksData");
+//load the  tasks in the page
+function loadTasksInPage() {
+  const primaryTasks = document.querySelector(".primary--tasks");
+  if (primaryTasks) {
+    document.addEventListener("DOMContentLoaded", () => loadGuestTasks());
+  }
 }
+loadTasksInPage();
+
+function sendTasksToDjango() {
+  const tasks = localStorage.getItem("guestTasks");
+  const form = document.getElementById("guestImportForm");
+
+  if (!form) return;
+
+  if (!tasks) {
+    window.location.href = "/";
+    return;
+  }
+
+  document.getElementById("guestTasksInput").value = tasks;
+  form.submit();
+}
+//send tasks to django
+// document.addEventListener("DOMContentLoaded", () => {
+//   sendTasksToDjango();
+// });

@@ -1,11 +1,17 @@
 from django.db import models
+from accounts.models import AbstractUser
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Tasks(models.Model):
     TASK_TYPES = (
     ("DO", "Do"),
     ("DONT", "Don't"),
 )
+    
 
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
     description = models.CharField(max_length=100)
     start_date = models.CharField(max_length=10)
     end_date = models.CharField(max_length=10)

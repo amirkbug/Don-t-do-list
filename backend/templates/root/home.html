@@ -3,9 +3,7 @@
 {% block 'title' %}Home{% endblock 'title' %} 
 {% block 'header-title' %}Home{% endblock 'header-title' %} 
 {% block 'header_icon' %}<i class="fa-solid fa-home"></i>{% endblock 'header_icon' %} 
-{% block 'favicon' %} 
-{% static 'assets/icons/favicons/house-solid-full.svg' %} 
-{% endblock 'favicon' %} 
+{% block 'favicon' %} {% static 'assets/icons/favicons/house-solid-full.svg' %} {% endblock 'favicon' %} 
 {% block 'content' %}
 
 <!-- django errors toast -->
@@ -14,7 +12,10 @@
 {% endfor %} {% endif %}
 
 <!-- tasks -->
-<div class="tasks__container">
+<div
+  data-auth="{{ user.is_authenticated|yesno:'true,false' }}"
+  class="tasks__container"
+>
   <section class="primary--tasks">
     <button class="tasks__btn__top"></button>
 
@@ -140,8 +141,18 @@
     <h3>Make a new do-task</h3>
     <p>
       Create a task you want to accomplish. Add details, set deadlines, and keep
-      track of your progress.
+      track of your progress. {% if not request.user.is_authenticated %}
+      <br />
+      <b>
+        You're in Guest Mode.
+        <br />
+        Tasks created now are temporary.
+        <br />
+        Sign in to save them.
+      </b>
+      {% endif %}
     </p>
+
     <div class="fancy--divider--primary"></div>
   </header>
 
@@ -245,7 +256,16 @@
     <h3>Make a new do-task</h3>
     <p>
       Create a task you want to accomplish. Add details, set deadlines, and keep
-      track of your progress.
+      track of your progress. {% if not request.user.is_authenticated %}
+      <br />
+      <b>
+        You're in Guest Mode.
+        <br />
+        Tasks created now are temporary.
+        <br />
+        Sign in to save them.
+      </b>
+      {% endif %}
     </p>
     <div class="fancy--divider--secondary"></div>
   </header>
@@ -376,19 +396,32 @@
       <button id="closeDeleteModalDont" class="btn btn--secondary">
         <span>Cancel</span>
       </button>
-      <button id="deleteTaskDont" class="btn btn--destructive">
-        <span>Delete!</span>
-      </button>
-      <button id="completeTaskDont" class="btn btn--success">
-        <span>Complete</span>
-      </button>
       <form
         id="deleteTasksFormDont"
         method="post"
         action="{% url 'root:delete-tasks' %}"
         hidden
       >
-        {% csrf_token %}
+        <input name="type" value="dont" type="text" hidden />
+        <button
+          type="button"
+          name="action"
+          value="delete"
+          id="deleteTaskDont"
+          class="btn btn--destructive"
+        >
+          <span>Delete!</span>
+        </button>
+        {% if user.is_authenticated %}
+        <button
+          name="action"
+          value="complete"
+          id="completeTaskDont"
+          class="btn btn--success"
+        >
+          <span>Complete</span>
+        </button>
+        {% endif %} {% csrf_token %}
       </form>
     </div>
   </footer>
@@ -427,19 +460,31 @@
       <button id="closeDeleteModalDo" class="btn btn--primary">
         <span>Cancel</span>
       </button>
-      <button id="deleteTaskDo" class="btn btn--destructive">
-        <span>Delete!</span>
-      </button>
-      <button id="completeTaskDo" class="btn btn--success">
-        <span>Complete</span>
-      </button>
       <form
         id="deleteTasksFormDo"
         method="post"
         action="{% url 'root:delete-tasks' %}"
-        hidden
       >
-        {% csrf_token %}
+        <input name="type" value="do" type="text" hidden />
+        <button
+          type="button"
+          name="action"
+          value="delete"
+          id="deleteTaskDo"
+          class="btn btn--destructive"
+        >
+          <span>Delete!</span>
+        </button>
+        {% if user.is_authenticated %}
+        <button
+          name="action"
+          value="complete"
+          id="completeTaskDo"
+          class="btn btn--success"
+        >
+          <span>Complete</span>
+        </button>
+        {% endif %} {% csrf_token %}
       </form>
     </div>
   </footer>
@@ -505,4 +550,9 @@
     </div>
   </div>
 </div>
+
+<form id="guestImportForm" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="guest_tasks" id="guestTasksInput" />
+</form>
 {% endblock 'content' %}

@@ -61,6 +61,11 @@
       margin: 0;
       @include typography($weight-semi-bold, $size-25);
     }
+
+    b {
+      color: $warning-500;
+      @include typography($weight-semi-bold, $size-13);
+    }
   }
 
   .new--task--modal__footer {

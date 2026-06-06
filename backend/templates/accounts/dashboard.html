@@ -40,7 +40,7 @@
 
           <section>
             <small>Trophy's that you get</small>
-            <p>2/10</p>
+            <p>{{ user_trophies_count }}/{{ all_trophies_count }}</p>
           </section>
 
           <div style="width: 100%" class="text--input--natural">
@@ -110,7 +110,7 @@
           <i class="fa-solid fa-xmark"></i>
           <button>Account settings ⚙️</button>
           <a href={% url "accounts:logout" %}>Logout ↩️</a>
-          <a>Delete account ❌</a>
+          <a href={% url "accounts:delete_account" %}>Delete account ❌</a>
           
         </article>
       </div>
@@ -128,15 +128,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_created_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_created_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_created_Do}}</span>
                 </li>
               </ul>
             </div>
@@ -152,15 +152,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_completed_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_completed_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_completed_Do}}</span>
                 </li>
               </ul>
             </div>
@@ -176,15 +176,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_deleted_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_deleted_Do}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_deleted_Do}}</span>
                 </li>
               </ul>
             </div>
@@ -195,7 +195,7 @@
             <header class="chart__header">
               <p>Do Tasks <span class="neutral">Created</span> ➕</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
@@ -206,7 +206,7 @@
             <header class="chart__header">
               <p>Do Tasks <span class="success">Completed</span> ✅</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
@@ -217,7 +217,7 @@
             <header class="chart__header">
               <p>Do Tasks <span class="warning">Deleted</span> 🗑️</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
@@ -239,15 +239,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_created_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_created_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_created_Dont}}</span>
                 </li>
               </ul>
             </div>
@@ -263,15 +263,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_completed_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_completed_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_completed_Dont}}</span>
                 </li>
               </ul>
             </div>
@@ -287,15 +287,15 @@
               <ul class="card_lables">
                 <li class="card_label">
                   <h3 class="card_label_header">Daily</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{daily_stats.tasks_deleted_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">weakly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{weakly_stats.tasks_deleted_Dont}}</span>
                 </li>
                 <li class="card_label">
                   <h3 class="card_label_header">monthly</h3>
-                  <span class="card_value">10</span>
+                  <span class="card_value">{{monthly_stats.tasks_deleted_Dont}}</span>
                 </li>
               </ul>
             </div>
@@ -304,39 +304,40 @@
         <section class="info--cards--holder">
           <div class="chart--secoundry">
             <header class="chart__header">
-              <p>Don’t Tasks <span class="neutral">Created ➕</p>
+              <p>Don’t Tasks <span class="neutral">Created</span> ➕</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="125"></canvas>
+            <canvas height="117"></canvas>
           </div>
           <div class="chart--secoundry">
             <header class="chart__header">
               <p>Don’t Tasks <span class="success">Completed</span> ✅</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="165"></canvas>
+            <canvas height="156"></canvas>
           </div>
           <div class="chart--secoundry">
             <header class="chart__header">
-              <p>Do Tasks <span class="warning">Deleted</span> 🗑️</p>
+              <p>Don’t Tasks <span class="warning">Deleted</span> 🗑️</p>
               <div class="chart__header__btns">
-                <button>D</button>
+
                 <button>W</button>
                 <button>M</button>
               </div>
             </header>
-            <canvas height="205"></canvas>
+            <canvas height="201"></canvas>
           </div>
         </section>
       </div>
     </main>
-
+    {{ chart_data|json_script:"chart-data" }}
+    
 {% endblock 'content' %}

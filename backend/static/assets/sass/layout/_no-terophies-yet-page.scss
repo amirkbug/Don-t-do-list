@@ -1,0 +1,15 @@
+@use "../abstracts/index" as *;
+.No--trophies--yet--page {
+  //display
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  justify-self: center;
+  align-self: center;
+  //color and typo
+  @include typography($weight-bold, $size-40);
+  color: $destructive-500;
+}

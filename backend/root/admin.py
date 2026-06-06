@@ -3,5 +3,4 @@ from .models import Tasks
 
 admin.site.register(Tasks)
 
-
 # Register your models here.

@@ -16,8 +16,8 @@
             src="{{trophy.picture.url}}"
             alt="Goodies Happy Flame.png"
           />
-          <h4>{{trophy.name}}</h4>
-          <p>Use it to make your home page better!!</p>
+          <h4>{{trophy.trophy_type}}</h4>
+          <p>{{trophy.name}}</p>
         </section>
         <section >
           <article>
@@ -34,7 +34,7 @@
                 <span> <a href={% url "trophies:trophies-page" %}>back to trophys</a></span>
               </button>
               <button style="background-color: {{trophy.color}};"  class="btn btn--secondary">
-                <span>get it!</span>
+                <span><a href={% url "trophies:unlock_trophy" trophy.id %}>get it!</a></span>
               </button>
             </footer>
           </article>
@@ -51,8 +51,8 @@
             src="{{trophy.picture.url}}"
             alt="Goodies Happy Flame.png"
           />
-          <h4>{{trophy.name}}</h4>
-          <p>Use it to make your home page better!!</p>
+          <h4>{{trophy.trophy_type}}</h4>
+          <p>{{trophy.name}}</p>
         </section>
         <section>
           <article>
@@ -69,7 +69,7 @@
                 <span> <a href={% url "trophies:trophies-page" %}>back to trophys</a></span>
               </button>
               <button style="background-color: {{trophy.color}};" class="btn btn--primary">
-                <span>get it!</span>
+                <span><a href={% url "trophies:unlock_trophy" trophy.id %}>get it!</a></span>
               </button>
             </footer>
           </article>

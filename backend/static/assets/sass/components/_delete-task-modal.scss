@@ -120,10 +120,18 @@
     div {
       //display
       display: flex;
-      gap: 0.938rem; //15px
+      gap: 5px; //15px
       flex-direction: row;
       justify-content: space-between;
 
+      form{
+        display: flex;
+        gap: 5px;
+        flex: 1;
+        button{
+          flex: 1;
+        }
+      }
       //sizing
       width: 100%;
 

@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
+
 
 User = get_user_model()
 
@@ -34,7 +37,9 @@ class ChangePassword(forms.Form):
 
 class PasswordReset(forms.Form):
     email = forms.EmailField()
-
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox
+    )
 
 
 class PasswordResetConfirm(forms.Form):

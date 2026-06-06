@@ -2,7 +2,7 @@ from django.urls import path
 from .views import( 
 signup , login_view , logout_view , password_change ,
 password_reset , password_reset_done , password_reset_confirm ,
-password_reset_complete , dashboard_view
+password_reset_complete , dashboard_view , delete_account
 )
 
 
@@ -18,4 +18,6 @@ urlpatterns = [
     path("password_reset_done/" , password_reset_done , name="password_reset_done"),
     path("password_reset_confirm/<str:token>" , password_reset_confirm , name="password_reset_confirm"),
     path("password_reset_complete/" , password_reset_complete , name="password_reset_complete"),
+    path("delete_account/",delete_account,name="delete_account")
+    
 ]
