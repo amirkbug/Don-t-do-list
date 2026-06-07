@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block 'title' %}import-guest-tasks{% endblock 'title' %} 
+{% block 'favicon' %} {% static 'assets/icons/favicons/cloud-solid-full.svg' %} {% endblock 'favicon' %} 
+{% block 'header-title' %}import guest tasks{% endblock 'header-title' %}
+{% block 'header_icon' %}<i class="fa-solid fa-cloud"></i>{% endblock 'header_icon' %}
+{% block 'content' %}
+
+<!-- success card -->
+<div style="display: flex; justify-content: center;padding-bottom: 200px;">
+  <main class="password-reset-status-card--neutral">
+    <div><i class="fa-solid fa-cloud-arrow-up fa-5x"></i></div>
+    <section>
+      <h4>Import Guest Tasks?</h4>
+      <p>
+        We found tasks created in Guest Mode. Would you like to save them to
+        your account? Unsaved guest tasks will be permanently removed.
+      </p>
+    </section>
+    <form id="importForm" method="POST">
+      {% csrf_token %}
+      <a href="home.html">
+        <button id="saveTasks" class="btn btn--natural--100">
+          <span>Save Tasks</span>
+        </button>
+      </a>
+      <a href={% url "root:home" %}>
+        <button id="skipButton" class="btn btn--natural--100">
+          <span>Skip</span>
+        </button>
+      </a>
+      <input id="geustTasks" type="hidden" name="geustTasks" type="text" />
+    </form>
+  </main>
+</div>
+
+
+
+{% endblock 'content' %}

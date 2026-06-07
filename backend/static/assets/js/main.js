@@ -1480,9 +1480,6 @@ function login() {
   const submitBtnLogin = document.getElementById("submitBtnLogin");
   const eyeBtn = document.getElementById("eyeBtn");
 
-
-  
-
   // descriptions
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
@@ -1528,7 +1525,6 @@ function login() {
 
       let hasError = false;
 
-      
       // empty validation
       if (!email) {
         errorHandling(emailDesc, "Email cannot be empty.");
@@ -1548,8 +1544,6 @@ function login() {
 
       if (hasError) return;
 
-
-
       // success
       if (rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
@@ -1563,7 +1557,6 @@ function login() {
 
       //go to home
       loginForm.submit();
-
     });
   }
 }
@@ -2035,15 +2028,59 @@ passwordResetConfirm();
 
 //load the  tasks in the page
 function loadTasksInPage() {
+  //django
+  const taskContainerdiv = document.querySelector(".tasks__container");
+  const isAuthenticated = taskContainerdiv
+    ? taskContainerdiv.dataset.auth === "true"
+    : null;
+  //container
   const primaryTasks = document.querySelector(".primary--tasks");
-  if (primaryTasks) {
+  if (primaryTasks && !isAuthenticated) {
     document.addEventListener("DOMContentLoaded", () => loadGuestTasks());
   }
 }
 loadTasksInPage();
 
+function conditionalyRenderingCloudIcon() {
+  //cloudicon
+  const cloudIcon = document.getElementById("headder_left_icon");
+  if (!cloudIcon) return;
 
-//send tasks to django
-// document.addEventListener("DOMContentLoaded", () => {
-//   sendTasksToDjango();
-// });
+  //localstorage
+  const tasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+  //conditionaly rendering icon
+  if (tasks.length > 0) {
+    cloudIcon.classList.add("show");
+    return;
+  }
+}
+conditionalyRenderingCloudIcon();
+
+function sendGuestTasksToDatabase() {
+  const geustTasksInput = document.getElementById("geustTasks");
+  const skipButton = document.getElementById("skipButton");
+  const saveTasks = document.getElementById("saveTasks");
+  const importForm = document.getElementById("importForm");
+
+  if (!geustTasksInput || !skipButton || !saveTasks || !importForm) return;
+
+  skipButton.addEventListener("click", () => {
+    localStorage.setItem("guestTasks", "[]");
+  });
+
+  saveTasks.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const tasks = JSON.parse(localStorage.getItem("guestTasks") || "[]");
+
+    geustTasksInput.value = JSON.stringify(tasks);
+
+    localStorage.setItem("guestTasks", "[]");
+
+    importForm.submit();
+  });
+}
+
+sendGuestTasksToDatabase();
+

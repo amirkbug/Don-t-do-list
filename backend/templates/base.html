@@ -70,12 +70,21 @@
       ></i>
       
       {% elif request.user.is_authenticated %}
-      <a href={% url "accounts:dashboard" %}>
-        <img
-          src="{{request.user.profile_picture.url}}" 
-          
+      <div class="button_and_left_icon">
+        <a href={% url "root:import_question" %}>
+          <i
+            id="headder_left_icon"
+            class="fa-solid fa-cloud fa-xs"
+            style="color: #f5f5f5"
+          ></i>
+        </a>
+
+        <a href={% url "accounts:dashboard" %}>
+          <img
+            src="{{request.user.profile_picture.url}}" 
         />
-      </a>
+        </a>
+      </div>
       {% elif header_mode == "just_header" %}
       {% else %}
       <button
@@ -117,7 +126,7 @@
         <a href={% url "root:home" %} class="navbar__item" data-label="Home">
           <i class="fa-solid fa-house fa-2xl"></i>
         </a>
-        <a href={% url "trophies:trophies-page" %} class="navbar__item" data-label="Trophy">
+        <a href={% url "trophies:trophies-page" %} class="navbar__item" data-label="{% if user.is_authenticated %}Trophy{% else %}Locked{% endif %}">
           <i class="fa-solid fa-trophy fa-2xl"></i>
         </a>
       </nav>

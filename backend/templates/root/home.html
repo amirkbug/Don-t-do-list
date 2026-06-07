@@ -396,15 +396,17 @@
       <button id="closeDeleteModalDont" class="btn btn--secondary">
         <span>Cancel</span>
       </button>
+      
       <form
         id="deleteTasksFormDont"
         method="post"
         action="{% url 'root:delete-tasks' %}"
         hidden
       >
+      {% csrf_token %}
         <input name="type" value="dont" type="text" hidden />
         <button
-          type="button"
+          type="{% if user.is_authenticated %}submit{% else %}button{% endif %}"
           name="action"
           value="delete"
           id="deleteTaskDont"
@@ -421,7 +423,7 @@
         >
           <span>Complete</span>
         </button>
-        {% endif %} {% csrf_token %}
+        {% endif %} 
       </form>
     </div>
   </footer>
@@ -465,9 +467,10 @@
         method="post"
         action="{% url 'root:delete-tasks' %}"
       >
+      {% csrf_token %}
         <input name="type" value="do" type="text" hidden />
         <button
-          type="button"
+          type="{% if user.is_authenticated %}submit{% else %}button{% endif %}"
           name="action"
           value="delete"
           id="deleteTaskDo"
@@ -484,7 +487,7 @@
         >
           <span>Complete</span>
         </button>
-        {% endif %} {% csrf_token %}
+        {% endif %} 
       </form>
     </div>
   </footer>

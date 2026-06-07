@@ -8,6 +8,8 @@ from datetime import timedelta
 from django.utils import timezone
 from accounts.models import DailyStats
 
+
+@login_required
 def trophies(request,**kwargs):
 
     # query variables
