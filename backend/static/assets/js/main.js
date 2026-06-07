@@ -1480,6 +1480,9 @@ function login() {
   const submitBtnLogin = document.getElementById("submitBtnLogin");
   const eyeBtn = document.getElementById("eyeBtn");
 
+
+  
+
   // descriptions
   const passwordDesc = document.getElementById("PasswordDesc");
   const emailDesc = document.getElementById("emailDesc");
@@ -1525,6 +1528,7 @@ function login() {
 
       let hasError = false;
 
+      
       // empty validation
       if (!email) {
         errorHandling(emailDesc, "Email cannot be empty.");
@@ -1544,6 +1548,8 @@ function login() {
 
       if (hasError) return;
 
+
+
       // success
       if (rememberMe) {
         localStorage.setItem("isLoggedIn", "true");
@@ -1557,6 +1563,7 @@ function login() {
 
       //go to home
       loginForm.submit();
+
     });
   }
 }
@@ -2035,20 +2042,7 @@ function loadTasksInPage() {
 }
 loadTasksInPage();
 
-function sendTasksToDjango() {
-  const tasks = localStorage.getItem("guestTasks");
-  const form = document.getElementById("guestImportForm");
 
-  if (!form) return;
-
-  if (!tasks) {
-    window.location.href = "/";
-    return;
-  }
-
-  document.getElementById("guestTasksInput").value = tasks;
-  form.submit();
-}
 //send tasks to django
 // document.addEventListener("DOMContentLoaded", () => {
 //   sendTasksToDjango();

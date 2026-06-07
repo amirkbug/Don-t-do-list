@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.utils import timezone
 from accounts.models import DailyStats
 
-
 def home(request):
     if request.method == "GET":
         
