@@ -1,4 +1,4 @@
-<img width="1440" height="1024" alt="Trophy-logined" src="https://github.com/user-attachments/assets/d5695101-2677-40a6-887b-465232831cb9" /># Don't Do List - Frontend
+# Don't Do List - Frontend
 
 ## Overview
 
