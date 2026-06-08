@@ -13,7 +13,8 @@ The project follows a friendly and encouraging design philosophy, aiming to help
 ## Screenshots
 
 <img width="1440" height="1024" alt="Home-logined" src="https://github.com/user-attachments/assets/f0f7adc4-57f9-437c-a849-5b873ac16b61" />
-<img width="1440" height="1024" alt="Trophy-logined" src="https://github.com/user-attachments/assets/4af49a0e-d0d4-46ac-a594-fe24b7c29be6" />
+<img width="1440" height="1024" alt="Trophy" src="https://github.com/user-attachments/assets/184a1214-d800-41c2-8967-9d89886c05ed" />
+
 
 ---
 
