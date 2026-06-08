@@ -1,4 +1,4 @@
-# Don't Do List - Frontend
+<img width="1440" height="1024" alt="Trophy-logined" src="https://github.com/user-attachments/assets/d5695101-2677-40a6-887b-465232831cb9" /># Don't Do List - Frontend
 
 ## Overview
 
@@ -12,9 +12,8 @@ The project follows a friendly and encouraging design philosophy, aiming to help
 
 ## Screenshots
 
-### Home Page
-
-### Trophy System
+<img width="1440" height="1024" alt="Home-logined" src="https://github.com/user-attachments/assets/f0f7adc4-57f9-437c-a849-5b873ac16b61" />
+<img width="1440" height="1024" alt="Trophy-logined" src="https://github.com/user-attachments/assets/4af49a0e-d0d4-46ac-a594-fe24b7c29be6" />
 
 ---
 
