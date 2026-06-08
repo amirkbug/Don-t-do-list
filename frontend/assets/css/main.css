@@ -2543,6 +2543,9 @@
   opacity: 1;
   pointer-events: auto;
 }
+.primary--delete--task--modal .hide {
+  display: none;
+}
 .primary--delete--task--modal video {
   position: absolute;
   z-index: -1;
@@ -2664,6 +2667,9 @@
 .secondary--delete--task--modal.show {
   opacity: 1;
   pointer-events: auto;
+}
+.secondary--delete--task--modal .hide {
+  display: none;
 }
 .secondary--delete--task--modal video {
   position: absolute;
@@ -4395,7 +4401,7 @@ small.extrasmall-10 {
 
 .about--us--layout {
   padding: 4.375rem 4.375rem 0 4.375rem;
-  height: 670px;
+  height: 600px;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -4411,7 +4417,7 @@ small.extrasmall-10 {
   gap: 100px;
   margin: 0 auto;
   gap: 70px 300px;
-  height: 600px;
+  height: 500px;
 }
 
 .tasks__container {

@@ -67,7 +67,9 @@ function renderCalendar(calendarEl) {
   (start month gets minus 1 every loop then its get
    minus from endprevmonth(31 - 4 , 31 - 3)) */
   for (let i = startMonthDay - 1; i >= 0; i--) {
-    calendarDaysHtml += `<button class="inactive">${endPrevMonth - i}</button>`;
+    calendarDaysHtml += `<button type="button" class="inactive">${
+      endPrevMonth - i
+    }</button>`;
   }
 
   /* rendering all days and if it was current day it gest
@@ -79,7 +81,7 @@ function renderCalendar(calendarEl) {
       year === new Date().getFullYear()
         ? ' class="today"'
         : "";
-    calendarDaysHtml += `<button${className}>${i}</button>`;
+    calendarDaysHtml += `<button${className} type="button">${i}</button>`;
   }
 
   //set the buttons till now
@@ -94,7 +96,7 @@ function renderCalendar(calendarEl) {
 
   //render inactive buttons
   for (let i = 1; i <= extraDays; i++) {
-    calendarDaysHtml += `<button disabled class="inactive">${i}</button>`;
+    calendarDaysHtml += `<button type="button" class="inactive">${i}</button>`;
   }
 
   //set the inner html again
@@ -151,7 +153,10 @@ function renderCalendar(calendarEl) {
   activeDaysDo.forEach((btn) => {
     btn.addEventListener("click", () => {
       const day = btn.textContent;
-      const formattedDate = `${year}-${month + 1}-${day.padStart(2, "0")}`;
+      const dayFormatted = String(day).padStart(2, "0");
+      const monthFormatted = String(month + 1).padStart(2, "0");
+
+      const formattedDate = `${year}-${monthFormatted}-${dayFormatted}`;
 
       if (activeInputDo) {
         activeInputDo.value = formattedDate;
@@ -167,9 +172,11 @@ function renderCalendar(calendarEl) {
   activeDaysDont.forEach((btn) => {
     btn.addEventListener("click", () => {
       const day = btn.textContent;
-      const formattedDate = `${year}-${month + 1}-${day.padStart(2, "0")}`;
+      const dayFormatted = String(day).padStart(2, "0");
+      const monthFormatted = String(month + 1).padStart(2, "0");
 
-      console.log(activeInputDont);
+      const formattedDate = `${year}-${monthFormatted}-${dayFormatted}`;
+
       if (activeInputDont) {
         activeInputDont.value = formattedDate;
       }
@@ -1468,8 +1475,14 @@ signup();
 //this is just for frontend not for backend
 function logout() {
   const logoutBtn = document.querySelector("#logout");
+  const DeleteAccount = document.querySelector("#DeleteAccount");
   if (!logoutBtn) return;
   logoutBtn.addEventListener("click", () => {
+    localStorage.setItem("isLoggedIn", "false");
+    sessionStorage.setItem("isLoggedIn", "false");
+    window.location.href = "home.html";
+  });
+  DeleteAccount.addEventListener("click", () => {
     localStorage.setItem("isLoggedIn", "false");
     sessionStorage.setItem("isLoggedIn", "false");
     window.location.href = "home.html";
@@ -1499,9 +1512,11 @@ function ConditionalRenderingFn() {
             theAddress == "about-us" ? "circle-info" : theAddress
           }"></i>
         </header>
+        <div class="button_and_left_icon">
         <a href="./dashboard.html">
           <img src="../assets/images/trophy-pic/Goodies Happy Flame.png" alt="Goodies Happy Flame" />
         </a>
+        </div>
       </section>`;
   } else {
     headerByCondition.innerHTML = `<section class="header">
@@ -1873,3 +1888,37 @@ function categoryButtons() {
 }
 
 categoryButtons();
+
+function conditionalyRenderingDeleteModal() {
+  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+  const isAuthenticatedSession =
+    sessionStorage.getItem("isLoggedIn") === "true";
+  const isLoggedIn = isAuthenticated || isAuthenticatedSession;
+  const completeButtonDo = document.getElementById("completeTaskDo");
+  if (!completeButtonDo) return;
+  const completeButtonDont = document.getElementById("completeTaskDont");
+  if (!isLoggedIn) {
+    completeButtonDo.classList.add("hide");
+    completeButtonDont.classList.add("hide");
+  }
+}
+conditionalyRenderingDeleteModal();
+
+function conditionalyRenderingTrophyPage() {
+  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+  const isAuthenticatedSession =
+    sessionStorage.getItem("isLoggedIn") === "true";
+  const isLoggedIn = isAuthenticated || isAuthenticatedSession;
+  const navbarItem = document.querySelectorAll(".navbar__item");
+  const lastItem = navbarItem[navbarItem.length - 1];
+  if (navbarItem.length === 0) return;
+
+  if (!isLoggedIn) {
+    lastItem.href = "login.html";
+    console.log("not login");
+  } else {
+    lastItem.href = "trophy.html";
+    console.log("login");
+  }
+}
+conditionalyRenderingTrophyPage();
