@@ -12,7 +12,16 @@ The project follows a friendly and encouraging design philosophy, aiming to help
 
 ## Screenshots
 
+### Home Dashboard
+
+The main dashboard where users can manage daily tasks, track progress, and monitor their productivity journey.
+
 <img width="1440" height="1024" alt="Home-logined" src="https://github.com/user-attachments/assets/f0f7adc4-57f9-437c-a849-5b873ac16b61" />
+
+### Trophy System
+
+The achievement system that rewards users for reaching milestones, completing objectives, and maintaining consistency.
+
 <img width="1440" height="1024" alt="Trophy" src="https://github.com/user-attachments/assets/184a1214-d800-41c2-8967-9d89886c05ed" />
 
 
