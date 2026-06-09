@@ -1,3 +1,4 @@
+
 # Don't Do List - Backend
 
 ## Overview
@@ -14,7 +15,7 @@ This repository contains the backend implementation of the project built with Dj
 
 The main dashboard where users can manage daily tasks, track progress, and monitor their productivity journey.
 
-![Home Dashboard]
+![Home Dashboard]<img width="1440" height="1024" alt="Home-logined" src="https://github.com/user-attachments/assets/50b1c220-f28f-4e4d-8154-3cb8606b533e" />
 
 ---
 
@@ -22,13 +23,14 @@ The main dashboard where users can manage daily tasks, track progress, and monit
 
 The achievement system that rewards users for reaching milestones, completing objectives, and maintaining consistency.
 
-![Trophy System]
+![Trophy System]<img width="1440" height="1024" alt="Trophy" src="https://github.com/user-attachments/assets/757c6deb-c23c-4616-89ec-50c9768f3623" />
 
 ---
 
 ---
 
 ## Core Features
+
 
 ### Authentication System
 
