@@ -80,7 +80,8 @@ Inside the `design/` directory you can find:
 This folder helps developers and contributors understand the visual direction of the project and maintain consistency across implementation.
 
 ```text
-feature/frontend/design
+main/design
+```
 
 ## Project Features
 
@@ -117,4 +118,3 @@ Planned improvements include expanding the Trophy System, introducing new motiva
 ## Author
 
 Developed by k.bug.
-```
