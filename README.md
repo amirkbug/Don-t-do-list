@@ -66,6 +66,22 @@ git checkout feature/backend
 
 ---
 
+### 🎨 Design Assets
+
+In addition to the frontend and backend code, this repository also includes a design folder inside the frontend branch.
+
+Inside the `design/` directory you can find:
+
+- Figma preview (UI/UX design reference)
+- Screenshots of the full design flow
+- Concept previews and layout explorations
+- Logo assets and brand elements
+
+This folder helps developers and contributors understand the visual direction of the project and maintain consistency across implementation.
+
+```text
+feature/frontend/design
+
 ## Project Features
 
 - User Authentication
@@ -101,3 +117,4 @@ Planned improvements include expanding the Trophy System, introducing new motiva
 ## Author
 
 Developed by k.bug.
+```
