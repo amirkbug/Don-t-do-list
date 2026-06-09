@@ -27,8 +27,6 @@ The achievement system that rewards users for reaching milestones, completing ob
 
 ---
 
----
-
 ## Core Features
 
 
