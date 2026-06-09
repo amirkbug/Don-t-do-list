@@ -68,7 +68,7 @@ git checkout feature/backend
 
 ### 🎨 Design Assets
 
-In addition to the frontend and backend code, this repository also includes a design folder inside the frontend branch.
+In addition to the frontend and backend code, this repository also includes a design folder.
 
 Inside the `design/` directory you can find:
 
@@ -95,17 +95,6 @@ main/design
 
 ---
 
-## Screenshots
-
-### Home Dashboard
-
-![Home Dashboard](./screenshots/home.png)
-
-### Trophy System
-
-![Trophy System](./screenshots/trophy.png)
-
----
 
 ## Current Status
 
