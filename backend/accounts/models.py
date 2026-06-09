@@ -8,8 +8,10 @@ class CustomUserModel(AbstractUser):
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(upload_to="accounts",default="profile-default.jpg")
     
+# the model that we used for tracking user
 class DailyStats(models.Model):
     user = models.ForeignKey(CustomUserModel,on_delete=models.CASCADE)
+    # today date : 2026-06-09
     date = models.DateField()
     # Dont
     tasks_created_Dont = models.IntegerField(default=0)

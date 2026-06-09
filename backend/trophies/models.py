@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+# we have choices because we keep tracking of the trophies
 class Trophies(models.Model):
     TASK_TYPES = (
     ("DO", "Do"),
@@ -25,15 +26,9 @@ class Trophies(models.Model):
         ("tasks_completed_Dont", "Dont Completed"),
         ("tasks_deleted_Dont", "Dont Deleted"),
     )
-    required_time = models.CharField(
-        max_length=20,
-        choices=TIME_CHOICES,
-    )
+    required_time = models.CharField(max_length=20,choices=TIME_CHOICES,)
 
-    required_stat = models.CharField(
-        max_length=50,
-        choices=STAT_CHOICES,
-    )
+    required_stat = models.CharField(max_length=50,choices=STAT_CHOICES,)
 
     required_value = models.IntegerField()
     
@@ -55,22 +50,14 @@ class Trophies(models.Model):
     class Meta:
         ordering = ("-created_at",)
     
-
+# trophies that user copmleted are stored in this model
 class UserTrophy(models.Model):
 
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
-    trophy = models.ForeignKey(
-        Trophies,
-        on_delete=models.CASCADE
-    )
+    trophy = models.ForeignKey(Trophies,on_delete=models.CASCADE)
 
-    unlocked_at = models.DateTimeField(
-        auto_now_add=True
-    )
+    unlocked_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):

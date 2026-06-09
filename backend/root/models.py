@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Tasks(models.Model):
+    # we have two types of tasks
     TASK_TYPES = (
     ("DO", "Do"),
     ("DONT", "Don't"),

@@ -63,7 +63,7 @@ def trophies(request,**kwargs):
     }
     return render(request ,"trophies/trophy.html",context=context)
 
-
+# put the trophies base on ids 
 def trophy_details(request,**kwarg):
     if kwarg.get("trophy_id"):
         trophy = get_object_or_404(Trophies , id = kwarg.get("trophy_id"))

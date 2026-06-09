@@ -18,15 +18,17 @@ def import_questin(request):
         return render(request , "root/import_question.html" , context)
     
     if request.method == "POST":
+        # get the time for adding tasks to dailystats when imported
         today = timezone.now().date()
         stats , created = DailyStats.objects.get_or_create(
             user = request.user,
             date = today
         )
+        # get the tasks from a hidden input in a form , output is a list of dicts that is str too
         guest_tasks = request.POST.get("geustTasks")
-        print(guest_tasks)
 
         if guest_tasks:
+            # this get the tasks that is string and make it a list of objects
             tasks = json.loads(guest_tasks)
             for task in tasks:
                 Tasks.objects.create(
@@ -55,7 +57,7 @@ def import_questin(request):
 
 def home(request):
     if request.method == "GET":
-        
+        # if the user is not login we put the tasks from localstorage not database
         if request.user.is_authenticated:
             tasks = Tasks.objects.filter(
                 user=request.user
@@ -77,10 +79,13 @@ def home(request):
             date = today
             )
         if form.is_valid():
+            # we get the task from form but dont commit it
             task = form.save(commit=False)
+            # if the user was authenticated we put the user in it 
             if request.user.is_authenticated:
                 task.user = request.user
             task.save()
+            # we add the tasks that we make to stats
             if request.user.is_authenticated:
                 if (task.task_type == 'DO'):
                     stats.tasks_created_Do += 1
@@ -104,7 +109,9 @@ def delete_tasks(request):
         date = today
     )
     if request.method == "POST":
+        # get the ids from an hidden form and input
         selected_ids = request.POST.getlist("selected_tasks")
+        # get the selected ids count for adding to stats , you can select multiple tasks in delete modal
         selected_ids_count = len(selected_ids)
         
         if(request.POST.get("action") == "delete"):

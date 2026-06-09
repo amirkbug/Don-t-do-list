@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV2Checkbox
 
-
+#get the user from setting because we changed it
 User = get_user_model()
 
 

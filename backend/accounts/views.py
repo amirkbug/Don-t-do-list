@@ -24,6 +24,7 @@ def signup(request):
         return render(request , "accounts/signup.html",context)
     if request.method == "POST":
         form = RegistrationForm(request.POST)
+        # put the datas of POST into form
         email = request.POST.get("email")
         username = request.POST.get("username")
 
@@ -62,6 +63,7 @@ def login_view(request):
     elif request.method =="POST":
         form = LoginForm(request.POST)
         if form.is_valid():
+            # get the email and password from login
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
             try:
@@ -143,7 +145,7 @@ def dashboard_view(request):
         user=user,
         date = today
     )
-    #weakly stats
+    #weakly stats , sum : sum of the nums in database , aggregate output is a dict from the nums
     weakly_stats = DailyStats.objects.filter(
         user=user,
         date__gte=week_ago
@@ -158,14 +160,14 @@ def dashboard_view(request):
         tasks_deleted_Dont=Sum("tasks_deleted_Dont"),
 
     )
-    #weakly stats for chart
+    #weakly stats for chart , order by date output is from oldest to newest , output is a query set 
     weakly_chart = DailyStats.objects.filter(
         user=user,
         date__gte=week_ago
     ).order_by("date")
     #weakly chart
     for stat in weakly_chart:
-        # we need the index to fill in
+        # we get what day it is for index 0 to 7 , put the datas in the right place
         index = stat.date.weekday()
         chart_data["weekly"]["do"]["created"][index]=stat.tasks_created_Do or None
         chart_data["weekly"]["do"]["completed"][index]=stat.tasks_completed_Do or None
@@ -195,7 +197,7 @@ def dashboard_view(request):
     ).order_by("date")
     #montly arrays 
     for stat in montyly_chart:
-        # index start from 0 but here start from 1
+        # index start from 0 but here start from 1 , 0 to 30
         index = stat.date.day - 1
 
         chart_data["monthly"]["do"]["created"][index]=stat.tasks_created_Do or None
@@ -290,7 +292,8 @@ def password_reset(request):
             try:
                 user = get_object_or_404(User , email = form.cleaned_data["email"])
             except:
-                return redirect("accounts:password_reset_done")
+                messages.add_message(request,messages.ERROR,"No account found with this email. Ready to join the challenge?")
+                return redirect("accounts:signup")
             try:
                 # check if the user already have an token
                 token = PersonalTokens.objects.get(user=user)
@@ -306,8 +309,10 @@ def password_reset(request):
             )
             return redirect("accounts:password_reset_done")
         else:
-            messages.add_message(request,messages.ERROR,"your email is not valid")
+            
+            messages.add_message(request,messages.ERROR,"Please verify that you're human before continuing.")
             return redirect(request.path_info)
+            
     else:
         messages.add_message(request , messages.ERROR , "This action is not supported.")
         return redirect("/")

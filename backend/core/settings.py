@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     "trophies",
     'colorfield',
     "django_recaptcha",
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
 ]
+#site map first site
+SITE_ID = 1 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
