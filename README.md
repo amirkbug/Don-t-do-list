@@ -4,6 +4,9 @@ Don't Do List is a productivity-focused application designed to help users reduc
 
 The project combines task management, progress tracking, statistics, and achievements to create a more engaging productivity experience.
 
+<img width="1376" height="768" alt="SaaS_branding_showcase_Don&#39;t_List_202606101926" src="https://github.com/user-attachments/assets/b2a84789-4687-4b11-bfe2-56b0ed313286" />
+
+
 ---
 
 ## Repository Structure
