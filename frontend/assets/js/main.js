@@ -153,6 +153,7 @@ function renderCalendar(calendarEl) {
   activeDaysDo.forEach((btn) => {
     btn.addEventListener("click", () => {
       const day = btn.textContent;
+      // adding a zero to days and months that doesent have 2 chars (output 02)
       const dayFormatted = String(day).padStart(2, "0");
       const monthFormatted = String(month + 1).padStart(2, "0");
 
@@ -232,6 +233,7 @@ function renderCalendar(calendarEl) {
         leftElIndex !== 27 &&
         leftElIndex !== 34
       ) {
+        //if the button was close to today change today style
         leftEl.addEventListener("mouseenter", () => {
           today.style.borderBottomLeftRadius = "0px";
           today.style.borderTopLeftRadius = "0px";
@@ -372,10 +374,14 @@ if (header__right__icon) {
 //new--task--modals
 //openModalDoMakeTask
 function newTaskModalToggleDo() {
+  //modal
   const newTaskModalDo = document.querySelector(".new--task--modal--primary");
+  //buttons
   const openModalDo = document.getElementById("openModalAddDo");
   const closeModalDo = document.getElementById("closeModalAddDo");
+  //overlay
   const overlay = document.querySelector(".blur--background--0-2");
+  //inputs
   const inputs = newTaskModalDo
     ? newTaskModalDo.querySelectorAll("input")
     : null;
@@ -384,6 +390,7 @@ function newTaskModalToggleDo() {
     : null;
   if (!newTaskModalDo) return;
 
+  //opening the moal
   if (openModalDo && newTaskModalDo && overlay) {
     openModalDo.addEventListener("click", () => {
       newTaskModalDo.classList.add("show");
@@ -391,6 +398,7 @@ function newTaskModalToggleDo() {
       nameInputTxt.textContent = 50;
     });
   }
+  //closing the modal
   if (closeModalDo && newTaskModalDo && overlay) {
     closeModalDo.addEventListener("click", () => {
       newTaskModalDo.classList.remove("show");
@@ -401,6 +409,7 @@ function newTaskModalToggleDo() {
       });
     });
   }
+  //closing the modal with clicking on the overlay (outside of modal)
   if (overlay && newTaskModalDo) {
     overlay.addEventListener("click", () => {
       newTaskModalDo.classList.remove("show");
@@ -516,8 +525,10 @@ function deleteTasksModalToggleDo() {
   );
 
   if (!deleteTaskModal) return;
+  //btns
   const openDeleteModalDo = document.getElementById("openDeleteModalDo");
   const closeDeleteModalDo = document.getElementById("closeDeleteModalDo");
+  //overlay
   const overlay = document.querySelector(".blur--background--0-2");
 
   //open delete task
@@ -598,6 +609,7 @@ function deleteTasksModalToggleDo() {
   //delete task toggle infos
 }
 deleteTasksModalToggleDo();
+//function for deleting tasks
 function deleteTaskDont() {
   //get teh tasknames that user selected
 
@@ -640,7 +652,7 @@ if (document.getElementById("completeTaskDo")) {
     deleteTaskDo();
   });
 }
-
+//function for opeining the modal
 function deleteTasksModalToggleDont() {
   const deleteTaskModal = document.querySelector(
     ".secondary--delete--task--modal",
@@ -754,10 +766,14 @@ function calendarFunctionDo() {
 
 //which input is active in new task add do and dont
 let activeInputDont = null;
+//open calendar modal
 function calendarFunctionDont() {
+  //calener
   const clenderDont = document.querySelector(".calendar--secoundry");
   if (!clenderDont) return;
+  //overlay
   const overlay = document.querySelector(".blur--background--0-1");
+  //btns
   const openCalendar = document.querySelectorAll("#openCalendarDont");
 
   openCalendar.forEach((btn) => {
@@ -779,6 +795,7 @@ function calendarFunctionDont() {
 calendarFunctionDont();
 calendarFunctionDo();
 
+//check the input amount for description
 function nameInputAmountCheck() {
   const nameInput = document.querySelectorAll("#nameInput");
   const nameCountSpan = document.querySelectorAll("#nameInputTxt");
@@ -1474,6 +1491,7 @@ signup();
 
 //this is just for frontend not for backend
 function logout() {
+  //btns
   const logoutBtn = document.querySelector("#logout");
   const DeleteAccount = document.querySelector("#DeleteAccount");
   if (!logoutBtn) return;
@@ -1490,18 +1508,20 @@ function logout() {
 }
 logout();
 
+//conditionaly rendering header
 function ConditionalRenderingFn() {
+  //check if the user is login
   const isLoggedIn =
     sessionStorage.getItem("isLoggedIn") === "true" ||
     localStorage.getItem("isLoggedIn") === "true";
 
-  //conditionaly rendering links
-
-  //conditionaly rendering header
+  //header
   const headerByCondition = document.getElementById("headerByCondition");
 
   if (!headerByCondition) return;
+  //what address are we?
   const theAddress = window.location.pathname.split("/")[3].split(".")[0];
+  //make first letter capital
   const cap = theAddress.charAt(0).toUpperCase() + theAddress.slice(1);
 
   if (isLoggedIn) {
@@ -1587,7 +1607,9 @@ if (tooltips.length > 0) {
   });
 }
 
+//opening and closing the account setting box
 function accountSettingToggle() {
+  //btn
   const info__cards__btnbox = document.querySelector(".info--cards--btnbox");
   if (!info__cards__btnbox) return;
   const btn = info__cards__btnbox.querySelector("button");
@@ -1890,13 +1912,16 @@ function categoryButtons() {
 categoryButtons();
 
 function conditionalyRenderingDeleteModal() {
+  //authentication
   const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
   const isAuthenticatedSession =
     sessionStorage.getItem("isLoggedIn") === "true";
   const isLoggedIn = isAuthenticated || isAuthenticatedSession;
+  //btn
   const completeButtonDo = document.getElementById("completeTaskDo");
   if (!completeButtonDo) return;
   const completeButtonDont = document.getElementById("completeTaskDont");
+  //show the complete button or not
   if (!isLoggedIn) {
     completeButtonDo.classList.add("hide");
     completeButtonDont.classList.add("hide");
@@ -1905,10 +1930,12 @@ function conditionalyRenderingDeleteModal() {
 conditionalyRenderingDeleteModal();
 
 function conditionalyRenderingTrophyPage() {
+  //authentications
   const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
   const isAuthenticatedSession =
     sessionStorage.getItem("isLoggedIn") === "true";
   const isLoggedIn = isAuthenticated || isAuthenticatedSession;
+  //navbar last item which is trophy
   const navbarItem = document.querySelectorAll(".navbar__item");
   const lastItem = navbarItem[navbarItem.length - 1];
   if (navbarItem.length === 0) return;
