@@ -117,7 +117,7 @@ All branding assets, including the project name, logo, visual identity, UI/UX de
 
 These assets may not be copied, reproduced, redistributed, or used in any project without prior written permission.
 
-© 2026 k.bug. All rights reserved for branding and design assets.
+© 2026 amirkbug. All rights reserved for branding and design assets.
 
 
 ---
