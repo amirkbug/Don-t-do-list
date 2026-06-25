@@ -107,6 +107,18 @@ Planned improvements include expanding the Trophy System, introducing new motiva
 
 ---
 
+Copyright & Usage
+
+Copyright © 2026 k.bug.
+
+The source code in this repository may be used, modified, and shared for educational or personal projects, provided that proper credit is given to the original author.
+
+However, all branding assets, including but not limited to the project name, logo, visual identity, UI/UX designs, screenshots, design files, and other graphical materials, remain the intellectual property of the author and may not be copied, reproduced, redistributed, or used without prior written permission.
+
+If you use any portion of the code, please provide appropriate attribution to the original project and author.
+
+---
+
 ## Author
 
 Developed by k.bug.
