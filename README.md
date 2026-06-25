@@ -195,6 +195,20 @@ Future development will focus on expanding the Trophy System, introducing additi
 
 ---
 
+## License & Usage
+
+The source code in this repository may be used, modified, and shared with proper attribution to the original author.
+
+Please credit **k.bug** and link back to this repository when using any portion of the code.
+
+All branding assets, including the project name, logo, visual identity, UI/UX designs, screenshots, design files, and other graphical materials are **not covered by this permission** and remain the intellectual property of the author.
+
+These assets may not be copied, reproduced, redistributed, or used in any project without prior written permission.
+
+© 2026 NONETOAST. All rights reserved for branding and design assets.
+
+---
+
 ## Author
 
 Developed by k.bug.
