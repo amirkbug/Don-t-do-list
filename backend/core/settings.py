@@ -145,7 +145,8 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 AUTH_USER_MODEL = "accounts.CustomUserModel"
 
 load_dotenv()
-
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 
 # 30 days for login with checkbox on
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
