@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -142,9 +144,9 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 AUTH_USER_MODEL = "accounts.CustomUserModel"
 
+load_dotenv()
 
-RECAPTCHA_PUBLIC_KEY = "6LcD1wUtAAAAAJJ6KP1O4c6zxeiOBlYhSdHMzXzT"
-RECAPTCHA_PRIVATE_KEY = "6LcD1wUtAAAAAGtwHF7qBI_MpBBuDGMjra1NM4hf"
-
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 # 30 days for login with checkbox on
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
